@@ -2,63 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://distjr.github.io/2022/11/20/communist-manifesto/</loc>
+    <loc>https://www.distjr.fun/schedule/index.html</loc>
     
-    <lastmod>2022-11-28</lastmod>
+    <lastmod>2023-07-22</lastmod>
     
   </url>
   
   <url>
-    <loc>https://distjr.github.io/galleries/index.html</loc>
+    <loc>https://www.distjr.fun/2023/07/22/test/</loc>
+    
+    <lastmod>2023-07-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.distjr.fun/handout/Hua-Xue-Bi-Xiu-Yi-4-1.html</loc>
+    
+    <lastmod>2023-07-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.distjr.fun/handout/index.html</loc>
+    
+    <lastmod>2022-12-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.distjr.fun/galleries/index.html</loc>
+    
+    <lastmod>2022-12-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.distjr.fun/404.html</loc>
     
     <lastmod>2022-11-21</lastmod>
     
   </url>
   
   <url>
-    <loc>https://distjr.github.io/schedule/index.html</loc>
-    
-    <lastmod>2022-11-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://distjr.github.io/404.html</loc>
-    
-    <lastmod>2022-11-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://distjr.github.io/friends/index.html</loc>
+    <loc>https://www.distjr.fun/friends/index.html</loc>
     
     <lastmod>2021-07-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://distjr.github.io/about/index.html</loc>
+    <loc>https://www.distjr.fun/about/index.html</loc>
     
     <lastmod>2021-07-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://distjr.github.io/contact/index.html</loc>
+    <loc>https://www.distjr.fun/contact/index.html</loc>
     
     <lastmod>2021-07-28</lastmod>
     
   </url>
   
   <url>
-    <loc>https://distjr.github.io/categories/index.html</loc>
+    <loc>https://www.distjr.fun/categories/index.html</loc>
     
     <lastmod>2021-07-28</lastmod>
     
   </url>
   
   <url>
-    <loc>https://distjr.github.io/tags/index.html</loc>
+    <loc>https://www.distjr.fun/tags/index.html</loc>
     
     <lastmod>2021-07-28</lastmod>
     
@@ -66,41 +80,13 @@
   
 
   <url>
-    <loc>https://distjr.github.io/</loc>
-    <lastmod>2022-11-29</lastmod>
+    <loc>https://www.distjr.fun/</loc>
+    <lastmod>2023-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
-  <url>
-    <loc>https://distjr.github.io/tags/%E6%94%BF%E6%B2%BB/</loc>
-    <lastmod>2022-11-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://distjr.github.io/tags/%E5%85%B1%E4%BA%A7%E5%85%9A%E5%AE%A3%E8%A8%80/</loc>
-    <lastmod>2022-11-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://distjr.github.io/tags/%E9%A9%AC%E5%85%8B%E6%80%9D%E4%B8%BB%E4%B9%89/</loc>
-    <lastmod>2022-11-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
-  
-  <url>
-    <loc>https://distjr.github.io/categories/%E6%94%BF%E6%B2%BB/</loc>
-    <lastmod>2022-11-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
   
 </urlset>
