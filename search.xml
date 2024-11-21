@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>test</title>
+    <url>/2023/07/22/test/</url>
+    <content><![CDATA[<h1><span id="test">test</span></h1><h2><span id="test">test</span></h2><p>$\LaTeX$</p>
+<p>test</p>
+<p><strong>test</strong></p>
+<p><del>test</del></p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">test</td>
+<td align="center">test</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+</search>

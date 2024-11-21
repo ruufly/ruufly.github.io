@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>distjr_的博客</title>
+  
+  <subtitle>distjr_&#39;s blog</subtitle>
+  <link href="https://www.distjr.fun/atom.xml" rel="self"/>
+  
+  <link href="https://www.distjr.fun/"/>
+  <updated>2023-07-22T11:49:12.730Z</updated>
+  <id>https://www.distjr.fun/</id>
+  
+  <author>
+    <name>distjr_</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="https://www.distjr.fun/2023/07/22/test/"/>
+    <id>https://www.distjr.fun/2023/07/22/test/</id>
+    <published>2023-07-21T16:00:00.000Z</published>
+    <updated>2023-07-22T11:49:12.730Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;test&quot;&gt;test&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
