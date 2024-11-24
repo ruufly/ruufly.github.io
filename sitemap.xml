@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.distjr.fun/2023/10/31/come-back/</loc>
+    
+    <lastmod>2024-11-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/2023/07/22/test/</loc>
+    
+    <lastmod>2024-11-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.distjr.fun/schedule/index.html</loc>
     
     <lastmod>2024-11-22</lastmod>
@@ -10,13 +24,6 @@
   
   <url>
     <loc>https://blog.distjr.fun/2024/02/18/u314392-solution/</loc>
-    
-    <lastmod>2024-11-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.distjr.fun/2023/07/22/test/</loc>
     
     <lastmod>2024-11-22</lastmod>
     
@@ -157,6 +164,27 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://blog.distjr.fun/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/tags/%E7%9F%AD%E7%AF%87/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/tags/2023/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -168,6 +196,13 @@
   
   <url>
     <loc>https://blog.distjr.fun/categories/test/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/categories/%E6%96%87%E9%9B%86/</loc>
     <lastmod>2024-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
