@@ -401,13 +401,23 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">1</a></span>
+    <span class="count"><a href="/">2</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
+<div class="statis">
+    <span class="count"><a href="/categories">2</a></span>
+    <span class="name">分类</span>
+</div>
 
+
+
+<div class="statis">
+    <span class="count"><a href="/tags">3</a></span>
+    <span class="name">标签</span>
+</div>
 
 
                     </div>
@@ -421,13 +431,23 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">1</a></span>
+    <span class="count"><a href="/">2</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
+<div class="statis">
+    <span class="count"><a href="/categories">2</a></span>
+    <span class="name">分类</span>
+</div>
 
+
+
+<div class="statis">
+    <span class="count"><a href="/tags">3</a></span>
+    <span class="name">标签</span>
+</div>
 
 
                                 </div>
@@ -583,7 +603,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07"]
+            data: ["2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11"]
         },
         yAxis: {
             type: 'value',
@@ -593,7 +613,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,1],
+                data: [0,0,0,1,0,0,0,0,0,0,0,0,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -635,7 +655,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [],
+                data: [{"name":"OI","value":1},{"name":"test","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -659,7 +679,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: []
+                data: ["题解","动态规划","test"]
             }
         ],
         yAxis: [
@@ -672,7 +692,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [],
+                data: [1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -713,40 +733,40 @@
         
         <div class="col s12 m6 l4" data-aos="fade-up">
             <div class="info center-align">
-                <a href="" class="icon"
+                <a href="https://github.com/ruufly/AITD-System" class="icon"
                    style="background: linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)" target="_blank">
                     <i class="fa fa-object-group"></i>
                 </a>
                 <div class="info-title">
-                    <a href="/" target="_blank">Fuse</a>
+                    <a href="https://github.com/ruufly/AITD-System" target="_blank">AITD System</a>
                 </div>
-                <div class="info-desc">基于Python的动画制作器。</div>
+                <div class="info-desc">一种基于人工智能技术的系统发生树绘制与物种演化路径推断系统</div>
             </div>
         </div>
         
         <div class="col s12 m6 l4" data-aos="fade-up">
             <div class="info center-align">
-                <a href="" class="icon"
+                <a href="https://github.com/ruufly/Nomel" class="icon"
                    style="background: linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)" target="_blank">
                     <i class="fa fa-laptop"></i>
                 </a>
                 <div class="info-title">
-                    <a href="/" target="_blank">Nomel</a>
+                    <a href="https://github.com/ruufly/Nomel" target="_blank">Nomel</a>
                 </div>
-                <div class="info-desc">一个进行OI比赛的小工具。</div>
+                <div class="info-desc">一个进行OI比赛的小工具</div>
             </div>
         </div>
         
         <div class="col s12 m6 l4" data-aos="fade-up">
             <div class="info center-align">
-                <a href="" class="icon"
+                <a href="https://github.com/ruufly/Galgame-Maker" class="icon"
                    style="background: linear-gradient(to bottom right, #F303AA 0%, #B63DD4 100%)" target="_blank">
                     <i class="fa fa-tree"></i>
                 </a>
                 <div class="info-title">
-                    <a href="/" target="_blank">Galgame Maker</a>
+                    <a href="https://github.com/ruufly/Galgame-Maker" target="_blank">Galgame Maker</a>
                 </div>
-                <div class="info-desc">视觉小说/Galgame制作器。</div>
+                <div class="info-desc">视觉小说/Galgame制作器</div>
             </div>
         </div>
         
@@ -791,10 +811,10 @@
         <div class="col s12 m6 l6" data-aos="fade-up">
             <div class="skillbar">
                 <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #2196F3 0%, #42A5F5 100%); width: 30%">
+                     style="background: linear-gradient(to right, #2196F3 0%, #42A5F5 100%); width: 50%">
                     <span>编曲/作曲</span>
                 </div>
-                <div class="skill-bar-percent">30%</div>
+                <div class="skill-bar-percent">50%</div>
             </div>
         </div>
         
@@ -810,6 +830,28 @@
         </div>
         
         
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #FFC107 0%, #FFA726 100%); width: 70%">
+                    <span>生物学</span>
+                </div>
+                <div class="skill-bar-percent">70%</div>
+            </div>
+        </div>
+        
+        
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #FF9800 0%, #FFC107 100%); width: 35%">
+                    <span>机器学习</span>
+                </div>
+                <div class="skill-bar-percent">35%</div>
+            </div>
+        </div>
+        
+        
     </div>
 
     
@@ -818,6 +860,24 @@
     <div class="other-skills chip-container" data-aos="zoom-in-up">
         <div class="sub-title center-align"><i class="fa fa-book"></i>&nbsp;&nbsp;其他技能</div>
         <div class="tag-chips center-align">
+            
+            
+            <a href="/tags/%E9%A2%98%E8%A7%A3/">
+                <span class="chip center-align waves-effect waves-light chip-default">题解</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                <span class="chip center-align waves-effect waves-light chip-default">动态规划</span>
+            </a>
+            
+            
+            
+            <a href="/tags/test/">
+                <span class="chip center-align waves-effect waves-light chip-default">test</span>
+            </a>
+            
             
         </div>
     </div>
@@ -841,7 +901,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021-2023</span>
+                <span id="year">2021-2024</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">distjr_</a>
@@ -850,7 +910,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">7</span>&nbsp;字
+                class="white-color">457</span>&nbsp;字
             
             
             
@@ -1085,6 +1145,9 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
+    <!-- <script src="/live2d-widget/autoload.js"></script> -->
+    <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+
 
     <!-- Baidu Analytics -->
 
