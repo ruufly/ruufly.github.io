@@ -2,77 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.distjr.fun/schedule/index.html</loc>
+    <loc>https://blog.distjr.fun/schedule/index.html</loc>
+    
+    <lastmod>2024-11-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/2024/02/18/u314392-solution/</loc>
+    
+    <lastmod>2024-11-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/2023/07/22/test/</loc>
+    
+    <lastmod>2024-11-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/live2d-widget/README.en.html</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/live2d-widget/README.html</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/live2d-widget/package.json</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/live2d-widget/waifu-tips.json</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/live2d-widget/demo/demo.html</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/live2d-widget/demo/login.html</loc>
+    
+    <lastmod>2024-02-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/handout/Hua-Xue-Bi-Xiu-Yi-4-1.html</loc>
     
     <lastmod>2023-07-22</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.distjr.fun/2023/07/22/test/</loc>
-    
-    <lastmod>2023-07-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.distjr.fun/handout/Hua-Xue-Bi-Xiu-Yi-4-1.html</loc>
-    
-    <lastmod>2023-07-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.distjr.fun/handout/index.html</loc>
+    <loc>https://blog.distjr.fun/handout/index.html</loc>
     
     <lastmod>2022-12-16</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.distjr.fun/galleries/index.html</loc>
+    <loc>https://blog.distjr.fun/galleries/index.html</loc>
     
     <lastmod>2022-12-01</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.distjr.fun/404.html</loc>
+    <loc>https://blog.distjr.fun/404.html</loc>
     
     <lastmod>2022-11-21</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.distjr.fun/friends/index.html</loc>
+    <loc>https://blog.distjr.fun/friends/index.html</loc>
     
     <lastmod>2021-07-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.distjr.fun/about/index.html</loc>
+    <loc>https://blog.distjr.fun/about/index.html</loc>
     
     <lastmod>2021-07-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.distjr.fun/contact/index.html</loc>
+    <loc>https://blog.distjr.fun/contact/index.html</loc>
     
     <lastmod>2021-07-28</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.distjr.fun/categories/index.html</loc>
+    <loc>https://blog.distjr.fun/categories/index.html</loc>
     
     <lastmod>2021-07-28</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.distjr.fun/tags/index.html</loc>
+    <loc>https://blog.distjr.fun/tags/index.html</loc>
     
     <lastmod>2021-07-28</lastmod>
     
@@ -80,13 +129,48 @@
   
 
   <url>
-    <loc>https://www.distjr.fun/</loc>
-    <lastmod>2023-07-22</lastmod>
+    <loc>https://blog.distjr.fun/</loc>
+    <lastmod>2024-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
+  <url>
+    <loc>https://blog.distjr.fun/tags/%E9%A2%98%E8%A7%A3/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/tags/test/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>https://blog.distjr.fun/categories/OI/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.fun/categories/test/</loc>
+    <lastmod>2024-11-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
 </urlset>
