@@ -3,11 +3,11 @@
   <title>distjr_的博客</title>
   
   <subtitle>distjr_&#39;s blog</subtitle>
-  <link href="https://blog.distjr.fun/atom.xml" rel="self"/>
+  <link href="https://ruufly.github.io/atom.xml" rel="self"/>
   
-  <link href="https://blog.distjr.fun/"/>
+  <link href="https://ruufly.github.io/"/>
   <updated>2024-11-22T14:09:58.448Z</updated>
-  <id>https://blog.distjr.fun/</id>
+  <id>https://ruufly.github.io/</id>
   
   <author>
     <name>distjr_</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>U314392 distjr_想买书 题解</title>
-    <link href="https://blog.distjr.fun/2024/02/18/u314392-solution/"/>
-    <id>https://blog.distjr.fun/2024/02/18/u314392-solution/</id>
+    <link href="https://ruufly.github.io/2024/02/18/u314392-solution/"/>
+    <id>https://ruufly.github.io/2024/02/18/u314392-solution/</id>
     <published>2024-02-18T05:30:00.000Z</published>
     <updated>2024-11-22T14:09:58.448Z</updated>
     
@@ -35,19 +35,19 @@
     
     
     
-    <category term="OI" scheme="https://blog.distjr.fun/categories/OI/"/>
+    <category term="OI" scheme="https://ruufly.github.io/categories/OI/"/>
     
     
-    <category term="题解" scheme="https://blog.distjr.fun/tags/%E9%A2%98%E8%A7%A3/"/>
+    <category term="题解" scheme="https://ruufly.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
-    <category term="动态规划" scheme="https://blog.distjr.fun/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <category term="动态规划" scheme="https://ruufly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
   <entry>
     <title>回来？</title>
-    <link href="https://blog.distjr.fun/2023/10/31/come-back/"/>
-    <id>https://blog.distjr.fun/2023/10/31/come-back/</id>
+    <link href="https://ruufly.github.io/2023/10/31/come-back/"/>
+    <id>https://ruufly.github.io/2023/10/31/come-back/</id>
     <published>2023-10-31T11:30:00.000Z</published>
     <updated>2024-11-24T11:50:29.794Z</updated>
     
@@ -62,21 +62,21 @@
     
     
     
-    <category term="文集" scheme="https://blog.distjr.fun/categories/%E6%96%87%E9%9B%86/"/>
+    <category term="文集" scheme="https://ruufly.github.io/categories/%E6%96%87%E9%9B%86/"/>
     
     
-    <category term="小说" scheme="https://blog.distjr.fun/tags/%E5%B0%8F%E8%AF%B4/"/>
+    <category term="小说" scheme="https://ruufly.github.io/tags/%E5%B0%8F%E8%AF%B4/"/>
     
-    <category term="短篇" scheme="https://blog.distjr.fun/tags/%E7%9F%AD%E7%AF%87/"/>
+    <category term="短篇" scheme="https://ruufly.github.io/tags/%E7%9F%AD%E7%AF%87/"/>
     
-    <category term="2023" scheme="https://blog.distjr.fun/tags/2023/"/>
+    <category term="2023" scheme="https://ruufly.github.io/tags/2023/"/>
     
   </entry>
   
   <entry>
     <title>test</title>
-    <link href="https://blog.distjr.fun/2023/07/22/test/"/>
-    <id>https://blog.distjr.fun/2023/07/22/test/</id>
+    <link href="https://ruufly.github.io/2023/07/22/test/"/>
+    <id>https://ruufly.github.io/2023/07/22/test/</id>
     <published>2023-07-21T16:00:00.000Z</published>
     <updated>2024-11-24T11:01:02.961Z</updated>
     
@@ -91,17 +91,17 @@
     
     
     
-    <category term="test" scheme="https://blog.distjr.fun/categories/test/"/>
+    <category term="test" scheme="https://ruufly.github.io/categories/test/"/>
     
     
-    <category term="test" scheme="https://blog.distjr.fun/tags/test/"/>
+    <category term="test" scheme="https://ruufly.github.io/tags/test/"/>
     
   </entry>
   
   <entry>
     <title>一场提前告知的自杀</title>
-    <link href="https://blog.distjr.fun/2023/05/11/planned-jisatsu/"/>
-    <id>https://blog.distjr.fun/2023/05/11/planned-jisatsu/</id>
+    <link href="https://ruufly.github.io/2023/05/11/planned-jisatsu/"/>
+    <id>https://ruufly.github.io/2023/05/11/planned-jisatsu/</id>
     <published>2023-05-11T12:30:00.000Z</published>
     <updated>2024-11-25T08:24:51.397Z</updated>
     
@@ -117,14 +117,14 @@
     
     
     
-    <category term="文集" scheme="https://blog.distjr.fun/categories/%E6%96%87%E9%9B%86/"/>
+    <category term="文集" scheme="https://ruufly.github.io/categories/%E6%96%87%E9%9B%86/"/>
     
     
-    <category term="小说" scheme="https://blog.distjr.fun/tags/%E5%B0%8F%E8%AF%B4/"/>
+    <category term="小说" scheme="https://ruufly.github.io/tags/%E5%B0%8F%E8%AF%B4/"/>
     
-    <category term="短篇" scheme="https://blog.distjr.fun/tags/%E7%9F%AD%E7%AF%87/"/>
+    <category term="短篇" scheme="https://ruufly.github.io/tags/%E7%9F%AD%E7%AF%87/"/>
     
-    <category term="2023" scheme="https://blog.distjr.fun/tags/2023/"/>
+    <category term="2023" scheme="https://ruufly.github.io/tags/2023/"/>
     
   </entry>
   
