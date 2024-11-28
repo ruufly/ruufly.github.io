@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>distjr_的博客</title>
+  
+  <subtitle>distjr_&#39;s blog</subtitle>
+  <link href="https://ruufly.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://ruufly.github.io/"/>
+  <updated>2024-11-28T01:24:59.870Z</updated>
+  <id>https://ruufly.github.io/</id>
+  
+  <author>
+    <name>distjr_</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>原野</title>
+    <link href="https://ruufly.github.io/2024/11/03/wide-field/"/>
+    <id>https://ruufly.github.io/2024/11/03/wide-field/</id>
+    <published>2024-11-03T13:00:00.000Z</published>
+    <updated>2024-11-28T01:24:59.870Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;绯红色的夕阳，被挤在两座天一般高的大厦之间的缝隙里，散发着充满噪声和烟尘的光，落下。转眼便被挤满了车流的高架桥挡住，于是天空中只剩下了深茜色，这深茜色中依然夹杂着噪声和电流。&lt;/p&gt;
+&lt;p&gt;高架桥下，最黑暗与最明亮的屋内，少女正坐在那里，望着外面的车流。但她不能出去，她只能</summary>
+        
+      
+    
+    
+    
+    <category term="文集" scheme="https://ruufly.github.io/categories/%E6%96%87%E9%9B%86/"/>
+    
+    
+    <category term="小说" scheme="https://ruufly.github.io/tags/%E5%B0%8F%E8%AF%B4/"/>
+    
+    <category term="短篇" scheme="https://ruufly.github.io/tags/%E7%9F%AD%E7%AF%87/"/>
+    
+    <category term="2024" scheme="https://ruufly.github.io/tags/2024/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一种基于人工智能技术的系统发生树绘制与物种演化路径推断系统</title>
+    <link href="https://ruufly.github.io/2024/10/08/aitd/"/>
+    <id>https://ruufly.github.io/2024/10/08/aitd/</id>
+    <published>2024-10-08T12:00:00.000Z</published>
+    <updated>2024-11-28T03:24:59.099Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="论文" scheme="https://ruufly.github.io/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+    <category term="论文" scheme="https://ruufly.github.io/tags/%E8%AE%BA%E6%96%87/"/>
+    
+    <category term="AITD" scheme="https://ruufly.github.io/tags/AITD/"/>
+    
+    <category term="分子生物学" scheme="https://ruufly.github.io/tags/%E5%88%86%E5%AD%90%E7%94%9F%E7%89%A9%E5%AD%A6/"/>
+    
+    <category term="系统发生树" scheme="https://ruufly.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%8F%91%E7%94%9F%E6%A0%91/"/>
+    
+    <category term="人工智能" scheme="https://ruufly.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>U314392 distjr_想买书 题解</title>
+    <link href="https://ruufly.github.io/2024/02/18/u314392-solution/"/>
+    <id>https://ruufly.github.io/2024/02/18/u314392-solution/</id>
+    <published>2024-02-18T05:30:00.000Z</published>
+    <updated>2024-11-28T01:25:36.902Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2&gt;&lt;span id=&quot;思路&quot;&gt;思路&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;首先是一个 &lt;code&gt;dp&lt;/code&gt; 的板子，设 $dp_j$ 为花费 $j$ 元能获得的最大的期待值。&lt;/p&gt;
+&lt;p&gt;对于每次转移，都可以选择买哪一本书，一旦买了一本书，花费的钱增加 $p_i$</summary>
+        
+      
+    
+    
+    
+    <category term="OI" scheme="https://ruufly.github.io/categories/OI/"/>
+    
+    
+    <category term="题解" scheme="https://ruufly.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+    <category term="动态规划" scheme="https://ruufly.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>回来？</title>
+    <link href="https://ruufly.github.io/2023/10/31/come-back/"/>
+    <id>https://ruufly.github.io/2023/10/31/come-back/</id>
+    <published>2023-10-31T11:30:00.000Z</published>
+    <updated>2024-11-28T01:23:04.397Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="文集" scheme="https://ruufly.github.io/categories/%E6%96%87%E9%9B%86/"/>
+    
+    
+    <category term="小说" scheme="https://ruufly.github.io/tags/%E5%B0%8F%E8%AF%B4/"/>
+    
+    <category term="短篇" scheme="https://ruufly.github.io/tags/%E7%9F%AD%E7%AF%87/"/>
+    
+    <category term="2023" scheme="https://ruufly.github.io/tags/2023/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一场提前告知的自杀</title>
+    <link href="https://ruufly.github.io/2023/05/11/planned-jisatsu/"/>
+    <id>https://ruufly.github.io/2023/05/11/planned-jisatsu/</id>
+    <published>2023-05-11T12:30:00.000Z</published>
+    <updated>2024-11-28T01:24:35.378Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;十几平米的出租房里，堆满了杂物，只有女子现在正躺着的这张床上，略显得干净一点。夏天的六月，又是阴天，房间里没有空调，只有一台电扇正摇着头，吹着风，但无济于事。早上七点的闹钟还没有响起，女子早已受不了这湿热的环境而惊醒。&lt;/p&gt;
+&lt;p&gt;“无聊透顶。”，女子发了句牢骚。这过于简</summary>
+        
+      
+    
+    
+    
+    <category term="文集" scheme="https://ruufly.github.io/categories/%E6%96%87%E9%9B%86/"/>
+    
+    
+    <category term="小说" scheme="https://ruufly.github.io/tags/%E5%B0%8F%E8%AF%B4/"/>
+    
+    <category term="短篇" scheme="https://ruufly.github.io/tags/%E7%9F%AD%E7%AF%87/"/>
+    
+    <category term="2023" scheme="https://ruufly.github.io/tags/2023/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="https://ruufly.github.io/2021/07/11/test/"/>
+    <id>https://ruufly.github.io/2021/07/11/test/</id>
+    <published>2021-07-10T16:00:00.000Z</published>
+    <updated>2024-11-28T01:26:43.339Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;test&quot;&gt;test&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="test" scheme="https://ruufly.github.io/categories/test/"/>
+    
+    
+    <category term="test" scheme="https://ruufly.github.io/tags/test/"/>
+    
+  </entry>
+  
+</feed>
