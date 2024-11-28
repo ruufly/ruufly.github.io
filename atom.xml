@@ -6,7 +6,7 @@
   <link href="https://ruufly.github.io/atom.xml" rel="self"/>
   
   <link href="https://ruufly.github.io/"/>
-  <updated>2024-11-27T12:42:37.223Z</updated>
+  <updated>2024-11-28T01:24:59.870Z</updated>
   <id>https://ruufly.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ruufly.github.io/2024/11/03/wide-field/"/>
     <id>https://ruufly.github.io/2024/11/03/wide-field/</id>
     <published>2024-11-03T13:00:00.000Z</published>
-    <updated>2024-11-27T12:42:37.223Z</updated>
+    <updated>2024-11-28T01:24:59.870Z</updated>
     
     
       
@@ -51,7 +51,7 @@
     <link href="https://ruufly.github.io/2024/02/18/u314392-solution/"/>
     <id>https://ruufly.github.io/2024/02/18/u314392-solution/</id>
     <published>2024-02-18T05:30:00.000Z</published>
-    <updated>2024-11-22T14:09:58.448Z</updated>
+    <updated>2024-11-28T01:25:36.902Z</updated>
     
     
       
@@ -79,7 +79,7 @@
     <link href="https://ruufly.github.io/2023/10/31/come-back/"/>
     <id>https://ruufly.github.io/2023/10/31/come-back/</id>
     <published>2023-10-31T11:30:00.000Z</published>
-    <updated>2024-11-24T11:50:29.794Z</updated>
+    <updated>2024-11-28T01:23:04.397Z</updated>
     
     
       
@@ -104,36 +104,11 @@
   </entry>
   
   <entry>
-    <title>test</title>
-    <link href="https://ruufly.github.io/2023/07/22/test/"/>
-    <id>https://ruufly.github.io/2023/07/22/test/</id>
-    <published>2023-07-21T16:00:00.000Z</published>
-    <updated>2024-11-24T11:01:02.961Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;test&quot;&gt;test&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="test" scheme="https://ruufly.github.io/categories/test/"/>
-    
-    
-    <category term="test" scheme="https://ruufly.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
     <title>一场提前告知的自杀</title>
     <link href="https://ruufly.github.io/2023/05/11/planned-jisatsu/"/>
     <id>https://ruufly.github.io/2023/05/11/planned-jisatsu/</id>
     <published>2023-05-11T12:30:00.000Z</published>
-    <updated>2024-11-25T08:24:51.397Z</updated>
+    <updated>2024-11-28T01:24:35.378Z</updated>
     
     
       
@@ -155,6 +130,31 @@
     <category term="短篇" scheme="https://ruufly.github.io/tags/%E7%9F%AD%E7%AF%87/"/>
     
     <category term="2023" scheme="https://ruufly.github.io/tags/2023/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="https://ruufly.github.io/2021/07/11/test/"/>
+    <id>https://ruufly.github.io/2021/07/11/test/</id>
+    <published>2021-07-10T16:00:00.000Z</published>
+    <updated>2024-11-28T01:26:43.339Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;test&quot;&gt;test&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="test" scheme="https://ruufly.github.io/categories/test/"/>
+    
+    
+    <category term="test" scheme="https://ruufly.github.io/tags/test/"/>
     
   </entry>
   
