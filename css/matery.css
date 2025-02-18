@@ -48,6 +48,14 @@ h1 {
     line-height: 2.0rem;
 }
 
+h1.title-post {
+    margin: 48px 0 22px -5px;
+    font-size: 2.0rem;
+    font-weight: bold;
+    color: #fffffc;
+    line-height: 2.0rem;
+}
+
 h2 {
     margin: 42px 0 18px -5px;
     font-size: 1.8rem;
