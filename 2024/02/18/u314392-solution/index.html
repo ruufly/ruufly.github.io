@@ -17,17 +17,17 @@
 
 
     <title>U314392 distjr_想买书 题解 | distjr_的博客</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/css/my.css">
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/jquery/jquery.min.js"></script>
 
     <!--  -->
 
@@ -52,7 +52,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">distjr_的博客</span>
                 </a>
@@ -196,7 +196,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">distjr_的博客</div>
         <div class="logo-desc">
@@ -346,7 +346,7 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
         let pwd = '';
@@ -362,7 +362,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -380,7 +380,7 @@
 <main class="post-container content">
 
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/tocbot/tocbot.css">
 <style>
     #articleContent h1::before,
     #articleContent h2::before,
@@ -549,7 +549,7 @@
 
         
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
+        <link rel="stylesheet" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/prism/prism.css">
         
 
         
@@ -563,7 +563,7 @@
             <div id="articleContent">
                 <h2><span id="思路">思路</span></h2><p>首先是一个 <code>dp</code> 的板子，设 $dp_j$ 为花费 $j$ 元能获得的最大的期待值。</p>
 <p>对于每次转移，都可以选择买哪一本书，一旦买了一本书，花费的钱增加 $p_i$ ，获得的总期待值增加 $v_i$ 。</p>
-<p>故不难看出状态转移方程为 $dp<em>j = \max \lbrace dp</em>{j-p_i}+v_i \rbrace $。</p>
+<p>故不难看出状态转移方程为 $dp_j = \max \lbrace dp_{j-p_i}+v_i \rbrace $。</p>
 <p>但题目还要求输出方案，所以开一个 <code>vector</code> 记录方案，每次找到更优的方案时，就在上一个方案的后面补上当前新增加的物品，由于输入是单调的，自然保证输出是单调的。</p>
 <p>同时，还要设置一个标记数组 <code>flag</code> 以筛去不合法的答案，确保所有找到的方案都是正常计算得来的，否则可能会出现一些奇奇怪怪的bug。</p>
 <p>感谢 linmou 提供的 std！</p>
@@ -695,12 +695,12 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/share/css/share.min.css">
 <div id="article-share">
 
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -818,10 +818,10 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                        <img src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -1093,8 +1093,8 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
     </div>
 </div>
 
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
+<script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/valine/av-min.js"></script>
+<script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/valine/Valine.min.js"></script>
 <script>
     new Valine({
         el: '#vcomments',
@@ -1163,21 +1163,21 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/codeBlock/codeBlockFuction.js"></script>
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/codeBlock/codeShrink.js"></script>
 
 
     </div>
@@ -1198,7 +1198,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 </div>
 
 
-<script src="/libs/tocbot/tocbot.min.js"></script>
+<script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
@@ -1303,7 +1303,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.9k</span>&nbsp;字
+                class="white-color">28k</span>&nbsp;字
             
             
             
@@ -1532,12 +1532,12 @@ $(function () {
 </div>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/materialize/materialize.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/aos/aos.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/js/matery.js"></script>
     <!-- <script src="/live2d-widget/autoload.js"></script> -->
     <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 
@@ -1561,10 +1561,10 @@ $(function () {
 </script>
 
     
-    <script src="/libs/others/clicklove.js" async="async"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/others/clicklove.js" async="async"></script>
     
     
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    <script async src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/others/busuanzi.pure.mini.js"></script>
     
 
     
@@ -1576,7 +1576,7 @@ $(function () {
     <script type="text/javascript" color="0,0,255"
         pointColor="255,255,255" opacity='0.7'
         zIndex="-1" count="99"
-        src="/libs/background/canvas-nest.js"></script>
+        src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/background/canvas-nest.js"></script>
     
 
     
@@ -1584,7 +1584,7 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="http://cdn.jsdelivr.net/gh/ruufly/ruufly.github.io@main/libs/instantpage/instantpage.js" type="module"></script>
     
 
 

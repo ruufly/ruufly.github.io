@@ -217,7 +217,8 @@
 <p>机器，以混沌为体，以规整为用。这个由机器构成的世界，是最整洁的世界，也是最凌乱的世界。在这一片充斥着枪炮、病菌与钢铁的，混沌与黑暗中，神出现了。祂运行在那天边的海面上方，注视着这世界。</p>
 <p>神说，要有光，便有了光。</p>
 <p>神看光是好的。</p>
-<p align="right">2024.11.3</p>]]></content>
+<p align="right">2024.11.3</p>
+]]></content>
       <categories>
         <category>文集</category>
       </categories>
@@ -231,46 +232,37 @@
     <title>一种基于人工智能技术的系统发生树绘制与物种演化路径推断系统</title>
     <url>/2024/10/08/aitd/</url>
     <content><![CDATA[<h2><span id="摘要">摘要</span></h2><blockquote>
-<p>近些年来，随着分子生物学的发展，基因序列与蛋白质序列越来越多地被作为绘制系统发生树的重要参考依据，从中诞生了很多相应的技术。但是，这些技术在实践过程中，仍存在着一些问题。比如参考序列选择比较困难等，这些都给绘制出的系统发生树的准确性与严谨性带来了一定的影响。在本文中，笔者搭建了一套用于绘制系统发生树的计算机应用软件，这套系统集成了一些常用的比对与建树算法，同时，该系统还综合了近期的相关科研数据，使用了人工智能(AI)技术以对建成的系统发生树进行综合分析，从而得出最优异的、最能代表真实物种演化路径的系统发生树，这一突破，能够使得研究人员无需拘泥于参考序列的选择，可缩短科研周期，提升科研效率。同时，本系统包括了插件系统，这使得用户可以自定义需要的序列比对与建树算法，可扩展性更强。该系统的综合能力优于目前市面上的几款解决方案，使物种演化路径的推断过程变得更加便利、准确，对相关的科研工作可能会起到推进作用。 </p>
+<p>近些年来，随着分子生物学的发展，基因序列与蛋白质序列越来越多地被作为绘制系统发生树的重要参考依据，从中诞生了很多相应的技术。但是，这些技术在实践过程中，仍存在着一些问题。比如参考序列选择比较困难等，这些都给绘制出的系统发生树的准确性与严谨性带来了一定的影响。在本文中，笔者搭建了一套用于绘制系统发生树的计算机应用软件，这套系统集成了一些常用的比对与建树算法，同时，该系统还综合了近期的相关科研数据，使用了人工智能(AI)技术以对建成的系统发生树进行综合分析，从而得出最优异的、最能代表真实物种演化路径的系统发生树，这一突破，能够使得研究人员无需拘泥于参考序列的选择，可缩短科研周期，提升科研效率。同时，本系统包括了插件系统，这使得用户可以自定义需要的序列比对与建树算法，可扩展性更强。该系统的综合能力优于目前市面上的几款解决方案，使物种演化路径的推断过程变得更加便利、准确，对相关的科研工作可能会起到推进作用。</p>
 </blockquote>
 <h2><span id="序列比对与系统发生树构建的相关算法简介">序列比对与系统发生树构建的相关算法简介</span></h2><p>作为一种物种演化路径推断系统，序列比对算法与系统发生树构建算法自然是重中之重，下面笔者将介绍本系统中所使用的几种相关算法：</p>
 <h3><span id="序列比对方法">序列比对方法</span></h3><p>序列比对是将两个或多个核酸序列或蛋白质序列排列在一起，以揭示它们之间的相似性和差异性的过程。本系统的序列比对过程，采用的是 <code>Needleman-Wunsch</code> 算法，这一算法效率高、准确性好，是目前业内最常用的序列比对算法之一。</p>
-<h4><span id="needleman-wunsch-算法"><code>Needleman-Wunsch</code> 算法</span></h4><p><code>Needleman-Wunsch</code> 算法是将动态规划算法应用于生物序列的比较的最早期的几个实例之一。 </p>
-<p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <sup><a href="#refer-anchor-2" target="_self">1</a></sup> 。该算法的状态转移方程如下：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-F(0,0) &= 0 \\\\
-F(i,j) &= \max
-\begin{cases}
-F(i-1,j-1) + s(x_i,y_j)  \\\\
-F(i-1,j)+d \\\\
-F(i,j-1)+d
-\end{cases}
-\end{align}</script><p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
+<h4><span id="needleman-wunsch-算法"><code>Needleman-Wunsch</code> 算法</span></h4><p><code>Needleman-Wunsch</code> 算法是将动态规划算法应用于生物序列的比较的最早期的几个实例之一。</p>
+<p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <code>&lt;sup&gt;&lt;a href="#refer-anchor-2" target="_self"&gt;</code>1<code>&lt;/a&gt;&lt;/sup&gt;</code> 。该算法的状态转移方程如下：</p>
+<p>$$<br>\begin{align}<br>F(0,0) &amp;= 0 \\<br>F(i,j) &amp;= \max<br>\begin{cases}<br>F(i-1,j-1) + s(x_i,y_j)  \\<br>F(i-1,j)+d \\<br>F(i,j-1)+d<br>\end{cases}<br>\end{align}<br>$$</p>
+<p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
 <h3><span id="系统发生树构建方法">系统发生树构建方法</span></h3><p>常见的系统发生树构建方法有很多，比如最小进化法、最大似然法等等。受开发时间限制，本系统只自带了非加权组平均法的建树算法。关于其他方法，用户可以通过本系统的插件系统自行添加。</p>
-<h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <sup><a href="#refer-anchor-3" target="_self">3</a></sup> 。其具体的算法流程分为以下三步： </p>
-<p>首先，需要计算所有对象（如物种、基因序列等）之间的距离。找出距离最小的两个对象（ <code>OTU</code> ，<code>Operational Taxonomic Units</code> ，操作分类单元），将它们聚为一个新的 <code>OTU</code> 。新的 <code>OTU</code> 的分支点位于这两个 <code>OTU</code> 间距离的 $\frac{1}{2}$ 处。计算新的 <code>OTU</code> 与其他 <code>OTU</code> 之间的平均距离。 </p>
+<h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <code>&lt;sup&gt;&lt;a href="#refer-anchor-3" target="_self"&gt;</code>3<code>&lt;/a&gt;&lt;/sup&gt;</code> 。其具体的算法流程分为以下三步：</p>
+<p>首先，需要计算所有对象（如物种、基因序列等）之间的距离。找出距离最小的两个对象（ <code>OTU</code> ，<code>Operational Taxonomic Units</code> ，操作分类单元），将它们聚为一个新的 <code>OTU</code> 。新的 <code>OTU</code> 的分支点位于这两个 <code>OTU</code> 间距离的 $\frac{1}{2}$ 处。计算新的 <code>OTU</code> 与其他 <code>OTU</code> 之间的平均距离。</p>
 <p>重复上述步骤，找出距离最小的两个 <code>OTU</code> （可以是原始的 <code>OTU</code> 或之前聚类形成的新 <code>OTU</code> ）进行聚类。如此反复，直到所有的 <code>OTU</code> 都聚到一起，形成一个完整的系统发生树。</p>
 <p>通过上述聚类过程，最终可以得到一个表示物种间亲缘关系的系统发生树。在系统发生树中，每个节点代表一个 <code>OTU</code> ，节点之间的连线表示它们之间的亲缘关系，连线的长度则反映了它们之间的进化距离。</p>
-<h3><span id="常见的解决方案及其弊端">常见的解决方案及其弊端</span></h3><p>系统发生树构建与物种演化路径推断，现如今市面上已经有了几种常见的解决方案，但它们都有各自的弊端。 </p>
-<p>其中，单独进行某一环节的工具，如用于序列比对的 <code>Clustal X</code> ,  <code>MAFFT</code> 等 <sup><a href="#refer-anchor-1" target="_self">1</a></sup> ，虽然在该环节上拥有良好的性能，但并不能支持从序列到系统发生树的全过程，这使得研究人员需要频繁周转于多个平台，增加了研究需要的时间。而一些支持全环节的工具，如MEGA等，能够支撑整个科研流程，但它们的可扩展性往往不佳，无法支持用户更加多元化的需求。同时，由系统发生树得出生物演化路径，仍然需要较长的研究时间。因为并非基于所有同源序列绘制出的系统发生树，都是可以代表生物演化的路径的。而研究人员往往需要从繁杂的系统发生树数据中，找到能够提示真实生物演化路径的树，在某些研究中，这一过程相当繁杂，这无疑为科研人员的研究带来了诸多不便。</p>
+<h3><span id="常见的解决方案及其弊端">常见的解决方案及其弊端</span></h3><p>系统发生树构建与物种演化路径推断，现如今市面上已经有了几种常见的解决方案，但它们都有各自的弊端。</p>
+<p>其中，单独进行某一环节的工具，如用于序列比对的 <code>Clustal X</code> ,  <code>MAFFT</code> 等 <code>&lt;sup&gt;&lt;a href="#refer-anchor-1" target="_self"&gt;</code>1<code>&lt;/a&gt;&lt;/sup&gt;</code> ，虽然在该环节上拥有良好的性能，但并不能支持从序列到系统发生树的全过程，这使得研究人员需要频繁周转于多个平台，增加了研究需要的时间。而一些支持全环节的工具，如MEGA等，能够支撑整个科研流程，但它们的可扩展性往往不佳，无法支持用户更加多元化的需求。同时，由系统发生树得出生物演化路径，仍然需要较长的研究时间。因为并非基于所有同源序列绘制出的系统发生树，都是可以代表生物演化的路径的。而研究人员往往需要从繁杂的系统发生树数据中，找到能够提示真实生物演化路径的树，在某些研究中，这一过程相当繁杂，这无疑为科研人员的研究带来了诸多不便。</p>
 <h2><span id="本系统的基础架构">本系统的基础架构</span></h2><p>作为一款计算机软件，本系统主要采用了 <code>Python</code> 作为编码语言。</p>
-<p><code>Python</code>  由荷兰国家数学与计算机科学研究中心的 <code>Guido van Rossum</code> 于1990年代初设计 <sup><a href="#refer-anchor-4" target="_self">4</a></sup> 。 <code>Python</code> 提供了高效的高级数据结构，还能简单有效地面向对象编程。 <code>Python</code> 语法和动态类型，以及解释型语言的质，使它成为多数平台上写脚本和快速开发应用的编程语言，随着版本的不断更新和语言新功能的添加，逐渐被用于独立的、大型项目的开发。基于 <code>Python</code> 的许多优良的特性以及其良好的可扩展性、丰富的社区内容，我们决定使用 <code>Python</code> 构建本系统。本系统的软件架构（除数据外）共分为三个部分：算法包、用户系统、插件系统。 </p>
-<h3><span id="算法嵌入及命名空间系统">算法嵌入及命名空间系统</span></h3><h4><span id="算法嵌入">算法嵌入</span></h4><p>本系统自带的序列比对、系统发生树构建等算法的源代码均在 <code>aitd\__init__.py</code> 中。所有算法（除人工智能外）被分为以下五种： </p>
+<p><code>Python</code>  由荷兰国家数学与计算机科学研究中心的 <code>Guido van Rossum</code> 于1990年代初设计 <code>&lt;sup&gt;&lt;a href="#refer-anchor-4" target="_self"&gt;</code>4<code>&lt;/a&gt;&lt;/sup&gt;</code> 。 <code>Python</code> 提供了高效的高级数据结构，还能简单有效地面向对象编程。 <code>Python</code> 语法和动态类型，以及解释型语言的质，使它成为多数平台上写脚本和快速开发应用的编程语言，随着版本的不断更新和语言新功能的添加，逐渐被用于独立的、大型项目的开发。基于 <code>Python</code> 的许多优良的特性以及其良好的可扩展性、丰富的社区内容，我们决定使用 <code>Python</code> 构建本系统。本系统的软件架构（除数据外）共分为三个部分：算法包、用户系统、插件系统。</p>
+<h3><span id="算法嵌入及命名空间系统">算法嵌入及命名空间系统</span></h3><h4><span id="算法嵌入">算法嵌入</span></h4><p>本系统自带的序列比对、系统发生树构建等算法的源代码均在 <code>aitd\__init__.py</code> 中。所有算法（除人工智能外）被分为以下五种：</p>
 <ul>
-<li>文件解析器(<code>Parser</code>)：解析序列文件格式并存储序列信息； </li>
-<li>序列比对(<code>Comparator</code>)：比对两个或多个序列； </li>
-<li>比对加载(<code>Processor</code>)：根据比对结果判断两个序列的差异性； </li>
-<li>建树(<code>TreePlanter</code>)：根据多个序列之间的差异性绘制系统发生树； </li>
-<li>草图绘制(<code>Display</code>)：将系统发生树绘制成图像。 </li>
+<li>文件解析器(<code>Parser</code>)：解析序列文件格式并存储序列信息；</li>
+<li>序列比对(<code>Comparator</code>)：比对两个或多个序列；</li>
+<li>比对加载(<code>Processor</code>)：根据比对结果判断两个序列的差异性；</li>
+<li>建树(<code>TreePlanter</code>)：根据多个序列之间的差异性绘制系统发生树；</li>
+<li>草图绘制(<code>Display</code>)：将系统发生树绘制成图像。</li>
 </ul>
 <p>算法实装时，使用 <code>setattr</code> 函数将该算法的执行函数设置为 <code>aitd.xlist</code> 中对应的列表实例的成员函数，同时给算法赋予一个名字。当需要使用该种算法时，可直接使用 <code>getattr</code> 函数获取对应名字的成员函数。</p>
-<h4><span id="命名空间系统">命名空间系统</span></h4><p>本系统中的所有数据（算法，项目数据等）在软件运行时，均会被赋予一个唯一确定的名字，即命名空间名( <code>Name in the namespace</code> )，以便于进行定位与引用。 </p>
-<p>每一个命名空间名由数据类型和名称标识两部分构成，两部分之间由两个半角冒号( <code>::</code> )连接。 </p>
-<p>在打开某一个项目后，系统会首先读取项目文件夹中的 <code>setting.json</code> 文件，这个文件中存储了所有项目数据的命名空间名以及项目文件的存储地址。 </p>
+<h4><span id="命名空间系统">命名空间系统</span></h4><p>本系统中的所有数据（算法，项目数据等）在软件运行时，均会被赋予一个唯一确定的名字，即命名空间名( <code>Name in the namespace</code> )，以便于进行定位与引用。</p>
+<p>每一个命名空间名由数据类型和名称标识两部分构成，两部分之间由两个半角冒号( <code>::</code> )连接。</p>
+<p>在打开某一个项目后，系统会首先读取项目文件夹中的 <code>setting.json</code> 文件，这个文件中存储了所有项目数据的命名空间名以及项目文件的存储地址。</p>
 <p>随后，系统会将这些数据，以及系统自带的算法等数据全部存储进 <code>namespace:dict</code> 中。</p>
 <p>命名空间系统中的所有命名空间列表如下：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -278,8 +270,7 @@ F(i,j-1)+d
 <th>存储的内容</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>SEQ::</td>
 <td>序列数据</td>
 </tr>
@@ -319,50 +310,48 @@ F(i,j-1)+d
 <td>MODELLIST::</td>
 <td>AI 模型</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3><span id="基于-python-的控制台窗体化双端系统">基于 <code>Python</code> 的控制台+窗体化双端系统</span></h3><p>本系统的用户系统分为控制台端和窗口端双端，用户可以自行选择使用控制台或窗口进行工作。</p>
-<h4><span id="控制台端">控制台端</span></h4><p>本系统的控制台端使用 <code>matplotlib</code> 作为图表渲染工具。其主要分为三个模式: <code>Normal Mode</code>, <code>Debug Mode</code>, <code>Project Mode</code>. 其中，在 <code>Normal Mode</code> 中，用户可以对控制台端的默认设置进行更改等操作。<code>Project Mode</code>中，用户可以对当前的项目进行操作，包括导入序列，对比序列，导出生成的数据等. <code>Debug Mode</code>可以在上述两个模式的基础的同时，允许用户执行单行<code>Python</code>代码以方便用户对控制台端程序进行调试。</p>
-<h4><span id="窗口端">窗口端</span></h4><p>本系统的窗口端使用<code>tkinter</code>为窗体化的基本框架，同样使用<code>matplotlib</code>作为图表渲染的工具。本系统窗口段的用户界面共分为三部分：菜单栏、侧栏、主栏。 </p>
+<h4><span id="控制台端">控制台端</span></h4><p>本系统的控制台端使用 <code>matplotlib</code> 作为图表渲染工具。其主要分为三个模式: <code>Normal Mode</code>, <code>Debug Mode</code>, <code>Project Mode</code>. 其中，在 <code>Normal Mode</code> 中，用户可以对控制台端的默认设置进行更改等操作。<code>Project Mode</code>中，用户可以对当前的项目进行操作，包括导入序列，对比序列，导出生成的数据等. <code>Debug Mode</code>可以在上述两个模式的基础的同时，允许用户执行单行 <code>Python</code>代码以方便用户对控制台端程序进行调试。</p>
+<h4><span id="窗口端">窗口端</span></h4><p>本系统的窗口端使用 <code>tkinter</code>为窗体化的基本框架，同样使用 <code>matplotlib</code>作为图表渲染的工具。本系统窗口段的用户界面共分为三部分：菜单栏、侧栏、主栏。</p>
 <p>当打开了某个项目后，侧栏会出现项目内的数据文件表、同时提供了一些操作（如序列导入、序列比对、建树后）。当选择了某种操作后，主栏会出现该操作的各种配置项。比如下图便展示了“序列查看”操作的配置项</p>
 <p><img src="/medias/images/2024000001.jpg" alt="Escherichia coli str. K-12 细胞色素 C 基因的序列，序列来源：NCBI"></p>
 <h2><span id="人工智能的引入">人工智能的引入</span></h2><p>为了更好地推断物种演化路径，本系统引入了人工智能，其可以根据用户提供的一系列系统发生树与序列数据推断出来更接近真实物种演化情况的系统发生树。</p>
-<h3><span id="人工智能模型的设计">人工智能模型的设计</span></h3><p>本系统的人工智能模型使用了固定最大值法进行设计。 </p>
-<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x<em>{i}^{\prime}=\frac{x</em>{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
-<script type="math/tex; mode=display">
-F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)</script><p>其中</p>
-<script type="math/tex; mode=display">
-f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}</script><p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
-<h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <sup><a href="#refer-anchor-5" target="_self">5</a></sup> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <sup><a href="#refer-anchor-6" target="_self">6</a></sup> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <sup><a href="#refer-anchor-7" target="_self">7</a></sup> 。</p>
+<h3><span id="人工智能模型的设计">人工智能模型的设计</span></h3><p>本系统的人工智能模型使用了固定最大值法进行设计。</p>
+<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x_{i}^{\prime}=\frac{x_{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
+<p>$$<br>F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)<br>$$</p>
+<p>其中</p>
+<p>$$<br>f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}<br>$$</p>
+<p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
+<h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <code>&lt;sup&gt;&lt;a href="#refer-anchor-5" target="_self"&gt;</code>5<code>&lt;/a&gt;&lt;/sup&gt;</code> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <code>&lt;sup&gt;&lt;a href="#refer-anchor-6" target="_self"&gt;</code>6<code>&lt;/a&gt;&lt;/sup&gt;</code> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <code>&lt;sup&gt;&lt;a href="#refer-anchor-7" target="_self"&gt;</code>7<code>&lt;/a&gt;&lt;/sup&gt;</code> 。</p>
 <p>这两个研究提供了足够多的训练人工智能模型的数据，我们使用这些数据进行训练。</p>
-<h2><span id="本系统的测试与展望">本系统的测试与展望</span></h2><h3><span id="系统的可扩展性与可移植性">系统的可扩展性与可移植性</span></h3><h4><span id="可扩展性">可扩展性</span></h4><p>本系统开发了插件系统（<code>Plug-in System</code>），这使得用户可以根据自己的需求，编写插件使得本系统支持更多的功能。目前，本系统暂时只支持使用<code>Python</code>编写插件。 </p>
-<p>一个可以被本系统识别的插件应至少有一个 <code>setting.json</code>，用以向系统表明该插件的属性。一个完整的<code>setting.json</code> 由四部分组成。第一部分是插件的基本信息（名称，作者信息等）；第二部分是插件的配置项；第三部分负责向系统表明当系统运行到特殊时刻（系统启动、窗口被刷新等）时插件会执行哪些代码；第四部分负责添加该插件内包含的算法。同时，为了方便插件与系统进行数据交流，第三与第四部分还可以添加<code>args</code>参数。 </p>
+<h2><span id="本系统的测试与展望">本系统的测试与展望</span></h2><h3><span id="系统的可扩展性与可移植性">系统的可扩展性与可移植性</span></h3><h4><span id="可扩展性">可扩展性</span></h4><p>本系统开发了插件系统（<code>Plug-in System</code>），这使得用户可以根据自己的需求，编写插件使得本系统支持更多的功能。目前，本系统暂时只支持使用 <code>Python</code>编写插件。</p>
+<p>一个可以被本系统识别的插件应至少有一个 <code>setting.json</code>，用以向系统表明该插件的属性。一个完整的 <code>setting.json</code> 由四部分组成。第一部分是插件的基本信息（名称，作者信息等）；第二部分是插件的配置项；第三部分负责向系统表明当系统运行到特殊时刻（系统启动、窗口被刷新等）时插件会执行哪些代码；第四部分负责添加该插件内包含的算法。同时，为了方便插件与系统进行数据交流，第三与第四部分还可以添加 <code>args</code>参数。</p>
 <p>系统可以以这些参数为接口，向插件传递信息，以及一些系统自带的函数。这一套插件系统的引入，极大地增加了系统的可扩展性，使得研究人员能够最大程度地改造系统以利于科研。</p>
 <h4><span id="可移植性">可移植性</span></h4><p>本系统基于 <code>Python</code> 开发，这一语言本身就拥有者跨平台的优点。同时，本系统所使用的第三方库也均经过了筛选，绝大多数都有着良好的可移植性。这些特点使得本系统在多种平台上预计均有着良好的兼容性。</p>
-<h3><span id="目前存在的问题">目前存在的问题</span></h3><p>由于从提出设想到付诸实现只经过了不到一个月的周期，本项目的很多地方还没有完善，至今仍存在部分问题。 </p>
+<h3><span id="目前存在的问题">目前存在的问题</span></h3><p>由于从提出设想到付诸实现只经过了不到一个月的周期，本项目的很多地方还没有完善，至今仍存在部分问题。</p>
 <ul>
-<li>受开发时间限制，本项目的算法包中只包含了少数几种算法； </li>
-<li>由于训练用数据量尚且不足，AI系统输出的结果可能有一定的偏差； </li>
-<li>尚未对项目进行系统性的鲁棒性测试，这可能导致运行过程中出现一些不可预知的错误。 </li>
+<li>受开发时间限制，本项目的算法包中只包含了少数几种算法；</li>
+<li>由于训练用数据量尚且不足，AI系统输出的结果可能有一定的偏差；</li>
+<li>尚未对项目进行系统性的鲁棒性测试，这可能导致运行过程中出现一些不可预知的错误。</li>
 </ul>
-<p>但同时，这一系统也已经达到了我们在如此短的时间内能够达到的最好的效果。 </p>
+<p>但同时，这一系统也已经达到了我们在如此短的时间内能够达到的最好的效果。</p>
 <p>今后，我们会进一步增加算法包中的算法数目，扩展训练数据，进一步提升本系统的综合能力。</p>
-<h3><span id="项目地址">项目地址</span></h3><p>本项目的所有源码与数据均基于<code>Apache 2.0 License</code>开源。 </p>
-<p>本项目的github仓库地址：<a href="https://github.com/ruufly/AITD-System">https://github.com/ruufly/AITD-System</a>。 </p>
+<h3><span id="项目地址">项目地址</span></h3><p>本项目的所有源码与数据均基于 <code>Apache 2.0 License</code>开源。</p>
+<p>本项目的github仓库地址：<a href="https://github.com/ruufly/AITD-System">https://github.com/ruufly/AITD-System</a>。</p>
 <p>本项目发布版会随后续开发进度发布在github仓库中。</p>
-<h2><span id="致谢与作者贡献声明">致谢与作者贡献声明</span></h2><h3><span id="作者贡献声明">作者贡献声明</span></h3><p>朱璟瑞（第一作者）：项目的发起者，完成了项目整体框架的构建、窗口端与算法库的代码； </p>
-<p>胡高远：负责了人工智能模型的构建； </p>
+<h2><span id="致谢与作者贡献声明">致谢与作者贡献声明</span></h2><h3><span id="作者贡献声明">作者贡献声明</span></h3><p>朱璟瑞（第一作者）：项目的发起者，完成了项目整体框架的构建、窗口端与算法库的代码；</p>
+<p>胡高远：负责了人工智能模型的构建；</p>
 <p>邓钰潼：主导了人工智能训练用数据的寻找，完成了控制台端的代码。</p>
-<h3><span id="致谢">致谢</span></h3><p>感谢洛阳外国语学校（杨湾校区）的白致远，他提供了训练人工智能所必需的算力资源。 </p>
-<p>感谢华东师范大学计算机科学与技术学院的赵静博士，她为本项目人工智能模型的构建提了很多建设性的意见； </p>
-<p>感谢河南科技大学附属高级中学的常易凡老师、陈洪武老师，作为我们的指导老师，他们为本项目的构建提供了帮助； </p>
-<p>感谢河南科技大学附属高级中学的张剑辉老师、罗会杰老师、朱晓东老师，本项目的构建有他们间接的帮助； </p>
+<h3><span id="致谢">致谢</span></h3><p>感谢洛阳外国语学校（杨湾校区）的白致远，他提供了训练人工智能所必需的算力资源。</p>
+<p>感谢华东师范大学计算机科学与技术学院的赵静博士，她为本项目人工智能模型的构建提了很多建设性的意见；</p>
+<p>感谢河南科技大学附属高级中学的常易凡老师、陈洪武老师，作为我们的指导老师，他们为本项目的构建提供了帮助；</p>
+<p>感谢河南科技大学附属高级中学的张剑辉老师、罗会杰老师、朱晓东老师，本项目的构建有他们间接的帮助；</p>
 <p>谨以此项目献给河南科技大学附属高级中学的张丹丹老师，感谢您这两年对我们的谆谆教诲，祝愿您生下一个健康快乐的宝宝！</p>
 <h2><span id="参考资料">参考资料</span></h2><div id="refer-anchor-1"></div>
 
 <ul>
-<li>[1] 彭焕文,王伟.基于分子数据的系统发生树构建[J].植物学报, 2023, 58（02）: 261-273. </li>
+<li>[1] 彭焕文,王伟.基于分子数据的系统发生树构建[J].植物学报, 2023, 58（02）: 261-273.</li>
 </ul>
 <div id="refer-anchor-2"></div>
 
@@ -387,7 +376,7 @@ f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\as
 <div id="refer-anchor-6"></div>
 
 <ul>
-<li>[6] Zuntini, A.R., Carruthers, T., Maurin, O.et al Phylogenomics and the rise of  the angiosperms[J]. Nature 629, 843–850 （2024）. </li>
+<li>[6] Zuntini, A.R., Carruthers, T., Maurin, O.et al Phylogenomics and the rise of  the angiosperms[J]. Nature 629, 843–850 （2024）.</li>
 </ul>
 <div id="refer-anchor-7"></div>
 
@@ -407,7 +396,7 @@ f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\as
       </tags>
   </entry>
   <entry>
-    <title>回来？2</title>
+    <title>回来？Ⅱ</title>
     <url>/2024/03/20/come-back-2/</url>
     <content><![CDATA[<p>——「你知道吗？杀死现在的最好方法，是杀死自己。」</p>
 <p>空旷而黑暗的空间中，一个女孩的声音响起，不过并没有人回答。</p>
@@ -593,7 +582,8 @@ f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\as
 <p>……「另外，还有一句话，是不得不说的——」</p>
 <p>……「正在看这篇文章的你，」</p>
 <p>……「又处在，哪一层世界中呢？」</p>
-<p align="right">2024.03.20</p>]]></content>
+<p align="right">2024.03.20</p>
+]]></content>
       <categories>
         <category>文集</category>
       </categories>
@@ -608,7 +598,7 @@ f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\as
     <url>/2024/02/18/u314392-solution/</url>
     <content><![CDATA[<h2><span id="思路">思路</span></h2><p>首先是一个 <code>dp</code> 的板子，设 $dp_j$ 为花费 $j$ 元能获得的最大的期待值。</p>
 <p>对于每次转移，都可以选择买哪一本书，一旦买了一本书，花费的钱增加 $p_i$ ，获得的总期待值增加 $v_i$ 。</p>
-<p>故不难看出状态转移方程为 $dp<em>j = \max \lbrace dp</em>{j-p_i}+v_i \rbrace $。</p>
+<p>故不难看出状态转移方程为 $dp_j = \max \lbrace dp_{j-p_i}+v_i \rbrace $。</p>
 <p>但题目还要求输出方案，所以开一个 <code>vector</code> 记录方案，每次找到更优的方案时，就在上一个方案的后面补上当前新增加的物品，由于输入是单调的，自然保证输出是单调的。</p>
 <p>同时，还要设置一个标记数组 <code>flag</code> 以筛去不合法的答案，确保所有找到的方案都是正常计算得来的，否则可能会出现一些奇奇怪怪的bug。</p>
 <p>感谢 linmou 提供的 std！</p>
@@ -850,7 +840,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
       </tags>
   </entry>
   <entry>
-    <title>回来？</title>
+    <title>回来？Ⅰ</title>
     <url>/2023/10/31/come-back/</url>
     <content><![CDATA[<h1><span id="1">1</span></h1><p>“我宣布，XX中学XXXX届高三毕业典礼，正式开始！”，校长站在主席台上，向着礼堂里的学生们，高声呼喊着。</p>
 <p>雷鸣般的掌声响起。</p>
@@ -1111,22 +1101,18 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 <p>test</p>
 <p><strong>test</strong></p>
 <p><del>test</del></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
+<th align="center"></th>
+<th align="center"></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">test</td>
-<td style="text-align:center">test</td>
+<tbody><tr>
+<td align="center">test</td>
+<td align="center">test</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <blockquote>
 <p>test</p>
 <blockquote>
@@ -1134,8 +1120,9 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 </blockquote>
 </blockquote>
 <p><em>test</em></p>
-<script type="math/tex; mode=display">
-\textcolor{red}{test}</script><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>$$<br>\textcolor{red}{test}<br>$$</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <table>
     <tbody><tr>
         <td>Test</td>
