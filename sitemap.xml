@@ -128,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://ruufly.github.io/live2d-widget/demo/demo.html</loc>
+    <loc>https://ruufly.github.io/live2d-widget/demo/login.html</loc>
     
     <lastmod>2024-02-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://ruufly.github.io/live2d-widget/demo/login.html</loc>
+    <loc>https://ruufly.github.io/live2d-widget/demo/demo.html</loc>
     
     <lastmod>2024-02-26</lastmod>
     
@@ -193,6 +193,27 @@
 
   
   <url>
+    <loc>https://ruufly.github.io/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <lastmod>2025-02-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruufly.github.io/tags/%E7%9F%AD%E7%AF%87/</loc>
+    <lastmod>2025-02-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruufly.github.io/tags/2024/</loc>
+    <lastmod>2025-02-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ruufly.github.io/tags/%E8%AE%BA%E6%96%87/</loc>
     <lastmod>2025-02-22</lastmod>
     <changefreq>daily</changefreq>
@@ -242,28 +263,7 @@
   </url>
   
   <url>
-    <loc>https://ruufly.github.io/tags/%E5%B0%8F%E8%AF%B4/</loc>
-    <lastmod>2025-02-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ruufly.github.io/tags/%E7%9F%AD%E7%AF%87/</loc>
-    <lastmod>2025-02-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ruufly.github.io/tags/2024/</loc>
-    <lastmod>2025-02-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ruufly.github.io/tags/2023/</loc>
+    <loc>https://ruufly.github.io/tags/%E5%85%B3%E4%BA%8E/</loc>
     <lastmod>2025-02-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -284,20 +284,27 @@
   </url>
   
   <url>
-    <loc>https://ruufly.github.io/tags/test/</loc>
+    <loc>https://ruufly.github.io/tags/2023/</loc>
     <lastmod>2025-02-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ruufly.github.io/tags/%E5%85%B3%E4%BA%8E/</loc>
+    <loc>https://ruufly.github.io/tags/test/</loc>
     <lastmod>2025-02-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
 
+  
+  <url>
+    <loc>https://ruufly.github.io/categories/%E6%96%87%E9%9B%86/</loc>
+    <lastmod>2025-02-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>https://ruufly.github.io/categories/%E8%AE%BA%E6%96%87/</loc>
@@ -314,7 +321,7 @@
   </url>
   
   <url>
-    <loc>https://ruufly.github.io/categories/%E6%96%87%E9%9B%86/</loc>
+    <loc>https://ruufly.github.io/categories/%E5%85%B3%E4%BA%8E/</loc>
     <lastmod>2025-02-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -322,13 +329,6 @@
   
   <url>
     <loc>https://ruufly.github.io/categories/test/</loc>
-    <lastmod>2025-02-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ruufly.github.io/categories/%E5%85%B3%E4%BA%8E/</loc>
     <lastmod>2025-02-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
