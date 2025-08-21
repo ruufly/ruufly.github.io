@@ -577,16 +577,8 @@
 <h3><span id="序列比对方法">序列比对方法</span></h3><p>序列比对是将两个或多个核酸序列或蛋白质序列排列在一起，以揭示它们之间的相似性和差异性的过程。本系统的序列比对过程，采用的是 <code>Needleman-Wunsch</code> 算法，这一算法效率高、准确性好，是目前业内最常用的序列比对算法之一。</p>
 <h4><span id="needleman-wunsch-算法"><code>Needleman-Wunsch</code> 算法</span></h4><p><code>Needleman-Wunsch</code> 算法是将动态规划算法应用于生物序列的比较的最早期的几个实例之一。</p>
 <p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <sup><a href="#refer-anchor-2" class="self">1 </a></sup> 。该算法的状态转移方程如下：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-F(0,0) &= 0 \\\\
-F(i,j) &= \max
-\begin{cases}
-F(i-1,j-1) + s(x_i,y_j)  \\\\
-F(i-1,j)+d \\\\
-F(i,j-1)+d
-\end{cases}
-\end{align}</script><p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
+<p>$$<br>\begin{align}<br>F(0,0) &amp;= 0 \\<br>F(i,j) &amp;= \max<br>\begin{cases}<br>F(i-1,j-1) + s(x_i,y_j)  \\<br>F(i-1,j)+d \\<br>F(i,j-1)+d<br>\end{cases}<br>\end{align}<br>$$</p>
+<p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
 <h3><span id="系统发生树构建方法">系统发生树构建方法</span></h3><p>常见的系统发生树构建方法有很多，比如最小进化法、最大似然法等等。受开发时间限制，本系统只自带了非加权组平均法的建树算法。关于其他方法，用户可以通过本系统的插件系统自行添加。</p>
 <h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <sup><a href="#refer-anchor-3" class="self">3 </a></sup> 。其具体的算法流程分为以下三步：</p>
 <p>首先，需要计算所有对象（如物种、基因序列等）之间的距离。找出距离最小的两个对象（ <code>OTU</code> ，<code>Operational Taxonomic Units</code> ，操作分类单元），将它们聚为一个新的 <code>OTU</code> 。新的 <code>OTU</code> 的分支点位于这两个 <code>OTU</code> 间距离的 $\frac{1}{2}$ 处。计算新的 <code>OTU</code> 与其他 <code>OTU</code> 之间的平均距离。</p>
@@ -610,7 +602,6 @@ F(i,j-1)+d
 <p>在打开某一个项目后，系统会首先读取项目文件夹中的 <code>setting.json</code> 文件，这个文件中存储了所有项目数据的命名空间名以及项目文件的存储地址。</p>
 <p>随后，系统会将这些数据，以及系统自带的算法等数据全部存储进 <code>namespace:dict</code> 中。</p>
 <p>命名空间系统中的所有命名空间列表如下：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -618,8 +609,7 @@ F(i,j-1)+d
 <th>存储的内容</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>SEQ::</td>
 <td>序列数据</td>
 </tr>
@@ -659,9 +649,7 @@ F(i,j-1)+d
 <td>MODELLIST::</td>
 <td>AI 模型</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3><span id="基于-python-的控制台窗体化双端系统">基于 <code>Python</code> 的控制台+窗体化双端系统</span></h3><p>本系统的用户系统分为控制台端和窗口端双端，用户可以自行选择使用控制台或窗口进行工作。</p>
 <h4><span id="控制台端">控制台端</span></h4><p>本系统的控制台端使用 <code>matplotlib</code> 作为图表渲染工具。其主要分为三个模式: <code>Normal Mode</code>, <code>Debug Mode</code>, <code>Project Mode</code>. 其中，在 <code>Normal Mode</code> 中，用户可以对控制台端的默认设置进行更改等操作。<code>Project Mode</code>中，用户可以对当前的项目进行操作，包括导入序列，对比序列，导出生成的数据等. <code>Debug Mode</code>可以在上述两个模式的基础的同时，允许用户执行单行 <code>Python</code>代码以方便用户对控制台端程序进行调试。</p>
 <h4><span id="窗口端">窗口端</span></h4><p>本系统的窗口端使用 <code>tkinter</code>为窗体化的基本框架，同样使用 <code>matplotlib</code>作为图表渲染的工具。本系统窗口段的用户界面共分为三部分：菜单栏、侧栏、主栏。</p>
@@ -669,11 +657,11 @@ F(i,j-1)+d
 <p><img src="/medias/images/2024000001.jpg" alt="Escherichia coli str. K-12 细胞色素 C 基因的序列，序列来源：NCBI"></p>
 <h2><span id="人工智能的引入">人工智能的引入</span></h2><p>为了更好地推断物种演化路径，本系统引入了人工智能，其可以根据用户提供的一系列系统发生树与序列数据推断出来更接近真实物种演化情况的系统发生树。</p>
 <h3><span id="人工智能模型的设计">人工智能模型的设计</span></h3><p>本系统的人工智能模型使用了固定最大值法进行设计。</p>
-<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x<em>{i}^{\prime}=\frac{x</em>{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
-<script type="math/tex; mode=display">
-F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)</script><p>其中</p>
-<script type="math/tex; mode=display">
-f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}</script><p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
+<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x_i^{\prime}=\frac{x_{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
+<p>$$<br>F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)<br>$$</p>
+<p>其中</p>
+<p>$$<br>f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}<br>$$</p>
+<p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
 <h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <sup><a href="#refer-anchor-5" class="self">5 </a></sup> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <sup><a href="#refer-anchor-6" class="self">6 </a></sup> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <sup><a href="#refer-anchor-7" class="self">7 </a></sup> 。</p>
 <p>这两个研究提供了足够多的训练人工智能模型的数据，我们使用这些数据进行训练。</p>
 <h2><span id="本系统的测试与展望">本系统的测试与展望</span></h2><h3><span id="系统的可扩展性与可移植性">系统的可扩展性与可移植性</span></h3><h4><span id="可扩展性">可扩展性</span></h4><p>本系统开发了插件系统（<code>Plug-in System</code>），这使得用户可以根据自己的需求，编写插件使得本系统支持更多的功能。目前，本系统暂时只支持使用 <code>Python</code>编写插件。</p>

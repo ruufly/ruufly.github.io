@@ -565,7 +565,7 @@
 <p>$v_{i, j} = (a_i + b_j) \bmod{k}$。</p>
 <p>求两个序列及其模数 $k$。</p>
 <h2><span id="思路">思路</span></h2><p>注意到，如果我们将 $a$ 序列中的所有数加上一，$b$ 序列中的所有数减去一，整个矩阵不会改变。</p>
-<p>因此我们不妨设 $a<em>1 = 0$，通过第一列推出 $b$ 序列的值，进而推出 $a$ 序列的值。现在我们为每个格子 $(i, j)$ 计算一个误差 $error = a_i + b_j - v</em>{i, j}$。</p>
+<p>因此我们不妨设 $a_1 = 0$，通过第一列推出 $b$ 序列的值，进而推出 $a$ 序列的值。现在我们为每个格子 $(i, j)$ 计算一个误差 $error = a_i + b_j - v_{i, j}$。</p>
 <p>如果所有的误差均为 $0$，则已经找到了一个满足条件的矩阵。否则意味着误差一定是 $k$ 的倍数，即 $k$ 一定是所有误差的公因数。另外 $k$ 还必须大于所有 $v$ 矩阵中出现的数。如果满足这两个条件则有解，否则无解。</p>
 <h2><span id="代码">代码</span></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
  * @file CF509D.cpp
@@ -621,6 +621,7 @@
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>以上。如有问题烦请指出，谢谢。</p>
 
                 

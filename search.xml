@@ -1,76 +1,427 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CF509D Restoring Numbers 题解</title>
-    <url>/2023/11/05/cf509d-solution/</url>
-    <content><![CDATA[<h2><span id="题目描述">题目描述</span></h2><p>给你一个 $n \times m$ 的矩阵 $v$。</p>
-<p>$v_{i, j} = (a_i + b_j) \bmod{k}$。</p>
-<p>求两个序列及其模数 $k$。</p>
-<h2><span id="思路">思路</span></h2><p>注意到，如果我们将 $a$ 序列中的所有数加上一，$b$ 序列中的所有数减去一，整个矩阵不会改变。</p>
-<p>因此我们不妨设 $a<em>1 = 0$，通过第一列推出 $b$ 序列的值，进而推出 $a$ 序列的值。现在我们为每个格子 $(i, j)$ 计算一个误差 $error = a_i + b_j - v</em>{i, j}$。</p>
-<p>如果所有的误差均为 $0$，则已经找到了一个满足条件的矩阵。否则意味着误差一定是 $k$ 的倍数，即 $k$ 一定是所有误差的公因数。另外 $k$ 还必须大于所有 $v$ 矩阵中出现的数。如果满足这两个条件则有解，否则无解。</p>
-<h2><span id="代码">代码</span></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
- * @file CF509D.cpp
- * @author distjr_
- * @brief Solution of CF509D
+    <title>最新 | U571839 千本桜 题解</title>
+    <url>/2025/08/21/u571839-solution/</url>
+    <content><![CDATA[<h2><span id="思路">思路</span></h2><p>本题是一个最小直径生成树(MDST)的模板题。</p>
+<p>详细的思路等请参考<a href="https://oi-wiki.org/graph/mdst/">OI-Wiki</a>上的讲解。</p>
+<h2><span id="std">std</span></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
+ * @file hatsune.cpp
+ * @brief Solution of Luogu U571839
+ * @date 2025-08-21
  */</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdio&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdlib&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXN</span> <span class="token expression"><span class="token number">105</span></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">int</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
-<span class="token comment">// #define DEBUG</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;algorithm&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;climits&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ll</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> v<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> error<span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token keyword">bool</span> flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>gcd<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
-<span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">?</span> a <span class="token operator">:</span> <span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">constexpr</span> <span class="token keyword">int</span> MAXN <span class="token operator">=</span> <span class="token number">510</span><span class="token punctuation">;</span>
+ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> rk<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> val<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">constexpr</span> ll INF <span class="token operator">=</span> <span class="token number">1e17</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span>
 
+<span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> val<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">&lt;</span> val<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
 
-<span class="token keyword">signed</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">void</span> <span class="token function">floyd</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld %lld"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-            <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">struct</span> <span class="token class-name">node</span>
+<span class="token punctuation">{</span>
+    ll u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> w<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> a<span class="token punctuation">[</span>MAXN <span class="token operator">*</span> <span class="token punctuation">(</span>MAXN <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">501</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> <span class="token number">501</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> INF<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">501</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d %d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-            error <span class="token operator">=</span> <span class="token function">abs</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">-</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token function">gcd</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>k<span class="token punctuation">)</span>  <span class="token comment">// k为0，故最后所有的误差值都是0，直接给k赋值为1e9+7即可</span>
-        k <span class="token operator">=</span> <span class="token number">1000000007</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">&amp;&amp;</span> flag<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> k<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"NO\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        ll u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> w<span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld %lld %lld"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>u<span class="token punctuation">,</span> <span class="token operator">&amp;</span>v<span class="token punctuation">,</span> <span class="token operator">&amp;</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        w <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> w<span class="token punctuation">,</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">=</span> w<span class="token punctuation">;</span>
+        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>u <span class="token operator">=</span> u<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>v <span class="token operator">=</span> v<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>w <span class="token operator">=</span> w<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"YES\n%lld\n"</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld "</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> k<span class="token punctuation">)</span> <span class="token operator">%</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld "</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> k<span class="token punctuation">)</span> <span class="token operator">%</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">floyd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
+            val<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">+</span> n<span class="token punctuation">,</span> cmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    ll P <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> ansP <span class="token operator">=</span> INF<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">&lt;</span> ansP<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            ansP <span class="token operator">=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            P <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">int</span> f1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> f2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    ll disu <span class="token operator">=</span> INT_MIN<span class="token punctuation">,</span> disv <span class="token operator">=</span> INT_MIN<span class="token punctuation">,</span> ansL <span class="token operator">=</span> INF<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        ll u <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>u<span class="token punctuation">,</span> v <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>v<span class="token punctuation">,</span> w <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>w<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> p <span class="token operator">=</span> n<span class="token punctuation">,</span> i <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> w <span class="token operator">&lt;</span> ansL<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    ansL <span class="token operator">=</span> d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> w<span class="token punctuation">;</span>
+                    f1 <span class="token operator">=</span> u<span class="token punctuation">,</span> f2 <span class="token operator">=</span> v<span class="token punctuation">;</span>
+                    disu <span class="token operator">=</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> w<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    disv <span class="token operator">=</span> w <span class="token operator">-</span> disu<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                p <span class="token operator">=</span> i<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld\n"</span><span class="token punctuation">,</span> <span class="token function">min</span><span class="token punctuation">(</span>ansP<span class="token punctuation">,</span> ansL<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>以上。如有问题烦请指出，谢谢。</p>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       <categories>
         <category>OI</category>
       </categories>
       <tags>
         <tag>题解</tag>
-        <tag>构造法</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>置顶 | 关于我自己</title>
+    <url>/2021/07/10/about-me/</url>
+    <content><![CDATA[<p>本页面最后一次更新于2025-08-21</p>
+<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
+<p>如你所见，这个名字很奇怪。</p>
+<p>我原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
+<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
+<p>我本人是一个普通的高中生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，前段时间参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。</p>
+<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
+<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
+<p>因为高中的学业还是比较繁重的，所以我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
+<p>以上。请多关照。</p>
+<p align="right">distjr_</p>
+
+<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
+<p>Bilibili: <a href="https://space.bilibili.com/1159124697">bilibili</a></p>
+<p>GitHub: <a href="https://github.com/ruufly">github</a></p>
+<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
+<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
+<p>Luogu: <a href="https://www.luogu.com.cn/user/363964">luogu</a></p>
+<p>Zhihu: <a href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
+<p>X: <a href="https://x.com/distjr">X</a></p>
+<p>Facebook: <a href="https://www.facebook.com/people/Jingrui-Zhu/">facebook</a></p>
+]]></content>
+      <categories>
+        <category>关于</category>
+      </categories>
+      <tags>
+        <tag>关于</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>土地</title>
+    <url>/2025/01/08/land/</url>
+    <content><![CDATA[<p>黄土，一马平川、一望无际的黄土，在天与地间铺展开来。</p>
+<p>望不到边的地块，被一两条两旁种着高大的杨树的公路所分隔开，成了一片片单独的土地，不过并不零散。十月初旬，黄土之下，数不清的小麦种子，正沉睡着。</p>
+<p>土地间的公路并不算宽，左右能容下两辆车而已，那杨树倒是毫不犹豫地向上生长着。风吹过，灰绿色的叶片如波光，还伴着像是海浪的声音——于是，那公路也学着杨树，毫不犹豫地向正前方延伸着，不知要通往哪里——只是在两条公路相交叉的时候，孕育出了一个村落。</p>
+<p>每个村落都不算大，也不算小。四四方方的街道，四四方方的院落，同样的一层或两层的平房，一面面进门，还有门额上镶嵌的“家和万事兴”几个字——这是好的村落。也是四四方方的街道，四四方方的院落，两层楼的砖墙，石棉瓦顶，便住下了几十个家庭——这是一般的村落。</p>
+<p>四四方方的村落外，延伸的公路间，一片片的黄土旁，他正坐在水泥的马路牙上，看着这土地。正午的太阳，在这夏天与冬天的交界处，仍有些猛烈，虽然经过了灰色阴霾的阻挡，仍在他的脖颈上晒出了几滴汗水，缓缓流入黄土。</p>
+<p>五十多岁的他，在这片土地上，活了半辈子。背朝着灰白的天，面对着一粒粒黄土，几十年的时间，也算是养起了一个家。他的大儿子几年前从县里的技校毕业后，去了南方的城里，在厂里或工地上给人家打工，忍受着说着听不懂的方言的当地人发自心底的鄙夷，没日没夜地打拼，后来娶了个在电子厂里认识地女工——那个他只见过一面的儿媳妇——他那个当年拼死拼活保住的小儿子，正在县里的高中上学，明年也该要高考了——他不知道将来要让儿子去哪里读大学，但只要能把他送出这片土地，他这些年也就不算白忙活。</p>
+<p>辽远的天空中，飘来了一阵鸟啼。他随之起身，缓了缓蓦地发黑的双眼，然后沿着公路旁排水的沟渠，向着不远处的一个村落行进着。途中路过的小河——应该说，只是一条水泥筑成的水沟——里的水，泛着黑色与绿色，还有白色的泡沫不时迸出刺鼻的气味。但他的脚步丝毫没有改变，依旧那样走着，说不清快还是慢地走着。</p>
+<p>永远都望不到尽头的大地，能突出地表而存在的，除了村里的平房，村旁的工厂与路旁的杨树外，倒是还有麦田中间耸立着的一些一人高的土堆。前面立着一块黑色的石碑，有些还植了一两棵柏树——那便是一个家庭，永远的安眠之地了。从黄土中出生，在黄土上长大，伴着黄土一生，最后将身躯归还给黄土，仿佛从没有存在过，又好像永远存在着——他向前走着，一边数着四周能看到的，土堆的数量，直到回到村落。</p>
+<p>不多不少，十九座，和此前无数次一样。</p>
+<p>他依旧保持着原来的步伐进入村子，中间停下，和村口坐着的老太太寒暄几句，聊的无非是过几天要下雨了，隔壁村老赵家的女儿嫁人了，村东头的老钱在家里上吊了，他儿子联系不上，没人料理丧事了。再有就是谁家的肥卖的好，谁家的药效果好……不过是些平常的小事。几句闲聊过后，互相打声招呼，继续向前走着。拐了一两个弯，来到了他家的院子前——实际上只是一块水泥铺就的平地。往前推十几天，这里倒是铺满了金黄色的玉米，但现在就显得格外空旷，什么都没有，如果不是那个房子兀自立在那里的话——这房子便是他家了。一层楼，不算大，砖砌的墙，已然破损的石棉瓦上方，架着装上没两年的，蓝色的不锈钢屋顶。</p>
+<p>院里正趴着的狗抬起头看了他一眼，叫了一两声，又趴下了；他也转身看了一眼狗，又转身进了屋子——进门后，正对着的墙上挂着张几近褪色的毛主席像，下面是个挂历。挂历旁的桌子上，摆着张他爹的相片，前面是前几天才放上去的一个梨子和两个白面馍。他喘着气，随便拉了个凳子坐下。伴随着淡淡的荆芥的气味，妻子的声音从后面传来——</p>
+<p>“回来了？”</p>
+<p>“嗯，回来了。”</p>
+<p>“下午去县里，看看咱娃？”，妻子问着，一边将一碗捞面条递到他的手中。</p>
+<p>“嗯。”，他点点头，拔出插在面条里的筷子，搅和了一下，吃了起来，“顺带买点肥。”</p>
+<p>“咱娃咋样？现在。”</p>
+<p>“俺要是知道了还去看他？”</p>
+<p>随后是一段不知多久的沉默，他和妻子都在那里吃着各自碗里的面条。屋外的村落也同样沉默无声，如同这天空，它除去一片淡灰，别无他物。</p>
+<p>……大半碗的捞面条，很快见了底，他用筷子仔细地将碗里剩的一切东西送入口中，随后走出小屋，把碗筷搁到屋门外的水管前。拿出一支烟，点燃，站在门口抽了起来，眼睛望着远方，某个不确定的点。</p>
+<p>就在他的正前方，离这个村落不到一里路，一座混凝土厂正在那里。在它的一旁，离这个村落更近的地方，一座发电厂正在那里，那烟囱，那凉水塔，那煤仓，每一个对这里来说，都是天一般高的存在。</p>
+<p>在他小的时候，它们应该都还不在这里，直到他如同他的二儿子现在这样大时，它们才拔地而起，宛若这平原间矗立着的，一座座永远翻不过的高山。</p>
+<p>那烟囱顶端飘出的烟尘，与那凉水塔上涌出的水汽，逐渐上升，混在一起，成了不会下雨的，灰色的云。它并没有激烈地在天空中翻滚，它只是静静地浮在那里，似乎只是在宣告“它们在那里”这样一个事实，这样一个无可动摇的事实。</p>
+<p>他家院子的门前，几个孩子欢笑着走过，趴着的狗又叫了一两声——他们这些孩子，是这个村落里，唯一能有一点笑声的人了。他们穿着红色或蓝色的衣服，手里拿着关公刀，金箍棒，玩具卡车，还有假面超人的变身器——都是大半年前，过年的时候家里人送的。不过是些很容易坏掉的塑料制品，但也是他们最珍视的东西了。他们拿着这些玩具跑过院门前，于是笑声逐渐远去，奔跑到了又不知道是哪家的门口。</p>
+<p>手里的烟，仿佛已经要把滤嘴也点燃了，他随意将烟头扔向远处，转身向屋内的妻子打声招呼，随后走到小屋后，把那辆蓝色的电动三轮车推出，骑上，离开了院子。</p>
+<p>他要到县城里去。</p>
+<p>一路上看到的，也不过是平常的东西。高大的杨树依旧立着，已经种上小麦的田，还有尚未割完玉米，或是还没处理完秸秆的田，交错排列着。村子里倒是能多见到一些人，除去最年幼的孩子，就是中年人和老者。年轻人们都到城里去了，有的过年或许会回来，有的就再也不回来了。</p>
+<p>三轮车继续向前开过田野，走过一段略有不平的土路，穿过一群恰好路过的羊，绕过那堆放着半人多高的废铜烂铁的空地，又沿着水沟边拐上一条小路，向前驶过一会，来到了较宽一点的，铺着沥青的公路上——来来往往的车很多，大多是装着煤、铁、铜的大货车，一辆接着一辆从看不清的远处驶来，发出震耳的轰鸣，行过，卷起一片灰尘，再向看不清的远方驶去，有一些则很快将会拐进那座天高的发电厂里。一人高的轮胎，来来回回碾压，让这沥青公路比田间的土路还崎岖一些，其间还镶嵌着莫名放在那里的减速带和这么多年来打上的一块又一块补丁。他又使劲拧了拧车把，想快点赶到县城里去。迎面而来的风不算冷，将他的外套向后吹起。太阳则隐隐约约，不过是前方空中的一个光斑。</p>
+<p>……这县城，他是经常来的，并且这里是他为数不多能见到的，会发生变化的地方——时不时能看见一两栋楼建起，一两座房倒下。不像村子里，十年前如何，现在还是如何。</p>
+<p>狭窄的柏油路两侧，并不宽阔的人行道上，行人不少——穿着紫红色衣服的老妇人，推着婴儿车，哼着曲子；头戴安全帽的，刚从工地上下来的男子，站在路边，用手套擦着那黢黑的脸上留下的汗；马路牙下，村子里来的人们，老人开着三轮，中年人开着卡车，后面都放着些水果、蔬菜，停在路边，高声吆喝着，车顶上的喇叭里，循环播放着差不多的语句——“来吧来吧！便宜卖！八毛！八毛一斤！又脆又甜！都来吃吧！都来买吧！”……比村子里吵闹不少，但人的构成，和村子里是一样的，没有年轻人。所以那同样的灰色的天空下，熙熙攘攘的街道，却只有一种静止、一种宣判、一种只能看到尽头的力量。</p>
+<p>他熟练地驾驶着三轮车，在宽阔的路与狭窄的路组成的网中，左右穿行着。县城里的司机，开车大多横冲直撞的，不过他并不怕，他太熟悉这里了。</p>
+<p>没过十几分钟，蓝色的三轮车就来到了他儿子的高中门口，孩子们似乎还没下课，他怕保安撵他走，就把车停在了马路对面，步行穿过马路，在一侧的栏杆旁驻足，点燃了一根烟。</p>
+<p>当他把还有一丝火星的烟头踩在脚下的时候，校园里传来一阵他有点陌生的音乐。随后，他儿子的身影隐约出现在了远方，正向这边跑步靠近着。</p>
+<p>“来了。”</p>
+<p>“来了！”，他语调向上扬着，“这几天咋样？”</p>
+<p>“还算中吧……”，他儿子的语调则往下沉着，“恁今儿咋过来了？”</p>
+<p>“你之前要买嘞什么练习册，我给你找到了。”，他一边把几本书交给了栏杆那边的儿子。</p>
+<p>“恁不用专门跑过来的……”</p>
+<p>“这不顺便到县里买点肥嘛。”</p>
+<p>“开春之前还用肥？”</p>
+<p>“家里总得备着些，这会儿还便宜。”，他见那个烟头已经熄灭，就把脚放到一旁，“你学得咋样？”</p>
+<p>“就那样吧，一本考不上，二本差不多。”</p>
+<p>“能考出去不能？”</p>
+<p>“能。”</p>
+<p>“那就中，”，他笑着，“你想去哪儿上学？”</p>
+<p>“哪都中吧……不知道，俺。”</p>
+<p>“冇事儿，去哪儿都妥……你下次回家啥时候？”</p>
+<p>“这个月底吧。”</p>
+<p>“月底？你搉我嘞？”</p>
+<p>“不是，都上高三了，可不一个月休息一天嘛。”</p>
+<p>“唉……那中，那中……”，他还想再问些什么，但校园里又传来了一阵和上次不太一样的音乐。</p>
+<p>“爹，俺先回去了，上课了！走了哈！”，儿子向校园深处跑了起来，头都不回，只是朝背后挥了挥手，留下了呆滞在原地的他。</p>
+<p>“你可好好学啊！我回头再来看你！”，虽然明知不可能听到，他还是举手挥舞，向儿子呼喊着。透过云层的阳光，穿过他的指隙，在地上留下模糊的影子，就像路旁种的黑槐，随风在枝头摇摆着，映着地上那几乎看不见的斑驳。</p>
+<p>他的家里没钱，没办法去做生意，让奔忙的面包车代替一家人离开这里。想要站着走出这片土地，只能在这学校里，起早摸黑地学着，他明白，他的儿子当然也明白。纵使不知道到底为什么，也只能在最黑的夜晚，安静地坐在灯下，在最冷的冬日，让寒风刺破肺的每一个角落，站成无比整齐的队伍，高喊着自己也听不懂的所谓誓词，数着天上的飞鸟与地上的落叶，度过不知多少个冬夏，让时光融化、浓缩，结成一张离开这里的车票，或许确实是为了什么的。</p>
+<p>但如果真的能逃离这里，又能怎样呢？从小就生长在黄土里，血肉的每一个缝隙间都浸着土腥味。每个人都是这样，这气味或许终其一生都无法洗涤干净。那灵魂深处的东西，又会变成什么？或者说，又会被他人定义成什么？没有人可能知道。</p>
+<p>于是他们都爱这里，也都恨这里。</p>
+<p>……他终于又骑上了三轮车，载着几袋化肥。伴着或近或远的一座座工厂升起的烟，向着远离城镇的方向，缓缓行驶着。在太阳落山时，回到了那座院子的平地上。</p>
+<p>已从镇子上回来的妻子，此时恰做好了饭菜——饭是稀饭，菜不算多，味道也很寡淡，算是平常的晚饭。他坐到院门口的板凳上，吃着菜，拿着去年过年大儿子才给他买的手机。那双布满了老茧与裂纹的手，经过了一年多的时间，也算是基本学会了怎么使用这么一个玩意儿。</p>
+<p>他一条一条地浏览着网上的信息。看到有人在指责田间地头的农民们，他便叹息一声，自责着没有给孩子们更好的环境，悲伤于自己生在了这黄土之上；看到有人说明年小麦的收购价能涨到一块五一斤，他就欣喜于二儿子上大学的钱肯定能攒够了；看到有人说今年冬天会比往年暖和很多，他“哎呀”一声站起来，回屋跟妻子商量怎么办，妻子只好苦口婆心地劝说，网上说的那些都是假的，冬天怎么样咱还不清楚吗？明年小麦肯定出不了问题！……又把他劝回了板凳上。</p>
+<p>天边的繁星，在他小时候还是清晰可见的，现在却什么都没有了，只有灰黑色的云。</p>
+<p>远处的工厂，那座天高的工厂，闪烁着光芒，在黑夜。那光比白天太阳的光还要明亮很多，明亮到让人无法直视。</p>
+<p>他不清楚煤是怎么运进厂里的，是怎么堆到仓库里的，不清楚机组里的水是怎么沸腾的，不清楚凉水塔中间是怎么构造的。但他能看到的，是数不清的钢铁搭成的建筑，是复杂到他一辈子都无法理解的管道与线路，是厂区里的白色大灯和塔顶的红色航标灯，是烟囱中日夜不息飘出的黑云……</p>
+<p>他吃完饭菜，把碗刷净放好，穿上件外套，离开院子，到村子里转了一圈。</p>
+<p>村口的老太太们告诉他，上吊的老钱，他的儿子找到了，但不愿意回来，那边工时正忙，回来的话怕是才找到的活计又要化为泡影。没什么人指责那儿子，大家都是可惜并羡慕那父亲。年老体衰，疾病缠身，走得也算痛快。没钱治病，活着也是白遭罪。他儿子回不来，村里人能帮忙把丧事应付好，只是家里的老盆，不知道交给谁来摔了。一边又在叹息着自己的未来，会不会也是这样……工厂发出的光芒似乎又亮了些，那是厂房的缝隙间，缓缓升起的月光。</p>
+<p>他缓步回到家中，和妻子聊了几句，随后躺上床，熄了灯。</p>
+<p>乡下的夜晚，是无比宁静的，至少理应如此。不过远处的工厂与道路上的声音，始终都不算很小。窗外很远的地方，五彩的光闪烁着，他知道，是那群孩子们来了。</p>
+<p>那群孩子，年龄和他的二儿子差不多，或许更大，或许更小。他们没有那么幸运，也没有那么不幸。当他儿子在灯下埋头读书的时候，他们则在村或镇的街口。聚在了一起。攀比着身上刚纹的文身，或是摩托车上刚装上的灯带。领头的孩子率先出发，一群飘着各色灯光的摩托车便在公路上，肆意地前行着。他们欢呼着，从车座上起身，穿行于大货车组成的车流中。那流光溢彩，是黑与白的夜间，为数不多有颜色的东西。</p>
+<p>五彩斑斓的，两人大小的摩托，从散发着白色光芒的，如同巨人般的工厂前，缓缓走过，背后则是漆黑的夜幕。</p>
+<p>这是他们不同于他人的唯一，也是他们相同于他人的唯一。</p>
+<p>月亮依旧向上升着，已经到了杨树的树梢处，反衬着枝头挂着的，没有鸟的鸟巢。</p>
+<p>他已然安静地躺在床上，看着漆黑一片的屋顶，以及漆黑一片的屋外。</p>
+<p>这时，一阵清脆的响声微微闪过耳畔，一丝烧焦的气味飘进鼻孔，一缕白烟从窗外涌入。</p>
+<p>他依然躺在床上，没有理会，因为他知道这白烟是什么——隔壁的老李估计在烧自家地里的秸秆了——他家的玉米，收得晚一些，昨天才全部收完——他还记得当时几个人帮着忙，花了多大的功夫才从收割机主人的牙缝里一分钱一分钱地把价格压到了老李能接受的范围——剩下的秸秆，白天烧的话，是一定会被公家找上门来的，就只能趁着夜色，抓紧整完，不能错过了小麦播种的时候——这些他都知道，于是他就那样，一动不动地看着白烟，缓缓游动着，将爪子伸向每一个角落——烟似乎越来越浓了。</p>
+<p>越来越多的白烟，从土地的缝隙中钻出，肆意弥漫着，化成了巨大的云，仿佛要把整个世界吞没。</p>
+<p>工厂的烟囱穿过了白烟，少年们骑着的摩托车穿过了白烟，孩子们手中的玩具飞机穿过了白烟，儿子在灯下做题的笔尖穿过了白烟，他骑的电动三轮车穿过了白烟。</p>
+<p>但工厂里的工人留了下来，欢呼着的少年留了下来，拿着塑料关公刀的孩子留了下来，默默苦读的学生留了下来，坐在田垄上的农民留了下来。</p>
+<p>数不清的人们，踏着这包含着颗粒的黄土，望着永远也望不见的天空，行走在白色的烟雾中。没人知道他们要去哪里，他们自己也不知道自己要去哪里，或者说，能去哪里。</p>
+<p>在这一片白烟中，</p>
+<p>伸手，便已不见五指。</p>
+<p align="right">2025.01.08</p>
+]]></content>
+      <categories>
+        <category>文集</category>
+      </categories>
+      <tags>
+        <tag>小说</tag>
+        <tag>短篇</tag>
+        <tag>2025</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一九六八年</title>
+    <url>/2024/12/26/1968/</url>
+    <content><![CDATA[<p><strong>本文含有部分不适宜工作场合观看的内容</strong></p>
+<p>收到她的死讯，是在一个雨天的周日下午——说来也巧，最后一次见到她也是个雨天的周日——我嫌公寓里太闷，就撑着伞，想去附近的酒吧待一段时间。在路边看到一家书店，进去翻看了一下这几天的报纸，随后在一个很不起眼的角落发现了她的讣告。讣告写得很简短，谁，因为什么，去世了，追悼会在哪里进行，便结束了。</p>
+<p>看完她的讣告，我又随意看了些别的报道，随后撑伞，离开了书店。</p>
+<p>我从伞沿抬头望了望天空。云很厚，远处三十多层的高楼似乎被云拦腰斩断了——这也和最后一次见她那天一样。</p>
+<p>我能回忆起当年和她发生的，各种各样的事，但我甚至连她的名字，也遗忘了。</p>
+<p>……</p>
+<p>第一次见到她，是在我大三那年，应该是一九六八年吧。当时，大学和我住的公寓之间，距离还不算近，我常常是坐电车来回的，直到大二那年的春天，有一次闲着没事，步行从学校回来，才在路边的一个巷子里，发现了一家看样子还不错的酒吧——看起来古色古香的招牌，门口种着一丛蔷薇，爬山虎布满了一侧的墙上。从那天之后，只要有空，我就会去那里消磨一段时间。</p>
+<p>那天也是一样，一个天有点阴的午后，我正坐在酒吧靠窗的一角，啜饮着快喝完的朗姆酒，看着菲兹杰拉德的书。酒吧另一边有一个很矮的木制舞台，时常会有乐队。那天也是，一个莫名其妙的乐队，正在那里演奏着一首莫名其妙的蓝调。吉他很烂，吉他手弹得也很烂，推弦的声音，像是推开一扇几十年没加过润滑油的木门。</p>
+<p>这时，她手里拿着个只剩冰块的杯子，坐到了我身边。</p>
+<p>“在看什么书？”，她问道。</p>
+<p>我把书立起来，把封面展示给她看。</p>
+<p>她点了点头：“哦——这本我前几天才看过的。还不错吧？我感觉比他的《盖茨比》写得好多了。”</p>
+<p>唯独这句话我至今不敢苟同。</p>
+<p>……那天下午本来有一节课，但我把它翘掉了，一天时间都待在这酒吧里。我和她还挺聊得来的，天南海北，从披头士的专辑聊到国际政治，进而聊到阿西莫夫的短篇和接下来一周的天气。不知不觉间，那个莫名其妙的乐队离开了；又不知不觉间，天色昏沉，街上的行人和车辆多了起来，远处的写字楼上，浩如繁星的灯光次第亮起；再不知不觉间，夜色已深。等到晚上十一点的钟声敲响时，她扭头看了看我。</p>
+<p>“走吧？，她轻声问道。</p>
+<p>“好。“，我起身，才发现自己只顾看书和同她聊天，到了最后，竟然只喝了那一杯朗姆酒。她则喝的多了一点。我等她将杯内剩下的一点我叫不上名字的蓝绿色的鸡尾酒一饮而尽，随后到吧台前支付了两个人的酒钱。</p>
+<p>夜色之下，街边的人行道上，她走在前面，我跟在她的身后。她头顶着黑色的不算长的头发，右额角处挑染了一绺桃红色。身穿灰色卫衣，下身则是普通的百褶裙。让人注目的或许只有身后背着的那把几乎和她的身体一样大的吉他。她身形娇小，说话声音也很轻，有点让人难以置信她当时已经二十一岁了。夜色如幕，但地面上灯火璀璨，行人和车辆都不算少，在来来往往的人中，似乎所有人都是，又似乎只有我们，正像这样，一前一后地走着。</p>
+<p>那天晚上，我第一次和她睡了，在离我住的公寓楼不远的一家小旅馆里。旅馆很差，窗边飞着几只蛾子，被褥散发着强烈的漂白粉味，不过这些倒也无伤大雅。她用双手环绕着我的脖颈，轻闭着眼睛。除了她高潮时的呻吟，我们二人就再也没有发出过别的声音了，只是在默默享受着这短暂的快感。毕竟我们二人，对于对方的意义，本就不多。</p>
+<p>完事之后，她在磨砂玻璃的那边安静地洗着澡，我抽完一支烟后，就昏昏沉沉地睡去了。</p>
+<p>醒来时已是清晨，房间里和昨晚一样，除了她和她的那把吉他已经不见。床头，放着小台灯的柜子上，多了张纸条，上面写着她的名字。</p>
+<p>但时至今日，我早已忘记那个名字了。</p>
+<p>……那天以后，我依旧经常来那家酒吧，每次都和那天如出一辙——来到酒吧，点杯酒，和她聊到深夜，再在邻近的旅馆同她睡觉，然后她会在我醒来前离去，在床头柜上留下写着她名字的纸条。</p>
+<p>我和她聊的越来越多，也知道了不少关于她的事情——她是高二那年和家人闹了矛盾后，离家出走的。最开始，在这座城市里到处奔走，什么都干过，后来到了这座酒吧，生活算是稳定了不少——每天上午到街边公园里练吉他，顺带讨一点钱，中午便来到酒吧里，在这里吃午饭和晚饭，再要几杯酒，一边小口呷着，一边翻看几本放在酒吧书架上的书。到了晚上，找一个能替她支付半天饭钱的男人，然后陪他睡一觉。第二天一大早起来，用昨天上午讨的钱买点早饭和生活用品，如果钱够的话。随后再找一个街边公园……永远重复如此的生活，她到那时已过了四年。</p>
+<p>“有点不可思议啊！“，我感叹道。</p>
+<p>“是相当的不可思议。“，她扭头看向我，轻声指正。</p>
+<p>太阳升起又落下，杯中的酒装满又被饮尽，灰色的天空和镶嵌其间的高楼倒是一刻也没有变过，但时光依旧那样向前行走着，它不会等任何人。</p>
+<p>在大学中的剩下快两年里，我也做了些事情——我交了个女友，后来因为我已忘记是什么事的原因分手了。我对她没什么印象，名字、声音、容貌……都忘记了。只记得唯一一次和她睡觉那天晚上，我正在解她的衬衫扣子时，她跟我说这是她的第一次，让我愣了一下；此外还有最后一次见她那天，空气中挤满着的秋日的气息，也记得清清楚楚。</p>
+<p>我还是常去那家酒吧，和她聊天然后睡觉。我也时不时在上午去街边公园找她，听她弹一会吉他，有些时候在路边见到她了，也会打声招呼。天空中永远是那样灰暗，吹着不知向哪边的风。鸥鸟在空中飞翔，想要找到安巢的场所，但在这钢筋水泥组成的城市中，它连个落脚的地方都找不到，于是只能在半空中永不停息地盘旋着，恰似那时正迷茫着的我们，也恰似那个正在迷雾中摸索着的时代。</p>
+<p>时间是很快的，因为自从第一次见到她后，似乎只是一眨眼的时间，一年半就过去了，到了大四那年的冬天。空气中弥漫着让人捉摸不透的烟味。那段时间，我正在为那篇我也说不明白在做什么的毕业论文发愁，想认认真真把它完成，但始终不知道要写什么；要是直接甩手走人呢？现在又不是一年前，也没办法跟着那群人去搞学潮，闹革命什么的——更何况，从客观来说，我离开家乡的唯一目的，就是写完这篇文章，然后拿一张文凭。于是为了这篇文章，我恢复了坐车通勤的习惯来节省时间。直到这样保持了一个月后，才发现似乎已经很久没见过她了。</p>
+<p>我抬头，望向公寓窗外的夜色。闪烁的航标灯旁，鸥鸟似乎依旧在那里，盘旋着。</p>
+<p>……第二天上午，天空中少见地放晴，我离开公寓，到处闲逛了一会，果然在一个路边的座椅处找到了正在弹吉他的她。</p>
+<p>“早上好——”，我走上前，坐到她的身旁。</p>
+<p>“怎么了？一个月没见你。”</p>
+<p>“最近很忙，因为各种各样的事。”</p>
+<p>“这样啊……挺辛苦的呢。”</p>
+<p>“还行吧——”，我向后仰去，整个身体靠在椅子上，“下午要不要一起到处走走？”</p>
+<p>她眨了眨眼睛，刚才一直在拨弄那琴弦的手指，终于停了下来。</p>
+<p>“好啊。”，她用几乎听不见的声音说道，随后又把注意力放在了吉他上。</p>
+<p>我也半躺着，无言地听着这吉他声，直到音乐停下，耳畔只剩行人与车辆的声音，才重新睁开眼，看见她正将吉他装进包里。</p>
+<p>“走吧？”，她看着我。</p>
+<p>我点了点头，起身。</p>
+<p>“刚才不会睡着了吧？”</p>
+<p>“怎么会呢！……刚才弹得不错。”</p>
+<p>“我倒是觉得，还差得远着呢。”，她把吉他背在了身后。</p>
+<p>那天下午，我们像那经常性的晚上一样，她走在前面，我跟在后面，两人都一言不发，从民房林立的小巷走到车水马龙的大街，穿过富有都市气息的街区和在白日也无比静谧的绿地。早上还晴空万里，到了这会却积起了云，但灰暗的云层倒是将高楼侧面和公交车上张贴的巨幅广告映衬得格外鲜亮。</p>
+<p>但当我们沿着那种着银杏树的路行进着时，天空中竟下起了雨。雨不算大，但在这初冬的季节，哪怕小雨也让人格外寒冷。</p>
+<p>“回去吧？”，她转身问我。</p>
+<p>“回去吧。”，我答道，随后将身上的风衣脱下，给了她，“穿上吧，别冻感冒了。”</p>
+<p>“好。”，她答应着，放下吉他包，交给我，披上风衣，从我手中拿回吉他包，背上。</p>
+<p>“回哪里好呢？”</p>
+<p>……“要不，来我住的公寓吧。”</p>
+<p>她扭过头来，头上桃红色的挑染蓦地闪了一下。她的眼睛瞬间亮了一下，但旋即又暗了下来。“好啊。”，她应道。</p>
+<p>……出租车的窗外，原本应能清晰可辨的都市夜色，被窗玻璃上的雨水，晕染成了一片一片，随着车子启动，那红的、蓝的、绿的、黄的，各种颜色的灯光随之流动了起来，从无穷远处的前方，流向无穷远处的后面。车外的光逐渐昏暗，流动地也越来越缓，最终停了下来，车内的灯光反而亮了——我们到了。</p>
+<p>付过钱，我们下了车，冒着已略有点大的雨，小跑着回到了公寓楼的屋檐下。</p>
+<p>缓缓上升的电梯，蜿蜒曲折的回廊，轻轻拧动的钥匙，次第打开的照明灯。</p>
+<p>她放下吉他，坐在沙发上，轻声感叹：“真好啊！”</p>
+<p>我微笑着打开一旁的冰箱，拿出最后剩下的几罐黑啤：“只剩啤酒了，要喝吗？”</p>
+<p>她也微笑着，朝我点了点头。</p>
+<p>我们两人于是依偎在沙发一侧，喝着啤酒，和之前一样，天南海北地聊着。雨滴打在窗户上，发出沙沙的声音，本就一点一点的夜晚的灯光，在雨幕的笼罩下，更像是天上的繁星了。</p>
+<p>等到居民区的灯光几乎要全部熄灭时，最后一滴啤酒被饮下。她放下啤酒罐，随后开口：“呐，”</p>
+<p>“怎么了？”</p>
+<p>“今天晚上，能不能和我做？”</p>
+<p>“好啊。”，我起身，把桌上的几个空罐扔进了垃圾桶。</p>
+<p>我关了灯——窗外传来的一丝微光，已足够我们看清彼此——和她来到床边。在用舌尖相互交缠的同时，我伸手缓慢地解开了她的胸罩的背扣，随后拉开裙子侧面的拉链，拿走她那件黑色的百褶裙，用双手一点点脱下她的内裤。我用舌头轻触她的脖根，一边轻轻抚摸着她的下体。她的喘息声越发明显，呼出的空气也越发潮湿。</p>
+<p>等到确信她的下面已经湿透之后，我便伸了进去。她轻声呻吟着，我也随着这呻吟声移动着自己的腰部，不久又逐渐加快了速度。最后，随着她那简直能称为呼喊的叫声，两人一起迎来了高潮。</p>
+<p>我忽然注意到，这次她绝顶时的声音，不想此前无数次那样略有生硬，而是包含着发自内心的兴奋与愉悦，好像这一次在她体内的，不再只是一个能给她提供一天饭食，而是一个她真正愿意与之交欢的人——虽然这样想实在是太过自大。不过，这声音中似乎总有一种凄凉的感觉？我也说不清楚。</p>
+<p>高潮过后，略有恍惚的喘息中，她却忽然流下了眼泪。她赤身裸体，坐在床上，双手抱膝，小声抽泣着。我把灯打开，她却似乎完全没有注意到，依旧保持着那样的姿势，流着泪，就像窗外下着的雨。</p>
+<p>我不知道该对她说些什么，只能暂且离开，去冲了个澡。等到我回来时，她已经重新穿好了衣服，在那里弹着吉他。</p>
+<p>见我出来，她轻声笑道：“再陪我聊一会吧。”</p>
+<p>我点头，坐到她身边。</p>
+<p>她先弹了首索尔的《月光》，随后抱着吉他，讲起了她的一生。离家前她的家人、同学、朋友，还有离家后遇见的人。不知过了多久，两人都有些困了，于是躺在同一张床上，互道晚安，昏昏睡去。</p>
+<p>第二天早上，我醒来，她和吉他都已不在，但床头柜上没有写着她名字的纸条。</p>
+<p>那是我见她的最后一面。</p>
+<p>……</p>
+<p>我依然撑着伞，行走在街上。雨似乎越来越大了，我得赶快到酒吧才行。雨水已经略微浸入我的鞋底了。</p>
+<p>大学毕业后，我没有回到家乡，还是留在这座城市里，住着那公寓。家与大学的两点一线，变成了家与公司的两点一线。毕竟我也不知道自己究竟想去哪里，便就这样将就着吧。天上的鸥鸟倒也是依旧在那里盘旋着，如果它们知道，在乡下，有一眼望不到边的树林可供它们建巢的话，它们会不会就此远离这座城市，一去不回了呢？</p>
+<p>看着远处的大楼，我忽然想到了那天晚上睡前，她和我的最后一段对话——</p>
+<p>她看着窗外的航标灯：“呐，我说，你有什么人生理想吗？”</p>
+<p>我摇了摇头：“你呢？”</p>
+<p>“我的人生理想啊，就是活过二十五岁，”，她把头转了过来，“然后死掉。”</p>
+<p>……</p>
+<p>三年后的几天前，她死了，在她二十六岁生日的第二天。</p>
+<p>（灵感来源于村上春树《寻羊冒险记》）</p>
+<p align="right">2024.12.26</p>
+]]></content>
+      <categories>
+        <category>文集</category>
+      </categories>
+      <tags>
+        <tag>小说</tag>
+        <tag>短篇</tag>
+        <tag>2024</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>原野</title>
+    <url>/2024/11/03/wide-field/</url>
+    <content><![CDATA[<p>绯红色的夕阳，被挤在两座天一般高的大厦之间的缝隙里，散发着充满噪声和烟尘的光，落下。转眼便被挤满了车流的高架桥挡住，于是天空中只剩下了深茜色，这深茜色中依然夹杂着噪声和电流。</p>
+<p>高架桥下，最黑暗与最明亮的屋内，少女正坐在那里，望着外面的车流。但她不能出去，她只能锁好所有的通道，不然这车流便会从通道外涌入，流进她的胸膛，让她窒息而死。她的哥哥——那是她唯一的亲人，如果“亲人”这个概念还存在的话——就是这样离她而去的。她不清楚哥哥去了哪里，但她在教堂里听到了管风琴声。或许哥哥的躯体，随着那棺材，融进了管风琴声中？她不知道。不过管风琴声中也带着些噪声和闪光。</p>
+<p>少女伴着夕阳入睡，进入梦境之中。她的大脑缓缓融化，从七窍之中流出，平铺在大地上，随着风四散，从屋子的缝隙中挤出，汇入了车流——不过这时，车流已经变成了电流——之中，飘向了世界的各个角落。</p>
+<p>地球的深夜一端，被不知有多深的电流所淹没。</p>
+<p>电流的大海里，什么都有，它开放、自由，它允许所有人的大脑经过其中。它有被海底的霓虹灯照亮的厅堂，也有深处那钢铁丛林的底端，不见天日的角落。</p>
+<p>少女就占据了这样一个角落。这角落相比于大海显得异常小，但也很大了。在这个角落中，充斥着阳光和能让人自由呼吸的大气。山地、丘陵与平坦的草甸，次第在大地上铺开，牛羊在草丛间自由地奔跑着，树林里时不时传来一声鸟鸣……少女的大脑随电流行进至此，便重新搭建起了血肉和身躯，引得远方的峰峦间刮起一阵阵气流与水流，将电流阻挡在了这个角落之外。少女赤身裸体——当然也并不需要衣服——行走在草甸上。草丛轻轻划过她的小腿，微风吹拂她雪白色的长发。她似乎要做什么，但又似乎什么都不想做。她只是如此行走在天地间，如此便罢了。</p>
+<p>但她好像确实是想要做些什么的，于是太阳随她的意愿落了，月亮随她的意愿起了，星星随她的意愿而闪烁着光芒，风随她的意愿而停下了脚步。</p>
+<p>她想要，毁灭外面的世界。</p>
+<p>她讨厌天高的大厦，讨厌高架桥下的车流，讨厌那小屋，亦讨厌这被电流淹没的黑夜，无穷深的大海，还有海中的霓虹灯，发出那象征着极乐与死亡的，白色且是黑色的光芒。</p>
+<p>她望着眼前那由钢铁组成的骨架，想着等到这机器真正建成，会是怎样一个雄伟壮观的存在。不过，现在她不能想这个，她要等这机器真正建好了才行。</p>
+<p>一副钢铁的骨架与躯壳，昂首立在平原上，反射着点点星光。</p>
+<p>这星光里没有噪声，没有烟尘，没有电流，只有河汉千里。</p>
+<p>她爬到骨架的顶端，坐到最上面的钢梁上，手里拿着几块从屋里带来的钢材。她将它们扔下，片刻后，钢材被自动装在了骨架上，她正坐着的钢梁向上挪动了几分。她没有坐稳，也不想坐稳，就摔了下去，摔到地上，四溅的血肉渗入土壤，在其中开出了一朵蓝色小花，组成了其背后的花海的一部分，而大脑则再次融化，离开这世界，游过电流，来到小屋内，重新组成了正躺着的躯体，还有覆盖其上的衣物。</p>
+<p>天亮了。</p>
+<p>少女起身，推门离开了小屋，在那陌生的，充满了污泥的空间中走了一阵子，随后侧身过了另一扇门，进入了公寓楼的回廊中。</p>
+<p>无穷无尽长的回廊，地面没有坡度，却能让黑色的阴影缓缓流过其间，汇成小溪，在组成河流，奔腾而下，成为高架桥下，正在形成的车流的一部分——现在车流尚未没过人的胸膛，所以少女还可以自由地在小屋外活动。</p>
+<p>不过，她讨厌车流，所以她不得不加快速度，离开这回廊。</p>
+<p>回廊的尽头，永远看不见的地方，钟声如同往常一样，不停歇地响着，伴随着出现的，是回廊两侧那些带着些噪音和气体的怒吼，充斥着亮光与电流的酒精，还有能涌入少女的脑海，让钟声得以暂停的烟草……还有很多，不过少女显然并不关心这些。她从车流的深处拿出发动机的火花塞，用火花塞烧掉电锯的锯齿，随后用这把电锯将远方的大厦与自己的身体同时切成两半，又用同样从车流深处拿出的曲轴将自己的身体重新拼好，她于是来到了大厦之中，一座散发着噪声的工厂。</p>
+<p>工厂里面，自然是流水线，并且是数不清有多少的流水线。和少女一起来到这里的，还有和她年纪相仿的人们——这是她一天之中，为数不多的能见到人的地方——不过，更多的不是人，在来到这里的人中，夹杂着为数尚多的纯粹的机器，还有更多的介于两者之间的物体——人的头下立着机械的身躯，或是肉体的皮肤中装着铁或铝的器官，还有身子被带着锈迹的金属覆盖，只有半边脸露出表面……都是这样的不足称为“人”，也无法称为机器的物体们。</p>
+<p>她不是很想理会这些物体，但是转眼间，一个头被铁块代替，胳膊上嵌满了齿轮的物体从背后搂住了她的肩，看起来很亲昵的样子，铜绿色的，微张的嘴里，似乎在说些什么。发出的气流，撩动着少女的黑色短发。</p>
+<p>不过少女并没有听懂，她所听到的，只是一串充斥着电流声与机械故障声的噪音罢了。但少女并不以此为怪——又或许是唯独不以它为怪——她假装饶有兴味地听着，时不时还笑上两三声。最后，她轻挥手，和那个物体告别。</p>
+<p>更远的远方，哀乐声响起。伴随着哀乐，高架桥下最终充满了车流。而工厂里的物体们，排队上了流水线——并不作为流水线旁的工人，而作为传送带上的产品——少女躺在了传送带上，随着马达开始旋转，她闭上了眼睛。</p>
+<p>传送带旁，数不清的机器正在运转着，这是传送带上的产品们，最后的归宿。</p>
+<p>在这两座足以让太阳屈居其中的大厦里，每台机器都是如此的昼夜不息——清晨时刻随着高架桥下的车流来到大厦，在大厦中为了制造新的机器而奋斗一天，傍晚时随着车流回到公寓的长廊，最后在夜里徜徉于电流的大海。它们从被制造到被销毁都受着严格的控制。摄入着被管控着的能量，接收着被管控着的信息，在欺骗中度过完整的生命周期，产生有限多的后代，最后被欺骗着死亡，身上的零件被回收利用，成为了新的机器。</p>
+<p>而在这座工厂里，它们的职责，就在于让传送带上的物体，最终成为一台台性能优良、便于使用的机器。它们或怀着热忱，或只是假此度日，但只要流水线不停下来，它们的工作就不会停息。</p>
+<p>……行星围绕着恒星的运动，除非意外，是不会停止的。所以太阳高悬在空中的时间并不算很长，很快，泛着红与黄的光出现在了西方的天空。大厦的隙间，大家离开流水线，向大厦外走去。人流匆匆，倒像是填埋场里次第落下的垃圾。少女也在其间，她远望着对面大厦的楼顶，天台上的栏杆。远处的公寓楼中的钟声隐隐约约地传来，或许这钟声其实来自那天台栏杆上挂着的，某一个风铃？少女并不知道。</p>
+<p>远处，深茜色的天空已然转为黛色，车流行将成为电流。少女需要在此之前回到高架桥下的小屋里。她于是从不知有多高的大厦高处一跃而下，身躯化为青云，四肢变作羽翼，乘着飘飖的晚风，行向不知何处的前程。</p>
+<p>最终，当天边还剩下一丝或许算得上是亮光的时候，少女赶回了小屋里。在这高架桥下，她拿着刚从大厦上拆下来的铁块，安然入睡。</p>
+<p>融化的大脑，流出身躯，流向大海，行向那角落，她不愿在别处多留，因为那看似深而平静的电流的海中，不知到底都有什么——有刻骨铭心的苦痛，有最疯狂但麻木的狂喜，有怡然自得的平静，亦有惊涛骇浪的风波——人与人的大脑，几近相同，于是在这片只有大脑的海洋中，无人认识对方。大家都在以自己的方式狂欢着、享受着，似乎这常不见天日的汪洋，其实是稍纵即逝的春宵。大脑们互相夸耀着或是攻击着，没有人在意对方，毕竟被赞誉成那人间的英灵，或是被贬低到刀山火海的深渊，哪个不是某一种形式的乐趣！</p>
+<p>少女的大脑无视它们，快步游向了那片角落，将那霓虹灯照亮的地方当作了最恐怖的黑夜。</p>
+<p>少许的时间后，阳光下的草甸中，赤身裸体的少女再次出现，月与星辰于是再度随她的意愿而挂上了天空。</p>
+<p>少女望着远处的骨架，手里拿着那铁块，汗水少见地滴落——这是这台机器的，最后一块零件了。只要这块零件被装好，她明日就能借这台机器的力量，毁灭外面的世界了。</p>
+<p>少女心里，有一丝自嘲。明明是讨厌外面的机器才要毁灭它们，到了现在，她反而不得不造了这样一台机器来帮助她。可能天命如此吧！</p>
+<p>少女同往常一样爬上了最顶端的钢架，将铁块抛下，随后坠下骨架。大脑融化而流去血肉化作花海中的小花。</p>
+<p>那片花海，绵延不绝，已有上千株绽放的生命，默默注视着天空。</p>
+<p>日出。少女醒来，起身，离开小屋，离开公寓，并未用那车流，而是步行前往了大厦。</p>
+<p>沿途之中，未见一丝额外的颜色。步道上只有少数老人和机器，快步或慢步走着。少女来到大厦下，没有前往工厂，而是直接来到了大厦的顶楼，天台的栏杆前。</p>
+<p>那里果然挂着风铃，不过发出的显然不是钟声，且这声音中没有任何噪音抑或是电流、烟雾。</p>
+<p>远方似乎有管风琴声，少女好久没有听过了，于是她盘腿坐下，双手合十，闭上眼睛，静静地欣赏着这不带噪声与闪光的音乐。</p>
+<p>她在等待，夜晚的降临。</p>
+<p>但还未等到一曲终了，日光便已西垂。少女睁开眼，站起。</p>
+<p>这由无数人的血肉建起的大厦，它高耸入云，以致从其间看，太阳也成了夹在两座大厦间的附庸品。然而，只要稍稍从上方看去，太阳果然还是只属于那遥远的大海，海上的瀛洲。正如现在这样，它已薄西山，下降的速度，肉眼可见。</p>
+<p>深茜色的噪声，绛紫色的烟尘，漆黑一片的夜色，无月，无星。</p>
+<p>终于，最后一点亮光消失，高架桥底的车流彻底变成了电流的大海。少女脱下足履，将其置于一旁，翻过了栏杆。她用手拿起挂在一旁的风铃，用唇轻吻，随后扭头看了一眼夜色，轻轻迈开脚步，飞翔那大海。</p>
+<p>半空中，狂风与气流互相交错盘旋着，褪去她头发的颜色，吹走她身外的衣服，让她的身体只能随风而行。</p>
+<p>不过，她并不为此而恐惧。</p>
+<p>大海深处的角落里，那台机器听到了她跳下时，风铃发出的声音，于是它冲破所在世界的外壳，游出不见天日的大海，探出水面，在少女坠入大海的前一刻，接住了她。</p>
+<p>少女赤身坐在机器最顶端的钢梁上，同之前的无穷多次一样，不过这次是在外面的世界。</p>
+<p>直指云端的，巨大的机器，伸出一只机械臂向前挥舞，随着接连的巨响，一侧的大厦缓缓倒下。</p>
+<p>少女紧紧抓着身下晃动的钢梁，脸上露出了奇怪的笑容。这笑容如同地下室里拿着针筒的流浪汉一样癫狂，又如同弥留之际回望自己过去一生的老者一样平静，如同告别时举手长劳劳的恋人一样凄凉，又如同看着孩子第一次学会喊“母亲”时的妇人一样欣喜。</p>
+<p>那巨大的机器，转而伸出另一个机械臂，踏平了曾挤满车流的高架桥，随后将公寓楼拦腰斩断。人、机器、以及更多介于两者之间的存在，它们面露最惊恐的神情，用最绝望的声音，尖叫着。但少女并不愿搭理它们，她那奇怪的笑声响彻天际。她将手中的利刃毫不犹豫地砍向面前的一切事物。血液或电流或二者的混合物向四处飞溅，却不留下一点痕迹，不发出一丝声音，就好像它们从来没有存在过一样——虽然本就近乎如此罢了。</p>
+<p>没过多久，公寓楼前就再也听不到尖叫的声音，于是这巨大的机器起身，来到了最后树立着的建筑物，那第二座大厦面前。少女控制着机器，举起了机械臂。</p>
+<p>然而下一刻，她迟疑了。</p>
+<p>她看到了，离她不远的大厦的外墙上，两个钢梁之间，一朵淡蓝色的小花，正随风摇摆着自己的身躯。</p>
+<p>少女愣在了原地，这是她第一次在外面的世界里看到自然的造物。她不清楚为什么这小花会出现在这里，但她还是操纵着机械臂，从缝隙中取出小花，准备将其安放在一旁，安全的地方……</p>
+<p>远方发出的，隆隆的巨响，逐渐向这边靠近着，转眼就已来到了少女的背后——</p>
+<p>那是不久之前，刚刚被少女摧毁的，第一座大厦。</p>
+<p>两座大厦都太高了，高到纵使将其的地基彻底毁灭，其顶端仍需要一段时间才能坠至地面。</p>
+<p>而正在那迟疑的刹那，那大厦的顶端，那栏杆上挂着风铃的天台，落了下来。不偏不倚地倒向了少女所在的，巨大的机器。</p>
+<p>那挂着风铃地铁质栏杆，砸中了少女所坐的钢梁，将钢梁截成了两段；风铃从栏杆上脱落，乘风飞向了机械臂上，斩断了那蓝色小花的花茎，随后发出了阵阵的铃声。</p>
+<p>少女从钢架上坠落，她的下方硬质的大地，所以她闭上了眼睛，在半空中，睡着了。她的大脑融化，从七窍中流出，随风滴入了一旁的，电流的海洋中，而那副躯壳，则笔直地落向大地，血肉四溅。</p>
+<p>几秒钟后，那风铃，上面挂着残存地半个蓝色小花，落到了那摊血肉之中。</p>
+<p>这何尝不是那片花海的一部分呢？</p>
+<p>……少女的大脑，在电流的大海间穿行着，不过此时，大海里一片死寂，全不见他人的大脑，或是闪亮的霓虹灯。</p>
+<p>大脑来到了那片角落中——这里，宜人依旧，全无外面的半点痕迹。和此前唯一的区别，便是那具巨大的机器不见了。于是少女代替了那机器——她的大脑，变成了一具巨大的身躯，和此前机器的骨架一样雄伟，不过依然赤身裸体。</p>
+<p>她抬起手，透过远方的峰峦，望着外面的世界。</p>
+<p>……</p>
+<p>她看到，外面的世界，同样依旧。</p>
+<p>大厦依旧矗立在那里，高架桥上依旧充斥着车流，公寓楼里依旧敲着钟声。</p>
+<p>大家发现了她落在那里的躯壳，于是将其带入了大厦。几天之后，一副拥有着人的躯干和铅制的四肢的身体，便崭新出世，成为了在流水线中劳作着的一部分。</p>
+<p>这个世界中的少女，放下了手臂，轻声笑了笑。随后，行至花海，躺下，闭上了双眼。</p>
+<p>她死了。</p>
+<p>远方的峰峦间，气流和水流缓缓停下，它们无力再阻止电流。于是，电流涌入了这个世界。</p>
+<p>这片大海，因此，如同失去了梁柱的穹顶，轰然倒塌。</p>
+<p>电流，混着两个世界的残骸，组成了一片混沌。</p>
+<p>这篇混沌中，没有哪怕一丝的光。</p>
+<p>少女那副巨大的身躯，平静地躺在这一片混沌中。她的头颅变成了大洋上的孤岛，五官变成了孤岛丛林中的洞穴与湖泊，项颈变成了连接大陆与孤岛的陆峡，肩胛变成了重岩峻崖的岸边，乳房变成了高耸入云的雪峰，双臂变成了绵延百里的山脉，手掌变成了一马平川的草原，躯干变成了苍茫的高原，双腿变成了错落有致的丘陵，股间变成了流出洞穴的暗河，足尖变成了被风浪冲刷的海岬……但宇宙依旧混沌，世界孤寂如常，无比黑暗，不见光明。</p>
+<p>不知过了多久，第一批人类，出现了，他们穿着兽皮，沿着暗河，从洞穴中走出，他们在丘陵中的丛林里安营扎寨，用树木或者竹子建起房屋。他们猎取猎物，或采摘果子以饱腹。一日过后，他们用听不懂的语言唱起了祭祀的歌曲。在黑暗的宇宙之中，一切都是平等的。</p>
+<p>又不知过了多久，这些人类从路边野草中，驯化出了能稳定提供食物的种子。他们开垦了大量的农田，养活了越来越多的人口。但争斗也由此而来。有些人占据了土地和耕牛，于是其他人屈服在了这些人的膝下，成为了听命于主人的奴隶，人心中的混沌逐渐产生，就像这依旧混沌的宇宙。</p>
+<p>又有许久的时间过去了，人们离开丘陵，行过风雪肆虐的高原，来到了雪峰之前。他们在雪峰中找到了铁矿，拿这源源不断地铁铸成了剑与犁。用剑改变人与人的社会，用犁改变人脚下的土地。于是，领主们将自己的土地层层分封，原本需要奉献出全部身体与生命地奴隶，变成了需要饱受刑与税盘剥地农民。宇宙依然昏沉，没有一丝光和亮，一片黑暗。</p>
+<p>依旧是过了很久，人们继续前行，跨过陆峡，来到了孤岛上。此时的人们，意识到了自己不该如此。于是，思想开始解放，艺术开始复兴，人们推翻了那最高的领主，为新时代欢呼着，虽然眼前只有一片漆黑。</p>
+<p>人们向天地提问，试图一窥宇宙的真谛；人们向孤岛地洞穴深处行进，在里面找到了铁、铝、硅和锡；人们不断探索着工业与技术的边缘，工业成了主宰世界的力量。无数的机器被制造出来，它们没有思考与意识，听命于人类。人类用它们建起了天高的大厦、盘旋交错的高架桥与曲折纵横的公寓楼。钢铁的洪流中，没有人还保留着自己来到这人世时的信仰与愿望。数不清的机器堆积如山，那是人类最大的功绩，也是人类最大的罪过。</p>
+<p>机器，以混沌为体，以规整为用。这个由机器构成的世界，是最整洁的世界，也是最凌乱的世界。在这一片充斥着枪炮、病菌与钢铁的，混沌与黑暗中，神出现了。祂运行在那天边的海面上方，注视着这世界。</p>
+<p>神说，要有光，便有了光。</p>
+<p>神看光是好的。</p>
+<p align="right">2024.11.3</p>
+]]></content>
+      <categories>
+        <category>文集</category>
+      </categories>
+      <tags>
+        <tag>小说</tag>
+        <tag>短篇</tag>
+        <tag>2024</tag>
       </tags>
   </entry>
   <entry>
@@ -84,16 +435,8 @@
 <h3><span id="序列比对方法">序列比对方法</span></h3><p>序列比对是将两个或多个核酸序列或蛋白质序列排列在一起，以揭示它们之间的相似性和差异性的过程。本系统的序列比对过程，采用的是 <code>Needleman-Wunsch</code> 算法，这一算法效率高、准确性好，是目前业内最常用的序列比对算法之一。</p>
 <h4><span id="needleman-wunsch-算法"><code>Needleman-Wunsch</code> 算法</span></h4><p><code>Needleman-Wunsch</code> 算法是将动态规划算法应用于生物序列的比较的最早期的几个实例之一。</p>
 <p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <sup><a href="#refer-anchor-2" class="self">1 </a></sup> 。该算法的状态转移方程如下：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-F(0,0) &= 0 \\\\
-F(i,j) &= \max
-\begin{cases}
-F(i-1,j-1) + s(x_i,y_j)  \\\\
-F(i-1,j)+d \\\\
-F(i,j-1)+d
-\end{cases}
-\end{align}</script><p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
+<p>$$<br>\begin{align}<br>F(0,0) &amp;= 0 \\<br>F(i,j) &amp;= \max<br>\begin{cases}<br>F(i-1,j-1) + s(x_i,y_j)  \\<br>F(i-1,j)+d \\<br>F(i,j-1)+d<br>\end{cases}<br>\end{align}<br>$$</p>
+<p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
 <h3><span id="系统发生树构建方法">系统发生树构建方法</span></h3><p>常见的系统发生树构建方法有很多，比如最小进化法、最大似然法等等。受开发时间限制，本系统只自带了非加权组平均法的建树算法。关于其他方法，用户可以通过本系统的插件系统自行添加。</p>
 <h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <sup><a href="#refer-anchor-3" class="self">3 </a></sup> 。其具体的算法流程分为以下三步：</p>
 <p>首先，需要计算所有对象（如物种、基因序列等）之间的距离。找出距离最小的两个对象（ <code>OTU</code> ，<code>Operational Taxonomic Units</code> ，操作分类单元），将它们聚为一个新的 <code>OTU</code> 。新的 <code>OTU</code> 的分支点位于这两个 <code>OTU</code> 间距离的 $\frac{1}{2}$ 处。计算新的 <code>OTU</code> 与其他 <code>OTU</code> 之间的平均距离。</p>
@@ -117,7 +460,6 @@ F(i,j-1)+d
 <p>在打开某一个项目后，系统会首先读取项目文件夹中的 <code>setting.json</code> 文件，这个文件中存储了所有项目数据的命名空间名以及项目文件的存储地址。</p>
 <p>随后，系统会将这些数据，以及系统自带的算法等数据全部存储进 <code>namespace:dict</code> 中。</p>
 <p>命名空间系统中的所有命名空间列表如下：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -125,8 +467,7 @@ F(i,j-1)+d
 <th>存储的内容</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>SEQ::</td>
 <td>序列数据</td>
 </tr>
@@ -166,9 +507,7 @@ F(i,j-1)+d
 <td>MODELLIST::</td>
 <td>AI 模型</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3><span id="基于-python-的控制台窗体化双端系统">基于 <code>Python</code> 的控制台+窗体化双端系统</span></h3><p>本系统的用户系统分为控制台端和窗口端双端，用户可以自行选择使用控制台或窗口进行工作。</p>
 <h4><span id="控制台端">控制台端</span></h4><p>本系统的控制台端使用 <code>matplotlib</code> 作为图表渲染工具。其主要分为三个模式: <code>Normal Mode</code>, <code>Debug Mode</code>, <code>Project Mode</code>. 其中，在 <code>Normal Mode</code> 中，用户可以对控制台端的默认设置进行更改等操作。<code>Project Mode</code>中，用户可以对当前的项目进行操作，包括导入序列，对比序列，导出生成的数据等. <code>Debug Mode</code>可以在上述两个模式的基础的同时，允许用户执行单行 <code>Python</code>代码以方便用户对控制台端程序进行调试。</p>
 <h4><span id="窗口端">窗口端</span></h4><p>本系统的窗口端使用 <code>tkinter</code>为窗体化的基本框架，同样使用 <code>matplotlib</code>作为图表渲染的工具。本系统窗口段的用户界面共分为三部分：菜单栏、侧栏、主栏。</p>
@@ -176,11 +515,11 @@ F(i,j-1)+d
 <p><img src="/medias/images/2024000001.jpg" alt="Escherichia coli str. K-12 细胞色素 C 基因的序列，序列来源：NCBI"></p>
 <h2><span id="人工智能的引入">人工智能的引入</span></h2><p>为了更好地推断物种演化路径，本系统引入了人工智能，其可以根据用户提供的一系列系统发生树与序列数据推断出来更接近真实物种演化情况的系统发生树。</p>
 <h3><span id="人工智能模型的设计">人工智能模型的设计</span></h3><p>本系统的人工智能模型使用了固定最大值法进行设计。</p>
-<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x<em>{i}^{\prime}=\frac{x</em>{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
-<script type="math/tex; mode=display">
-F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)</script><p>其中</p>
-<script type="math/tex; mode=display">
-f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}</script><p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
+<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x_i^{\prime}=\frac{x_{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
+<p>$$<br>F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)<br>$$</p>
+<p>其中</p>
+<p>$$<br>f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}<br>$$</p>
+<p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
 <h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <sup><a href="#refer-anchor-5" class="self">5 </a></sup> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <sup><a href="#refer-anchor-6" class="self">6 </a></sup> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <sup><a href="#refer-anchor-7" class="self">7 </a></sup> 。</p>
 <p>这两个研究提供了足够多的训练人工智能模型的数据，我们使用这些数据进行训练。</p>
 <h2><span id="本系统的测试与展望">本系统的测试与展望</span></h2><h3><span id="系统的可扩展性与可移植性">系统的可扩展性与可移植性</span></h3><h4><span id="可扩展性">可扩展性</span></h4><p>本系统开发了插件系统（<code>Plug-in System</code>），这使得用户可以根据自己的需求，编写插件使得本系统支持更多的功能。目前，本系统暂时只支持使用 <code>Python</code>编写插件。</p>
@@ -250,108 +589,6 @@ f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\as
         <tag>AITD</tag>
         <tag>分子生物学</tag>
         <tag>人工智能</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>U314392 distjr_想买书 题解</title>
-    <url>/2024/02/18/u314392-solution/</url>
-    <content><![CDATA[<h2><span id="思路">思路</span></h2><p>首先是一个 <code>dp</code> 的板子，设 $dp_j$ 为花费 $j$ 元能获得的最大的期待值。</p>
-<p>对于每次转移，都可以选择买哪一本书，一旦买了一本书，花费的钱增加 $p_i$ ，获得的总期待值增加 $v_i$ 。</p>
-<p>故不难看出状态转移方程为 $dp<em>j = \max \lbrace dp</em>{j-p_i}+v_i \rbrace $。</p>
-<p>但题目还要求输出方案，所以开一个 <code>vector</code> 记录方案，每次找到更优的方案时，就在上一个方案的后面补上当前新增加的物品，由于输入是单调的，自然保证输出是单调的。</p>
-<p>同时，还要设置一个标记数组 <code>flag</code> 以筛去不合法的答案，确保所有找到的方案都是正常计算得来的，否则可能会出现一些奇奇怪怪的bug。</p>
-<p>感谢 linmou 提供的 std！</p>
-<h2><span id="std">std</span></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
- * @file buy.cpp
- * @brief Solution of Luogu U314392
- * @date 2024-02-18
- */</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdio&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXN</span> <span class="token expression"><span class="token number">505</span></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXM</span> <span class="token expression"><span class="token number">500005</span></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> a<span class="token punctuation">,</span> maxx <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span>MAXM<span class="token punctuation">]</span><span class="token punctuation">,</span> p<span class="token punctuation">[</span>MAXM<span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>MAXM<span class="token punctuation">]</span><span class="token punctuation">,</span> ans<span class="token punctuation">;</span>
-<span class="token keyword">bool</span> flag<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXM<span class="token punctuation">]</span><span class="token punctuation">;</span>
-vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> programme<span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d %d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    flag<span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n<span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-            flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> flag<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> m<span class="token punctuation">;</span> j <span class="token operator">&gt;=</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-                <span class="token keyword">continue</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 状态转移</span>
-            <span class="token punctuation">{</span>
-                dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">|</span> flag<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 标记</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token comment">// 选出最优方案</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>maxx <span class="token operator">&lt;=</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            maxx <span class="token operator">=</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> ans <span class="token operator">=</span> i<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">=</span> ans<span class="token punctuation">,</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> n <span class="token operator">&amp;&amp;</span> j<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            sum <span class="token operator">+=</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            j <span class="token operator">-=</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        i<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>题解</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>置顶 | 关于我自己</title>
-    <url>/2021/07/10/about-me/</url>
-    <content><![CDATA[<p>本页面最后一次更新于2025-08-21</p>
-<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
-<p>如你所见，这个名字很奇怪。</p>
-<p>我原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
-<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
-<p>我本人是一个普通的高中生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，前段时间参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。</p>
-<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
-<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
-<p>因为高中的学业还是比较繁重的，所以我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
-<p>以上。请多关照。</p>
-<p align="right">distjr_</p>
-
-<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
-<p>Bilibili: <a href="https://space.bilibili.com/1159124697">bilibili</a></p>
-<p>GitHub: <a href="https://github.com/ruufly">github</a></p>
-<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
-<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
-<p>Luogu: <a href="https://www.luogu.com.cn/user/363964">luogu</a></p>
-<p>Zhihu: <a href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
-<p>X: <a href="https://x.com/distjr">X</a></p>
-<p>Facebook: <a href="https://www.facebook.com/people/Jingrui-Zhu/">facebook</a></p>
-]]></content>
-      <categories>
-        <category>关于</category>
-      </categories>
-      <tags>
-        <tag>关于</tag>
       </tags>
   </entry>
   <entry>
@@ -553,107 +790,323 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
       </tags>
   </entry>
   <entry>
-    <title>最新 | U571839 千本桜 题解</title>
-    <url>/2025/08/21/u571839-solution/</url>
-    <content><![CDATA[<h2><span id="思路">思路</span></h2><p>本题是一个最小直径生成树(MDST)的模板题。</p>
-<p>详细的思路等请参考<a href="https://oi-wiki.org/graph/mdst/">OI-Wiki</a>上的讲解。</p>
+    <title>U314392 distjr_想买书 题解</title>
+    <url>/2024/02/18/u314392-solution/</url>
+    <content><![CDATA[<h2><span id="思路">思路</span></h2><p>首先是一个 <code>dp</code> 的板子，设 $dp_j$ 为花费 $j$ 元能获得的最大的期待值。</p>
+<p>对于每次转移，都可以选择买哪一本书，一旦买了一本书，花费的钱增加 $p_i$ ，获得的总期待值增加 $v_i$ 。</p>
+<p>故不难看出状态转移方程为 $dp_j = \max \lbrace dp_{j-p_i}+v_i \rbrace $。</p>
+<p>但题目还要求输出方案，所以开一个 <code>vector</code> 记录方案，每次找到更优的方案时，就在上一个方案的后面补上当前新增加的物品，由于输入是单调的，自然保证输出是单调的。</p>
+<p>同时，还要设置一个标记数组 <code>flag</code> 以筛去不合法的答案，确保所有找到的方案都是正常计算得来的，否则可能会出现一些奇奇怪怪的bug。</p>
+<p>感谢 linmou 提供的 std！</p>
 <h2><span id="std">std</span></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
- * @file hatsune.cpp
- * @brief Solution of Luogu U571839
- * @date 2025-08-21
+ * @file buy.cpp
+ * @brief Solution of Luogu U314392
+ * @date 2024-02-18
  */</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;algorithm&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;climits&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdio&gt;</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ll</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXN</span> <span class="token expression"><span class="token number">505</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXM</span> <span class="token expression"><span class="token number">500005</span></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">constexpr</span> <span class="token keyword">int</span> MAXN <span class="token operator">=</span> <span class="token number">510</span><span class="token punctuation">;</span>
-ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> rk<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> val<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">constexpr</span> ll INF <span class="token operator">=</span> <span class="token number">1e17</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span>
-
-<span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> val<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">&lt;</span> val<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-
-<span class="token keyword">void</span> <span class="token function">floyd</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-                d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">struct</span> <span class="token class-name">node</span>
-<span class="token punctuation">{</span>
-    ll u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> w<span class="token punctuation">;</span>
-<span class="token punctuation">}</span> a<span class="token punctuation">[</span>MAXN <span class="token operator">*</span> <span class="token punctuation">(</span>MAXN <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> a<span class="token punctuation">,</span> maxx <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span>MAXM<span class="token punctuation">]</span><span class="token punctuation">,</span> p<span class="token punctuation">[</span>MAXM<span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>MAXM<span class="token punctuation">]</span><span class="token punctuation">,</span> ans<span class="token punctuation">;</span>
+<span class="token keyword">bool</span> flag<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXM<span class="token punctuation">]</span><span class="token punctuation">;</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> programme<span class="token punctuation">;</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">501</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> <span class="token number">501</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
-            d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> INF<span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">501</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d %d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        ll u<span class="token punctuation">,</span> v<span class="token punctuation">,</span> w<span class="token punctuation">;</span>
-        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld %lld %lld"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>u<span class="token punctuation">,</span> <span class="token operator">&amp;</span>v<span class="token punctuation">,</span> <span class="token operator">&amp;</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        w <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-        d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> w<span class="token punctuation">,</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>u<span class="token punctuation">]</span> <span class="token operator">=</span> w<span class="token punctuation">;</span>
-        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>u <span class="token operator">=</span> u<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>v <span class="token operator">=</span> v<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>w <span class="token operator">=</span> w<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">floyd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    flag<span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n<span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+            flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> flag<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> m<span class="token punctuation">;</span> j <span class="token operator">&gt;=</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
-            rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
-            val<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token function">sort</span><span class="token punctuation">(</span>rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">+</span> n<span class="token punctuation">,</span> cmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    ll P <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> ansP <span class="token operator">=</span> INF<span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">&lt;</span> ansP<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            ansP <span class="token operator">=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-            P <span class="token operator">=</span> i<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">int</span> f1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> f2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    ll disu <span class="token operator">=</span> INT_MIN<span class="token punctuation">,</span> disv <span class="token operator">=</span> INT_MIN<span class="token punctuation">,</span> ansL <span class="token operator">=</span> INF<span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        ll u <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>u<span class="token punctuation">,</span> v <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>v<span class="token punctuation">,</span> w <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>w<span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> p <span class="token operator">=</span> n<span class="token punctuation">,</span> i <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 状态转移</span>
             <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> w <span class="token operator">&lt;</span> ansL<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    ansL <span class="token operator">=</span> d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> w<span class="token punctuation">;</span>
-                    f1 <span class="token operator">=</span> u<span class="token punctuation">,</span> f2 <span class="token operator">=</span> v<span class="token punctuation">;</span>
-                    disu <span class="token operator">=</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> w<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>rk<span class="token punctuation">[</span>u<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                    disv <span class="token operator">=</span> w <span class="token operator">-</span> disu<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                p <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">|</span> flag<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 标记</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld\n"</span><span class="token punctuation">,</span> <span class="token function">min</span><span class="token punctuation">(</span>ansP<span class="token punctuation">,</span> ansL<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token comment">// 选出最优方案</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>maxx <span class="token operator">&lt;=</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            maxx <span class="token operator">=</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> ans <span class="token operator">=</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">=</span> ans<span class="token punctuation">,</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> n <span class="token operator">&amp;&amp;</span> j<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sum <span class="token operator">+=</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            j <span class="token operator">-=</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        i<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       <categories>
         <category>OI</category>
       </categories>
       <tags>
         <tag>题解</tag>
-        <tag>图论</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>天涯边</title>
+    <url>/2023/11/23/poems-1/</url>
+    <content><![CDATA[<h1><span id="天涯边">天涯边</span></h1><h2><span id="引子">引子</span></h2><h3><span id="一-夜">一、夜</span></h3><p>夜阑，</p>
+<p>最后一颗浮星</p>
+<p>隐入西土。</p>
+<p>阳光，</p>
+<p>终于洒在窗前，</p>
+<p>又化作了装点着天边的白云。</p>
+<p>当还在夜里的时候，</p>
+<p>云边的月</p>
+<p>皎洁而明亮，</p>
+<p>月光照耀的人，</p>
+<p>还在梦中。</p>
+<p>梦里的人，望着远方，</p>
+<p>他不怕寒冷，却怕孤独。</p>
+<h3><span id="二-界限">二、界限</span></h3><p>那冰与火、水与土、天与地、日与月、爱与恨的界限，</p>
+<p>宛若无尽高的石碑，</p>
+<p>竖在不可遥望的天边。</p>
+<p>在那不可遥望的天边，</p>
+<p>那石碑，仿佛有了生命，</p>
+<p>将所有打破这界限的人</p>
+<p>阻挡在此，无法前行。</p>
+<p>它似乎无懈可击，</p>
+<p>但人的情感，</p>
+<p>却能将其，生生打碎。</p>
+<h3><span id="三-人">三、人</span></h3><p>不，</p>
+<p>它不能离开。</p>
+<p>纵使人间，</p>
+<p>已对它毫无挂念。</p>
+<p>那是因为人间，还在喧闹，</p>
+<p>无宁。</p>
+<p>天涯前，仍有人间，</p>
+<p>天涯边，已无人间。</p>
+<h3><span id="四-空">四、空</span></h3><p>那阳光，</p>
+<p>空灵的阳光，</p>
+<p>和草木混在一起。</p>
+<p>斑斑光晕</p>
+<p>再加上紫红色的小花，</p>
+<p>成了天边的云。</p>
+<p>树上的影子，</p>
+<p>来自枝芽；</p>
+<p>心中的影子，</p>
+<p>来自牵挂。</p>
+<p>这牵挂，打碎无穷尽的界限，</p>
+<p>化为光，照耀着这人世。</p>
+<h3><span id="五-天涯">五、天涯</span></h3><p>断肠人，已逝，</p>
+<p>家乡人，牵挂。</p>
+<p>牵挂之情，化作河流、</p>
+<p>化作大树、化作鸟兽、化作空气，</p>
+<p>化作了心中的感叹。</p>
+<p>而在天涯边，仍有一人</p>
+<p>正微笑着看着这大树，这鸟兽，这空气。</p>
+<p>若世间，再无那竖立在天边的界限，</p>
+<p>那世间，还是世间吗？</p>
+<p>夜至，</p>
+<p>最后一颗浮星，</p>
+<p>又回到眼前。</p>
+<p align="right"> 以上为引子 </p>
+
+<h2><span id="一">（一）</span></h2><h3><span id="六-光">六、光</span></h3><p>天光大亮，</p>
+<p>照透黑色的人间，</p>
+<p>人眼中的光，</p>
+<p>照透世间的黑暗，</p>
+<p>却照不到眼珠中的漆黑。</p>
+<p>人眼并不很亮，</p>
+<p>却能照亮人间，</p>
+<p>这种目光，或许比阳光还要美丽。</p>
+<p>可那阳光，</p>
+<p>未曾驱尽冰霜，就已消散。</p>
+<p>冬一月，那灰暗的天，</p>
+<p>还笼在人的心头上。</p>
+<h3><span id="七-四季">七、四季</span></h3><p>仲春</p>
+<p>行走在河边，</p>
+<p>伴随着鸟鸣；</p>
+<p>三伏夏日</p>
+<p>云起，掩盖了太阳，</p>
+<p>大雨倾盆，</p>
+<p>在外的人还未回家；</p>
+<p>秋分</p>
+<p>红叶暗淡，</p>
+<p>落木化在眼前；</p>
+<p>三九四九</p>
+<p>冰雪未至，</p>
+<p>天气比往年更冷，</p>
+<p>夜不宁，</p>
+<p>心绪更无宁。</p>
+<h3><span id="八-窗">八、窗</span></h3><p>那窗，</p>
+<p>透过了光影，</p>
+<p>落在了另一边。</p>
+<p>从窗，</p>
+<p>看城外的山、城内的楼、交织的路，</p>
+<p>看着时光飞逝……</p>
+<p>窗，</p>
+<p>记载着太多回忆，</p>
+<p>与太多</p>
+<p>变幻。</p>
+<h3><span id="九-方圆">九、方圆</span></h3><p>在那无垠的方圆，</p>
+<p>风吹过平坦的草甸。</p>
+<p>鲜花怒放，将紫红洒在绿色上，</p>
+<p>漫天星尘，仿能直通云霄，</p>
+<p>却还连着人间。</p>
+<p>当一个游子，从家出发，去天地观望，</p>
+<p>他便来到了方圆，</p>
+<p>仰天长叹，</p>
+<p>苦难。</p>
+<h2><span id="二">（二）</span></h2><h3><span id="十-生">十、生</span></h3><p>当生与死、有与无、再无界限，</p>
+<p>那无穷远的石碑倒下，</p>
+<p>天际线上的云朵，</p>
+<p>向方圆飘去。</p>
+<p>「天上没有星，</p>
+<p>地上没有尘，</p>
+<p>中间没有人」，</p>
+<p>天上亦有星，</p>
+<p>地上亦有尘，</p>
+<p>中间亦有人。</p>
+<h3><span id="十一-星尘">十一、星尘</span></h3><p>瞧那漫天星尘，</p>
+<p>盘绵在一起，升向天顶，</p>
+<p>似一盏盏空中的灯。</p>
+<p>瞧那满天星尘，</p>
+<p>闪耀着，降至人间</p>
+<p>盖在了大地上。</p>
+<h3><span id="十二-路">十二、路</span></h3><p>路旁的星光，</p>
+<p>在天空中闪亮，</p>
+<p>人与人相依而行，</p>
+<p>高楼林立，</p>
+<p>车水马龙。</p>
+<p>又在路上行走着，</p>
+<p>天色渐晚。</p>
+<h3><span id="十三-假">十三、假</span></h3><p>它，</p>
+<p>还立在天边，</p>
+<p>虽看不清</p>
+<p>它的容貌；</p>
+<p>它，</p>
+<p>或许早已消逝，</p>
+<p>那模糊的容貌</p>
+<p>或许只是几片星云。</p>
+<h2><span id="三">（三）</span></h2><h3><span id="十四-涓">十四、涓</span></h3><p>当水花飘过天际，</p>
+<p>飘向远方；</p>
+<p>当河流绕过大川，</p>
+<p>汇入江河；</p>
+<p>当人们行过光阴，</p>
+<p>称为永恒……</p>
+<p>那些路上的万物，</p>
+<p>只得化作空灵的光，</p>
+<p>落入方圆。</p>
+<p>虚无间，那实实在在的东西，</p>
+<p>已不多了。</p>
+<p>真实间，那虚无缥缈的东西，</p>
+<p>却为何随处可见呢？</p>
+<h3><span id="十五-原">十五、原</span></h3><p>那块虚无中的大地，</p>
+<p>是否正是方圆，</p>
+<p>还是心中的原野。</p>
+<p>那方飘渺间的细水，</p>
+<p>是否正是空中的涓涓河流，</p>
+<p>还是天涯边、无尽的旷野。</p>
+<p>那张如影随形的相片，</p>
+<p>到底是光晕，</p>
+<p>还是窗影？</p>
+<p align="right"> 以上为正文 </p>
+
+<p>当逝去的一切，</p>
+<p>来到天涯边的</p>
+<p>方圆……</p>
+<p align="right"> 2021.01.12-2021.02.08 初稿 </p>
+
+<p align="right"> 2023.11.20-2023.11.22 删定 </p>
+]]></content>
+      <categories>
+        <category>文集</category>
+      </categories>
+      <tags>
+        <tag>诗歌</tag>
+        <tag>2021</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CF509D Restoring Numbers 题解</title>
+    <url>/2023/11/05/cf509d-solution/</url>
+    <content><![CDATA[<h2><span id="题目描述">题目描述</span></h2><p>给你一个 $n \times m$ 的矩阵 $v$。</p>
+<p>$v_{i, j} = (a_i + b_j) \bmod{k}$。</p>
+<p>求两个序列及其模数 $k$。</p>
+<h2><span id="思路">思路</span></h2><p>注意到，如果我们将 $a$ 序列中的所有数加上一，$b$ 序列中的所有数减去一，整个矩阵不会改变。</p>
+<p>因此我们不妨设 $a_1 = 0$，通过第一列推出 $b$ 序列的值，进而推出 $a$ 序列的值。现在我们为每个格子 $(i, j)$ 计算一个误差 $error = a_i + b_j - v_{i, j}$。</p>
+<p>如果所有的误差均为 $0$，则已经找到了一个满足条件的矩阵。否则意味着误差一定是 $k$ 的倍数，即 $k$ 一定是所有误差的公因数。另外 $k$ 还必须大于所有 $v$ 矩阵中出现的数。如果满足这两个条件则有解，否则无解。</p>
+<h2><span id="代码">代码</span></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
+ * @file CF509D.cpp
+ * @author distjr_
+ * @brief Solution of CF509D
+ */</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdio&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdlib&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXN</span> <span class="token expression"><span class="token number">105</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">int</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
+<span class="token comment">// #define DEBUG</span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">,</span> v<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">,</span> error<span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">bool</span> flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>gcd<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">?</span> a <span class="token operator">:</span> <span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">signed</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld %lld"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            error <span class="token operator">=</span> <span class="token function">abs</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">-</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token function">gcd</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>k<span class="token punctuation">)</span>  <span class="token comment">// k为0，故最后所有的误差值都是0，直接给k赋值为1e9+7即可</span>
+        k <span class="token operator">=</span> <span class="token number">1000000007</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">&amp;&amp;</span> flag<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> k<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"NO\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"YES\n%lld\n"</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld "</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> k<span class="token punctuation">)</span> <span class="token operator">%</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld "</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> k<span class="token punctuation">)</span> <span class="token operator">%</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>以上。如有问题烦请指出，谢谢。</p>
+]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>题解</tag>
+        <tag>构造法</tag>
       </tags>
   </entry>
   <entry>
@@ -840,274 +1293,6 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
       </tags>
   </entry>
   <entry>
-    <title>土地</title>
-    <url>/2025/01/08/land/</url>
-    <content><![CDATA[<p>黄土，一马平川、一望无际的黄土，在天与地间铺展开来。</p>
-<p>望不到边的地块，被一两条两旁种着高大的杨树的公路所分隔开，成了一片片单独的土地，不过并不零散。十月初旬，黄土之下，数不清的小麦种子，正沉睡着。</p>
-<p>土地间的公路并不算宽，左右能容下两辆车而已，那杨树倒是毫不犹豫地向上生长着。风吹过，灰绿色的叶片如波光，还伴着像是海浪的声音——于是，那公路也学着杨树，毫不犹豫地向正前方延伸着，不知要通往哪里——只是在两条公路相交叉的时候，孕育出了一个村落。</p>
-<p>每个村落都不算大，也不算小。四四方方的街道，四四方方的院落，同样的一层或两层的平房，一面面进门，还有门额上镶嵌的“家和万事兴”几个字——这是好的村落。也是四四方方的街道，四四方方的院落，两层楼的砖墙，石棉瓦顶，便住下了几十个家庭——这是一般的村落。</p>
-<p>四四方方的村落外，延伸的公路间，一片片的黄土旁，他正坐在水泥的马路牙上，看着这土地。正午的太阳，在这夏天与冬天的交界处，仍有些猛烈，虽然经过了灰色阴霾的阻挡，仍在他的脖颈上晒出了几滴汗水，缓缓流入黄土。</p>
-<p>五十多岁的他，在这片土地上，活了半辈子。背朝着灰白的天，面对着一粒粒黄土，几十年的时间，也算是养起了一个家。他的大儿子几年前从县里的技校毕业后，去了南方的城里，在厂里或工地上给人家打工，忍受着说着听不懂的方言的当地人发自心底的鄙夷，没日没夜地打拼，后来娶了个在电子厂里认识地女工——那个他只见过一面的儿媳妇——他那个当年拼死拼活保住的小儿子，正在县里的高中上学，明年也该要高考了——他不知道将来要让儿子去哪里读大学，但只要能把他送出这片土地，他这些年也就不算白忙活。</p>
-<p>辽远的天空中，飘来了一阵鸟啼。他随之起身，缓了缓蓦地发黑的双眼，然后沿着公路旁排水的沟渠，向着不远处的一个村落行进着。途中路过的小河——应该说，只是一条水泥筑成的水沟——里的水，泛着黑色与绿色，还有白色的泡沫不时迸出刺鼻的气味。但他的脚步丝毫没有改变，依旧那样走着，说不清快还是慢地走着。</p>
-<p>永远都望不到尽头的大地，能突出地表而存在的，除了村里的平房，村旁的工厂与路旁的杨树外，倒是还有麦田中间耸立着的一些一人高的土堆。前面立着一块黑色的石碑，有些还植了一两棵柏树——那便是一个家庭，永远的安眠之地了。从黄土中出生，在黄土上长大，伴着黄土一生，最后将身躯归还给黄土，仿佛从没有存在过，又好像永远存在着——他向前走着，一边数着四周能看到的，土堆的数量，直到回到村落。</p>
-<p>不多不少，十九座，和此前无数次一样。</p>
-<p>他依旧保持着原来的步伐进入村子，中间停下，和村口坐着的老太太寒暄几句，聊的无非是过几天要下雨了，隔壁村老赵家的女儿嫁人了，村东头的老钱在家里上吊了，他儿子联系不上，没人料理丧事了。再有就是谁家的肥卖的好，谁家的药效果好……不过是些平常的小事。几句闲聊过后，互相打声招呼，继续向前走着。拐了一两个弯，来到了他家的院子前——实际上只是一块水泥铺就的平地。往前推十几天，这里倒是铺满了金黄色的玉米，但现在就显得格外空旷，什么都没有，如果不是那个房子兀自立在那里的话——这房子便是他家了。一层楼，不算大，砖砌的墙，已然破损的石棉瓦上方，架着装上没两年的，蓝色的不锈钢屋顶。</p>
-<p>院里正趴着的狗抬起头看了他一眼，叫了一两声，又趴下了；他也转身看了一眼狗，又转身进了屋子——进门后，正对着的墙上挂着张几近褪色的毛主席像，下面是个挂历。挂历旁的桌子上，摆着张他爹的相片，前面是前几天才放上去的一个梨子和两个白面馍。他喘着气，随便拉了个凳子坐下。伴随着淡淡的荆芥的气味，妻子的声音从后面传来——</p>
-<p>“回来了？”</p>
-<p>“嗯，回来了。”</p>
-<p>“下午去县里，看看咱娃？”，妻子问着，一边将一碗捞面条递到他的手中。</p>
-<p>“嗯。”，他点点头，拔出插在面条里的筷子，搅和了一下，吃了起来，“顺带买点肥。”</p>
-<p>“咱娃咋样？现在。”</p>
-<p>“俺要是知道了还去看他？”</p>
-<p>随后是一段不知多久的沉默，他和妻子都在那里吃着各自碗里的面条。屋外的村落也同样沉默无声，如同这天空，它除去一片淡灰，别无他物。</p>
-<p>……大半碗的捞面条，很快见了底，他用筷子仔细地将碗里剩的一切东西送入口中，随后走出小屋，把碗筷搁到屋门外的水管前。拿出一支烟，点燃，站在门口抽了起来，眼睛望着远方，某个不确定的点。</p>
-<p>就在他的正前方，离这个村落不到一里路，一座混凝土厂正在那里。在它的一旁，离这个村落更近的地方，一座发电厂正在那里，那烟囱，那凉水塔，那煤仓，每一个对这里来说，都是天一般高的存在。</p>
-<p>在他小的时候，它们应该都还不在这里，直到他如同他的二儿子现在这样大时，它们才拔地而起，宛若这平原间矗立着的，一座座永远翻不过的高山。</p>
-<p>那烟囱顶端飘出的烟尘，与那凉水塔上涌出的水汽，逐渐上升，混在一起，成了不会下雨的，灰色的云。它并没有激烈地在天空中翻滚，它只是静静地浮在那里，似乎只是在宣告“它们在那里”这样一个事实，这样一个无可动摇的事实。</p>
-<p>他家院子的门前，几个孩子欢笑着走过，趴着的狗又叫了一两声——他们这些孩子，是这个村落里，唯一能有一点笑声的人了。他们穿着红色或蓝色的衣服，手里拿着关公刀，金箍棒，玩具卡车，还有假面超人的变身器——都是大半年前，过年的时候家里人送的。不过是些很容易坏掉的塑料制品，但也是他们最珍视的东西了。他们拿着这些玩具跑过院门前，于是笑声逐渐远去，奔跑到了又不知道是哪家的门口。</p>
-<p>手里的烟，仿佛已经要把滤嘴也点燃了，他随意将烟头扔向远处，转身向屋内的妻子打声招呼，随后走到小屋后，把那辆蓝色的电动三轮车推出，骑上，离开了院子。</p>
-<p>他要到县城里去。</p>
-<p>一路上看到的，也不过是平常的东西。高大的杨树依旧立着，已经种上小麦的田，还有尚未割完玉米，或是还没处理完秸秆的田，交错排列着。村子里倒是能多见到一些人，除去最年幼的孩子，就是中年人和老者。年轻人们都到城里去了，有的过年或许会回来，有的就再也不回来了。</p>
-<p>三轮车继续向前开过田野，走过一段略有不平的土路，穿过一群恰好路过的羊，绕过那堆放着半人多高的废铜烂铁的空地，又沿着水沟边拐上一条小路，向前驶过一会，来到了较宽一点的，铺着沥青的公路上——来来往往的车很多，大多是装着煤、铁、铜的大货车，一辆接着一辆从看不清的远处驶来，发出震耳的轰鸣，行过，卷起一片灰尘，再向看不清的远方驶去，有一些则很快将会拐进那座天高的发电厂里。一人高的轮胎，来来回回碾压，让这沥青公路比田间的土路还崎岖一些，其间还镶嵌着莫名放在那里的减速带和这么多年来打上的一块又一块补丁。他又使劲拧了拧车把，想快点赶到县城里去。迎面而来的风不算冷，将他的外套向后吹起。太阳则隐隐约约，不过是前方空中的一个光斑。</p>
-<p>……这县城，他是经常来的，并且这里是他为数不多能见到的，会发生变化的地方——时不时能看见一两栋楼建起，一两座房倒下。不像村子里，十年前如何，现在还是如何。</p>
-<p>狭窄的柏油路两侧，并不宽阔的人行道上，行人不少——穿着紫红色衣服的老妇人，推着婴儿车，哼着曲子；头戴安全帽的，刚从工地上下来的男子，站在路边，用手套擦着那黢黑的脸上留下的汗；马路牙下，村子里来的人们，老人开着三轮，中年人开着卡车，后面都放着些水果、蔬菜，停在路边，高声吆喝着，车顶上的喇叭里，循环播放着差不多的语句——“来吧来吧！便宜卖！八毛！八毛一斤！又脆又甜！都来吃吧！都来买吧！”……比村子里吵闹不少，但人的构成，和村子里是一样的，没有年轻人。所以那同样的灰色的天空下，熙熙攘攘的街道，却只有一种静止、一种宣判、一种只能看到尽头的力量。</p>
-<p>他熟练地驾驶着三轮车，在宽阔的路与狭窄的路组成的网中，左右穿行着。县城里的司机，开车大多横冲直撞的，不过他并不怕，他太熟悉这里了。</p>
-<p>没过十几分钟，蓝色的三轮车就来到了他儿子的高中门口，孩子们似乎还没下课，他怕保安撵他走，就把车停在了马路对面，步行穿过马路，在一侧的栏杆旁驻足，点燃了一根烟。</p>
-<p>当他把还有一丝火星的烟头踩在脚下的时候，校园里传来一阵他有点陌生的音乐。随后，他儿子的身影隐约出现在了远方，正向这边跑步靠近着。</p>
-<p>“来了。”</p>
-<p>“来了！”，他语调向上扬着，“这几天咋样？”</p>
-<p>“还算中吧……”，他儿子的语调则往下沉着，“恁今儿咋过来了？”</p>
-<p>“你之前要买嘞什么练习册，我给你找到了。”，他一边把几本书交给了栏杆那边的儿子。</p>
-<p>“恁不用专门跑过来的……”</p>
-<p>“这不顺便到县里买点肥嘛。”</p>
-<p>“开春之前还用肥？”</p>
-<p>“家里总得备着些，这会儿还便宜。”，他见那个烟头已经熄灭，就把脚放到一旁，“你学得咋样？”</p>
-<p>“就那样吧，一本考不上，二本差不多。”</p>
-<p>“能考出去不能？”</p>
-<p>“能。”</p>
-<p>“那就中，”，他笑着，“你想去哪儿上学？”</p>
-<p>“哪都中吧……不知道，俺。”</p>
-<p>“冇事儿，去哪儿都妥……你下次回家啥时候？”</p>
-<p>“这个月底吧。”</p>
-<p>“月底？你搉我嘞？”</p>
-<p>“不是，都上高三了，可不一个月休息一天嘛。”</p>
-<p>“唉……那中，那中……”，他还想再问些什么，但校园里又传来了一阵和上次不太一样的音乐。</p>
-<p>“爹，俺先回去了，上课了！走了哈！”，儿子向校园深处跑了起来，头都不回，只是朝背后挥了挥手，留下了呆滞在原地的他。</p>
-<p>“你可好好学啊！我回头再来看你！”，虽然明知不可能听到，他还是举手挥舞，向儿子呼喊着。透过云层的阳光，穿过他的指隙，在地上留下模糊的影子，就像路旁种的黑槐，随风在枝头摇摆着，映着地上那几乎看不见的斑驳。</p>
-<p>他的家里没钱，没办法去做生意，让奔忙的面包车代替一家人离开这里。想要站着走出这片土地，只能在这学校里，起早摸黑地学着，他明白，他的儿子当然也明白。纵使不知道到底为什么，也只能在最黑的夜晚，安静地坐在灯下，在最冷的冬日，让寒风刺破肺的每一个角落，站成无比整齐的队伍，高喊着自己也听不懂的所谓誓词，数着天上的飞鸟与地上的落叶，度过不知多少个冬夏，让时光融化、浓缩，结成一张离开这里的车票，或许确实是为了什么的。</p>
-<p>但如果真的能逃离这里，又能怎样呢？从小就生长在黄土里，血肉的每一个缝隙间都浸着土腥味。每个人都是这样，这气味或许终其一生都无法洗涤干净。那灵魂深处的东西，又会变成什么？或者说，又会被他人定义成什么？没有人可能知道。</p>
-<p>于是他们都爱这里，也都恨这里。</p>
-<p>……他终于又骑上了三轮车，载着几袋化肥。伴着或近或远的一座座工厂升起的烟，向着远离城镇的方向，缓缓行驶着。在太阳落山时，回到了那座院子的平地上。</p>
-<p>已从镇子上回来的妻子，此时恰做好了饭菜——饭是稀饭，菜不算多，味道也很寡淡，算是平常的晚饭。他坐到院门口的板凳上，吃着菜，拿着去年过年大儿子才给他买的手机。那双布满了老茧与裂纹的手，经过了一年多的时间，也算是基本学会了怎么使用这么一个玩意儿。</p>
-<p>他一条一条地浏览着网上的信息。看到有人在指责田间地头的农民们，他便叹息一声，自责着没有给孩子们更好的环境，悲伤于自己生在了这黄土之上；看到有人说明年小麦的收购价能涨到一块五一斤，他就欣喜于二儿子上大学的钱肯定能攒够了；看到有人说今年冬天会比往年暖和很多，他“哎呀”一声站起来，回屋跟妻子商量怎么办，妻子只好苦口婆心地劝说，网上说的那些都是假的，冬天怎么样咱还不清楚吗？明年小麦肯定出不了问题！……又把他劝回了板凳上。</p>
-<p>天边的繁星，在他小时候还是清晰可见的，现在却什么都没有了，只有灰黑色的云。</p>
-<p>远处的工厂，那座天高的工厂，闪烁着光芒，在黑夜。那光比白天太阳的光还要明亮很多，明亮到让人无法直视。</p>
-<p>他不清楚煤是怎么运进厂里的，是怎么堆到仓库里的，不清楚机组里的水是怎么沸腾的，不清楚凉水塔中间是怎么构造的。但他能看到的，是数不清的钢铁搭成的建筑，是复杂到他一辈子都无法理解的管道与线路，是厂区里的白色大灯和塔顶的红色航标灯，是烟囱中日夜不息飘出的黑云……</p>
-<p>他吃完饭菜，把碗刷净放好，穿上件外套，离开院子，到村子里转了一圈。</p>
-<p>村口的老太太们告诉他，上吊的老钱，他的儿子找到了，但不愿意回来，那边工时正忙，回来的话怕是才找到的活计又要化为泡影。没什么人指责那儿子，大家都是可惜并羡慕那父亲。年老体衰，疾病缠身，走得也算痛快。没钱治病，活着也是白遭罪。他儿子回不来，村里人能帮忙把丧事应付好，只是家里的老盆，不知道交给谁来摔了。一边又在叹息着自己的未来，会不会也是这样……工厂发出的光芒似乎又亮了些，那是厂房的缝隙间，缓缓升起的月光。</p>
-<p>他缓步回到家中，和妻子聊了几句，随后躺上床，熄了灯。</p>
-<p>乡下的夜晚，是无比宁静的，至少理应如此。不过远处的工厂与道路上的声音，始终都不算很小。窗外很远的地方，五彩的光闪烁着，他知道，是那群孩子们来了。</p>
-<p>那群孩子，年龄和他的二儿子差不多，或许更大，或许更小。他们没有那么幸运，也没有那么不幸。当他儿子在灯下埋头读书的时候，他们则在村或镇的街口。聚在了一起。攀比着身上刚纹的文身，或是摩托车上刚装上的灯带。领头的孩子率先出发，一群飘着各色灯光的摩托车便在公路上，肆意地前行着。他们欢呼着，从车座上起身，穿行于大货车组成的车流中。那流光溢彩，是黑与白的夜间，为数不多有颜色的东西。</p>
-<p>五彩斑斓的，两人大小的摩托，从散发着白色光芒的，如同巨人般的工厂前，缓缓走过，背后则是漆黑的夜幕。</p>
-<p>这是他们不同于他人的唯一，也是他们相同于他人的唯一。</p>
-<p>月亮依旧向上升着，已经到了杨树的树梢处，反衬着枝头挂着的，没有鸟的鸟巢。</p>
-<p>他已然安静地躺在床上，看着漆黑一片的屋顶，以及漆黑一片的屋外。</p>
-<p>这时，一阵清脆的响声微微闪过耳畔，一丝烧焦的气味飘进鼻孔，一缕白烟从窗外涌入。</p>
-<p>他依然躺在床上，没有理会，因为他知道这白烟是什么——隔壁的老李估计在烧自家地里的秸秆了——他家的玉米，收得晚一些，昨天才全部收完——他还记得当时几个人帮着忙，花了多大的功夫才从收割机主人的牙缝里一分钱一分钱地把价格压到了老李能接受的范围——剩下的秸秆，白天烧的话，是一定会被公家找上门来的，就只能趁着夜色，抓紧整完，不能错过了小麦播种的时候——这些他都知道，于是他就那样，一动不动地看着白烟，缓缓游动着，将爪子伸向每一个角落——烟似乎越来越浓了。</p>
-<p>越来越多的白烟，从土地的缝隙中钻出，肆意弥漫着，化成了巨大的云，仿佛要把整个世界吞没。</p>
-<p>工厂的烟囱穿过了白烟，少年们骑着的摩托车穿过了白烟，孩子们手中的玩具飞机穿过了白烟，儿子在灯下做题的笔尖穿过了白烟，他骑的电动三轮车穿过了白烟。</p>
-<p>但工厂里的工人留了下来，欢呼着的少年留了下来，拿着塑料关公刀的孩子留了下来，默默苦读的学生留了下来，坐在田垄上的农民留了下来。</p>
-<p>数不清的人们，踏着这包含着颗粒的黄土，望着永远也望不见的天空，行走在白色的烟雾中。没人知道他们要去哪里，他们自己也不知道自己要去哪里，或者说，能去哪里。</p>
-<p>在这一片白烟中，</p>
-<p>伸手，便已不见五指。</p>
-<p align="right">2025.01.08</p>
-]]></content>
-      <categories>
-        <category>文集</category>
-      </categories>
-      <tags>
-        <tag>小说</tag>
-        <tag>短篇</tag>
-        <tag>2025</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>天涯边</title>
-    <url>/2023/11/23/poems-1/</url>
-    <content><![CDATA[<h1><span id="天涯边">天涯边</span></h1><h2><span id="引子">引子</span></h2><h3><span id="一-夜">一、夜</span></h3><p>夜阑，</p>
-<p>最后一颗浮星</p>
-<p>隐入西土。</p>
-<p>阳光，</p>
-<p>终于洒在窗前，</p>
-<p>又化作了装点着天边的白云。</p>
-<p>当还在夜里的时候，</p>
-<p>云边的月</p>
-<p>皎洁而明亮，</p>
-<p>月光照耀的人，</p>
-<p>还在梦中。</p>
-<p>梦里的人，望着远方，</p>
-<p>他不怕寒冷，却怕孤独。</p>
-<h3><span id="二-界限">二、界限</span></h3><p>那冰与火、水与土、天与地、日与月、爱与恨的界限，</p>
-<p>宛若无尽高的石碑，</p>
-<p>竖在不可遥望的天边。</p>
-<p>在那不可遥望的天边，</p>
-<p>那石碑，仿佛有了生命，</p>
-<p>将所有打破这界限的人</p>
-<p>阻挡在此，无法前行。</p>
-<p>它似乎无懈可击，</p>
-<p>但人的情感，</p>
-<p>却能将其，生生打碎。</p>
-<h3><span id="三-人">三、人</span></h3><p>不，</p>
-<p>它不能离开。</p>
-<p>纵使人间，</p>
-<p>已对它毫无挂念。</p>
-<p>那是因为人间，还在喧闹，</p>
-<p>无宁。</p>
-<p>天涯前，仍有人间，</p>
-<p>天涯边，已无人间。</p>
-<h3><span id="四-空">四、空</span></h3><p>那阳光，</p>
-<p>空灵的阳光，</p>
-<p>和草木混在一起。</p>
-<p>斑斑光晕</p>
-<p>再加上紫红色的小花，</p>
-<p>成了天边的云。</p>
-<p>树上的影子，</p>
-<p>来自枝芽；</p>
-<p>心中的影子，</p>
-<p>来自牵挂。</p>
-<p>这牵挂，打碎无穷尽的界限，</p>
-<p>化为光，照耀着这人世。</p>
-<h3><span id="五-天涯">五、天涯</span></h3><p>断肠人，已逝，</p>
-<p>家乡人，牵挂。</p>
-<p>牵挂之情，化作河流、</p>
-<p>化作大树、化作鸟兽、化作空气，</p>
-<p>化作了心中的感叹。</p>
-<p>而在天涯边，仍有一人</p>
-<p>正微笑着看着这大树，这鸟兽，这空气。</p>
-<p>若世间，再无那竖立在天边的界限，</p>
-<p>那世间，还是世间吗？</p>
-<p>夜至，</p>
-<p>最后一颗浮星，</p>
-<p>又回到眼前。</p>
-<p align="right"> 以上为引子 </p>
-
-<h2><span id="一">（一）</span></h2><h3><span id="六-光">六、光</span></h3><p>天光大亮，</p>
-<p>照透黑色的人间，</p>
-<p>人眼中的光，</p>
-<p>照透世间的黑暗，</p>
-<p>却照不到眼珠中的漆黑。</p>
-<p>人眼并不很亮，</p>
-<p>却能照亮人间，</p>
-<p>这种目光，或许比阳光还要美丽。</p>
-<p>可那阳光，</p>
-<p>未曾驱尽冰霜，就已消散。</p>
-<p>冬一月，那灰暗的天，</p>
-<p>还笼在人的心头上。</p>
-<h3><span id="七-四季">七、四季</span></h3><p>仲春</p>
-<p>行走在河边，</p>
-<p>伴随着鸟鸣；</p>
-<p>三伏夏日</p>
-<p>云起，掩盖了太阳，</p>
-<p>大雨倾盆，</p>
-<p>在外的人还未回家；</p>
-<p>秋分</p>
-<p>红叶暗淡，</p>
-<p>落木化在眼前；</p>
-<p>三九四九</p>
-<p>冰雪未至，</p>
-<p>天气比往年更冷，</p>
-<p>夜不宁，</p>
-<p>心绪更无宁。</p>
-<h3><span id="八-窗">八、窗</span></h3><p>那窗，</p>
-<p>透过了光影，</p>
-<p>落在了另一边。</p>
-<p>从窗，</p>
-<p>看城外的山、城内的楼、交织的路，</p>
-<p>看着时光飞逝……</p>
-<p>窗，</p>
-<p>记载着太多回忆，</p>
-<p>与太多</p>
-<p>变幻。</p>
-<h3><span id="九-方圆">九、方圆</span></h3><p>在那无垠的方圆，</p>
-<p>风吹过平坦的草甸。</p>
-<p>鲜花怒放，将紫红洒在绿色上，</p>
-<p>漫天星尘，仿能直通云霄，</p>
-<p>却还连着人间。</p>
-<p>当一个游子，从家出发，去天地观望，</p>
-<p>他便来到了方圆，</p>
-<p>仰天长叹，</p>
-<p>苦难。</p>
-<h2><span id="二">（二）</span></h2><h3><span id="十-生">十、生</span></h3><p>当生与死、有与无、再无界限，</p>
-<p>那无穷远的石碑倒下，</p>
-<p>天际线上的云朵，</p>
-<p>向方圆飘去。</p>
-<p>「天上没有星，</p>
-<p>地上没有尘，</p>
-<p>中间没有人」，</p>
-<p>天上亦有星，</p>
-<p>地上亦有尘，</p>
-<p>中间亦有人。</p>
-<h3><span id="十一-星尘">十一、星尘</span></h3><p>瞧那漫天星尘，</p>
-<p>盘绵在一起，升向天顶，</p>
-<p>似一盏盏空中的灯。</p>
-<p>瞧那满天星尘，</p>
-<p>闪耀着，降至人间</p>
-<p>盖在了大地上。</p>
-<h3><span id="十二-路">十二、路</span></h3><p>路旁的星光，</p>
-<p>在天空中闪亮，</p>
-<p>人与人相依而行，</p>
-<p>高楼林立，</p>
-<p>车水马龙。</p>
-<p>又在路上行走着，</p>
-<p>天色渐晚。</p>
-<h3><span id="十三-假">十三、假</span></h3><p>它，</p>
-<p>还立在天边，</p>
-<p>虽看不清</p>
-<p>它的容貌；</p>
-<p>它，</p>
-<p>或许早已消逝，</p>
-<p>那模糊的容貌</p>
-<p>或许只是几片星云。</p>
-<h2><span id="三">（三）</span></h2><h3><span id="十四-涓">十四、涓</span></h3><p>当水花飘过天际，</p>
-<p>飘向远方；</p>
-<p>当河流绕过大川，</p>
-<p>汇入江河；</p>
-<p>当人们行过光阴，</p>
-<p>称为永恒……</p>
-<p>那些路上的万物，</p>
-<p>只得化作空灵的光，</p>
-<p>落入方圆。</p>
-<p>虚无间，那实实在在的东西，</p>
-<p>已不多了。</p>
-<p>真实间，那虚无缥缈的东西，</p>
-<p>却为何随处可见呢？</p>
-<h3><span id="十五-原">十五、原</span></h3><p>那块虚无中的大地，</p>
-<p>是否正是方圆，</p>
-<p>还是心中的原野。</p>
-<p>那方飘渺间的细水，</p>
-<p>是否正是空中的涓涓河流，</p>
-<p>还是天涯边、无尽的旷野。</p>
-<p>那张如影随形的相片，</p>
-<p>到底是光晕，</p>
-<p>还是窗影？</p>
-<p align="right"> 以上为正文 </p>
-
-<p>当逝去的一切，</p>
-<p>来到天涯边的</p>
-<p>方圆……</p>
-<p align="right"> 2021.01.12-2021.02.08 初稿 </p>
-
-<p align="right"> 2023.11.20-2023.11.22 删定 </p>
-]]></content>
-      <categories>
-        <category>文集</category>
-      </categories>
-      <tags>
-        <tag>诗歌</tag>
-        <tag>2021</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一场提前告知的自杀</title>
     <url>/2023/05/11/planned-jisatsu/</url>
     <content><![CDATA[<p>十几平米的出租房里，堆满了杂物，只有女子现在正躺着的这张床上，略显得干净一点。夏天的六月，又是阴天，房间里没有空调，只有一台电扇正摇着头，吹着风，但无济于事。早上七点的闹钟还没有响起，女子早已受不了这湿热的环境而惊醒。</p>
@@ -1186,22 +1371,18 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
 <p>test</p>
 <p><strong>test</strong></p>
 <p><del>test</del></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
+<th align="center"></th>
+<th align="center"></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">test</td>
-<td style="text-align:center">test</td>
+<tbody><tr>
+<td align="center">test</td>
+<td align="center">test</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <blockquote>
 <p>test</p>
 <blockquote>
@@ -1209,8 +1390,9 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
 </blockquote>
 </blockquote>
 <p><em>test</em></p>
-<script type="math/tex; mode=display">
-\textcolor{red}{test}</script><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>$$<br>\textcolor{red}{test}<br>$$</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <table>
     <tbody><tr>
         <td>Test</td>
@@ -1222,202 +1404,6 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
       </categories>
       <tags>
         <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>原野</title>
-    <url>/2024/11/03/wide-field/</url>
-    <content><![CDATA[<p>绯红色的夕阳，被挤在两座天一般高的大厦之间的缝隙里，散发着充满噪声和烟尘的光，落下。转眼便被挤满了车流的高架桥挡住，于是天空中只剩下了深茜色，这深茜色中依然夹杂着噪声和电流。</p>
-<p>高架桥下，最黑暗与最明亮的屋内，少女正坐在那里，望着外面的车流。但她不能出去，她只能锁好所有的通道，不然这车流便会从通道外涌入，流进她的胸膛，让她窒息而死。她的哥哥——那是她唯一的亲人，如果“亲人”这个概念还存在的话——就是这样离她而去的。她不清楚哥哥去了哪里，但她在教堂里听到了管风琴声。或许哥哥的躯体，随着那棺材，融进了管风琴声中？她不知道。不过管风琴声中也带着些噪声和闪光。</p>
-<p>少女伴着夕阳入睡，进入梦境之中。她的大脑缓缓融化，从七窍之中流出，平铺在大地上，随着风四散，从屋子的缝隙中挤出，汇入了车流——不过这时，车流已经变成了电流——之中，飘向了世界的各个角落。</p>
-<p>地球的深夜一端，被不知有多深的电流所淹没。</p>
-<p>电流的大海里，什么都有，它开放、自由，它允许所有人的大脑经过其中。它有被海底的霓虹灯照亮的厅堂，也有深处那钢铁丛林的底端，不见天日的角落。</p>
-<p>少女就占据了这样一个角落。这角落相比于大海显得异常小，但也很大了。在这个角落中，充斥着阳光和能让人自由呼吸的大气。山地、丘陵与平坦的草甸，次第在大地上铺开，牛羊在草丛间自由地奔跑着，树林里时不时传来一声鸟鸣……少女的大脑随电流行进至此，便重新搭建起了血肉和身躯，引得远方的峰峦间刮起一阵阵气流与水流，将电流阻挡在了这个角落之外。少女赤身裸体——当然也并不需要衣服——行走在草甸上。草丛轻轻划过她的小腿，微风吹拂她雪白色的长发。她似乎要做什么，但又似乎什么都不想做。她只是如此行走在天地间，如此便罢了。</p>
-<p>但她好像确实是想要做些什么的，于是太阳随她的意愿落了，月亮随她的意愿起了，星星随她的意愿而闪烁着光芒，风随她的意愿而停下了脚步。</p>
-<p>她想要，毁灭外面的世界。</p>
-<p>她讨厌天高的大厦，讨厌高架桥下的车流，讨厌那小屋，亦讨厌这被电流淹没的黑夜，无穷深的大海，还有海中的霓虹灯，发出那象征着极乐与死亡的，白色且是黑色的光芒。</p>
-<p>她望着眼前那由钢铁组成的骨架，想着等到这机器真正建成，会是怎样一个雄伟壮观的存在。不过，现在她不能想这个，她要等这机器真正建好了才行。</p>
-<p>一副钢铁的骨架与躯壳，昂首立在平原上，反射着点点星光。</p>
-<p>这星光里没有噪声，没有烟尘，没有电流，只有河汉千里。</p>
-<p>她爬到骨架的顶端，坐到最上面的钢梁上，手里拿着几块从屋里带来的钢材。她将它们扔下，片刻后，钢材被自动装在了骨架上，她正坐着的钢梁向上挪动了几分。她没有坐稳，也不想坐稳，就摔了下去，摔到地上，四溅的血肉渗入土壤，在其中开出了一朵蓝色小花，组成了其背后的花海的一部分，而大脑则再次融化，离开这世界，游过电流，来到小屋内，重新组成了正躺着的躯体，还有覆盖其上的衣物。</p>
-<p>天亮了。</p>
-<p>少女起身，推门离开了小屋，在那陌生的，充满了污泥的空间中走了一阵子，随后侧身过了另一扇门，进入了公寓楼的回廊中。</p>
-<p>无穷无尽长的回廊，地面没有坡度，却能让黑色的阴影缓缓流过其间，汇成小溪，在组成河流，奔腾而下，成为高架桥下，正在形成的车流的一部分——现在车流尚未没过人的胸膛，所以少女还可以自由地在小屋外活动。</p>
-<p>不过，她讨厌车流，所以她不得不加快速度，离开这回廊。</p>
-<p>回廊的尽头，永远看不见的地方，钟声如同往常一样，不停歇地响着，伴随着出现的，是回廊两侧那些带着些噪音和气体的怒吼，充斥着亮光与电流的酒精，还有能涌入少女的脑海，让钟声得以暂停的烟草……还有很多，不过少女显然并不关心这些。她从车流的深处拿出发动机的火花塞，用火花塞烧掉电锯的锯齿，随后用这把电锯将远方的大厦与自己的身体同时切成两半，又用同样从车流深处拿出的曲轴将自己的身体重新拼好，她于是来到了大厦之中，一座散发着噪声的工厂。</p>
-<p>工厂里面，自然是流水线，并且是数不清有多少的流水线。和少女一起来到这里的，还有和她年纪相仿的人们——这是她一天之中，为数不多的能见到人的地方——不过，更多的不是人，在来到这里的人中，夹杂着为数尚多的纯粹的机器，还有更多的介于两者之间的物体——人的头下立着机械的身躯，或是肉体的皮肤中装着铁或铝的器官，还有身子被带着锈迹的金属覆盖，只有半边脸露出表面……都是这样的不足称为“人”，也无法称为机器的物体们。</p>
-<p>她不是很想理会这些物体，但是转眼间，一个头被铁块代替，胳膊上嵌满了齿轮的物体从背后搂住了她的肩，看起来很亲昵的样子，铜绿色的，微张的嘴里，似乎在说些什么。发出的气流，撩动着少女的黑色短发。</p>
-<p>不过少女并没有听懂，她所听到的，只是一串充斥着电流声与机械故障声的噪音罢了。但少女并不以此为怪——又或许是唯独不以它为怪——她假装饶有兴味地听着，时不时还笑上两三声。最后，她轻挥手，和那个物体告别。</p>
-<p>更远的远方，哀乐声响起。伴随着哀乐，高架桥下最终充满了车流。而工厂里的物体们，排队上了流水线——并不作为流水线旁的工人，而作为传送带上的产品——少女躺在了传送带上，随着马达开始旋转，她闭上了眼睛。</p>
-<p>传送带旁，数不清的机器正在运转着，这是传送带上的产品们，最后的归宿。</p>
-<p>在这两座足以让太阳屈居其中的大厦里，每台机器都是如此的昼夜不息——清晨时刻随着高架桥下的车流来到大厦，在大厦中为了制造新的机器而奋斗一天，傍晚时随着车流回到公寓的长廊，最后在夜里徜徉于电流的大海。它们从被制造到被销毁都受着严格的控制。摄入着被管控着的能量，接收着被管控着的信息，在欺骗中度过完整的生命周期，产生有限多的后代，最后被欺骗着死亡，身上的零件被回收利用，成为了新的机器。</p>
-<p>而在这座工厂里，它们的职责，就在于让传送带上的物体，最终成为一台台性能优良、便于使用的机器。它们或怀着热忱，或只是假此度日，但只要流水线不停下来，它们的工作就不会停息。</p>
-<p>……行星围绕着恒星的运动，除非意外，是不会停止的。所以太阳高悬在空中的时间并不算很长，很快，泛着红与黄的光出现在了西方的天空。大厦的隙间，大家离开流水线，向大厦外走去。人流匆匆，倒像是填埋场里次第落下的垃圾。少女也在其间，她远望着对面大厦的楼顶，天台上的栏杆。远处的公寓楼中的钟声隐隐约约地传来，或许这钟声其实来自那天台栏杆上挂着的，某一个风铃？少女并不知道。</p>
-<p>远处，深茜色的天空已然转为黛色，车流行将成为电流。少女需要在此之前回到高架桥下的小屋里。她于是从不知有多高的大厦高处一跃而下，身躯化为青云，四肢变作羽翼，乘着飘飖的晚风，行向不知何处的前程。</p>
-<p>最终，当天边还剩下一丝或许算得上是亮光的时候，少女赶回了小屋里。在这高架桥下，她拿着刚从大厦上拆下来的铁块，安然入睡。</p>
-<p>融化的大脑，流出身躯，流向大海，行向那角落，她不愿在别处多留，因为那看似深而平静的电流的海中，不知到底都有什么——有刻骨铭心的苦痛，有最疯狂但麻木的狂喜，有怡然自得的平静，亦有惊涛骇浪的风波——人与人的大脑，几近相同，于是在这片只有大脑的海洋中，无人认识对方。大家都在以自己的方式狂欢着、享受着，似乎这常不见天日的汪洋，其实是稍纵即逝的春宵。大脑们互相夸耀着或是攻击着，没有人在意对方，毕竟被赞誉成那人间的英灵，或是被贬低到刀山火海的深渊，哪个不是某一种形式的乐趣！</p>
-<p>少女的大脑无视它们，快步游向了那片角落，将那霓虹灯照亮的地方当作了最恐怖的黑夜。</p>
-<p>少许的时间后，阳光下的草甸中，赤身裸体的少女再次出现，月与星辰于是再度随她的意愿而挂上了天空。</p>
-<p>少女望着远处的骨架，手里拿着那铁块，汗水少见地滴落——这是这台机器的，最后一块零件了。只要这块零件被装好，她明日就能借这台机器的力量，毁灭外面的世界了。</p>
-<p>少女心里，有一丝自嘲。明明是讨厌外面的机器才要毁灭它们，到了现在，她反而不得不造了这样一台机器来帮助她。可能天命如此吧！</p>
-<p>少女同往常一样爬上了最顶端的钢架，将铁块抛下，随后坠下骨架。大脑融化而流去血肉化作花海中的小花。</p>
-<p>那片花海，绵延不绝，已有上千株绽放的生命，默默注视着天空。</p>
-<p>日出。少女醒来，起身，离开小屋，离开公寓，并未用那车流，而是步行前往了大厦。</p>
-<p>沿途之中，未见一丝额外的颜色。步道上只有少数老人和机器，快步或慢步走着。少女来到大厦下，没有前往工厂，而是直接来到了大厦的顶楼，天台的栏杆前。</p>
-<p>那里果然挂着风铃，不过发出的显然不是钟声，且这声音中没有任何噪音抑或是电流、烟雾。</p>
-<p>远方似乎有管风琴声，少女好久没有听过了，于是她盘腿坐下，双手合十，闭上眼睛，静静地欣赏着这不带噪声与闪光的音乐。</p>
-<p>她在等待，夜晚的降临。</p>
-<p>但还未等到一曲终了，日光便已西垂。少女睁开眼，站起。</p>
-<p>这由无数人的血肉建起的大厦，它高耸入云，以致从其间看，太阳也成了夹在两座大厦间的附庸品。然而，只要稍稍从上方看去，太阳果然还是只属于那遥远的大海，海上的瀛洲。正如现在这样，它已薄西山，下降的速度，肉眼可见。</p>
-<p>深茜色的噪声，绛紫色的烟尘，漆黑一片的夜色，无月，无星。</p>
-<p>终于，最后一点亮光消失，高架桥底的车流彻底变成了电流的大海。少女脱下足履，将其置于一旁，翻过了栏杆。她用手拿起挂在一旁的风铃，用唇轻吻，随后扭头看了一眼夜色，轻轻迈开脚步，飞翔那大海。</p>
-<p>半空中，狂风与气流互相交错盘旋着，褪去她头发的颜色，吹走她身外的衣服，让她的身体只能随风而行。</p>
-<p>不过，她并不为此而恐惧。</p>
-<p>大海深处的角落里，那台机器听到了她跳下时，风铃发出的声音，于是它冲破所在世界的外壳，游出不见天日的大海，探出水面，在少女坠入大海的前一刻，接住了她。</p>
-<p>少女赤身坐在机器最顶端的钢梁上，同之前的无穷多次一样，不过这次是在外面的世界。</p>
-<p>直指云端的，巨大的机器，伸出一只机械臂向前挥舞，随着接连的巨响，一侧的大厦缓缓倒下。</p>
-<p>少女紧紧抓着身下晃动的钢梁，脸上露出了奇怪的笑容。这笑容如同地下室里拿着针筒的流浪汉一样癫狂，又如同弥留之际回望自己过去一生的老者一样平静，如同告别时举手长劳劳的恋人一样凄凉，又如同看着孩子第一次学会喊“母亲”时的妇人一样欣喜。</p>
-<p>那巨大的机器，转而伸出另一个机械臂，踏平了曾挤满车流的高架桥，随后将公寓楼拦腰斩断。人、机器、以及更多介于两者之间的存在，它们面露最惊恐的神情，用最绝望的声音，尖叫着。但少女并不愿搭理它们，她那奇怪的笑声响彻天际。她将手中的利刃毫不犹豫地砍向面前的一切事物。血液或电流或二者的混合物向四处飞溅，却不留下一点痕迹，不发出一丝声音，就好像它们从来没有存在过一样——虽然本就近乎如此罢了。</p>
-<p>没过多久，公寓楼前就再也听不到尖叫的声音，于是这巨大的机器起身，来到了最后树立着的建筑物，那第二座大厦面前。少女控制着机器，举起了机械臂。</p>
-<p>然而下一刻，她迟疑了。</p>
-<p>她看到了，离她不远的大厦的外墙上，两个钢梁之间，一朵淡蓝色的小花，正随风摇摆着自己的身躯。</p>
-<p>少女愣在了原地，这是她第一次在外面的世界里看到自然的造物。她不清楚为什么这小花会出现在这里，但她还是操纵着机械臂，从缝隙中取出小花，准备将其安放在一旁，安全的地方……</p>
-<p>远方发出的，隆隆的巨响，逐渐向这边靠近着，转眼就已来到了少女的背后——</p>
-<p>那是不久之前，刚刚被少女摧毁的，第一座大厦。</p>
-<p>两座大厦都太高了，高到纵使将其的地基彻底毁灭，其顶端仍需要一段时间才能坠至地面。</p>
-<p>而正在那迟疑的刹那，那大厦的顶端，那栏杆上挂着风铃的天台，落了下来。不偏不倚地倒向了少女所在的，巨大的机器。</p>
-<p>那挂着风铃地铁质栏杆，砸中了少女所坐的钢梁，将钢梁截成了两段；风铃从栏杆上脱落，乘风飞向了机械臂上，斩断了那蓝色小花的花茎，随后发出了阵阵的铃声。</p>
-<p>少女从钢架上坠落，她的下方硬质的大地，所以她闭上了眼睛，在半空中，睡着了。她的大脑融化，从七窍中流出，随风滴入了一旁的，电流的海洋中，而那副躯壳，则笔直地落向大地，血肉四溅。</p>
-<p>几秒钟后，那风铃，上面挂着残存地半个蓝色小花，落到了那摊血肉之中。</p>
-<p>这何尝不是那片花海的一部分呢？</p>
-<p>……少女的大脑，在电流的大海间穿行着，不过此时，大海里一片死寂，全不见他人的大脑，或是闪亮的霓虹灯。</p>
-<p>大脑来到了那片角落中——这里，宜人依旧，全无外面的半点痕迹。和此前唯一的区别，便是那具巨大的机器不见了。于是少女代替了那机器——她的大脑，变成了一具巨大的身躯，和此前机器的骨架一样雄伟，不过依然赤身裸体。</p>
-<p>她抬起手，透过远方的峰峦，望着外面的世界。</p>
-<p>……</p>
-<p>她看到，外面的世界，同样依旧。</p>
-<p>大厦依旧矗立在那里，高架桥上依旧充斥着车流，公寓楼里依旧敲着钟声。</p>
-<p>大家发现了她落在那里的躯壳，于是将其带入了大厦。几天之后，一副拥有着人的躯干和铅制的四肢的身体，便崭新出世，成为了在流水线中劳作着的一部分。</p>
-<p>这个世界中的少女，放下了手臂，轻声笑了笑。随后，行至花海，躺下，闭上了双眼。</p>
-<p>她死了。</p>
-<p>远方的峰峦间，气流和水流缓缓停下，它们无力再阻止电流。于是，电流涌入了这个世界。</p>
-<p>这片大海，因此，如同失去了梁柱的穹顶，轰然倒塌。</p>
-<p>电流，混着两个世界的残骸，组成了一片混沌。</p>
-<p>这篇混沌中，没有哪怕一丝的光。</p>
-<p>少女那副巨大的身躯，平静地躺在这一片混沌中。她的头颅变成了大洋上的孤岛，五官变成了孤岛丛林中的洞穴与湖泊，项颈变成了连接大陆与孤岛的陆峡，肩胛变成了重岩峻崖的岸边，乳房变成了高耸入云的雪峰，双臂变成了绵延百里的山脉，手掌变成了一马平川的草原，躯干变成了苍茫的高原，双腿变成了错落有致的丘陵，股间变成了流出洞穴的暗河，足尖变成了被风浪冲刷的海岬……但宇宙依旧混沌，世界孤寂如常，无比黑暗，不见光明。</p>
-<p>不知过了多久，第一批人类，出现了，他们穿着兽皮，沿着暗河，从洞穴中走出，他们在丘陵中的丛林里安营扎寨，用树木或者竹子建起房屋。他们猎取猎物，或采摘果子以饱腹。一日过后，他们用听不懂的语言唱起了祭祀的歌曲。在黑暗的宇宙之中，一切都是平等的。</p>
-<p>又不知过了多久，这些人类从路边野草中，驯化出了能稳定提供食物的种子。他们开垦了大量的农田，养活了越来越多的人口。但争斗也由此而来。有些人占据了土地和耕牛，于是其他人屈服在了这些人的膝下，成为了听命于主人的奴隶，人心中的混沌逐渐产生，就像这依旧混沌的宇宙。</p>
-<p>又有许久的时间过去了，人们离开丘陵，行过风雪肆虐的高原，来到了雪峰之前。他们在雪峰中找到了铁矿，拿这源源不断地铁铸成了剑与犁。用剑改变人与人的社会，用犁改变人脚下的土地。于是，领主们将自己的土地层层分封，原本需要奉献出全部身体与生命地奴隶，变成了需要饱受刑与税盘剥地农民。宇宙依然昏沉，没有一丝光和亮，一片黑暗。</p>
-<p>依旧是过了很久，人们继续前行，跨过陆峡，来到了孤岛上。此时的人们，意识到了自己不该如此。于是，思想开始解放，艺术开始复兴，人们推翻了那最高的领主，为新时代欢呼着，虽然眼前只有一片漆黑。</p>
-<p>人们向天地提问，试图一窥宇宙的真谛；人们向孤岛地洞穴深处行进，在里面找到了铁、铝、硅和锡；人们不断探索着工业与技术的边缘，工业成了主宰世界的力量。无数的机器被制造出来，它们没有思考与意识，听命于人类。人类用它们建起了天高的大厦、盘旋交错的高架桥与曲折纵横的公寓楼。钢铁的洪流中，没有人还保留着自己来到这人世时的信仰与愿望。数不清的机器堆积如山，那是人类最大的功绩，也是人类最大的罪过。</p>
-<p>机器，以混沌为体，以规整为用。这个由机器构成的世界，是最整洁的世界，也是最凌乱的世界。在这一片充斥着枪炮、病菌与钢铁的，混沌与黑暗中，神出现了。祂运行在那天边的海面上方，注视着这世界。</p>
-<p>神说，要有光，便有了光。</p>
-<p>神看光是好的。</p>
-<p align="right">2024.11.3</p>
-]]></content>
-      <categories>
-        <category>文集</category>
-      </categories>
-      <tags>
-        <tag>小说</tag>
-        <tag>短篇</tag>
-        <tag>2024</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一九六八年</title>
-    <url>/2024/12/26/1968/</url>
-    <content><![CDATA[<p><strong>本文含有部分不适宜工作场合观看的内容</strong></p>
-<p>收到她的死讯，是在一个雨天的周日下午——说来也巧，最后一次见到她也是个雨天的周日——我嫌公寓里太闷，就撑着伞，想去附近的酒吧待一段时间。在路边看到一家书店，进去翻看了一下这几天的报纸，随后在一个很不起眼的角落发现了她的讣告。讣告写得很简短，谁，因为什么，去世了，追悼会在哪里进行，便结束了。</p>
-<p>看完她的讣告，我又随意看了些别的报道，随后撑伞，离开了书店。</p>
-<p>我从伞沿抬头望了望天空。云很厚，远处三十多层的高楼似乎被云拦腰斩断了——这也和最后一次见她那天一样。</p>
-<p>我能回忆起当年和她发生的，各种各样的事，但我甚至连她的名字，也遗忘了。</p>
-<p>……</p>
-<p>第一次见到她，是在我大三那年，应该是一九六八年吧。当时，大学和我住的公寓之间，距离还不算近，我常常是坐电车来回的，直到大二那年的春天，有一次闲着没事，步行从学校回来，才在路边的一个巷子里，发现了一家看样子还不错的酒吧——看起来古色古香的招牌，门口种着一丛蔷薇，爬山虎布满了一侧的墙上。从那天之后，只要有空，我就会去那里消磨一段时间。</p>
-<p>那天也是一样，一个天有点阴的午后，我正坐在酒吧靠窗的一角，啜饮着快喝完的朗姆酒，看着菲兹杰拉德的书。酒吧另一边有一个很矮的木制舞台，时常会有乐队。那天也是，一个莫名其妙的乐队，正在那里演奏着一首莫名其妙的蓝调。吉他很烂，吉他手弹得也很烂，推弦的声音，像是推开一扇几十年没加过润滑油的木门。</p>
-<p>这时，她手里拿着个只剩冰块的杯子，坐到了我身边。</p>
-<p>“在看什么书？”，她问道。</p>
-<p>我把书立起来，把封面展示给她看。</p>
-<p>她点了点头：“哦——这本我前几天才看过的。还不错吧？我感觉比他的《盖茨比》写得好多了。”</p>
-<p>唯独这句话我至今不敢苟同。</p>
-<p>……那天下午本来有一节课，但我把它翘掉了，一天时间都待在这酒吧里。我和她还挺聊得来的，天南海北，从披头士的专辑聊到国际政治，进而聊到阿西莫夫的短篇和接下来一周的天气。不知不觉间，那个莫名其妙的乐队离开了；又不知不觉间，天色昏沉，街上的行人和车辆多了起来，远处的写字楼上，浩如繁星的灯光次第亮起；再不知不觉间，夜色已深。等到晚上十一点的钟声敲响时，她扭头看了看我。</p>
-<p>“走吧？，她轻声问道。</p>
-<p>“好。“，我起身，才发现自己只顾看书和同她聊天，到了最后，竟然只喝了那一杯朗姆酒。她则喝的多了一点。我等她将杯内剩下的一点我叫不上名字的蓝绿色的鸡尾酒一饮而尽，随后到吧台前支付了两个人的酒钱。</p>
-<p>夜色之下，街边的人行道上，她走在前面，我跟在她的身后。她头顶着黑色的不算长的头发，右额角处挑染了一绺桃红色。身穿灰色卫衣，下身则是普通的百褶裙。让人注目的或许只有身后背着的那把几乎和她的身体一样大的吉他。她身形娇小，说话声音也很轻，有点让人难以置信她当时已经二十一岁了。夜色如幕，但地面上灯火璀璨，行人和车辆都不算少，在来来往往的人中，似乎所有人都是，又似乎只有我们，正像这样，一前一后地走着。</p>
-<p>那天晚上，我第一次和她睡了，在离我住的公寓楼不远的一家小旅馆里。旅馆很差，窗边飞着几只蛾子，被褥散发着强烈的漂白粉味，不过这些倒也无伤大雅。她用双手环绕着我的脖颈，轻闭着眼睛。除了她高潮时的呻吟，我们二人就再也没有发出过别的声音了，只是在默默享受着这短暂的快感。毕竟我们二人，对于对方的意义，本就不多。</p>
-<p>完事之后，她在磨砂玻璃的那边安静地洗着澡，我抽完一支烟后，就昏昏沉沉地睡去了。</p>
-<p>醒来时已是清晨，房间里和昨晚一样，除了她和她的那把吉他已经不见。床头，放着小台灯的柜子上，多了张纸条，上面写着她的名字。</p>
-<p>但时至今日，我早已忘记那个名字了。</p>
-<p>……那天以后，我依旧经常来那家酒吧，每次都和那天如出一辙——来到酒吧，点杯酒，和她聊到深夜，再在邻近的旅馆同她睡觉，然后她会在我醒来前离去，在床头柜上留下写着她名字的纸条。</p>
-<p>我和她聊的越来越多，也知道了不少关于她的事情——她是高二那年和家人闹了矛盾后，离家出走的。最开始，在这座城市里到处奔走，什么都干过，后来到了这座酒吧，生活算是稳定了不少——每天上午到街边公园里练吉他，顺带讨一点钱，中午便来到酒吧里，在这里吃午饭和晚饭，再要几杯酒，一边小口呷着，一边翻看几本放在酒吧书架上的书。到了晚上，找一个能替她支付半天饭钱的男人，然后陪他睡一觉。第二天一大早起来，用昨天上午讨的钱买点早饭和生活用品，如果钱够的话。随后再找一个街边公园……永远重复如此的生活，她到那时已过了四年。</p>
-<p>“有点不可思议啊！“，我感叹道。</p>
-<p>“是相当的不可思议。“，她扭头看向我，轻声指正。</p>
-<p>太阳升起又落下，杯中的酒装满又被饮尽，灰色的天空和镶嵌其间的高楼倒是一刻也没有变过，但时光依旧那样向前行走着，它不会等任何人。</p>
-<p>在大学中的剩下快两年里，我也做了些事情——我交了个女友，后来因为我已忘记是什么事的原因分手了。我对她没什么印象，名字、声音、容貌……都忘记了。只记得唯一一次和她睡觉那天晚上，我正在解她的衬衫扣子时，她跟我说这是她的第一次，让我愣了一下；此外还有最后一次见她那天，空气中挤满着的秋日的气息，也记得清清楚楚。</p>
-<p>我还是常去那家酒吧，和她聊天然后睡觉。我也时不时在上午去街边公园找她，听她弹一会吉他，有些时候在路边见到她了，也会打声招呼。天空中永远是那样灰暗，吹着不知向哪边的风。鸥鸟在空中飞翔，想要找到安巢的场所，但在这钢筋水泥组成的城市中，它连个落脚的地方都找不到，于是只能在半空中永不停息地盘旋着，恰似那时正迷茫着的我们，也恰似那个正在迷雾中摸索着的时代。</p>
-<p>时间是很快的，因为自从第一次见到她后，似乎只是一眨眼的时间，一年半就过去了，到了大四那年的冬天。空气中弥漫着让人捉摸不透的烟味。那段时间，我正在为那篇我也说不明白在做什么的毕业论文发愁，想认认真真把它完成，但始终不知道要写什么；要是直接甩手走人呢？现在又不是一年前，也没办法跟着那群人去搞学潮，闹革命什么的——更何况，从客观来说，我离开家乡的唯一目的，就是写完这篇文章，然后拿一张文凭。于是为了这篇文章，我恢复了坐车通勤的习惯来节省时间。直到这样保持了一个月后，才发现似乎已经很久没见过她了。</p>
-<p>我抬头，望向公寓窗外的夜色。闪烁的航标灯旁，鸥鸟似乎依旧在那里，盘旋着。</p>
-<p>……第二天上午，天空中少见地放晴，我离开公寓，到处闲逛了一会，果然在一个路边的座椅处找到了正在弹吉他的她。</p>
-<p>“早上好——”，我走上前，坐到她的身旁。</p>
-<p>“怎么了？一个月没见你。”</p>
-<p>“最近很忙，因为各种各样的事。”</p>
-<p>“这样啊……挺辛苦的呢。”</p>
-<p>“还行吧——”，我向后仰去，整个身体靠在椅子上，“下午要不要一起到处走走？”</p>
-<p>她眨了眨眼睛，刚才一直在拨弄那琴弦的手指，终于停了下来。</p>
-<p>“好啊。”，她用几乎听不见的声音说道，随后又把注意力放在了吉他上。</p>
-<p>我也半躺着，无言地听着这吉他声，直到音乐停下，耳畔只剩行人与车辆的声音，才重新睁开眼，看见她正将吉他装进包里。</p>
-<p>“走吧？”，她看着我。</p>
-<p>我点了点头，起身。</p>
-<p>“刚才不会睡着了吧？”</p>
-<p>“怎么会呢！……刚才弹得不错。”</p>
-<p>“我倒是觉得，还差得远着呢。”，她把吉他背在了身后。</p>
-<p>那天下午，我们像那经常性的晚上一样，她走在前面，我跟在后面，两人都一言不发，从民房林立的小巷走到车水马龙的大街，穿过富有都市气息的街区和在白日也无比静谧的绿地。早上还晴空万里，到了这会却积起了云，但灰暗的云层倒是将高楼侧面和公交车上张贴的巨幅广告映衬得格外鲜亮。</p>
-<p>但当我们沿着那种着银杏树的路行进着时，天空中竟下起了雨。雨不算大，但在这初冬的季节，哪怕小雨也让人格外寒冷。</p>
-<p>“回去吧？”，她转身问我。</p>
-<p>“回去吧。”，我答道，随后将身上的风衣脱下，给了她，“穿上吧，别冻感冒了。”</p>
-<p>“好。”，她答应着，放下吉他包，交给我，披上风衣，从我手中拿回吉他包，背上。</p>
-<p>“回哪里好呢？”</p>
-<p>……“要不，来我住的公寓吧。”</p>
-<p>她扭过头来，头上桃红色的挑染蓦地闪了一下。她的眼睛瞬间亮了一下，但旋即又暗了下来。“好啊。”，她应道。</p>
-<p>……出租车的窗外，原本应能清晰可辨的都市夜色，被窗玻璃上的雨水，晕染成了一片一片，随着车子启动，那红的、蓝的、绿的、黄的，各种颜色的灯光随之流动了起来，从无穷远处的前方，流向无穷远处的后面。车外的光逐渐昏暗，流动地也越来越缓，最终停了下来，车内的灯光反而亮了——我们到了。</p>
-<p>付过钱，我们下了车，冒着已略有点大的雨，小跑着回到了公寓楼的屋檐下。</p>
-<p>缓缓上升的电梯，蜿蜒曲折的回廊，轻轻拧动的钥匙，次第打开的照明灯。</p>
-<p>她放下吉他，坐在沙发上，轻声感叹：“真好啊！”</p>
-<p>我微笑着打开一旁的冰箱，拿出最后剩下的几罐黑啤：“只剩啤酒了，要喝吗？”</p>
-<p>她也微笑着，朝我点了点头。</p>
-<p>我们两人于是依偎在沙发一侧，喝着啤酒，和之前一样，天南海北地聊着。雨滴打在窗户上，发出沙沙的声音，本就一点一点的夜晚的灯光，在雨幕的笼罩下，更像是天上的繁星了。</p>
-<p>等到居民区的灯光几乎要全部熄灭时，最后一滴啤酒被饮下。她放下啤酒罐，随后开口：“呐，”</p>
-<p>“怎么了？”</p>
-<p>“今天晚上，能不能和我做？”</p>
-<p>“好啊。”，我起身，把桌上的几个空罐扔进了垃圾桶。</p>
-<p>我关了灯——窗外传来的一丝微光，已足够我们看清彼此——和她来到床边。在用舌尖相互交缠的同时，我伸手缓慢地解开了她的胸罩的背扣，随后拉开裙子侧面的拉链，拿走她那件黑色的百褶裙，用双手一点点脱下她的内裤。我用舌头轻触她的脖根，一边轻轻抚摸着她的下体。她的喘息声越发明显，呼出的空气也越发潮湿。</p>
-<p>等到确信她的下面已经湿透之后，我便伸了进去。她轻声呻吟着，我也随着这呻吟声移动着自己的腰部，不久又逐渐加快了速度。最后，随着她那简直能称为呼喊的叫声，两人一起迎来了高潮。</p>
-<p>我忽然注意到，这次她绝顶时的声音，不想此前无数次那样略有生硬，而是包含着发自内心的兴奋与愉悦，好像这一次在她体内的，不再只是一个能给她提供一天饭食，而是一个她真正愿意与之交欢的人——虽然这样想实在是太过自大。不过，这声音中似乎总有一种凄凉的感觉？我也说不清楚。</p>
-<p>高潮过后，略有恍惚的喘息中，她却忽然流下了眼泪。她赤身裸体，坐在床上，双手抱膝，小声抽泣着。我把灯打开，她却似乎完全没有注意到，依旧保持着那样的姿势，流着泪，就像窗外下着的雨。</p>
-<p>我不知道该对她说些什么，只能暂且离开，去冲了个澡。等到我回来时，她已经重新穿好了衣服，在那里弹着吉他。</p>
-<p>见我出来，她轻声笑道：“再陪我聊一会吧。”</p>
-<p>我点头，坐到她身边。</p>
-<p>她先弹了首索尔的《月光》，随后抱着吉他，讲起了她的一生。离家前她的家人、同学、朋友，还有离家后遇见的人。不知过了多久，两人都有些困了，于是躺在同一张床上，互道晚安，昏昏睡去。</p>
-<p>第二天早上，我醒来，她和吉他都已不在，但床头柜上没有写着她名字的纸条。</p>
-<p>那是我见她的最后一面。</p>
-<p>……</p>
-<p>我依然撑着伞，行走在街上。雨似乎越来越大了，我得赶快到酒吧才行。雨水已经略微浸入我的鞋底了。</p>
-<p>大学毕业后，我没有回到家乡，还是留在这座城市里，住着那公寓。家与大学的两点一线，变成了家与公司的两点一线。毕竟我也不知道自己究竟想去哪里，便就这样将就着吧。天上的鸥鸟倒也是依旧在那里盘旋着，如果它们知道，在乡下，有一眼望不到边的树林可供它们建巢的话，它们会不会就此远离这座城市，一去不回了呢？</p>
-<p>看着远处的大楼，我忽然想到了那天晚上睡前，她和我的最后一段对话——</p>
-<p>她看着窗外的航标灯：“呐，我说，你有什么人生理想吗？”</p>
-<p>我摇了摇头：“你呢？”</p>
-<p>“我的人生理想啊，就是活过二十五岁，”，她把头转了过来，“然后死掉。”</p>
-<p>……</p>
-<p>三年后的几天前，她死了，在她二十六岁生日的第二天。</p>
-<p>（灵感来源于村上春树《寻羊冒险记》）</p>
-<p align="right">2024.12.26</p>
-]]></content>
-      <categories>
-        <category>文集</category>
-      </categories>
-      <tags>
-        <tag>小说</tag>
-        <tag>短篇</tag>
-        <tag>2024</tag>
       </tags>
   </entry>
 </search>
