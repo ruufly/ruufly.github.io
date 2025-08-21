@@ -6,7 +6,7 @@
   <link href="https://ruufly.github.io/atom.xml" rel="self"/>
   
   <link href="https://ruufly.github.io/"/>
-  <updated>2025-07-05T13:55:29.262Z</updated>
+  <updated>2025-08-21T07:03:20.463Z</updated>
   <id>https://ruufly.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>最新 | 土地</title>
+    <title>最新 | U571839 千本桜 题解</title>
+    <link href="https://ruufly.github.io/2025/08/21/u571839-solution/"/>
+    <id>https://ruufly.github.io/2025/08/21/u571839-solution/</id>
+    <published>2025-08-21T07:30:00.000Z</published>
+    <updated>2025-08-21T07:03:20.463Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2&gt;&lt;span id=&quot;思路&quot;&gt;思路&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;本题是一个最小直径生成树(MDST)的模板题。&lt;/p&gt;
+&lt;p&gt;详细的思路等请参考&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="OI" scheme="https://ruufly.github.io/categories/OI/"/>
+    
+    
+    <category term="题解" scheme="https://ruufly.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+    <category term="图论" scheme="https://ruufly.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>土地</title>
     <link href="https://ruufly.github.io/2025/01/08/land/"/>
     <id>https://ruufly.github.io/2025/01/08/land/</id>
     <published>2025-01-08T15:30:00.000Z</published>
-    <updated>2025-07-05T13:55:29.262Z</updated>
+    <updated>2025-08-21T07:03:14.579Z</updated>
     
     
       
@@ -204,7 +232,7 @@
     <link href="https://ruufly.github.io/2023/11/23/poems-1/"/>
     <id>https://ruufly.github.io/2023/11/23/poems-1/</id>
     <published>2023-11-23T12:00:00.000Z</published>
-    <updated>2025-02-22T11:42:46.276Z</updated>
+    <updated>2025-07-05T14:00:10.788Z</updated>
     
     
       
