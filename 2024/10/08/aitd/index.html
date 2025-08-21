@@ -576,7 +576,7 @@
 <h2><span id="序列比对与系统发生树构建的相关算法简介">序列比对与系统发生树构建的相关算法简介</span></h2><p>作为一种物种演化路径推断系统，序列比对算法与系统发生树构建算法自然是重中之重，下面笔者将介绍本系统中所使用的几种相关算法：</p>
 <h3><span id="序列比对方法">序列比对方法</span></h3><p>序列比对是将两个或多个核酸序列或蛋白质序列排列在一起，以揭示它们之间的相似性和差异性的过程。本系统的序列比对过程，采用的是 <code>Needleman-Wunsch</code> 算法，这一算法效率高、准确性好，是目前业内最常用的序列比对算法之一。</p>
 <h4><span id="needleman-wunsch-算法"><code>Needleman-Wunsch</code> 算法</span></h4><p><code>Needleman-Wunsch</code> 算法是将动态规划算法应用于生物序列的比较的最早期的几个实例之一。</p>
-<p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <sup><a href="#refer-anchor-2" target="_self">1 </a></sup> 。该算法的状态转移方程如下：</p>
+<p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <sup><a href="#refer-anchor-2" class="self">1 </a></sup> 。该算法的状态转移方程如下：</p>
 <script type="math/tex; mode=display">
 \begin{align}
 F(0,0) &= 0 \\\\
@@ -588,14 +588,14 @@ F(i,j-1)+d
 \end{cases}
 \end{align}</script><p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
 <h3><span id="系统发生树构建方法">系统发生树构建方法</span></h3><p>常见的系统发生树构建方法有很多，比如最小进化法、最大似然法等等。受开发时间限制，本系统只自带了非加权组平均法的建树算法。关于其他方法，用户可以通过本系统的插件系统自行添加。</p>
-<h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <sup><a href="#refer-anchor-3" target="_self">3 </a></sup> 。其具体的算法流程分为以下三步：</p>
+<h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <sup><a href="#refer-anchor-3" class="self">3 </a></sup> 。其具体的算法流程分为以下三步：</p>
 <p>首先，需要计算所有对象（如物种、基因序列等）之间的距离。找出距离最小的两个对象（ <code>OTU</code> ，<code>Operational Taxonomic Units</code> ，操作分类单元），将它们聚为一个新的 <code>OTU</code> 。新的 <code>OTU</code> 的分支点位于这两个 <code>OTU</code> 间距离的 $\frac{1}{2}$ 处。计算新的 <code>OTU</code> 与其他 <code>OTU</code> 之间的平均距离。</p>
 <p>重复上述步骤，找出距离最小的两个 <code>OTU</code> （可以是原始的 <code>OTU</code> 或之前聚类形成的新 <code>OTU</code> ）进行聚类。如此反复，直到所有的 <code>OTU</code> 都聚到一起，形成一个完整的系统发生树。</p>
 <p>通过上述聚类过程，最终可以得到一个表示物种间亲缘关系的系统发生树。在系统发生树中，每个节点代表一个 <code>OTU</code> ，节点之间的连线表示它们之间的亲缘关系，连线的长度则反映了它们之间的进化距离。</p>
 <h3><span id="常见的解决方案及其弊端">常见的解决方案及其弊端</span></h3><p>系统发生树构建与物种演化路径推断，现如今市面上已经有了几种常见的解决方案，但它们都有各自的弊端。</p>
-<p>其中，单独进行某一环节的工具，如用于序列比对的 <code>Clustal X</code> ,  <code>MAFFT</code> 等 <sup><a href="#refer-anchor-1" target="_self">1 </a></sup> ，虽然在该环节上拥有良好的性能，但并不能支持从序列到系统发生树的全过程，这使得研究人员需要频繁周转于多个平台，增加了研究需要的时间。而一些支持全环节的工具，如MEGA等，能够支撑整个科研流程，但它们的可扩展性往往不佳，无法支持用户更加多元化的需求。同时，由系统发生树得出生物演化路径，仍然需要较长的研究时间。因为并非基于所有同源序列绘制出的系统发生树，都是可以代表生物演化的路径的。而研究人员往往需要从繁杂的系统发生树数据中，找到能够提示真实生物演化路径的树，在某些研究中，这一过程相当繁杂，这无疑为科研人员的研究带来了诸多不便。</p>
+<p>其中，单独进行某一环节的工具，如用于序列比对的 <code>Clustal X</code> ,  <code>MAFFT</code> 等 <sup><a href="#refer-anchor-1" class="self">1 </a></sup> ，虽然在该环节上拥有良好的性能，但并不能支持从序列到系统发生树的全过程，这使得研究人员需要频繁周转于多个平台，增加了研究需要的时间。而一些支持全环节的工具，如MEGA等，能够支撑整个科研流程，但它们的可扩展性往往不佳，无法支持用户更加多元化的需求。同时，由系统发生树得出生物演化路径，仍然需要较长的研究时间。因为并非基于所有同源序列绘制出的系统发生树，都是可以代表生物演化的路径的。而研究人员往往需要从繁杂的系统发生树数据中，找到能够提示真实生物演化路径的树，在某些研究中，这一过程相当繁杂，这无疑为科研人员的研究带来了诸多不便。</p>
 <h2><span id="本系统的基础架构">本系统的基础架构</span></h2><p>作为一款计算机软件，本系统主要采用了 <code>Python</code> 作为编码语言。</p>
-<p><code>Python</code>  由荷兰国家数学与计算机科学研究中心的 <code>Guido van Rossum</code> 于1990年代初设计 <sup><a href="#refer-anchor-4" target="_self">4 </a></sup> 。 <code>Python</code> 提供了高效的高级数据结构，还能简单有效地面向对象编程。 <code>Python</code> 语法和动态类型，以及解释型语言的质，使它成为多数平台上写脚本和快速开发应用的编程语言，随着版本的不断更新和语言新功能的添加，逐渐被用于独立的、大型项目的开发。基于 <code>Python</code> 的许多优良的特性以及其良好的可扩展性、丰富的社区内容，我们决定使用 <code>Python</code> 构建本系统。本系统的软件架构（除数据外）共分为三个部分：算法包、用户系统、插件系统。</p>
+<p><code>Python</code>  由荷兰国家数学与计算机科学研究中心的 <code>Guido van Rossum</code> 于1990年代初设计 <sup><a href="#refer-anchor-4" class="self">4 </a></sup> 。 <code>Python</code> 提供了高效的高级数据结构，还能简单有效地面向对象编程。 <code>Python</code> 语法和动态类型，以及解释型语言的质，使它成为多数平台上写脚本和快速开发应用的编程语言，随着版本的不断更新和语言新功能的添加，逐渐被用于独立的、大型项目的开发。基于 <code>Python</code> 的许多优良的特性以及其良好的可扩展性、丰富的社区内容，我们决定使用 <code>Python</code> 构建本系统。本系统的软件架构（除数据外）共分为三个部分：算法包、用户系统、插件系统。</p>
 <h3><span id="算法嵌入及命名空间系统">算法嵌入及命名空间系统</span></h3><h4><span id="算法嵌入">算法嵌入</span></h4><p>本系统自带的序列比对、系统发生树构建等算法的源代码均在 <code>aitd\__init__.py</code> 中。所有算法（除人工智能外）被分为以下五种：</p>
 <ul>
 <li>文件解析器(<code>Parser</code>)：解析序列文件格式并存储序列信息；</li>
@@ -674,7 +674,7 @@ F(i,j-1)+d
 F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)</script><p>其中</p>
 <script type="math/tex; mode=display">
 f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}</script><p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
-<h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <sup><a href="#refer-anchor-5" target="_self">5 </a></sup> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <sup><a href="#refer-anchor-6" target="_self">6 </a></sup> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <sup><a href="#refer-anchor-7" target="_self">7 </a></sup> 。</p>
+<h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <sup><a href="#refer-anchor-5" class="self">5 </a></sup> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <sup><a href="#refer-anchor-6" class="self">6 </a></sup> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <sup><a href="#refer-anchor-7" class="self">7 </a></sup> 。</p>
 <p>这两个研究提供了足够多的训练人工智能模型的数据，我们使用这些数据进行训练。</p>
 <h2><span id="本系统的测试与展望">本系统的测试与展望</span></h2><h3><span id="系统的可扩展性与可移植性">系统的可扩展性与可移植性</span></h3><h4><span id="可扩展性">可扩展性</span></h4><p>本系统开发了插件系统（<code>Plug-in System</code>），这使得用户可以根据自己的需求，编写插件使得本系统支持更多的功能。目前，本系统暂时只支持使用 <code>Python</code>编写插件。</p>
 <p>一个可以被本系统识别的插件应至少有一个 <code>setting.json</code>，用以向系统表明该插件的属性。一个完整的 <code>setting.json</code> 由四部分组成。第一部分是插件的基本信息（名称，作者信息等）；第二部分是插件的配置项；第三部分负责向系统表明当系统运行到特殊时刻（系统启动、窗口被刷新等）时插件会执行哪些代码；第四部分负责添加该插件内包含的算法。同时，为了方便插件与系统进行数据交流，第三与第四部分还可以添加 <code>args</code>参数。</p>
