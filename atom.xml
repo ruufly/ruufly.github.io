@@ -6,7 +6,7 @@
   <link href="https://ruufly.github.io/atom.xml" rel="self"/>
   
   <link href="https://ruufly.github.io/"/>
-  <updated>2025-08-21T07:03:20.463Z</updated>
+  <updated>2025-12-16T14:25:46.486Z</updated>
   <id>https://ruufly.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>最新 | U571839 千本桜 题解</title>
+    <title>最新 | 一款基于Python的随机学生点名器</title>
+    <link href="https://ruufly.github.io/2025/12/16/random-student/"/>
+    <id>https://ruufly.github.io/2025/12/16/random-student/</id>
+    <published>2025-12-16T13:30:00.000Z</published>
+    <updated>2025-12-16T14:25:46.486Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文是本人编写的一款随机学生点名器的README文件，您可以点击&lt;a href=&quot;https://github.com/ruufly/Random-Student/releases/latest&quot;&gt;此处（github源）&lt;/a&gt;或&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="项目" scheme="https://ruufly.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="随机学生" scheme="https://ruufly.github.io/tags/%E9%9A%8F%E6%9C%BA%E5%AD%A6%E7%94%9F/"/>
+    
+    <category term="Random Student" scheme="https://ruufly.github.io/tags/Random-Student/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>U571839 千本桜 题解</title>
     <link href="https://ruufly.github.io/2025/08/21/u571839-solution/"/>
     <id>https://ruufly.github.io/2025/08/21/u571839-solution/</id>
     <published>2025-08-21T07:30:00.000Z</published>
-    <updated>2025-08-21T07:03:20.463Z</updated>
+    <updated>2025-12-16T14:24:45.460Z</updated>
     
     
       
@@ -372,14 +399,14 @@
     <link href="https://ruufly.github.io/2021/07/10/about-me/"/>
     <id>https://ruufly.github.io/2021/07/10/about-me/</id>
     <published>2021-07-09T16:00:00.000Z</published>
-    <updated>2025-10-02T14:53:21.169Z</updated>
+    <updated>2025-12-16T14:24:05.300Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;本页面最后一次更新于2025-08-21&lt;/p&gt;
+    <summary type="html">&lt;p&gt;本页面最后一次更新于2025-12-16&lt;/p&gt;
 &lt;p&gt;大家好，我是distjr_，各位可以叫我dist或者distance。&lt;/p&gt;
 &lt;p&gt;如你所见，这个名字很奇怪。&lt;/p&gt;
 &lt;p&gt;我原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机</summary>
