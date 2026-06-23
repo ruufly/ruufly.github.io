@@ -1,7 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>最新 | 一款基于Python的随机学生点名器</title>
+    <title>最新 | KeepOpen：一款保持移动硬盘开启状态的小工具</title>
+    <url>/2026/06/11/keepopen/</url>
+    <content><![CDATA[<h1><span id="keepopen">KeepOpen</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/KeepOpen">Github 仓库</a> | <a href="https://github.com/ruufly/KeepOpen/blob/main/LICENSE">开源许可证</a> | <a href="https://github.com/ruufly/KeepOpen/releases">发行版下载</a></p>
+<blockquote>
+<p>一款保持移动硬盘开启状态的小工具</p>
+</blockquote>
+<h2><span id="作者">作者</span></h2><p>以下列出了参与本项目的作者。</p>
+<ul>
+<li><a href="https://github.com/ruufly">@distjr_/@ruufly!</a></li>
+</ul>
+<h2><span id="使用说明">使用说明</span></h2><p>本工具打开后，自动最小化至系统托盘。通过系统托盘可进入设置页面</p>
+<p>设置页面上方可勾选需要保持开启状态的盘符，中间可设置盘符开启状态的刷新时间、是否开机自启动、是否以管理员模式启动等。其中，如需对系统盘使用KeepOpen，建议打开“以管理员模式启动”选项。下方可清理软件运行中的缓存、日志文件等。</p>
+<h2><span id="注意事项">注意事项</span></h2><p>本工具通过修改注册表以实现开机自启动，在一些系统中，卸载后可能无法及时清理注册表残余，请使用<code>Geek Uninstaller</code>等工具卸载，或在卸载后手动清理<code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\</code>中的残余。</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>KeepOpen</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>置顶 | 关于我自己</title>
+    <url>/2021/07/10/about-me/</url>
+    <content><![CDATA[<p>本页面最后一次更新于2025-12-16</p>
+<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
+<p>如你所见，这个名字很奇怪。</p>
+<p>我原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
+<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
+<p>我本人是一个普通的高中生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，前段时间参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。</p>
+<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
+<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
+<p>因为高中的学业还是比较繁重的，所以我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
+<p>以上。请多关照。</p>
+<p align="right">distjr_</p>
+
+<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
+<p>Bilibili: <a href="https://space.bilibili.com/1159124697">bilibili</a></p>
+<p>GitHub: <a href="https://github.com/ruufly">github</a></p>
+<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
+<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
+<p>Luogu: <a href="https://www.luogu.com.cn/user/363964">luogu</a></p>
+<p>Zhihu: <a href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
+<p>X: <a href="https://x.com/distjr_">X</a></p>
+]]></content>
+      <categories>
+        <category>关于</category>
+      </categories>
+      <tags>
+        <tag>关于</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最新 | 关于我的高中三年</title>
+    <url>/2026/06/11/graduate/</url>
+    <content><![CDATA[<blockquote>
+<p>写在前面：这篇文章的写作没有经过任何提前的构思，完全是想到什么写什么，所以可能写得有点乱，各位见谅</p>
+</blockquote>
+<p>昨天刚开完毕业典礼，开完之后同学们在教室里又待了一段时间才陆陆续续地告别。我基本上是全班走得最晚的一个了（绝不是为了多玩一会电教），即便是离开校门之后，也没有任何关于“毕业了”的实感。总感觉好像高中刚入学那天就在不久之前一样，但又感觉几天前的高考就像是十几年前的往事。</p>
+<p>后来想了想，可能是高中三年太不重视记录了。高一那年学着其他人像模像样整了个日记本，写了没两个月，那个本子就不知道跑到哪里去了。这些年倒是笔没停过，但写的都是小说一类的，对于那些真真切切发生在身边的事情，反而忘得差不多了。总感觉不擅长记录的人，就很容易被时间困住，因为对时间的流逝没有什么明确的感觉。</p>
+<p>那就试着写写吧，趁着有些记忆还没有被彻底忘掉。</p>
+<h2><span id="关于最开始">关于最开始</span></h2><p>我所在的这个班属于是一种特殊招生，初三下学期就提前招到高中来的那种。当时这东西很新潮，特别是在像我们这边的这种内地小城市——我们班是我们学校第二年招这类学生——后来这种2.5+3.5的模式没搞多少年，教育局就不乐意了，遂作罢。</p>
+<p>（其实当时考虑报这种提前招生班主要是初三上学期，2022年冬天，是知周所众的一个学期的网课，当时文化课成绩掉的很厉害，不来这种班的话大概率中考就直接爆炸了）</p>
+<p>我们市的市区头部高中的水平排名大概是 <code>第一&gt;&gt;第二&gt;第三&gt;&gt;其他</code> 的这种，前三所学校开了这种提前招生班。第一名的学校我显然考不上所以不考虑，第二名的学校我去报名了然后他们嫌文化课成绩太低于是初审没通过，第三名的学校是我们市每年CSP初赛的考点，我上初中的时候CSP-J拿了个省二就想着来这边搞信竞，然后就来到了这里，也算是比较巧合。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>毕业</tag>
+        <tag>2026</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一款基于Python的随机学生点名器</title>
     <url>/2025/12/16/random-student/</url>
     <content><![CDATA[<p>本文是本人编写的一款随机学生点名器的README文件，您可以点击<a href="https://github.com/ruufly/Random-Student/releases/latest">此处（github源）</a>或<a href="https://gitee.com/distjr/random-student/releases/latest">此处（gitee源）</a>以下载该点名器的安装包。</p>
 <h1><span id="random-student">Random Student</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/Random-Student/">Github 仓库</a> | <a href="https://github.com/ruufly/Random-Student/blob/main/LICENSE">开源许可证</a></p>
@@ -149,37 +224,6 @@
       <tags>
         <tag>随机学生</tag>
         <tag>Random Student</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>置顶 | 关于我自己</title>
-    <url>/2021/07/10/about-me/</url>
-    <content><![CDATA[<p>本页面最后一次更新于2025-12-16</p>
-<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
-<p>如你所见，这个名字很奇怪。</p>
-<p>我原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
-<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
-<p>我本人是一个普通的高中生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，前段时间参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。</p>
-<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
-<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
-<p>因为高中的学业还是比较繁重的，所以我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
-<p>以上。请多关照。</p>
-<p align="right">distjr_</p>
-
-<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
-<p>Bilibili: <a href="https://space.bilibili.com/1159124697">bilibili</a></p>
-<p>GitHub: <a href="https://github.com/ruufly">github</a></p>
-<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
-<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
-<p>Luogu: <a href="https://www.luogu.com.cn/user/363964">luogu</a></p>
-<p>Zhihu: <a href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
-<p>X: <a href="https://x.com/distjr_">X</a></p>
-]]></content>
-      <categories>
-        <category>关于</category>
-      </categories>
-      <tags>
-        <tag>关于</tag>
       </tags>
   </entry>
   <entry>

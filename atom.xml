@@ -6,7 +6,7 @@
   <link href="https://ruufly.github.io/atom.xml" rel="self"/>
   
   <link href="https://ruufly.github.io/"/>
-  <updated>2025-12-16T14:25:46.486Z</updated>
+  <updated>2026-06-23T05:29:38.035Z</updated>
   <id>https://ruufly.github.io/</id>
   
   <author>
@@ -17,11 +17,68 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>最新 | 一款基于Python的随机学生点名器</title>
+    <title>最新 | 关于我的高中三年</title>
+    <link href="https://ruufly.github.io/2026/06/11/graduate/"/>
+    <id>https://ruufly.github.io/2026/06/11/graduate/</id>
+    <published>2026-06-11T14:00:00.000Z</published>
+    <updated>2026-06-23T05:29:38.035Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;写在前面：这篇文章的写作没有经过任何提前的构思，完全是想到什么写什么，所以可能写得有点乱，各位见谅&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;昨天刚开完毕业典礼，开完之后同学们在教室里又待了一段时间才陆陆续续地告别。我基本上是全班走得最晚的一个了（</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://ruufly.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://ruufly.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="毕业" scheme="https://ruufly.github.io/tags/%E6%AF%95%E4%B8%9A/"/>
+    
+    <category term="2026" scheme="https://ruufly.github.io/tags/2026/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>最新 | KeepOpen：一款保持移动硬盘开启状态的小工具</title>
+    <link href="https://ruufly.github.io/2026/06/11/keepopen/"/>
+    <id>https://ruufly.github.io/2026/06/11/keepopen/</id>
+    <published>2026-06-11T14:00:00.000Z</published>
+    <updated>2026-06-23T05:45:21.100Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;keepopen&quot;&gt;KeepOpen&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://ruufly.github.io/&quot;&gt;个人网站&lt;/a&gt; | &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="项目" scheme="https://ruufly.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="KeepOpen" scheme="https://ruufly.github.io/tags/KeepOpen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一款基于Python的随机学生点名器</title>
     <link href="https://ruufly.github.io/2025/12/16/random-student/"/>
     <id>https://ruufly.github.io/2025/12/16/random-student/</id>
     <published>2025-12-16T13:30:00.000Z</published>
-    <updated>2025-12-16T14:25:46.486Z</updated>
+    <updated>2026-06-23T05:23:39.561Z</updated>
     
     
       
