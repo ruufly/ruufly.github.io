@@ -75,9 +75,13 @@ $(function () {
 
         $('#articleContent img').each(function () {
             let imgPath = $(this).attr('src');
+            // const path = require('path');
             $(this).wrap('<div class="img-item" data-src="' + imgPath + '" data-sub-html=".caption"></div>');
             // 图片添加阴影
-            $(this).addClass("img-shadow img-margin");
+            if (imgPath.slice(-1) != '_') {
+                $(this).addClass("img-shadow img-margin");
+                // TODO
+            }
             // 图片添加字幕
             let alt = $(this).attr('alt');
             let title = $(this).attr('title');
@@ -121,7 +125,7 @@ $(function () {
 
     /*回到顶部*/
     $('#backTop').click(function () {
-        $('body,html').animate({scrollTop: 0}, 400);
+        $('body,html').animate({ scrollTop: 0 }, 400);
         return false;
     });
 
@@ -147,25 +151,25 @@ $(function () {
         }
     }
 
-    	
-	$(".nav-menu>li").hover(function(){
-		$(this).children('ul').stop(true,true).show();
-		 $(this).addClass('nav-show').siblings('li').removeClass('nav-show');
-		
-	},function(){
-		$(this).children('ul').stop(true,true).hide();
-		$('.nav-item.nav-show').removeClass('nav-show');
-	})
-	
-    $('.m-nav-item>a').on('click',function(){
-            if ($(this).next('ul').css('display') == "none") {
-                $('.m-nav-item').children('ul').slideUp(300);
-                $(this).next('ul').slideDown(100);
-                $(this).parent('li').addClass('m-nav-show').siblings('li').removeClass('m-nav-show');
-            }else{
-                $(this).next('ul').slideUp(100);
-                $('.m-nav-item.m-nav-show').removeClass('m-nav-show');
-            }
+
+    $(".nav-menu>li").hover(function () {
+        $(this).children('ul').stop(true, true).show();
+        $(this).addClass('nav-show').siblings('li').removeClass('nav-show');
+
+    }, function () {
+        $(this).children('ul').stop(true, true).hide();
+        $('.nav-item.nav-show').removeClass('nav-show');
+    })
+
+    $('.m-nav-item>a').on('click', function () {
+        if ($(this).next('ul').css('display') == "none") {
+            $('.m-nav-item').children('ul').slideUp(300);
+            $(this).next('ul').slideDown(100);
+            $(this).parent('li').addClass('m-nav-show').siblings('li').removeClass('m-nav-show');
+        } else {
+            $(this).next('ul').slideUp(100);
+            $('.m-nav-item.m-nav-show').removeClass('m-nav-show');
+        }
     });
 
     // 初始化加载 tooltipped.
