@@ -3,7 +3,7 @@
   <entry>
     <title>最新 | KeepOpen：一款保持移动硬盘开启状态的小工具</title>
     <url>/2026/06/11/keepopen/</url>
-    <content><![CDATA[<p><img src="/medias/keepopen.png_" alt></p>
+    <content><![CDATA[<p><img src="/medias/keepopen.png_"></p>
 <h1><span id="keepopen">KeepOpen</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/KeepOpen">Github 仓库</a> | <a href="https://github.com/ruufly/KeepOpen/blob/main/LICENSE">开源许可证</a> | <a href="https://github.com/ruufly/KeepOpen/releases">发行版下载</a></p>
 <blockquote>
 <p>一款保持移动硬盘开启状态的小工具</p>
@@ -151,47 +151,44 @@
     <span class="token key atrule">refresh</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
     <span class="token key atrule">refreshIndex</span><span class="token punctuation">:</span> &lt;index<span class="token punctuation">&gt;</span>
   <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>各配置项的解释如下：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:left">选项</th>
-<th style="text-align:left">描述</th>
+<th align="left">选项</th>
+<th align="left">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">description</td>
-<td style="text-align:left">该逻辑的描述（请保证该项与其他插件的该项不同，用户选择随机逻辑时只能看到该项）<br>其下列有不同语言，请至少填写 <code>zh-SI</code> 的内容，这是软件找不到对应语言时的默认语言。</td>
+<tbody><tr>
+<td align="left">description</td>
+<td align="left">该逻辑的描述（请保证该项与其他插件的该项不同，用户选择随机逻辑时只能看到该项）<br>其下列有不同语言，请至少填写 <code>zh-SI</code> 的内容，这是软件找不到对应语言时的默认语言。</td>
 </tr>
 <tr>
-<td style="text-align:left">type</td>
-<td style="text-align:left">有 <code>function</code> 和 <code>file</code> 两项，编写的插件该项均为 <code>file</code> 。</td>
+<td align="left">type</td>
+<td align="left">有 <code>function</code> 和 <code>file</code> 两项，编写的插件该项均为 <code>file</code> 。</td>
 </tr>
 <tr>
-<td style="text-align:left">index</td>
-<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
+<td align="left">index</td>
+<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
 <tr>
-<td style="text-align:left">file</td>
-<td style="text-align:left"><code>file</code> 型插件特有参数，请填写插件本体的路径（相对于软件根目录）</td>
+<td align="left">file</td>
+<td align="left"><code>file</code> 型插件特有参数，请填写插件本体的路径（相对于软件根目录）</td>
 </tr>
 <tr>
-<td style="text-align:left">show</td>
-<td style="text-align:left">是否在设置栏显示该插件。</td>
+<td align="left">show</td>
+<td align="left">是否在设置栏显示该插件。</td>
 </tr>
 <tr>
-<td style="text-align:left">refresh</td>
-<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
+<td align="left">refresh</td>
+<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
 <tr>
-<td style="text-align:left">refreshIndex</td>
-<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
+<td align="left">refreshIndex</td>
+<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>当用户开始随机抽取学生时，系统会将学生名单转存至 <code>.\temp\student.tmp</code> ，将学生抽取历史转存至 <code>.\temp\history.tmp</code></p>
 <p>如果用户使用连抽，系统会将连抽次数转存至 <code>.\temp\cdraw.tmp</code></p>
 <p>以上数据均使用 <code>pickle.dump</code> 存储</p>
@@ -204,6 +201,7 @@
         ...
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>学生抽取历史文件格式如下：</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
@@ -213,6 +211,7 @@
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     ...
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3><span id="高通量检验">高通量检验</span></h3><p>在 设置-点名次数统计-高通量检验 中。</p>
 <p>通过生成大量学生，再进行大量抽取试验以检验随机逻辑的优劣性。</p>
 <p>您可以通过修改 <code>C_checkA.ini</code> 以配置高通量检验。</p>
@@ -228,6 +227,7 @@
 <span class="token key attr-name">C_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;C_size&gt;</span>
 <span class="token key attr-name">N_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;N_size&gt;</span>
 <span class="token key attr-name">U_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;U_size&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>其中， <code>checkA_file</code> 为检验 <code>file</code> 逻辑的配置，<code>checkA_function</code> 为检验 <code>function</code> 逻辑的配置， <code>try_time</code> 为随机抽取次数， <code>C|N|U_size</code> 分别为检验中生成的各类学生人数。</p>
 <h3><span id="链接文件">链接文件</span></h3><p>在 设置-管理学生名单-导出 中，将学生数据导出为 Random Student connect file 后即保存为链接文件。</p>
 <p>在正常安装本软件的前提下，直接打开链接文件，即可将链接文件中的数据作为学生名单的来源以随机抽取。</p>
@@ -644,16 +644,8 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
 <h3><span id="序列比对方法">序列比对方法</span></h3><p>序列比对是将两个或多个核酸序列或蛋白质序列排列在一起，以揭示它们之间的相似性和差异性的过程。本系统的序列比对过程，采用的是 <code>Needleman-Wunsch</code> 算法，这一算法效率高、准确性好，是目前业内最常用的序列比对算法之一。</p>
 <h4><span id="needleman-wunsch-算法"><code>Needleman-Wunsch</code> 算法</span></h4><p><code>Needleman-Wunsch</code> 算法是将动态规划算法应用于生物序列的比较的最早期的几个实例之一。</p>
 <p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <sup><a href="#refer-anchor-2" class="self">1 </a></sup> 。该算法的状态转移方程如下：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-F(0,0) &= 0 \\\\
-F(i,j) &= \max
-\begin{cases}
-F(i-1,j-1) + s(x_i,y_j)  \\\\
-F(i-1,j)+d \\\\
-F(i,j-1)+d
-\end{cases}
-\end{align}</script><p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
+<p>$$<br>\begin{align}<br>F(0,0) &amp;= 0 \\<br>F(i,j) &amp;= \max<br>\begin{cases}<br>F(i-1,j-1) + s(x_i,y_j)  \\<br>F(i-1,j)+d \\<br>F(i,j-1)+d<br>\end{cases}<br>\end{align}<br>$$</p>
+<p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
 <h3><span id="系统发生树构建方法">系统发生树构建方法</span></h3><p>常见的系统发生树构建方法有很多，比如最小进化法、最大似然法等等。受开发时间限制，本系统只自带了非加权组平均法的建树算法。关于其他方法，用户可以通过本系统的插件系统自行添加。</p>
 <h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <sup><a href="#refer-anchor-3" class="self">3 </a></sup> 。其具体的算法流程分为以下三步：</p>
 <p>首先，需要计算所有对象（如物种、基因序列等）之间的距离。找出距离最小的两个对象（ <code>OTU</code> ，<code>Operational Taxonomic Units</code> ，操作分类单元），将它们聚为一个新的 <code>OTU</code> 。新的 <code>OTU</code> 的分支点位于这两个 <code>OTU</code> 间距离的 $\frac{1}{2}$ 处。计算新的 <code>OTU</code> 与其他 <code>OTU</code> 之间的平均距离。</p>
@@ -677,7 +669,6 @@ F(i,j-1)+d
 <p>在打开某一个项目后，系统会首先读取项目文件夹中的 <code>setting.json</code> 文件，这个文件中存储了所有项目数据的命名空间名以及项目文件的存储地址。</p>
 <p>随后，系统会将这些数据，以及系统自带的算法等数据全部存储进 <code>namespace:dict</code> 中。</p>
 <p>命名空间系统中的所有命名空间列表如下：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -685,8 +676,7 @@ F(i,j-1)+d
 <th>存储的内容</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>SEQ::</td>
 <td>序列数据</td>
 </tr>
@@ -726,9 +716,7 @@ F(i,j-1)+d
 <td>MODELLIST::</td>
 <td>AI 模型</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3><span id="基于-python-的控制台窗体化双端系统">基于 <code>Python</code> 的控制台+窗体化双端系统</span></h3><p>本系统的用户系统分为控制台端和窗口端双端，用户可以自行选择使用控制台或窗口进行工作。</p>
 <h4><span id="控制台端">控制台端</span></h4><p>本系统的控制台端使用 <code>matplotlib</code> 作为图表渲染工具。其主要分为三个模式: <code>Normal Mode</code>, <code>Debug Mode</code>, <code>Project Mode</code>. 其中，在 <code>Normal Mode</code> 中，用户可以对控制台端的默认设置进行更改等操作。<code>Project Mode</code>中，用户可以对当前的项目进行操作，包括导入序列，对比序列，导出生成的数据等. <code>Debug Mode</code>可以在上述两个模式的基础的同时，允许用户执行单行 <code>Python</code>代码以方便用户对控制台端程序进行调试。</p>
 <h4><span id="窗口端">窗口端</span></h4><p>本系统的窗口端使用 <code>tkinter</code>为窗体化的基本框架，同样使用 <code>matplotlib</code>作为图表渲染的工具。本系统窗口段的用户界面共分为三部分：菜单栏、侧栏、主栏。</p>
@@ -736,11 +724,11 @@ F(i,j-1)+d
 <p><img src="/medias/images/2024000001.jpg" alt="Escherichia coli str. K-12 细胞色素 C 基因的序列，序列来源：NCBI"></p>
 <h2><span id="人工智能的引入">人工智能的引入</span></h2><p>为了更好地推断物种演化路径，本系统引入了人工智能，其可以根据用户提供的一系列系统发生树与序列数据推断出来更接近真实物种演化情况的系统发生树。</p>
 <h3><span id="人工智能模型的设计">人工智能模型的设计</span></h3><p>本系统的人工智能模型使用了固定最大值法进行设计。</p>
-<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x<em>i^{\prime}=\frac{x</em>{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
-<script type="math/tex; mode=display">
-F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)</script><p>其中</p>
-<script type="math/tex; mode=display">
-f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}</script><p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
+<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x_i^{\prime}=\frac{x_{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
+<p>$$<br>F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)<br>$$</p>
+<p>其中</p>
+<p>$$<br>f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}<br>$$</p>
+<p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
 <h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <sup><a href="#refer-anchor-5" class="self">5 </a></sup> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <sup><a href="#refer-anchor-6" class="self">6 </a></sup> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <sup><a href="#refer-anchor-7" class="self">7 </a></sup> 。</p>
 <p>这两个研究提供了足够多的训练人工智能模型的数据，我们使用这些数据进行训练。</p>
 <h2><span id="本系统的测试与展望">本系统的测试与展望</span></h2><h3><span id="系统的可扩展性与可移植性">系统的可扩展性与可移植性</span></h3><h4><span id="可扩展性">可扩展性</span></h4><p>本系统开发了插件系统（<code>Plug-in System</code>），这使得用户可以根据自己的需求，编写插件使得本系统支持更多的功能。目前，本系统暂时只支持使用 <code>Python</code>编写插件。</p>
@@ -1015,7 +1003,7 @@ f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\as
     <url>/2024/02/18/u314392-solution/</url>
     <content><![CDATA[<h2><span id="思路">思路</span></h2><p>首先是一个 <code>dp</code> 的板子，设 $dp_j$ 为花费 $j$ 元能获得的最大的期待值。</p>
 <p>对于每次转移，都可以选择买哪一本书，一旦买了一本书，花费的钱增加 $p_i$ ，获得的总期待值增加 $v_i$ 。</p>
-<p>故不难看出状态转移方程为 $dp<em>j = \max \lbrace dp</em>{j-p_i}+v_i \rbrace $。</p>
+<p>故不难看出状态转移方程为 $dp_j = \max \lbrace dp_{j-p_i}+v_i \rbrace $。</p>
 <p>但题目还要求输出方案，所以开一个 <code>vector</code> 记录方案，每次找到更优的方案时，就在上一个方案的后面补上当前新增加的物品，由于输入是单调的，自然保证输出是单调的。</p>
 <p>同时，还要设置一个标记数组 <code>flag</code> 以筛去不合法的答案，确保所有找到的方案都是正常计算得来的，否则可能会出现一些奇奇怪怪的bug。</p>
 <p>感谢 linmou 提供的 std！</p>
@@ -1263,7 +1251,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 <p>$v_{i, j} = (a_i + b_j) \bmod{k}$。</p>
 <p>求两个序列及其模数 $k$。</p>
 <h2><span id="思路">思路</span></h2><p>注意到，如果我们将 $a$ 序列中的所有数加上一，$b$ 序列中的所有数减去一，整个矩阵不会改变。</p>
-<p>因此我们不妨设 $a<em>1 = 0$，通过第一列推出 $b$ 序列的值，进而推出 $a$ 序列的值。现在我们为每个格子 $(i, j)$ 计算一个误差 $error = a_i + b_j - v</em>{i, j}$。</p>
+<p>因此我们不妨设 $a_1 = 0$，通过第一列推出 $b$ 序列的值，进而推出 $a$ 序列的值。现在我们为每个格子 $(i, j)$ 计算一个误差 $error = a_i + b_j - v_{i, j}$。</p>
 <p>如果所有的误差均为 $0$，则已经找到了一个满足条件的矩阵。否则意味着误差一定是 $k$ 的倍数，即 $k$ 一定是所有误差的公因数。另外 $k$ 还必须大于所有 $v$ 矩阵中出现的数。如果满足这两个条件则有解，否则无解。</p>
 <h2><span id="代码">代码</span></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
  * @file CF509D.cpp
@@ -1319,6 +1307,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>以上。如有问题烦请指出，谢谢。</p>
 ]]></content>
       <categories>
@@ -1591,22 +1580,18 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 <p>test</p>
 <p><strong>test</strong></p>
 <p><del>test</del></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
+<th align="center"></th>
+<th align="center"></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">test</td>
-<td style="text-align:center">test</td>
+<tbody><tr>
+<td align="center">test</td>
+<td align="center">test</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <blockquote>
 <p>test</p>
 <blockquote>
@@ -1614,8 +1599,9 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 </blockquote>
 </blockquote>
 <p><em>test</em></p>
-<script type="math/tex; mode=display">
-\textcolor{red}{test}</script><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>$$<br>\textcolor{red}{test}<br>$$</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <table>
     <tbody><tr>
         <td>Test</td>

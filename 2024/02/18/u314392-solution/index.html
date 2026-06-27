@@ -37,9 +37,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="distjr_的博客" type="application/atom+xml">
-
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="distjr_的博客" type="application/atom+xml">
 </head>
 
 
@@ -556,7 +556,7 @@
             <div id="articleContent">
                 <h2><span id="思路">思路</span></h2><p>首先是一个 <code>dp</code> 的板子，设 $dp_j$ 为花费 $j$ 元能获得的最大的期待值。</p>
 <p>对于每次转移，都可以选择买哪一本书，一旦买了一本书，花费的钱增加 $p_i$ ，获得的总期待值增加 $v_i$ 。</p>
-<p>故不难看出状态转移方程为 $dp<em>j = \max \lbrace dp</em>{j-p_i}+v_i \rbrace $。</p>
+<p>故不难看出状态转移方程为 $dp_j = \max \lbrace dp_{j-p_i}+v_i \rbrace $。</p>
 <p>但题目还要求输出方案，所以开一个 <code>vector</code> 记录方案，每次找到更优的方案时，就在上一个方案的后面补上当前新增加的物品，由于输入是单调的，自然保证输出是单调的。</p>
 <p>同时，还要设置一个标记数组 <code>flag</code> 以筛去不合法的答案，确保所有找到的方案都是正常计算得来的，否则可能会出现一些奇奇怪怪的bug。</p>
 <p>感谢 linmou 提供的 std！</p>
