@@ -80,7 +80,7 @@ $(function () {
             // 图片添加阴影
             if (imgPath.slice(-1) != '_') {
                 $(this).addClass("img-shadow img-margin");
-                // TODO
+                // 文件末尾有'_'的不会添加阴影，用于图标展示等添加阴影会很丑陋的情况
             }
             // 图片添加字幕
             let alt = $(this).attr('alt');

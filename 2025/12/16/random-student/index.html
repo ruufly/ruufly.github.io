@@ -600,44 +600,47 @@
     <span class="token key atrule">refresh</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
     <span class="token key atrule">refreshIndex</span><span class="token punctuation">:</span> &lt;index<span class="token punctuation">&gt;</span>
   <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>各配置项的解释如下：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">选项</th>
-<th align="left">描述</th>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">description</td>
-<td align="left">该逻辑的描述（请保证该项与其他插件的该项不同，用户选择随机逻辑时只能看到该项）<br>其下列有不同语言，请至少填写 <code>zh-SI</code> 的内容，这是软件找不到对应语言时的默认语言。</td>
+<tbody>
+<tr>
+<td style="text-align:left">description</td>
+<td style="text-align:left">该逻辑的描述（请保证该项与其他插件的该项不同，用户选择随机逻辑时只能看到该项）<br>其下列有不同语言，请至少填写 <code>zh-SI</code> 的内容，这是软件找不到对应语言时的默认语言。</td>
 </tr>
 <tr>
-<td align="left">type</td>
-<td align="left">有 <code>function</code> 和 <code>file</code> 两项，编写的插件该项均为 <code>file</code> 。</td>
+<td style="text-align:left">type</td>
+<td style="text-align:left">有 <code>function</code> 和 <code>file</code> 两项，编写的插件该项均为 <code>file</code> 。</td>
 </tr>
 <tr>
-<td align="left">index</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+<td style="text-align:left">index</td>
+<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
 <tr>
-<td align="left">file</td>
-<td align="left"><code>file</code> 型插件特有参数，请填写插件本体的路径（相对于软件根目录）</td>
+<td style="text-align:left">file</td>
+<td style="text-align:left"><code>file</code> 型插件特有参数，请填写插件本体的路径（相对于软件根目录）</td>
 </tr>
 <tr>
-<td align="left">show</td>
-<td align="left">是否在设置栏显示该插件。</td>
+<td style="text-align:left">show</td>
+<td style="text-align:left">是否在设置栏显示该插件。</td>
 </tr>
 <tr>
-<td align="left">refresh</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+<td style="text-align:left">refresh</td>
+<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
 <tr>
-<td align="left">refreshIndex</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+<td style="text-align:left">refreshIndex</td>
+<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>当用户开始随机抽取学生时，系统会将学生名单转存至 <code>.\temp\student.tmp</code> ，将学生抽取历史转存至 <code>.\temp\history.tmp</code></p>
 <p>如果用户使用连抽，系统会将连抽次数转存至 <code>.\temp\cdraw.tmp</code></p>
 <p>以上数据均使用 <code>pickle.dump</code> 存储</p>
@@ -650,7 +653,6 @@
         ...
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>学生抽取历史文件格式如下：</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
@@ -660,7 +662,6 @@
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     ...
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3><span id="高通量检验">高通量检验</span></h3><p>在 设置-点名次数统计-高通量检验 中。</p>
 <p>通过生成大量学生，再进行大量抽取试验以检验随机逻辑的优劣性。</p>
 <p>您可以通过修改 <code>C_checkA.ini</code> 以配置高通量检验。</p>
@@ -676,7 +677,6 @@
 <span class="token key attr-name">C_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;C_size&gt;</span>
 <span class="token key attr-name">N_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;N_size&gt;</span>
 <span class="token key attr-name">U_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;U_size&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>其中， <code>checkA_file</code> 为检验 <code>file</code> 逻辑的配置，<code>checkA_function</code> 为检验 <code>function</code> 逻辑的配置， <code>try_time</code> 为随机抽取次数， <code>C|N|U_size</code> 分别为检验中生成的各类学生人数。</p>
 <h3><span id="链接文件">链接文件</span></h3><p>在 设置-管理学生名单-导出 中，将学生数据导出为 Random Student connect file 后即保存为链接文件。</p>
 <p>在正常安装本软件的前提下，直接打开链接文件，即可将链接文件中的数据作为学生名单的来源以随机抽取。</p>
@@ -1430,6 +1430,7 @@
             </script>
             
             <br>
+            <a href="https://icp.gov.moe/?keyword=20260379" target="_blank">萌ICP备20260379号</a>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
