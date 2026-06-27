@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.distjr.top/schedule/index.html</loc>
+    <loc>https://blog.distjr.top/2026/06/27/batan/</loc>
     
     <lastmod>2026-06-27</lastmod>
     
@@ -10,6 +10,13 @@
   
   <url>
     <loc>https://blog.distjr.top/2026/06/27/short-test/</loc>
+    
+    <lastmod>2026-06-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.top/schedule/index.html</loc>
     
     <lastmod>2026-06-27</lastmod>
     
@@ -149,14 +156,14 @@
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/live2d-widget/README.html</loc>
+    <loc>https://blog.distjr.top/live2d-widget/README.en.html</loc>
     
     <lastmod>2024-02-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/live2d-widget/README.en.html</loc>
+    <loc>https://blog.distjr.top/live2d-widget/README.html</loc>
     
     <lastmod>2024-02-26</lastmod>
     
@@ -177,14 +184,14 @@
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/live2d-widget/demo/login.html</loc>
+    <loc>https://blog.distjr.top/live2d-widget/demo/demo.html</loc>
     
     <lastmod>2024-02-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/live2d-widget/demo/demo.html</loc>
+    <loc>https://blog.distjr.top/live2d-widget/demo/login.html</loc>
     
     <lastmod>2024-02-26</lastmod>
     
@@ -242,14 +249,21 @@
 
   
   <url>
-    <loc>https://blog.distjr.top/tags/%E9%A2%98%E8%A7%A3/</loc>
+    <loc>https://blog.distjr.top/tags/%E5%B0%8F%E8%AF%B4/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/tags/%E6%9E%84%E9%80%A0%E6%B3%95/</loc>
+    <loc>https://blog.distjr.top/tags/%E7%9F%AD%E7%AF%87/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.top/tags/2024/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -284,21 +298,14 @@
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <loc>https://blog.distjr.top/tags/%E9%A2%98%E8%A7%A3/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/tags/%E7%9F%AD%E7%AF%87/</loc>
-    <lastmod>2026-06-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.distjr.top/tags/2024/</loc>
+    <loc>https://blog.distjr.top/tags/%E6%9E%84%E9%80%A0%E6%B3%95/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -326,6 +333,34 @@
   </url>
   
   <url>
+    <loc>https://blog.distjr.top/tags/%E7%95%AA%E8%AF%84/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.top/tags/%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.top/tags/KeepOpen/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.top/tags/2023/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.distjr.top/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
@@ -347,28 +382,7 @@
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/tags/2023/</loc>
-    <lastmod>2026-06-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.distjr.top/tags/KeepOpen/</loc>
-    <lastmod>2026-06-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.distjr.top/tags/2025/</loc>
-    <lastmod>2026-06-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.distjr.top/tags/test/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -402,10 +416,17 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://blog.distjr.top/tags/test/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://blog.distjr.top/categories/OI/</loc>
+    <loc>https://blog.distjr.top/categories/%E6%96%87%E9%9B%86/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -419,7 +440,7 @@
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/categories/%E6%96%87%E9%9B%86/</loc>
+    <loc>https://blog.distjr.top/categories/OI/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -433,7 +454,7 @@
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://blog.distjr.top/categories/%E7%95%AA%E8%AF%84/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -441,6 +462,13 @@
   
   <url>
     <loc>https://blog.distjr.top/categories/%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.top/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
