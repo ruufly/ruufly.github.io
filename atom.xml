@@ -6,7 +6,7 @@
   <link href="https://blog.distjr.top/atom.xml" rel="self"/>
   
   <link href="https://blog.distjr.top/"/>
-  <updated>2026-06-26T11:43:26.686Z</updated>
+  <updated>2026-06-26T12:02:11.058Z</updated>
   <id>https://blog.distjr.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最新 | KeepOpen：一款保持移动硬盘开启状态的小工具</title>
+    <link href="https://blog.distjr.top/2026/06/11/keepopen/"/>
+    <id>https://blog.distjr.top/2026/06/11/keepopen/</id>
+    <published>2026-06-11T14:00:00.000Z</published>
+    <updated>2026-06-26T12:02:11.058Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/medias/keepopen.png_&quot; alt&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;span id=&quot;keepopen&quot;&gt;KeepOpen&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://ruufly.github.io/&quot;&gt;个人网站&lt;/a&gt; |</summary>
+        
+      
+    
+    
+    
+    <category term="项目" scheme="https://blog.distjr.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="KeepOpen" scheme="https://blog.distjr.top/tags/KeepOpen/"/>
+    
+  </entry>
   
   <entry>
     <title>最新 | 关于我的高中三年</title>
@@ -45,32 +71,6 @@
     <category term="毕业" scheme="https://blog.distjr.top/tags/%E6%AF%95%E4%B8%9A/"/>
     
     <category term="2026" scheme="https://blog.distjr.top/tags/2026/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>最新 | KeepOpen：一款保持移动硬盘开启状态的小工具</title>
-    <link href="https://blog.distjr.top/2026/06/11/keepopen/"/>
-    <id>https://blog.distjr.top/2026/06/11/keepopen/</id>
-    <published>2026-06-11T14:00:00.000Z</published>
-    <updated>2026-06-26T12:02:11.058Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/medias/keepopen.png_&quot; alt&gt;&lt;/p&gt;
-&lt;h1&gt;&lt;span id=&quot;keepopen&quot;&gt;KeepOpen&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://ruufly.github.io/&quot;&gt;个人网站&lt;/a&gt; |</summary>
-        
-      
-    
-    
-    
-    <category term="项目" scheme="https://blog.distjr.top/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="KeepOpen" scheme="https://blog.distjr.top/tags/KeepOpen/"/>
     
   </entry>
   
