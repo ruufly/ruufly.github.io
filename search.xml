@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>最新 | KeepOpen：一款保持移动硬盘开启状态的小工具</title>
+      <link href="/2026/06/11/keepopen/"/>
+      <url>/2026/06/11/keepopen/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/medias/keepopen.png_"></p><h1><span id="keepopen">KeepOpen</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/KeepOpen">Github 仓库</a> | <a href="https://github.com/ruufly/KeepOpen/blob/main/LICENSE">开源许可证</a> | <a href="https://github.com/ruufly/KeepOpen/releases">发行版下载</a></p><blockquote><p>一款保持移动硬盘开启状态的小工具</p></blockquote><h2><span id="作者">作者</span></h2><p>以下列出了参与本项目的作者。</p><ul><li><a href="https://github.com/ruufly">@distjr_/@ruufly!</a></li></ul><h2><span id="使用说明">使用说明</span></h2><p>本工具打开后，自动最小化至系统托盘。通过系统托盘可进入设置页面</p><p>设置页面上方可勾选需要保持开启状态的盘符，中间可设置盘符开启状态的刷新时间、是否开机自启动、是否以管理员模式启动等。其中，如需对系统盘使用KeepOpen，建议打开“以管理员模式启动”选项。下方可清理软件运行中的缓存、日志文件等。</p><h2><span id="注意事项">注意事项</span></h2><p>本工具通过修改注册表以实现开机自启动，在一些系统中，卸载后可能无法及时清理注册表残余，请使用<code>Geek Uninstaller</code>等工具卸载，或在卸载后手动清理<code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\</code>中的残余。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KeepOpen </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>最新 | 关于我的高中三年</title>
       <link href="/2026/06/11/graduate/"/>
       <url>/2026/06/11/graduate/</url>
@@ -25,31 +50,6 @@
             <tag> 毕业 </tag>
             
             <tag> 2026 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>最新 | KeepOpen：一款保持移动硬盘开启状态的小工具</title>
-      <link href="/2026/06/11/keepopen/"/>
-      <url>/2026/06/11/keepopen/</url>
-      
-        <content type="html"><![CDATA[<p><img src="/medias/keepopen.png_"></p><h1><span id="keepopen">KeepOpen</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/KeepOpen">Github 仓库</a> | <a href="https://github.com/ruufly/KeepOpen/blob/main/LICENSE">开源许可证</a> | <a href="https://github.com/ruufly/KeepOpen/releases">发行版下载</a></p><blockquote><p>一款保持移动硬盘开启状态的小工具</p></blockquote><h2><span id="作者">作者</span></h2><p>以下列出了参与本项目的作者。</p><ul><li><a href="https://github.com/ruufly">@distjr_/@ruufly!</a></li></ul><h2><span id="使用说明">使用说明</span></h2><p>本工具打开后，自动最小化至系统托盘。通过系统托盘可进入设置页面</p><p>设置页面上方可勾选需要保持开启状态的盘符，中间可设置盘符开启状态的刷新时间、是否开机自启动、是否以管理员模式启动等。其中，如需对系统盘使用KeepOpen，建议打开“以管理员模式启动”选项。下方可清理软件运行中的缓存、日志文件等。</p><h2><span id="注意事项">注意事项</span></h2><p>本工具通过修改注册表以实现开机自启动，在一些系统中，卸载后可能无法及时清理注册表残余，请使用<code>Geek Uninstaller</code>等工具卸载，或在卸载后手动清理<code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\</code>中的残余。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 项目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> KeepOpen </tag>
             
         </tags>
       
