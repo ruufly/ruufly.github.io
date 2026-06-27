@@ -247,7 +247,7 @@ mark {
 }
 
 .card .card-image img {
-    border-radius: 8px 8px 0 0;
+    /* border-radius: 8px 8px 0 0; */
     /* 修改文章列表图片填充样式为 cover 以覆盖整个区域而不会被缩放 */
     object-fit: cover;
 }
