@@ -844,7 +844,6 @@ $v_{i, j} = (a_i + b_j) \bmod{k}$。
 
     <!-- 右侧分屏面板 -->
     <div class="split-panel" id="splitPanel">
-        <div class="resize-handle" id="resizeHandle"></div>
         <div class="panel-header">
             <span class="panel-title" id="panelTitle">帖子内容</span>
             <button class="btn-close" id="btnClose" title="关闭">✕</button>
@@ -871,36 +870,8 @@ $v_{i, j} = (a_i + b_j) \bmod{k}$。
     let isOpen = false;
     let currentUrl = '';
 
-    // 拖拽相关
-let isDragging = false;
-let startX = 0;
-let startWidth = 0;
-let customWidth = null;   // 存储用户拖拽后的宽度（像素），null表示使用CSS默认
-
-const resizeHandle = document.getElementById('resizeHandle');
-
-// 获取面板当前实际宽度（像素）
-function getCurrentPanelWidth() {
-    return splitPanel.getBoundingClientRect().width;
-}
-
-// 应用宽度到面板，自动限制边界
-function applyPanelWidth(widthPx) {
-    const minW = 280;
-    const maxW = window.innerWidth * 0.85;
-    const clamped = Math.min(maxW, Math.max(minW, widthPx));
-    splitPanel.style.width = clamped + 'px';
-    customWidth = clamped;
-}
-
     function openPanel(url, title) {
         panelTitle.textContent = title || '帖子内容';
-
-        if (customWidth) {
-        splitPanel.style.width = customWidth + 'px';
-    } else {
-        splitPanel.style.width = '';   // 清除行内样式，使用CSS变量
-    }
 
         if (currentUrl !== url) {
             // 新 URL，需要加载
@@ -963,87 +934,6 @@ function applyPanelWidth(widthPx) {
     splitPanel.addEventListener('touchend', () => {
         if (touchMoved && isOpen) closePanel();
     });
-
-    // ---------- 鼠标拖拽调整大小 ----------
-resizeHandle.addEventListener('mousedown', function(e) {
-    if (!isOpen) return;
-    e.preventDefault();
-    e.stopPropagation();
-
-    isDragging = true;
-    startX = e.clientX;
-    startWidth = getCurrentPanelWidth();
-
-    splitPanel.classList.add('dragging');
-    resizeHandle.classList.add('active');
-
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
-});
-
-function onMouseMove(e) {
-    if (!isDragging) return;
-    e.preventDefault();
-    const deltaX = startX - e.clientX;  // 向左拖拽deltaX为正，面板变宽
-    const newWidth = startWidth + deltaX;
-    applyPanelWidth(newWidth);
-}
-
-function onMouseUp(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    splitPanel.classList.remove('dragging');
-    resizeHandle.classList.remove('active');
-    customWidth = getCurrentPanelWidth();  // 保存最终宽度
-
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
-}
-
-// 移动端触摸拖拽
-resizeHandle.addEventListener('touchstart', function(e) {
-    if (!isOpen) return;
-    e.preventDefault();
-    const touch = e.touches[0];
-    isDragging = true;
-    startX = touch.clientX;
-    startWidth = getCurrentPanelWidth();
-    splitPanel.classList.add('dragging');
-    resizeHandle.classList.add('active');
-    document.addEventListener('touchmove', onTouchMove, { passive: false });
-    document.addEventListener('touchend', onTouchEnd);
-});
-
-function onTouchMove(e) {
-    if (!isDragging) return;
-    e.preventDefault();
-    const touch = e.touches[0];
-    const deltaX = startX - touch.clientX;
-    const newWidth = startWidth + deltaX;
-    applyPanelWidth(newWidth);
-}
-
-function onTouchEnd(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    splitPanel.classList.remove('dragging');
-    resizeHandle.classList.remove('active');
-    customWidth = getCurrentPanelWidth();
-    document.removeEventListener('touchmove', onTouchMove);
-    document.removeEventListener('touchend', onTouchEnd);
-}
-
-window.addEventListener('resize', function() {
-    if (isOpen && customWidth) {
-        const maxW = window.innerWidth * 0.85;
-        const minW = 280;
-        let currentW = getCurrentPanelWidth();
-        if (currentW > maxW) applyPanelWidth(maxW);
-        else if (currentW < minW) applyPanelWidth(minW);
-        customWidth = getCurrentPanelWidth();  // 更新存储值
-    }
-});
-
         })();
     </script>
 
