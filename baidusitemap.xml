@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.distjr.top/2026/06/27/batan/</loc>
+    <loc>https://blog.distjr.top/2021/07/11/test/</loc>
     <lastmod>2026-06-27</lastmod>
   </url>
   <url>
@@ -9,11 +9,15 @@
     <lastmod>2026-06-27</lastmod>
   </url>
   <url>
-    <loc>https://blog.distjr.top/2021/07/10/about-me/</loc>
+    <loc>https://blog.distjr.top/2026/06/11/graduate/</loc>
     <lastmod>2026-06-27</lastmod>
   </url>
   <url>
-    <loc>https://blog.distjr.top/2026/06/11/graduate/</loc>
+    <loc>https://blog.distjr.top/2026/06/27/batan/</loc>
+    <lastmod>2026-06-27</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.distjr.top/2021/07/10/about-me/</loc>
     <lastmod>2026-06-27</lastmod>
   </url>
   <url>
@@ -67,9 +71,5 @@
   <url>
     <loc>https://blog.distjr.top/2024/02/18/u314392-solution/</loc>
     <lastmod>2025-02-14</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.distjr.top/2021/07/11/test/</loc>
-    <lastmod>2024-11-28</lastmod>
   </url>
 </urlset> 
