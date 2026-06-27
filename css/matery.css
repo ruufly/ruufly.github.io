@@ -285,6 +285,10 @@ mark {
     margin-top: -64px;
 }
 
+.pd-header-short {
+    margin-top: 0px;
+}
+
 header .side-nav {
     width: 240px;
     z-index: 999;
@@ -558,12 +562,29 @@ header .go-back i {
     transform: translate3d(0px, 0px, 0px);
 }
 
+.bg-cover-short {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 120vh;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    background-position: center center;
+    background-size: cover;
+    transform: translate3d(0px, 0px, 0px);
+}
+
 .index-cover {
     height: 100vh;
 }
 
 .post-cover {
     height: 40vh !important;
+}
+
+.post-cover-short {
+    height: 50vh !important;
 }
 
 /*.bg-cover:after {

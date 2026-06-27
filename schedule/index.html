@@ -638,7 +638,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"文集","value":7},{"name":"论文","value":1},{"name":"OI","value":3},{"name":"关于","value":1},{"name":"随笔","value":1},{"name":"项目","value":2},{"name":"test","value":2}],
+                data: [{"name":"文集","value":7},{"name":"OI","value":3},{"name":"论文","value":1},{"name":"关于","value":1},{"name":"随笔","value":1},{"name":"项目","value":2},{"name":"test","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -662,7 +662,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["小说","短篇","2024","题解","2023","test","论文","AITD","分子生物学","人工智能"]
+                data: ["小说","短篇","2024","题解","2023","test","构造法","论文","AITD","分子生物学"]
             }
         ],
         yAxis: [
@@ -863,6 +863,18 @@
             
             
             
+            <a href="/tags/%E9%A2%98%E8%A7%A3/">
+                <span class="chip center-align waves-effect waves-light chip-default">题解</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%9E%84%E9%80%A0%E6%B3%95/">
+                <span class="chip center-align waves-effect waves-light chip-default">构造法</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E8%AE%BA%E6%96%87/">
                 <span class="chip center-align waves-effect waves-light chip-default">论文</span>
             </a>
@@ -887,32 +899,20 @@
             
             
             
-            <a href="/tags/%E9%A2%98%E8%A7%A3/">
-                <span class="chip center-align waves-effect waves-light chip-default">题解</span>
-            </a>
-            
-            
-            
             <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
                 <span class="chip center-align waves-effect waves-light chip-default">动态规划</span>
             </a>
             
             
             
-            <a href="/tags/%E6%9E%84%E9%80%A0%E6%B3%95/">
-                <span class="chip center-align waves-effect waves-light chip-default">构造法</span>
+            <a href="/tags/%E5%9B%BE%E8%AE%BA/">
+                <span class="chip center-align waves-effect waves-light chip-default">图论</span>
             </a>
             
             
             
             <a href="/tags/%E5%85%B3%E4%BA%8E/">
                 <span class="chip center-align waves-effect waves-light chip-default">关于</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%9B%BE%E8%AE%BA/">
-                <span class="chip center-align waves-effect waves-light chip-default">图论</span>
             </a>
             
             
@@ -935,8 +935,8 @@
             
             
             
-            <a href="/tags/2023/">
-                <span class="chip center-align waves-effect waves-light chip-default">2023</span>
+            <a href="/tags/KeepOpen/">
+                <span class="chip center-align waves-effect waves-light chip-default">KeepOpen</span>
             </a>
             
             
@@ -947,20 +947,8 @@
             
             
             
-            <a href="/tags/%E8%AF%97%E6%AD%8C/">
-                <span class="chip center-align waves-effect waves-light chip-default">诗歌</span>
-            </a>
-            
-            
-            
-            <a href="/tags/2021/">
-                <span class="chip center-align waves-effect waves-light chip-default">2021</span>
-            </a>
-            
-            
-            
-            <a href="/tags/KeepOpen/">
-                <span class="chip center-align waves-effect waves-light chip-default">KeepOpen</span>
+            <a href="/tags/2023/">
+                <span class="chip center-align waves-effect waves-light chip-default">2023</span>
             </a>
             
             
@@ -973,6 +961,18 @@
             
             <a href="/tags/Random-Student/">
                 <span class="chip center-align waves-effect waves-light chip-default">Random Student</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E8%AF%97%E6%AD%8C/">
+                <span class="chip center-align waves-effect waves-light chip-default">诗歌</span>
+            </a>
+            
+            
+            
+            <a href="/tags/2021/">
+                <span class="chip center-align waves-effect waves-light chip-default">2021</span>
             </a>
             
             
@@ -1030,6 +1030,7 @@
         </div>
     </div>
 </div>
+
 
     
      -->
@@ -1094,6 +1095,8 @@
 <li><h3><span id="20260626">2026/06/26</span></h3><p>买来了新的域名，并通过 <code>Cloudflare</code> 加速。</p>
 <p>现在可以通过 <code>blog.distjr.top</code> 访问了。</p>
 </li>
+<li><h3><span id="320260627">32026/06/27</span></h3><p>将文章分为了“博文”和“帖子”两种，并设计了不同的打开方式和页面排版。</p>
+</li>
 </ul>
  -->
 
@@ -1141,6 +1144,7 @@
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
+            
             <div class="row tag-cate">
                 <div class="col s7">
                     
@@ -1153,6 +1157,7 @@
                     
                 </div>
             </div>
+            
 
             <div class="post-info">
                 
@@ -1165,14 +1170,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-06-26
+                    2026-06-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    353
+                    385
                 </div>
                 
 
@@ -1192,6 +1197,11 @@
             </div>
         </div>
         <hr class="clearfix">
+
+        <!-- <div class="brand"> -->
+        
+            <h1 class="description center-align post-title title-post">日志</h1>
+        
 
         
         <!-- 是否加载使用自带的 prismjs. -->
@@ -1250,12 +1260,14 @@
 <li><h3><span id="20260626">2026/06/26</span></h3><p>买来了新的域名，并通过 <code>Cloudflare</code> 加速。</p>
 <p>现在可以通过 <code>blog.distjr.top</code> 访问了。</p>
 </li>
+<li><h3><span id="320260627">32026/06/27</span></h3><p>将文章分为了“博文”和“帖子”两种，并设计了不同的打开方式和页面排版。</p>
+</li>
 </ul>
 
                 
             </div>
             <hr/>
-
+            
             
 
     <div class="reprint" id="reprint-statement">
@@ -1309,6 +1321,7 @@
     </script>
 
 
+            
 
             <div class="tag_share" style="display: block;">
                 <div class="post-meta__tag-list" style="display: inline-block;">
@@ -1861,6 +1874,8 @@
 <h2><span id="2026">2026</span></h2><ul>
 <li><h3><span id="20260626">2026/06/26</span></h3><p>买来了新的域名，并通过 <code>Cloudflare</code> 加速。</p>
 <p>现在可以通过 <code>blog.distjr.top</code> 访问了。</p>
+</li>
+<li><h3><span id="320260627">32026/06/27</span></h3><p>将文章分为了“博文”和“帖子”两种，并设计了不同的打开方式和页面排版。</p>
 </li>
 </ul>
 
