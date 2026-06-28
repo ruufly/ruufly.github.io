@@ -325,168 +325,808 @@
 </header>
 
     
-    
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
+    <!-- <style type="text/css">
+    /* don't remove. */
+    .about-cover {
+        height: 75vh;
+    }
+</style> -->
 
+<div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                distjr_&#39;s blog
+                
+            </div>
 
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/banner/29.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    
-                        <h1 class="description center-align post-title title-post">置顶 | 关于我自己</h1>
-                    
-                </div>
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['yuqpqr distjr qoqsty ___!!!!!!',''],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
             </div>
         </div>
     </div>
 </div>
 
 
+<script>
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
+</script>
+
+
+    </div>
+</div>
+
+<!-- <main class="content">
+
+    <div id="aboutme" class="container about-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
+                        
+<div class="statis">
+    <span class="count"><a href="/">18</a></span>
+    <span class="name">文章</span>
+</div>
 
 
 
-<main class="post-container content">
+<div class="statis">
+    <span class="count"><a href="/categories">8</a></span>
+    <span class="name">分类</span>
+</div>
 
-    
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
 
-    #articleContent :focus {
-        outline: none;
-    }
 
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
+<div class="statis">
+    <span class="count"><a href="/tags">25</a></span>
+    <span class="name">标签</span>
+</div>
 
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
 
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
+                    </div>
+                    <div class="col s12 m12 l4">
+                        <div class="profile center-align">
+                            <div class="avatar">
+                                <img src="/medias/avatar.jpg" alt="distjr_"
+                                     class="circle responsive-img avatar-img">
+                            </div>
+                            <div class="author">
+                                <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
+                                    
+<div class="statis">
+    <span class="count"><a href="/">18</a></span>
+    <span class="name">文章</span>
+</div>
 
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
 
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
 
-    #toc-content ol {
-        padding-left: 10px;
-    }
+<div class="statis">
+    <span class="count"><a href="/categories">8</a></span>
+    <span class="name">分类</span>
+</div>
 
-    #toc-content ol li {
-        padding-left: 10px;
-    }
 
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
 
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
+<div class="statis">
+    <span class="count"><a href="/tags">25</a></span>
+    <span class="name">标签</span>
+</div>
 
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
 
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
+                                </div>
+                                <div class="title">distjr_</div>
+                                <div class="career">学生/退役OIer</div>
+                                <div class="social-link hide-on-large-only" data-aos="zoom-in-left">
+                                    
+    <a href="https://github.com/ruufly" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
 
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
 
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
 
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
+    <a href="mailto:870239526@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://www.facebook.com/profile.php?id=100077496228343" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: https://www.facebook.com/profile.php?id=100077496228343" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+
+
+    <a href="https://twitter.com/distjr" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/distjr" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870239526" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 870239526" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/distjr-" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/distjr-" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l4 hide-on-med-and-down" data-aos="zoom-in-left">
+                        <div class="social-link">
+                            
+    <a href="https://github.com/ruufly" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:870239526@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://www.facebook.com/profile.php?id=100077496228343" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: https://www.facebook.com/profile.php?id=100077496228343" data-position="top" data-delay="50">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+
+
+    <a href="https://twitter.com/distjr" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/distjr" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870239526" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 870239526" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/distjr-" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/distjr-" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="introduction center-align" data-aos="fade-up">yuqpqr distjr qoqsty ___!!!!!!</div>
+
+                <style type="text/css">
+    #posts-chart,
+    #categories-chart,
+    #tags-chart {
+        width: 100%;
+        height: 300px;
+        margin: 0.5rem auto;
+        padding: 0.5rem;
     }
 </style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E5%85%B3%E4%BA%8E/">
-                                <span class="chip bg-color">关于</span>
-                            </a>
-                        
-                    </div>
-                    
+
+<div id="postCharts" class="post-charts">
+    <div class="title center-align" data-aos="zoom-in-up">
+        <i class="far fa-bar-chart"></i>&nbsp;&nbsp;文章统计图
+    </div>
+    <div class="row">
+        <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
+            <div id="posts-chart"></div>
+        </div>
+
+        <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
+            <div id="categories-chart"></div>
+        </div>
+
+        <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
+            <div id="tags-chart"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
+<script>
+    let postsChart = echarts.init(document.getElementById('posts-chart'));
+    let categoriesChart = echarts.init(document.getElementById('categories-chart'));
+    let tagsChart = echarts.init(document.getElementById('tags-chart'));
+
+    
+
+    let postsOption = {
+        title: {
+            text: '文章发布统计图',
+            top: -5,
+            x: 'center'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis: {
+            type: 'category',
+            data: ["2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06"]
+        },
+        yAxis: {
+            type: 'value',
+        },
+        series: [
+            {
+                name: '文章篇数',
+                type: 'line',
+                color: ['#6772e5'],
+                data: [0,0,1,0,0,0,1,0,0,0,0,0,4],
+                markPoint: {
+                    symbolSize: 45,
+                    color: ['#fa755a','#3ecf8e','#82d3f4'],
+                    data: [{
+                        type: 'max',
+                        itemStyle: {color: ['#3ecf8e']},
+                        name: '最大值'
+                    }, {
+                        type: 'min',
+                        itemStyle: {color: ['#fa755a']},
+                        name: '最小值'
+                    }]
+                },
+                markLine: {
+                    itemStyle: {color: ['#ab47bc']},
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ]
+                }
+            }
+        ]
+    };
+
+    
+
+    let categoriesOption = {
+        title: {
+            text: '文章分类统计图',
+            top: -4,
+            x: 'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        series: [
+            {
+                name: '分类',
+                type: 'pie',
+                radius: '50%',
+                color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
+                data: [{"name":"论文","value":1},{"name":"文集","value":7},{"name":"OI","value":3},{"name":"番评","value":1},{"name":"关于","value":1},{"name":"项目","value":2},{"name":"test","value":2},{"name":"随笔","value":1}],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
+    
+
+    let tagsOption = {
+        title: {
+            text: 'TOP10 标签统计图',
+            top: -5,
+            x: 'center'
+        },
+        tooltip: {},
+        xAxis: [
+            {
+                type: 'category',
+                data: ["小说","短篇","2024","题解","2023","test","论文","AITD","分子生物学","人工智能"]
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                type: 'bar',
+                color: ['#82d3f4'],
+                barWidth : 18,
+                data: [6,6,3,3,2,2,1,1,1,1],
+                markPoint: {
+                    symbolSize: 45,
+                    data: [{
+                        type: 'max',
+                        itemStyle: {color: ['#3ecf8e']},
+                        name: '最大值'
+                    }, {
+                        type: 'min',
+                        itemStyle: {color: ['#fa755a']},
+                        name: '最小值'
+                    }],
+                },
+                markLine: {
+                    itemStyle: {color: ['#ab47bc']},
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ]
+                }
+            }
+        ]
+    };
+
+    // render the charts
+    postsChart.setOption(postsOption);
+    categoriesChart.setOption(categoriesOption);
+    tagsChart.setOption(tagsOption);
+</script>
+
+
+                
+                
+<div class="my-projects">
+    <div class="title center-align" data-aos="zoom-in-up">
+        <i class="fas fa-gift"></i>&nbsp;&nbsp;我的项目
+    </div>
+    <div class="row">
+        
+        
+        <div class="col s12 m6 l4" data-aos="fade-up">
+            <div class="info center-align">
+                <a href="https://github.com/ruufly/AITD-System" class="icon"
+                   style="background: linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)" target="_blank">
+                    <i class="fa fa-object-group"></i>
+                </a>
+                <div class="info-title">
+                    <a href="https://github.com/ruufly/AITD-System" target="_blank">AITD System</a>
                 </div>
-                <div class="col s5 right-align">
+                <div class="info-desc">一种基于人工智能技术的系统发生树绘制与物种演化路径推断系统</div>
+            </div>
+        </div>
+        
+        <div class="col s12 m6 l4" data-aos="fade-up">
+            <div class="info center-align">
+                <a href="https://github.com/ruufly/Nomel" class="icon"
+                   style="background: linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)" target="_blank">
+                    <i class="fa fa-laptop"></i>
+                </a>
+                <div class="info-title">
+                    <a href="https://github.com/ruufly/Nomel" target="_blank">Nomel</a>
+                </div>
+                <div class="info-desc">一个进行OI比赛的小工具</div>
+            </div>
+        </div>
+        
+        <div class="col s12 m6 l4" data-aos="fade-up">
+            <div class="info center-align">
+                <a href="https://github.com/ruufly/Galgame-Maker" class="icon"
+                   style="background: linear-gradient(to bottom right, #F303AA 0%, #B63DD4 100%)" target="_blank">
+                    <i class="fa fa-tree"></i>
+                </a>
+                <div class="info-title">
+                    <a href="https://github.com/ruufly/Galgame-Maker" target="_blank">Galgame Maker</a>
+                </div>
+                <div class="info-desc">视觉小说/Galgame制作器</div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+                
+
+                
+                
+<div class="my-skills">
+    <div class="title center-align" data-aos="zoom-in-up">
+        <i class="fas fa-wrench"></i>&nbsp;&nbsp;我的技能
+    </div>
+    <div class="row">
+        
+        
+        
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #FF0066 0%, #FF00CC 100%); width: 70%">
+                    <span>Python</span>
+                </div>
+                <div class="skill-bar-percent">70%</div>
+            </div>
+        </div>
+        
+        
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #9900FF 0%, #CC66FF 100%); width: 50%">
+                    <span>C/C++</span>
+                </div>
+                <div class="skill-bar-percent">50%</div>
+            </div>
+        </div>
+        
+        
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #2196F3 0%, #42A5F5 100%); width: 50%">
+                    <span>编曲/作曲</span>
+                </div>
+                <div class="skill-bar-percent">50%</div>
+            </div>
+        </div>
+        
+        
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #00BCD4 0%, #80DEEA 100%); width: 60%">
+                    <span>OI</span>
+                </div>
+                <div class="skill-bar-percent">60%</div>
+            </div>
+        </div>
+        
+        
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #FFC107 0%, #FFA726 100%); width: 70%">
+                    <span>生物学</span>
+                </div>
+                <div class="skill-bar-percent">70%</div>
+            </div>
+        </div>
+        
+        
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #FF9800 0%, #FFC107 100%); width: 35%">
+                    <span>机器学习</span>
+                </div>
+                <div class="skill-bar-percent">35%</div>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    
+<!-- 
+    
+    <div class="other-skills chip-container" data-aos="zoom-in-up">
+        <div class="sub-title center-align"><i class="fa fa-book"></i>&nbsp;&nbsp;其他技能</div>
+        <div class="tag-chips center-align">
+            
+            
+            <a href="/tags/%E8%AE%BA%E6%96%87/">
+                <span class="chip center-align waves-effect waves-light chip-default">论文</span>
+            </a>
+            
+            
+            
+            <a href="/tags/AITD/">
+                <span class="chip center-align waves-effect waves-light chip-default">AITD</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%88%86%E5%AD%90%E7%94%9F%E7%89%A9%E5%AD%A6/">
+                <span class="chip center-align waves-effect waves-light chip-default">分子生物学</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                <span class="chip center-align waves-effect waves-light chip-default">人工智能</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%B0%8F%E8%AF%B4/">
+                <span class="chip center-align waves-effect waves-light chip-default">小说</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E7%9F%AD%E7%AF%87/">
+                <span class="chip center-align waves-effect waves-light chip-default">短篇</span>
+            </a>
+            
+            
+            
+            <a href="/tags/2024/">
+                <span class="chip center-align waves-effect waves-light chip-default">2024</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E9%A2%98%E8%A7%A3/">
+                <span class="chip center-align waves-effect waves-light chip-default">题解</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                <span class="chip center-align waves-effect waves-light chip-default">动态规划</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%9E%84%E9%80%A0%E6%B3%95/">
+                <span class="chip center-align waves-effect waves-light chip-default">构造法</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%9B%BE%E8%AE%BA/">
+                <span class="chip center-align waves-effect waves-light chip-default">图论</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E7%95%AA%E8%AF%84/">
+                <span class="chip center-align waves-effect waves-light chip-default">番评</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9/">
+                <span class="chip center-align waves-effect waves-light chip-default">上伊那牡丹</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%85%B3%E4%BA%8E/">
+                <span class="chip center-align waves-effect waves-light chip-default">关于</span>
+            </a>
+            
+            
+            
+            <a href="/tags/2025/">
+                <span class="chip center-align waves-effect waves-light chip-default">2025</span>
+            </a>
+            
+            
+            
+            <a href="/tags/2023/">
+                <span class="chip center-align waves-effect waves-light chip-default">2023</span>
+            </a>
+            
+            
+            
+            <a href="/tags/KeepOpen/">
+                <span class="chip center-align waves-effect waves-light chip-default">KeepOpen</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E8%AF%97%E6%AD%8C/">
+                <span class="chip center-align waves-effect waves-light chip-default">诗歌</span>
+            </a>
+            
+            
+            
+            <a href="/tags/2021/">
+                <span class="chip center-align waves-effect waves-light chip-default">2021</span>
+            </a>
+            
+            
+            
+            <a href="/tags/test/">
+                <span class="chip center-align waves-effect waves-light chip-default">test</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E9%9A%8F%E6%9C%BA%E5%AD%A6%E7%94%9F/">
+                <span class="chip center-align waves-effect waves-light chip-default">随机学生</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Random-Student/">
+                <span class="chip center-align waves-effect waves-light chip-default">Random Student</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                <span class="chip center-align waves-effect waves-light chip-default">随笔</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%AF%95%E4%B8%9A/">
+                <span class="chip center-align waves-effect waves-light chip-default">毕业</span>
+            </a>
+            
+            
+            
+            <a href="/tags/2026/">
+                <span class="chip center-align waves-effect waves-light chip-default">2026</span>
+            </a>
+            
+            
+        </div>
+    </div>
+     -->
+
+</div>
+
+                
+
+                
+
+            </div>
+        </div>
+    </div>
+</main> -->
+
+
+
+
+<!-- 
+    <script src="/libs/cryptojs/crypto-js.min.js"></script>
+    <script>
+        (function() {
+            let pwd = '';
+            if (pwd && pwd.length > 0) {
+                if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                    alert('密码错误，将返回主页！');
+                    location.href = '/';
+                }
+            }
+        })();
+    </script>
+     -->
+    
+    <!-- 
+
+<div class="bg-cover-short pd-header-short post-cover-short" style="background-image: url('/medias/banner/29.jpg')">
+    <!-- <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
                     
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%85%B3%E4%BA%8E/" class="post-category">
-                                关于
-                            </a>
-                        
-                    </div>
+                        <h1 class="description center-align post-title title-post-light">置顶 | 关于我自己</h1>
                     
                 </div>
             </div>
+        </div>
+    </div> -->
+</div>
+
+
+    
+     -->
+    
+    <!-- <main class="post-container content"> -->
+        <!-- <div id="contact" class="container chip-container"> -->
+            <!-- <div class="card"> -->
+                <!-- <div class="card-content"> -->
+                    <!-- <div class="tag-title center-align"> -->
+                        <!-- <i class="fa fa-calendar"></i>&nbsp;&nbsp;日志 -->
+                    <!-- </div> -->
+                    
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div> -->
+        
+        
+        <!-- <div class="avatar">
+            <img src="/medias/avatar.jpg" alt="distjr_"
+                 class="circle responsive-img avatar-img">
+        </div> -->
+        <!-- <p>本页面最后一次更新于2026-06-26</p>
+<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
+<p>如你所见，这个名字很奇怪。</p>
+<p>原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
+<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
+<p>我本人是一个普通的准大一学生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，去年参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。现在高三毕业了，高考考得还不错，正在准备大学生活中。</p>
+<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
+<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
+<p>能力、码力、笔力有限，我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
+<p>以上。请多关照。</p>
+<p align="right">distjr_</p>
+
+<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
+<p>Bilibili: <a target="_blank" rel="noopener" href="https://space.bilibili.com/1159124697">bilibili</a></p>
+<p>GitHub: <a target="_blank" rel="noopener" href="https://github.com/ruufly">github</a></p>
+<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
+<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
+<p>Luogu: <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/363964">luogu</a></p>
+<p>Zhihu: <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
+<p>X: <a target="_blank" rel="noopener" href="https://x.com/distjr_">X</a></p>
+ -->
+
+        
+    
+    <!-- </main> -->
+
+
+    <main class="post-container content">
+        <!-- <div id="contact" class="container chip-container"> -->
+            <!-- <div class="card"> -->
+                <!-- <div class="card-content">
+                    <div class="tag-title center-align">
+                        <i class="fa fa-calendar"></i>&nbsp;&nbsp;日志
+                    </div>
+                    
+                </div> -->
+            <!-- </div> -->
+        <!-- <div class="card"> -->
+            <!-- <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
+                
+<div class="statis">
+    <span class="count"><a href="/">18</a></span>
+    <span class="name">文章</span>
+</div>
+
+
+
+<div class="statis">
+    <span class="count"><a href="/categories">8</a></span>
+    <span class="name">分类</span>
+</div>
+
+
+
+<div class="statis">
+    <span class="count"><a href="/tags">25</a></span>
+    <span class="name">标签</span>
+</div>
+
+
+            </div> -->
+            <!-- <div class="card-content"> -->
+                <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
             
 
             <div class="post-info">
@@ -500,7 +1140,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-06-27
+                    2026-06-28
                 </div>
                 
 
@@ -529,6 +1169,10 @@
         <hr class="clearfix">
 
         <!-- <div class="brand"> -->
+        
+        
+            <h1 class="description center-align post-title title-post-light">置顶 | 关于我自己</h1>
+        
         
 
         
@@ -570,72 +1214,12 @@
             </div>
             <hr/>
             
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://blog.distjr.top" rel="external nofollow noreferrer">distjr_</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://blog.distjr.top/2021/07/10/about-me/">https://blog.distjr.top/2021/07/10/about-me/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="https://blog.distjr.top" target="_blank">distjr_</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-            
 
             <div class="tag_share" style="display: block;">
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         
-                        <div class="article-tag">
-                            
-                                <a href="/tags/%E5%85%B3%E4%BA%8E/">
-                                    <span class="chip bg-color">关于</span>
-                                </a>
-                            
-                        </div>
+
                         
                     
                 </div>
@@ -1125,113 +1709,334 @@
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('1'),
-            headingSelector: 'h2, h3, h4, h5'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4, h5').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
+            <!-- </div> -->
+            
+        <!-- </div> -->
     
+    </main>
+    
+    <!-- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script>
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+        });
+    </script>
+     -->
 
-</main>
+    <!-- <main class="post-container content">
+        <div id="contact" class="container chip-container">
+            <div class="card">
+                <div class="card-content">
+                    <div class="tag-title center-align">
+                        <i class="fas fa-calendar"></i>&nbsp;&nbsp;日志
+                    </div>
+                    <p>本页面最后一次更新于2026-06-26</p>
+<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
+<p>如你所见，这个名字很奇怪。</p>
+<p>原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
+<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
+<p>我本人是一个普通的准大一学生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，去年参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。现在高三毕业了，高考考得还不错，正在准备大学生活中。</p>
+<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
+<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
+<p>能力、码力、笔力有限，我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
+<p>以上。请多关照。</p>
+<p align="right">distjr_</p>
 
+<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
+<p>Bilibili: <a target="_blank" rel="noopener" href="https://space.bilibili.com/1159124697">bilibili</a></p>
+<p>GitHub: <a target="_blank" rel="noopener" href="https://github.com/ruufly">github</a></p>
+<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
+<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
+<p>Luogu: <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/363964">luogu</a></p>
+<p>Zhihu: <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
+<p>X: <a target="_blank" rel="noopener" href="https://x.com/distjr_">X</a></p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+                </div>
+            </div>
+            <div class="card">
+                
+    
+                
+    
+                
+    
+                
+    
+                
+                <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
 <script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    new Valine({
+        el: '#vcomments',
+        appId: 'oWapd3zTIzI5DVeWePgTdFj8-gzGzoHsz',
+        appKey: 'UNBcds0WeXgcVIFYNuhskTCY',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'wavatar',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '在此评论...',
+        enableQQ: true,
+        requiredFields: ['nick','mail']
     });
 </script>
 
-
+                
+                
+                
+    
+                
+    
+            </div>
+        </div>
+    </main> -->
 
     
     <footer class="page-footer bg-color">
@@ -1249,7 +2054,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.7k</span>&nbsp;字
+                class="white-color">36.6k</span>&nbsp;字
             
             
             
