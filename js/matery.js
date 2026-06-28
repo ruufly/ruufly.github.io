@@ -175,3 +175,25 @@ $(function () {
     // 初始化加载 tooltipped.
     $('.tooltipped').tooltip();
 });
+
+
+(function(){
+    // console.log(123)
+    $('.spoiler').attr('title','震惊！distjr_的博客竟有此等黑幕！')
+    $('.spoiler').attr('tabindex','0')
+})();
+
+var OriginTitile = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        document.title = '不要走嘛＞﹏＜ - ' + OriginTitile;
+        clearTimeout(titleTime);
+    }
+    else {
+        document.title = '欢迎回来ヾ(≧▽≦*)o - ' + OriginTitile;
+        titleTime = setTimeout(function() {
+            document.title = OriginTitile;
+        }, 500);
+    }
+});
