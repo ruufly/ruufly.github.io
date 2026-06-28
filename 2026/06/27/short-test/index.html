@@ -462,6 +462,22 @@
 </div>
 
 
+
+<script>
+    // 如果当前页面不在 iframe 中，则跳转到主页面并自动弹出分屏
+    if (window.top === window.self) {
+        // 修改为你自己的主页面地址
+        const mainPage = window.location.origin + '/index.html';  // 或完整的 https://yoursite.com/
+        const currentUrl = encodeURIComponent(window.location.href);
+        // 可自定义标题（可选）
+        const title = encodeURIComponent(document.title || '');
+        window.location.replace(mainPage + '?panel_url=' + currentUrl + '&panel_title=' + title);
+    }
+</script>
+
+
+
+
 <script>
     $('#articleContent').on('copy', function (e) {
         // IE8 or earlier browser is 'undefined'

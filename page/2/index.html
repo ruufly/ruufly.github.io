@@ -911,6 +911,7 @@ $v_{i, j} = (a_i + b_j) \bmod{k}$。
                     sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
         </div>
     </div>
+
     <script>
         (function() {
     const splitPanel = document.getElementById('splitPanel');
@@ -923,6 +924,19 @@ $v_{i, j} = (a_i + b_j) \bmod{k}$。
 
     let isOpen = false;
     let currentUrl = '';
+
+    (function autoOpenFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const autoUrl = params.get('panel_url');
+    // console.log(autoUrl)
+    if (autoUrl) {
+        // const autoTitle = params.get('panel_title') || '自动加载';
+        // 等待页面加载完成后打开（确保分屏元素已就绪）
+        window.addEventListener('DOMContentLoaded', function() {
+            openPanel(decodeURIComponent(autoUrl), '帖子内容');
+        });
+    }
+})();
 
     function openPanel(url, title) {
         panelTitle.textContent = title || '帖子内容';
