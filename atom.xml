@@ -6,7 +6,7 @@
   <link href="https://blog.distjr.top/atom.xml" rel="self"/>
   
   <link href="https://blog.distjr.top/"/>
-  <updated>2026-07-01T19:16:32.390Z</updated>
+  <updated>2026-07-05T05:31:27.682Z</updated>
   <id>https://blog.distjr.top/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>最新 | 画中少女</title>
+    <link href="https://blog.distjr.top/2026/07/05/the-girl-in-the-painting/"/>
+    <id>https://blog.distjr.top/2026/07/05/the-girl-in-the-painting/</id>
+    <published>2026-07-05T05:00:00.000Z</published>
+    <updated>2026-07-05T05:31:27.682Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="文集" scheme="https://blog.distjr.top/categories/%E6%96%87%E9%9B%86/"/>
+    
+    
+    <category term="小说" scheme="https://blog.distjr.top/tags/%E5%B0%8F%E8%AF%B4/"/>
+    
+    <category term="2026" scheme="https://blog.distjr.top/tags/2026/"/>
+    
+    <category term="中篇" scheme="https://blog.distjr.top/tags/%E4%B8%AD%E7%AF%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>天津行记</title>
     <link href="https://blog.distjr.top/2026/07/02/2260702/"/>
     <id>https://blog.distjr.top/2026/07/02/2260702/</id>
     <published>2026-07-01T19:00:00.000Z</published>
-    <updated>2026-07-01T19:16:32.390Z</updated>
+    <updated>2026-07-02T03:50:50.525Z</updated>
     
     
       
@@ -74,7 +103,7 @@
     <link href="https://blog.distjr.top/2026/06/27/botan/"/>
     <id>https://blog.distjr.top/2026/06/27/botan/</id>
     <published>2026-06-27T09:30:00.000Z</published>
-    <updated>2026-06-28T06:14:29.810Z</updated>
+    <updated>2026-07-02T03:49:00.137Z</updated>
     
     
       
@@ -157,19 +186,19 @@
   </entry>
   
   <entry>
-    <title>最新 | KeepOpen：一款保持移动硬盘开启状态的小工具</title>
+    <title>KeepOpen：一款保持移动硬盘开启状态的小工具</title>
     <link href="https://blog.distjr.top/2026/06/11/keepopen/"/>
     <id>https://blog.distjr.top/2026/06/11/keepopen/</id>
     <published>2026-06-11T14:00:00.000Z</published>
-    <updated>2026-06-26T12:02:11.058Z</updated>
+    <updated>2026-07-05T05:30:51.002Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/medias/keepopen.png_&quot; alt&gt;&lt;/p&gt;
-&lt;h1&gt;&lt;span id=&quot;keepopen&quot;&gt;KeepOpen&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://ruufly.github.io/&quot;&gt;个人网站&lt;/a&gt; |</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/medias/keepopen.png_&quot;&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;span id=&quot;keepopen&quot;&gt;KeepOpen&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://ruufly.github.io/&quot;&gt;个人网站&lt;/a&gt; | &lt;a</summary>
         
       
     
@@ -242,7 +271,7 @@
     <link href="https://blog.distjr.top/2025/01/08/land/"/>
     <id>https://blog.distjr.top/2025/01/08/land/</id>
     <published>2025-01-08T15:30:00.000Z</published>
-    <updated>2026-06-27T03:46:29.676Z</updated>
+    <updated>2026-07-05T05:22:52.580Z</updated>
     
     
       
@@ -333,7 +362,7 @@
     <link href="https://blog.distjr.top/2024/10/08/aitd/"/>
     <id>https://blog.distjr.top/2024/10/08/aitd/</id>
     <published>2024-10-08T12:00:00.000Z</published>
-    <updated>2025-08-21T07:59:37.535Z</updated>
+    <updated>2026-07-02T03:48:29.968Z</updated>
     
     
       
@@ -557,34 +586,6 @@
     
     
     <category term="test" scheme="https://blog.distjr.top/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>置顶 | 关于我自己</title>
-    <link href="https://blog.distjr.top/2021/07/10/about-me/"/>
-    <id>https://blog.distjr.top/2021/07/10/about-me/</id>
-    <published>2021-07-09T16:00:00.000Z</published>
-    <updated>2026-06-28T00:38:23.114Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本页面最后一次更新于2026-06-26&lt;/p&gt;
-&lt;p&gt;大家好，我是distjr_，各位可以叫我dist或者distance。&lt;/p&gt;
-&lt;p&gt;如你所见，这个名字很奇怪。&lt;/p&gt;
-&lt;p&gt;原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法</summary>
-        
-      
-    
-    
-    
-    <category term="关于" scheme="https://blog.distjr.top/categories/%E5%85%B3%E4%BA%8E/"/>
-    
-    
-    <category term="关于" scheme="https://blog.distjr.top/tags/%E5%85%B3%E4%BA%8E/"/>
     
   </entry>
   

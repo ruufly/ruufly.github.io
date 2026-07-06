@@ -381,7 +381,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">20</a></span>
+    <span class="count"><a href="/">21</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -395,7 +395,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">26</a></span>
+    <span class="count"><a href="/tags">27</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -411,7 +411,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">20</a></span>
+    <span class="count"><a href="/">21</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -425,7 +425,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">26</a></span>
+    <span class="count"><a href="/tags">27</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -593,7 +593,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,1,0,0,0,1,0,0,0,0,0,5,1],
+                data: [0,1,0,0,0,1,0,0,0,0,0,5,2],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -635,7 +635,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"文集","value":7},{"name":"日记","value":2},{"name":"OI","value":3},{"name":"关于","value":1},{"name":"论文","value":1},{"name":"番评","value":1},{"name":"随笔","value":1},{"name":"项目","value":2},{"name":"test","value":2}],
+                data: [{"name":"日记","value":2},{"name":"文集","value":8},{"name":"OI","value":3},{"name":"论文","value":1},{"name":"关于","value":1},{"name":"番评","value":1},{"name":"随笔","value":1},{"name":"项目","value":2},{"name":"test","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -659,7 +659,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["小说","短篇","2024","题解","日记","2023","test","图论","动态规划","关于"]
+                data: ["小说","短篇","2024","题解","日记","2023","2026","test","构造法","论文"]
             }
         ],
         yAxis: [
@@ -672,7 +672,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [6,6,3,3,2,2,2,1,1,1],
+                data: [7,6,3,3,2,2,2,2,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -842,6 +842,12 @@
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/%E6%97%A5%E8%AE%B0/">
+                <span class="chip center-align waves-effect waves-light chip-default">日记</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E5%B0%8F%E8%AF%B4/">
                 <span class="chip center-align waves-effect waves-light chip-default">小说</span>
             </a>
@@ -860,32 +866,14 @@
             
             
             
-            <a href="/tags/%E6%97%A5%E8%AE%B0/">
-                <span class="chip center-align waves-effect waves-light chip-default">日记</span>
-            </a>
-            
-            
-            
             <a href="/tags/%E9%A2%98%E8%A7%A3/">
                 <span class="chip center-align waves-effect waves-light chip-default">题解</span>
             </a>
             
             
             
-            <a href="/tags/%E5%9B%BE%E8%AE%BA/">
-                <span class="chip center-align waves-effect waves-light chip-default">图论</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                <span class="chip center-align waves-effect waves-light chip-default">动态规划</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%85%B3%E4%BA%8E/">
-                <span class="chip center-align waves-effect waves-light chip-default">关于</span>
+            <a href="/tags/%E6%9E%84%E9%80%A0%E6%B3%95/">
+                <span class="chip center-align waves-effect waves-light chip-default">构造法</span>
             </a>
             
             
@@ -914,8 +902,14 @@
             
             
             
-            <a href="/tags/%E6%9E%84%E9%80%A0%E6%B3%95/">
-                <span class="chip center-align waves-effect waves-light chip-default">构造法</span>
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                <span class="chip center-align waves-effect waves-light chip-default">动态规划</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%85%B3%E4%BA%8E/">
+                <span class="chip center-align waves-effect waves-light chip-default">关于</span>
             </a>
             
             
@@ -928,6 +922,12 @@
             
             <a href="/tags/%E4%B8%8A%E4%BC%8A%E9%82%A3%E7%89%A1%E4%B8%B9/">
                 <span class="chip center-align waves-effect waves-light chip-default">上伊那牡丹</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%9B%BE%E8%AE%BA/">
+                <span class="chip center-align waves-effect waves-light chip-default">图论</span>
             </a>
             
             
@@ -962,6 +962,24 @@
             
             
             
+            <a href="/tags/%E9%9A%8F%E6%9C%BA%E5%AD%A6%E7%94%9F/">
+                <span class="chip center-align waves-effect waves-light chip-default">随机学生</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Random-Student/">
+                <span class="chip center-align waves-effect waves-light chip-default">Random Student</span>
+            </a>
+            
+            
+            
+            <a href="/tags/test/">
+                <span class="chip center-align waves-effect waves-light chip-default">test</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E8%AF%97%E6%AD%8C/">
                 <span class="chip center-align waves-effect waves-light chip-default">诗歌</span>
             </a>
@@ -980,20 +998,8 @@
             
             
             
-            <a href="/tags/%E9%9A%8F%E6%9C%BA%E5%AD%A6%E7%94%9F/">
-                <span class="chip center-align waves-effect waves-light chip-default">随机学生</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Random-Student/">
-                <span class="chip center-align waves-effect waves-light chip-default">Random Student</span>
-            </a>
-            
-            
-            
-            <a href="/tags/test/">
-                <span class="chip center-align waves-effect waves-light chip-default">test</span>
+            <a href="/tags/%E4%B8%AD%E7%AF%87/">
+                <span class="chip center-align waves-effect waves-light chip-default">中篇</span>
             </a>
             
             
@@ -1029,7 +1035,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.7k</span>&nbsp;字
+                class="white-color">55.1k</span>&nbsp;字
             
             
             
