@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>天津行记</title>
+    <url>/2026/07/02/2260702/</url>
+    <content><![CDATA[<p>前两天去天津参加天津大学的强基面试，顺道在天津逛了逛。</p>
+<p>天津是个底蕴很深厚的城市。骑着共享单车在老的城建区里面穿行——那里的街道大多不宽，几乎每条都以地名命名，你甚至能听到一些早已废弃的名字，比如“察哈尔”、“热河”。它们组成横平竖直的网格，其间的小楼绝大多数都有百年以上的历史了——可能每隔半分钟就能找到一个近代名人的故居，好像是那一段错综的岁月，就这样安安静静地飘在夏天的树荫下一样。</p>
+<p><img src="/medias/shorts/2260702/1782927561724.jpg" alt="路过时随手拍的一座老房子。拍完之后走近一看发现好像是当时英国领事的官邸"></p>
+<p>天津的人，也和我想象中的一样。热情、善良、直来直去，说话还都贼逗，也无外乎网上的人都说天津人人都会相声。我觉得当地方言在这其中起到了不小的作用，比方说天津话中“什么”一词统统都说成“嘛”——还一定要读成四声的——那样的一个声音，无论是谁第一次听到的时候，都很难不被逗乐。</p>
+<p><img src="/medias/shorts/2260702/1782927561671.jpg" alt="家人们网上说的是真的天津的路上真的有这样的警示牌（）"></p>
+<p>说到天津，不得不提到冯骥才先生的那本《俗世奇人》。小学时候第一次读起时，就被这本不算厚的小书深深吸引，那一个个有血有肉的市井小人物，至今仍深刻地影响着我。想起书中说的“泥人张、风筝魏、杨柳青年画”，等到了天津市博物馆，在展柜中看到了书中的“泥人张”（即张明山）亲手捏的泥人的时候，真的有一种强烈的恍惚感，就感觉那个从小就一直在身边的，虚无的影子，第一次有了实体。</p>
+<p>……但如今的天津这座城，看上去却和《俗世奇人》的天津有着本质的区别：在老街道的三层洋楼和一旁几十层楼高的大厦之间，我总能感到一种微妙的割裂感——好像前一秒还是民国年华，一转眼就变成了上世纪末那个发展的岁月，又一转身，就蓦地成为了二十一世纪的现代。街道上飘着一股海腥味，过往的人群形色各异——这当然是正常的——但人与人之间的偏差似乎太大了，擦肩而过的人，好像就不是从一个世界里出来的一样。</p>
+<p>但又仔细想了想，我觉得，倒不如说，这一点，反而正是天津之所以为天津的原因——它本就是靠着贸易而生，在那段动荡的岁月里又上长出了不知多少国家的租界。南来北往的行人，造就了集海内外为一体的文化。这种人与人之间的巨大的差异，本就是天津这个市井的性格——一座城市的性格，又怎会因短短不到一百年的时间而发生什么改变呢？</p>
+<p>要是这么说的话，天津似乎倒也还是《俗世奇人》里的那个天津卫——不过是一个俗世，但上面的各式奇人，他们鲜活地活着，组成了这个城市的根与魂。</p>
+<p>附记：去参加天大面试的那天下午，结束之后正好碰上下暴雨，我们跑到天大的食堂里面避雨，结果外面风太大把食堂的门帘给掀开了，雨水全都打进来了，避雨避了个寂寞。后来看雨稍微小了一点就撑着伞出去，但校园里的路全被积水淹成河了，几乎是寸步难行。最后是民工师傅看我们被困就骑着三轮车把我们一趟一趟驮出去了。师傅人特别好，谢谢师傅！</p>
+]]></content>
+      <categories>
+        <category>日记</category>
+      </categories>
+      <tags>
+        <tag>日记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>最终选择去天津大学了</title>
     <url>/2026/06/28/2260628/</url>
     <content><![CDATA[<p>经过了一天的激烈的思想斗争，最后在上科大和天大强基中选择了天大，再过一会就出发去天津参加校测了。</p>
@@ -11,173 +32,6 @@
       </categories>
       <tags>
         <tag>日记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一种基于人工智能技术的系统发生树绘制与物种演化路径推断系统</title>
-    <url>/2024/10/08/aitd/</url>
-    <content><![CDATA[<p><em>河南省青少年科技创新大赛参赛作品</em></p>
-<h2><span id="摘要">摘要</span></h2><blockquote>
-<p>近些年来，随着分子生物学的发展，基因序列与蛋白质序列越来越多地被作为绘制系统发生树的重要参考依据，从中诞生了很多相应的技术。但是，这些技术在实践过程中，仍存在着一些问题。比如参考序列选择比较困难等，这些都给绘制出的系统发生树的准确性与严谨性带来了一定的影响。在本文中，笔者搭建了一套用于绘制系统发生树的计算机应用软件，这套系统集成了一些常用的比对与建树算法，同时，该系统还综合了近期的相关科研数据，使用了人工智能(AI)技术以对建成的系统发生树进行综合分析，从而得出最优异的、最能代表真实物种演化路径的系统发生树，这一突破，能够使得研究人员无需拘泥于参考序列的选择，可缩短科研周期，提升科研效率。同时，本系统包括了插件系统，这使得用户可以自定义需要的序列比对与建树算法，可扩展性更强。该系统的综合能力优于目前市面上的几款解决方案，使物种演化路径的推断过程变得更加便利、准确，对相关的科研工作可能会起到推进作用。</p>
-</blockquote>
-<h2><span id="序列比对与系统发生树构建的相关算法简介">序列比对与系统发生树构建的相关算法简介</span></h2><p>作为一种物种演化路径推断系统，序列比对算法与系统发生树构建算法自然是重中之重，下面笔者将介绍本系统中所使用的几种相关算法：</p>
-<h3><span id="序列比对方法">序列比对方法</span></h3><p>序列比对是将两个或多个核酸序列或蛋白质序列排列在一起，以揭示它们之间的相似性和差异性的过程。本系统的序列比对过程，采用的是 <code>Needleman-Wunsch</code> 算法，这一算法效率高、准确性好，是目前业内最常用的序列比对算法之一。</p>
-<h4><span id="needleman-wunsch-算法"><code>Needleman-Wunsch</code> 算法</span></h4><p><code>Needleman-Wunsch</code> 算法是将动态规划算法应用于生物序列的比较的最早期的几个实例之一。</p>
-<p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <sup><a href="#refer-anchor-2" class="self">1 </a></sup> 。该算法的状态转移方程如下：</p>
-<p>$$<br>\begin{align}<br>F(0,0) &amp;= 0 \\<br>F(i,j) &amp;= \max<br>\begin{cases}<br>F(i-1,j-1) + s(x_i,y_j)  \\<br>F(i-1,j)+d \\<br>F(i,j-1)+d<br>\end{cases}<br>\end{align}<br>$$</p>
-<p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
-<h3><span id="系统发生树构建方法">系统发生树构建方法</span></h3><p>常见的系统发生树构建方法有很多，比如最小进化法、最大似然法等等。受开发时间限制，本系统只自带了非加权组平均法的建树算法。关于其他方法，用户可以通过本系统的插件系统自行添加。</p>
-<h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <sup><a href="#refer-anchor-3" class="self">3 </a></sup> 。其具体的算法流程分为以下三步：</p>
-<p>首先，需要计算所有对象（如物种、基因序列等）之间的距离。找出距离最小的两个对象（ <code>OTU</code> ，<code>Operational Taxonomic Units</code> ，操作分类单元），将它们聚为一个新的 <code>OTU</code> 。新的 <code>OTU</code> 的分支点位于这两个 <code>OTU</code> 间距离的 $\frac{1}{2}$ 处。计算新的 <code>OTU</code> 与其他 <code>OTU</code> 之间的平均距离。</p>
-<p>重复上述步骤，找出距离最小的两个 <code>OTU</code> （可以是原始的 <code>OTU</code> 或之前聚类形成的新 <code>OTU</code> ）进行聚类。如此反复，直到所有的 <code>OTU</code> 都聚到一起，形成一个完整的系统发生树。</p>
-<p>通过上述聚类过程，最终可以得到一个表示物种间亲缘关系的系统发生树。在系统发生树中，每个节点代表一个 <code>OTU</code> ，节点之间的连线表示它们之间的亲缘关系，连线的长度则反映了它们之间的进化距离。</p>
-<h3><span id="常见的解决方案及其弊端">常见的解决方案及其弊端</span></h3><p>系统发生树构建与物种演化路径推断，现如今市面上已经有了几种常见的解决方案，但它们都有各自的弊端。</p>
-<p>其中，单独进行某一环节的工具，如用于序列比对的 <code>Clustal X</code> ,  <code>MAFFT</code> 等 <sup><a href="#refer-anchor-1" class="self">1 </a></sup> ，虽然在该环节上拥有良好的性能，但并不能支持从序列到系统发生树的全过程，这使得研究人员需要频繁周转于多个平台，增加了研究需要的时间。而一些支持全环节的工具，如MEGA等，能够支撑整个科研流程，但它们的可扩展性往往不佳，无法支持用户更加多元化的需求。同时，由系统发生树得出生物演化路径，仍然需要较长的研究时间。因为并非基于所有同源序列绘制出的系统发生树，都是可以代表生物演化的路径的。而研究人员往往需要从繁杂的系统发生树数据中，找到能够提示真实生物演化路径的树，在某些研究中，这一过程相当繁杂，这无疑为科研人员的研究带来了诸多不便。</p>
-<h2><span id="本系统的基础架构">本系统的基础架构</span></h2><p>作为一款计算机软件，本系统主要采用了 <code>Python</code> 作为编码语言。</p>
-<p><code>Python</code>  由荷兰国家数学与计算机科学研究中心的 <code>Guido van Rossum</code> 于1990年代初设计 <sup><a href="#refer-anchor-4" class="self">4 </a></sup> 。 <code>Python</code> 提供了高效的高级数据结构，还能简单有效地面向对象编程。 <code>Python</code> 语法和动态类型，以及解释型语言的质，使它成为多数平台上写脚本和快速开发应用的编程语言，随着版本的不断更新和语言新功能的添加，逐渐被用于独立的、大型项目的开发。基于 <code>Python</code> 的许多优良的特性以及其良好的可扩展性、丰富的社区内容，我们决定使用 <code>Python</code> 构建本系统。本系统的软件架构（除数据外）共分为三个部分：算法包、用户系统、插件系统。</p>
-<h3><span id="算法嵌入及命名空间系统">算法嵌入及命名空间系统</span></h3><h4><span id="算法嵌入">算法嵌入</span></h4><p>本系统自带的序列比对、系统发生树构建等算法的源代码均在 <code>aitd\__init__.py</code> 中。所有算法（除人工智能外）被分为以下五种：</p>
-<ul>
-<li>文件解析器(<code>Parser</code>)：解析序列文件格式并存储序列信息；</li>
-<li>序列比对(<code>Comparator</code>)：比对两个或多个序列；</li>
-<li>比对加载(<code>Processor</code>)：根据比对结果判断两个序列的差异性；</li>
-<li>建树(<code>TreePlanter</code>)：根据多个序列之间的差异性绘制系统发生树；</li>
-<li>草图绘制(<code>Display</code>)：将系统发生树绘制成图像。</li>
-</ul>
-<p>算法实装时，使用 <code>setattr</code> 函数将该算法的执行函数设置为 <code>aitd.xlist</code> 中对应的列表实例的成员函数，同时给算法赋予一个名字。当需要使用该种算法时，可直接使用 <code>getattr</code> 函数获取对应名字的成员函数。</p>
-<h4><span id="命名空间系统">命名空间系统</span></h4><p>本系统中的所有数据（算法，项目数据等）在软件运行时，均会被赋予一个唯一确定的名字，即命名空间名( <code>Name in the namespace</code> )，以便于进行定位与引用。</p>
-<p>每一个命名空间名由数据类型和名称标识两部分构成，两部分之间由两个半角冒号( <code>::</code> )连接。</p>
-<p>在打开某一个项目后，系统会首先读取项目文件夹中的 <code>setting.json</code> 文件，这个文件中存储了所有项目数据的命名空间名以及项目文件的存储地址。</p>
-<p>随后，系统会将这些数据，以及系统自带的算法等数据全部存储进 <code>namespace:dict</code> 中。</p>
-<p>命名空间系统中的所有命名空间列表如下：</p>
-<table>
-<thead>
-<tr>
-<th>命名空间</th>
-<th>存储的内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>SEQ::</td>
-<td>序列数据</td>
-</tr>
-<tr>
-<td>ALI::</td>
-<td>比对结果数据</td>
-</tr>
-<tr>
-<td>TREE::</td>
-<td>系统发生树数据</td>
-</tr>
-<tr>
-<td>SKETCH::</td>
-<td>草图数据</td>
-</tr>
-<tr>
-<td>PARSERLIST::</td>
-<td>序列文件解析器</td>
-</tr>
-<tr>
-<td>COMPARATORLIST::</td>
-<td>序列比对器</td>
-</tr>
-<tr>
-<td>MATRIXLIST::</td>
-<td>序列比对用矩阵</td>
-</tr>
-<tr>
-<td>TREEPLANTERLIST::</td>
-<td>建树算法</td>
-</tr>
-<tr>
-<td>DISPLAYLIST::</td>
-<td>草图渲染器</td>
-</tr>
-<tr>
-<td>MODELLIST::</td>
-<td>AI 模型</td>
-</tr>
-</tbody></table>
-<h3><span id="基于-python-的控制台窗体化双端系统">基于 <code>Python</code> 的控制台+窗体化双端系统</span></h3><p>本系统的用户系统分为控制台端和窗口端双端，用户可以自行选择使用控制台或窗口进行工作。</p>
-<h4><span id="控制台端">控制台端</span></h4><p>本系统的控制台端使用 <code>matplotlib</code> 作为图表渲染工具。其主要分为三个模式: <code>Normal Mode</code>, <code>Debug Mode</code>, <code>Project Mode</code>. 其中，在 <code>Normal Mode</code> 中，用户可以对控制台端的默认设置进行更改等操作。<code>Project Mode</code>中，用户可以对当前的项目进行操作，包括导入序列，对比序列，导出生成的数据等. <code>Debug Mode</code>可以在上述两个模式的基础的同时，允许用户执行单行 <code>Python</code>代码以方便用户对控制台端程序进行调试。</p>
-<h4><span id="窗口端">窗口端</span></h4><p>本系统的窗口端使用 <code>tkinter</code>为窗体化的基本框架，同样使用 <code>matplotlib</code>作为图表渲染的工具。本系统窗口段的用户界面共分为三部分：菜单栏、侧栏、主栏。</p>
-<p>当打开了某个项目后，侧栏会出现项目内的数据文件表、同时提供了一些操作（如序列导入、序列比对、建树后）。当选择了某种操作后，主栏会出现该操作的各种配置项。比如下图便展示了“序列查看”操作的配置项</p>
-<p><img src="/medias/longs/AITD/2024000001.jpg" alt="Escherichia coli str. K-12 细胞色素 C 基因的序列，序列来源：NCBI"></p>
-<h2><span id="人工智能的引入">人工智能的引入</span></h2><p>为了更好地推断物种演化路径，本系统引入了人工智能，其可以根据用户提供的一系列系统发生树与序列数据推断出来更接近真实物种演化情况的系统发生树。</p>
-<h3><span id="人工智能模型的设计">人工智能模型的设计</span></h3><p>本系统的人工智能模型使用了固定最大值法进行设计。</p>
-<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x_i^{\prime}=\frac{x_{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
-<p>$$<br>F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)<br>$$</p>
-<p>其中</p>
-<p>$$<br>f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}<br>$$</p>
-<p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
-<h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <sup><a href="#refer-anchor-5" class="self">5 </a></sup> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <sup><a href="#refer-anchor-6" class="self">6 </a></sup> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <sup><a href="#refer-anchor-7" class="self">7 </a></sup> 。</p>
-<p>这两个研究提供了足够多的训练人工智能模型的数据，我们使用这些数据进行训练。</p>
-<h2><span id="本系统的测试与展望">本系统的测试与展望</span></h2><h3><span id="系统的可扩展性与可移植性">系统的可扩展性与可移植性</span></h3><h4><span id="可扩展性">可扩展性</span></h4><p>本系统开发了插件系统（<code>Plug-in System</code>），这使得用户可以根据自己的需求，编写插件使得本系统支持更多的功能。目前，本系统暂时只支持使用 <code>Python</code>编写插件。</p>
-<p>一个可以被本系统识别的插件应至少有一个 <code>setting.json</code>，用以向系统表明该插件的属性。一个完整的 <code>setting.json</code> 由四部分组成。第一部分是插件的基本信息（名称，作者信息等）；第二部分是插件的配置项；第三部分负责向系统表明当系统运行到特殊时刻（系统启动、窗口被刷新等）时插件会执行哪些代码；第四部分负责添加该插件内包含的算法。同时，为了方便插件与系统进行数据交流，第三与第四部分还可以添加 <code>args</code>参数。</p>
-<p>系统可以以这些参数为接口，向插件传递信息，以及一些系统自带的函数。这一套插件系统的引入，极大地增加了系统的可扩展性，使得研究人员能够最大程度地改造系统以利于科研。</p>
-<h4><span id="可移植性">可移植性</span></h4><p>本系统基于 <code>Python</code> 开发，这一语言本身就拥有者跨平台的优点。同时，本系统所使用的第三方库也均经过了筛选，绝大多数都有着良好的可移植性。这些特点使得本系统在多种平台上预计均有着良好的兼容性。</p>
-<h3><span id="目前存在的问题">目前存在的问题</span></h3><p>由于从提出设想到付诸实现只经过了不到一个月的周期，本项目的很多地方还没有完善，至今仍存在部分问题。</p>
-<ul>
-<li>受开发时间限制，本项目的算法包中只包含了少数几种算法；</li>
-<li>由于训练用数据量尚且不足，AI系统输出的结果可能有一定的偏差；</li>
-<li>尚未对项目进行系统性的鲁棒性测试，这可能导致运行过程中出现一些不可预知的错误。</li>
-</ul>
-<p>但同时，这一系统也已经达到了我们在如此短的时间内能够达到的最好的效果。</p>
-<p>今后，我们会进一步增加算法包中的算法数目，扩展训练数据，进一步提升本系统的综合能力。</p>
-<h3><span id="项目地址">项目地址</span></h3><p>本项目的所有源码与数据均基于 <code>Apache 2.0 License</code>开源。</p>
-<p>本项目的github仓库地址：<a href="https://github.com/ruufly/AITD-System">https://github.com/ruufly/AITD-System</a>。</p>
-<p>本项目发布版会随后续开发进度发布在github仓库中。</p>
-<h2><span id="致谢与作者贡献声明">致谢与作者贡献声明</span></h2><h3><span id="作者贡献声明">作者贡献声明</span></h3><p>朱璟瑞（第一作者）：项目的发起者，完成了项目整体框架的构建、窗口端与算法库的代码；</p>
-<p>胡高远：负责了人工智能模型的构建；</p>
-<p>邓钰潼：主导了人工智能训练用数据的寻找，完成了控制台端的代码。</p>
-<h3><span id="致谢">致谢</span></h3><p>感谢洛阳外国语学校（杨湾校区）的白致远，他提供了训练人工智能所必需的算力资源。</p>
-<p>感谢华东师范大学计算机科学与技术学院的赵静博士，她为本项目人工智能模型的构建提了很多建设性的意见；</p>
-<p>感谢河南科技大学附属高级中学的常易凡老师、陈洪武老师，作为我们的指导老师，他们为本项目的构建提供了帮助；</p>
-<p>感谢河南科技大学附属高级中学的张剑辉老师、罗会杰老师、朱晓东老师，本项目的构建有他们间接的帮助；</p>
-<p>谨以此项目献给河南科技大学附属高级中学的张丹丹老师，感谢您这两年对我们的谆谆教诲，祝愿您生下一个健康快乐的宝宝！</p>
-<h2><span id="参考资料">参考资料</span></h2><div id="refer-anchor-1"></div>
-
-<ul>
-<li>[1] 彭焕文,王伟.基于分子数据的系统发生树构建[J].植物学报, 2023, 58（02）: 261-273.</li>
-</ul>
-<div id="refer-anchor-2"></div>
-
-<ul>
-<li>[2] Needleman SB, Wunsch CD. A general methodapplicable to the search for similarities in theamino acid sequence of two proteins[J]. J MolBiol, 1970 Mar, 48（3）:  443-53.</li>
-</ul>
-<div id="refer-anchor-3"></div>
-
-<ul>
-<li>[3] mmqwqf. 基于 python 的非加权分组平均法构造简单系统发生树（DNA）[EB/OL]. （2020-10-12）, <a href="https://blog.csdn.net/mmqwqf/article/details/108988456">https://blog.csdn.net/mmqwqf/article/details/108988456</a> .</li>
-</ul>
-<div id="refer-anchor-4"></div>
-
-<ul>
-<li>[4] Python Software Foundation. History and License[EB/OL]. （2024-09-21）, <a href="https://docs.python.org/3/license.html">https://docs.python.org/3/license.html</a>.</li>
-</ul>
-<div id="refer-anchor-5"></div>
-
-<ul>
-<li>[5] Keating, J.N., Garwood, R.J. and Sansom,R.S. Phylogenetic congruence, conflict and con-silience between molecular and morphologicaldata[J]. BMC Ecol Evo 23, 30 （2023）.</li>
-</ul>
-<div id="refer-anchor-6"></div>
-
-<ul>
-<li>[6] Zuntini, A.R., Carruthers, T., Maurin, O.et al Phylogenomics and the rise of  the angiosperms[J]. Nature 629, 843–850 （2024）.</li>
-</ul>
-<div id="refer-anchor-7"></div>
-
-<ul>
-<li>[7] Upham NS, Esselstyn JA, Jetz W. Infer-ring the mammal tree: Species-level sets of phylogenies for questions in ecology, evolution, and conservation[J]. PLoS Biol. 2019 Dec4;17（12）:e3000494.6.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-        <tag>AITD</tag>
-        <tag>分子生物学</tag>
-        <tag>人工智能</tag>
       </tags>
   </entry>
   <entry>
@@ -526,6 +380,173 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
       </tags>
   </entry>
   <entry>
+    <title>一种基于人工智能技术的系统发生树绘制与物种演化路径推断系统</title>
+    <url>/2024/10/08/aitd/</url>
+    <content><![CDATA[<p><em>河南省青少年科技创新大赛参赛作品</em></p>
+<h2><span id="摘要">摘要</span></h2><blockquote>
+<p>近些年来，随着分子生物学的发展，基因序列与蛋白质序列越来越多地被作为绘制系统发生树的重要参考依据，从中诞生了很多相应的技术。但是，这些技术在实践过程中，仍存在着一些问题。比如参考序列选择比较困难等，这些都给绘制出的系统发生树的准确性与严谨性带来了一定的影响。在本文中，笔者搭建了一套用于绘制系统发生树的计算机应用软件，这套系统集成了一些常用的比对与建树算法，同时，该系统还综合了近期的相关科研数据，使用了人工智能(AI)技术以对建成的系统发生树进行综合分析，从而得出最优异的、最能代表真实物种演化路径的系统发生树，这一突破，能够使得研究人员无需拘泥于参考序列的选择，可缩短科研周期，提升科研效率。同时，本系统包括了插件系统，这使得用户可以自定义需要的序列比对与建树算法，可扩展性更强。该系统的综合能力优于目前市面上的几款解决方案，使物种演化路径的推断过程变得更加便利、准确，对相关的科研工作可能会起到推进作用。</p>
+</blockquote>
+<h2><span id="序列比对与系统发生树构建的相关算法简介">序列比对与系统发生树构建的相关算法简介</span></h2><p>作为一种物种演化路径推断系统，序列比对算法与系统发生树构建算法自然是重中之重，下面笔者将介绍本系统中所使用的几种相关算法：</p>
+<h3><span id="序列比对方法">序列比对方法</span></h3><p>序列比对是将两个或多个核酸序列或蛋白质序列排列在一起，以揭示它们之间的相似性和差异性的过程。本系统的序列比对过程，采用的是 <code>Needleman-Wunsch</code> 算法，这一算法效率高、准确性好，是目前业内最常用的序列比对算法之一。</p>
+<h4><span id="needleman-wunsch-算法"><code>Needleman-Wunsch</code> 算法</span></h4><p><code>Needleman-Wunsch</code> 算法是将动态规划算法应用于生物序列的比较的最早期的几个实例之一。</p>
+<p>该算法是由 <code>Saul B. Needlman</code> 和 <code>Christian D. Wunsch</code> 两位科学家于1970年发明的 <sup><a href="#refer-anchor-2" class="self">1 </a></sup> 。该算法的状态转移方程如下：</p>
+<p>$$<br>\begin{align}<br>F(0,0) &amp;= 0 \\<br>F(i,j) &amp;= \max<br>\begin{cases}<br>F(i-1,j-1) + s(x_i,y_j)  \\<br>F(i-1,j)+d \\<br>F(i,j-1)+d<br>\end{cases}<br>\end{align}<br>$$</p>
+<p>在生物序列比对算法中，该算法拥有很多优良的特性，如准确度较高、适用于多种序列的比对等。故本项目使用的默认算法便是本算法。</p>
+<h3><span id="系统发生树构建方法">系统发生树构建方法</span></h3><p>常见的系统发生树构建方法有很多，比如最小进化法、最大似然法等等。受开发时间限制，本系统只自带了非加权组平均法的建树算法。关于其他方法，用户可以通过本系统的插件系统自行添加。</p>
+<h4><span id="非加权组平均法">非加权组平均法</span></h4><p>非加权组平均法（ <code>UPGMA</code> ，<code>unweighted pair-group method with arithmetic means</code> ）是一种常用的聚类分析方法。其算法思想基于聚类分析，其核心在于通过计算不同对象之间的距离来确定它们之间的亲缘关系 <sup><a href="#refer-anchor-3" class="self">3 </a></sup> 。其具体的算法流程分为以下三步：</p>
+<p>首先，需要计算所有对象（如物种、基因序列等）之间的距离。找出距离最小的两个对象（ <code>OTU</code> ，<code>Operational Taxonomic Units</code> ，操作分类单元），将它们聚为一个新的 <code>OTU</code> 。新的 <code>OTU</code> 的分支点位于这两个 <code>OTU</code> 间距离的 $\frac{1}{2}$ 处。计算新的 <code>OTU</code> 与其他 <code>OTU</code> 之间的平均距离。</p>
+<p>重复上述步骤，找出距离最小的两个 <code>OTU</code> （可以是原始的 <code>OTU</code> 或之前聚类形成的新 <code>OTU</code> ）进行聚类。如此反复，直到所有的 <code>OTU</code> 都聚到一起，形成一个完整的系统发生树。</p>
+<p>通过上述聚类过程，最终可以得到一个表示物种间亲缘关系的系统发生树。在系统发生树中，每个节点代表一个 <code>OTU</code> ，节点之间的连线表示它们之间的亲缘关系，连线的长度则反映了它们之间的进化距离。</p>
+<h3><span id="常见的解决方案及其弊端">常见的解决方案及其弊端</span></h3><p>系统发生树构建与物种演化路径推断，现如今市面上已经有了几种常见的解决方案，但它们都有各自的弊端。</p>
+<p>其中，单独进行某一环节的工具，如用于序列比对的 <code>Clustal X</code> ,  <code>MAFFT</code> 等 <sup><a href="#refer-anchor-1" class="self">1 </a></sup> ，虽然在该环节上拥有良好的性能，但并不能支持从序列到系统发生树的全过程，这使得研究人员需要频繁周转于多个平台，增加了研究需要的时间。而一些支持全环节的工具，如MEGA等，能够支撑整个科研流程，但它们的可扩展性往往不佳，无法支持用户更加多元化的需求。同时，由系统发生树得出生物演化路径，仍然需要较长的研究时间。因为并非基于所有同源序列绘制出的系统发生树，都是可以代表生物演化的路径的。而研究人员往往需要从繁杂的系统发生树数据中，找到能够提示真实生物演化路径的树，在某些研究中，这一过程相当繁杂，这无疑为科研人员的研究带来了诸多不便。</p>
+<h2><span id="本系统的基础架构">本系统的基础架构</span></h2><p>作为一款计算机软件，本系统主要采用了 <code>Python</code> 作为编码语言。</p>
+<p><code>Python</code>  由荷兰国家数学与计算机科学研究中心的 <code>Guido van Rossum</code> 于1990年代初设计 <sup><a href="#refer-anchor-4" class="self">4 </a></sup> 。 <code>Python</code> 提供了高效的高级数据结构，还能简单有效地面向对象编程。 <code>Python</code> 语法和动态类型，以及解释型语言的质，使它成为多数平台上写脚本和快速开发应用的编程语言，随着版本的不断更新和语言新功能的添加，逐渐被用于独立的、大型项目的开发。基于 <code>Python</code> 的许多优良的特性以及其良好的可扩展性、丰富的社区内容，我们决定使用 <code>Python</code> 构建本系统。本系统的软件架构（除数据外）共分为三个部分：算法包、用户系统、插件系统。</p>
+<h3><span id="算法嵌入及命名空间系统">算法嵌入及命名空间系统</span></h3><h4><span id="算法嵌入">算法嵌入</span></h4><p>本系统自带的序列比对、系统发生树构建等算法的源代码均在 <code>aitd\__init__.py</code> 中。所有算法（除人工智能外）被分为以下五种：</p>
+<ul>
+<li>文件解析器(<code>Parser</code>)：解析序列文件格式并存储序列信息；</li>
+<li>序列比对(<code>Comparator</code>)：比对两个或多个序列；</li>
+<li>比对加载(<code>Processor</code>)：根据比对结果判断两个序列的差异性；</li>
+<li>建树(<code>TreePlanter</code>)：根据多个序列之间的差异性绘制系统发生树；</li>
+<li>草图绘制(<code>Display</code>)：将系统发生树绘制成图像。</li>
+</ul>
+<p>算法实装时，使用 <code>setattr</code> 函数将该算法的执行函数设置为 <code>aitd.xlist</code> 中对应的列表实例的成员函数，同时给算法赋予一个名字。当需要使用该种算法时，可直接使用 <code>getattr</code> 函数获取对应名字的成员函数。</p>
+<h4><span id="命名空间系统">命名空间系统</span></h4><p>本系统中的所有数据（算法，项目数据等）在软件运行时，均会被赋予一个唯一确定的名字，即命名空间名( <code>Name in the namespace</code> )，以便于进行定位与引用。</p>
+<p>每一个命名空间名由数据类型和名称标识两部分构成，两部分之间由两个半角冒号( <code>::</code> )连接。</p>
+<p>在打开某一个项目后，系统会首先读取项目文件夹中的 <code>setting.json</code> 文件，这个文件中存储了所有项目数据的命名空间名以及项目文件的存储地址。</p>
+<p>随后，系统会将这些数据，以及系统自带的算法等数据全部存储进 <code>namespace:dict</code> 中。</p>
+<p>命名空间系统中的所有命名空间列表如下：</p>
+<table>
+<thead>
+<tr>
+<th>命名空间</th>
+<th>存储的内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SEQ::</td>
+<td>序列数据</td>
+</tr>
+<tr>
+<td>ALI::</td>
+<td>比对结果数据</td>
+</tr>
+<tr>
+<td>TREE::</td>
+<td>系统发生树数据</td>
+</tr>
+<tr>
+<td>SKETCH::</td>
+<td>草图数据</td>
+</tr>
+<tr>
+<td>PARSERLIST::</td>
+<td>序列文件解析器</td>
+</tr>
+<tr>
+<td>COMPARATORLIST::</td>
+<td>序列比对器</td>
+</tr>
+<tr>
+<td>MATRIXLIST::</td>
+<td>序列比对用矩阵</td>
+</tr>
+<tr>
+<td>TREEPLANTERLIST::</td>
+<td>建树算法</td>
+</tr>
+<tr>
+<td>DISPLAYLIST::</td>
+<td>草图渲染器</td>
+</tr>
+<tr>
+<td>MODELLIST::</td>
+<td>AI 模型</td>
+</tr>
+</tbody></table>
+<h3><span id="基于-python-的控制台窗体化双端系统">基于 <code>Python</code> 的控制台+窗体化双端系统</span></h3><p>本系统的用户系统分为控制台端和窗口端双端，用户可以自行选择使用控制台或窗口进行工作。</p>
+<h4><span id="控制台端">控制台端</span></h4><p>本系统的控制台端使用 <code>matplotlib</code> 作为图表渲染工具。其主要分为三个模式: <code>Normal Mode</code>, <code>Debug Mode</code>, <code>Project Mode</code>. 其中，在 <code>Normal Mode</code> 中，用户可以对控制台端的默认设置进行更改等操作。<code>Project Mode</code>中，用户可以对当前的项目进行操作，包括导入序列，对比序列，导出生成的数据等. <code>Debug Mode</code>可以在上述两个模式的基础的同时，允许用户执行单行 <code>Python</code>代码以方便用户对控制台端程序进行调试。</p>
+<h4><span id="窗口端">窗口端</span></h4><p>本系统的窗口端使用 <code>tkinter</code>为窗体化的基本框架，同样使用 <code>matplotlib</code>作为图表渲染的工具。本系统窗口段的用户界面共分为三部分：菜单栏、侧栏、主栏。</p>
+<p>当打开了某个项目后，侧栏会出现项目内的数据文件表、同时提供了一些操作（如序列导入、序列比对、建树后）。当选择了某种操作后，主栏会出现该操作的各种配置项。比如下图便展示了“序列查看”操作的配置项</p>
+<p><img src="/medias/longs/AITD/2024000001.jpg" alt="Escherichia coli str. K-12 细胞色素 C 基因的序列，序列来源：NCBI"></p>
+<h2><span id="人工智能的引入">人工智能的引入</span></h2><p>为了更好地推断物种演化路径，本系统引入了人工智能，其可以根据用户提供的一系列系统发生树与序列数据推断出来更接近真实物种演化情况的系统发生树。</p>
+<h3><span id="人工智能模型的设计">人工智能模型的设计</span></h3><p>本系统的人工智能模型使用了固定最大值法进行设计。</p>
+<p>将树以叶节点之间距离来存储树的状态，将一颗树压缩到一个向量中，采用 $x_i^{\prime}=\frac{x_{i}}{\lvert x \rvert _{max}}$ 的方式对数据进行预处理。之后使用打分函数对每一颗树进行打分，最后求最大值。关于打分函数，我们采用如下函数：</p>
+<p>$$<br>F(x_1,x_2,\cdots,x_n,l_1,l_2,\cdots,l_n)=-\sum_{i=0}^{n}f^2(x_1,x_2,\cdots,l_i,i)<br>$$</p>
+<p>其中</p>
+<p>$$<br>f(x_1,x_2,\cdots,l,id)=\sum_{i=-2}^{2}\sum_{j=-1}^{1}c_{1,i,j}\ast x_{id}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=0}^{id-1}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}+\sum_{i=-2}^{2}\sum_{j=-1}^{1}\sum_{k=id+1}^{n}c_{1,i,j}\ast x_{k}^{i}\ast l^{j}<br>$$</p>
+<p>$x$ 为目标树代表向量与第 $i$ 颗树代表向量之间距离； $l$ 为第 $i$ 颗树基因长度代表值。这里的最大值确定，为 $0$ ，所以想要使模型拟合程度最好，需要使 $F$ 最大。故求 $F$ 梯度进行梯度下降就好，步长设置为随机下降步长。</p>
+<h3><span id="训练用数据的来源">训练用数据的来源</span></h3><p>为了使人工智能输出的结果尽量正确，我们决定选择近几年的几个涵盖物种树较广的研究作为训练用数据的来源。<code>Joseph N Keating</code> 等在 2023 年使用了多个已发表的，包括形态学和分子数据的数据集，构建系统发育树，并评估形态学和分子数据之间的不一致性 <sup><a href="#refer-anchor-5" class="self">5 </a></sup> ；<code>Alexandre R. Zuntini</code> 等在 2024 年通过对大量被子植物的基因组序列数据进行分析，揭示了被子植物在进化历史上的多样化和特定谱系的历史 <sup><a href="#refer-anchor-6" class="self">6 </a></sup> 。<code>Upham NS</code> 等在 2019 年利用 6000 多种现存的哺乳动物，使用贝叶斯方法构建了系统生成树，刻画了它们之间的演化关系 <sup><a href="#refer-anchor-7" class="self">7 </a></sup> 。</p>
+<p>这两个研究提供了足够多的训练人工智能模型的数据，我们使用这些数据进行训练。</p>
+<h2><span id="本系统的测试与展望">本系统的测试与展望</span></h2><h3><span id="系统的可扩展性与可移植性">系统的可扩展性与可移植性</span></h3><h4><span id="可扩展性">可扩展性</span></h4><p>本系统开发了插件系统（<code>Plug-in System</code>），这使得用户可以根据自己的需求，编写插件使得本系统支持更多的功能。目前，本系统暂时只支持使用 <code>Python</code>编写插件。</p>
+<p>一个可以被本系统识别的插件应至少有一个 <code>setting.json</code>，用以向系统表明该插件的属性。一个完整的 <code>setting.json</code> 由四部分组成。第一部分是插件的基本信息（名称，作者信息等）；第二部分是插件的配置项；第三部分负责向系统表明当系统运行到特殊时刻（系统启动、窗口被刷新等）时插件会执行哪些代码；第四部分负责添加该插件内包含的算法。同时，为了方便插件与系统进行数据交流，第三与第四部分还可以添加 <code>args</code>参数。</p>
+<p>系统可以以这些参数为接口，向插件传递信息，以及一些系统自带的函数。这一套插件系统的引入，极大地增加了系统的可扩展性，使得研究人员能够最大程度地改造系统以利于科研。</p>
+<h4><span id="可移植性">可移植性</span></h4><p>本系统基于 <code>Python</code> 开发，这一语言本身就拥有者跨平台的优点。同时，本系统所使用的第三方库也均经过了筛选，绝大多数都有着良好的可移植性。这些特点使得本系统在多种平台上预计均有着良好的兼容性。</p>
+<h3><span id="目前存在的问题">目前存在的问题</span></h3><p>由于从提出设想到付诸实现只经过了不到一个月的周期，本项目的很多地方还没有完善，至今仍存在部分问题。</p>
+<ul>
+<li>受开发时间限制，本项目的算法包中只包含了少数几种算法；</li>
+<li>由于训练用数据量尚且不足，AI系统输出的结果可能有一定的偏差；</li>
+<li>尚未对项目进行系统性的鲁棒性测试，这可能导致运行过程中出现一些不可预知的错误。</li>
+</ul>
+<p>但同时，这一系统也已经达到了我们在如此短的时间内能够达到的最好的效果。</p>
+<p>今后，我们会进一步增加算法包中的算法数目，扩展训练数据，进一步提升本系统的综合能力。</p>
+<h3><span id="项目地址">项目地址</span></h3><p>本项目的所有源码与数据均基于 <code>Apache 2.0 License</code>开源。</p>
+<p>本项目的github仓库地址：<a href="https://github.com/ruufly/AITD-System">https://github.com/ruufly/AITD-System</a>。</p>
+<p>本项目发布版会随后续开发进度发布在github仓库中。</p>
+<h2><span id="致谢与作者贡献声明">致谢与作者贡献声明</span></h2><h3><span id="作者贡献声明">作者贡献声明</span></h3><p>朱璟瑞（第一作者）：项目的发起者，完成了项目整体框架的构建、窗口端与算法库的代码；</p>
+<p>胡高远：负责了人工智能模型的构建；</p>
+<p>邓钰潼：主导了人工智能训练用数据的寻找，完成了控制台端的代码。</p>
+<h3><span id="致谢">致谢</span></h3><p>感谢洛阳外国语学校（杨湾校区）的白致远，他提供了训练人工智能所必需的算力资源。</p>
+<p>感谢华东师范大学计算机科学与技术学院的赵静博士，她为本项目人工智能模型的构建提了很多建设性的意见；</p>
+<p>感谢河南科技大学附属高级中学的常易凡老师、陈洪武老师，作为我们的指导老师，他们为本项目的构建提供了帮助；</p>
+<p>感谢河南科技大学附属高级中学的张剑辉老师、罗会杰老师、朱晓东老师，本项目的构建有他们间接的帮助；</p>
+<p>谨以此项目献给河南科技大学附属高级中学的张丹丹老师，感谢您这两年对我们的谆谆教诲，祝愿您生下一个健康快乐的宝宝！</p>
+<h2><span id="参考资料">参考资料</span></h2><div id="refer-anchor-1"></div>
+
+<ul>
+<li>[1] 彭焕文,王伟.基于分子数据的系统发生树构建[J].植物学报, 2023, 58（02）: 261-273.</li>
+</ul>
+<div id="refer-anchor-2"></div>
+
+<ul>
+<li>[2] Needleman SB, Wunsch CD. A general methodapplicable to the search for similarities in theamino acid sequence of two proteins[J]. J MolBiol, 1970 Mar, 48（3）:  443-53.</li>
+</ul>
+<div id="refer-anchor-3"></div>
+
+<ul>
+<li>[3] mmqwqf. 基于 python 的非加权分组平均法构造简单系统发生树（DNA）[EB/OL]. （2020-10-12）, <a href="https://blog.csdn.net/mmqwqf/article/details/108988456">https://blog.csdn.net/mmqwqf/article/details/108988456</a> .</li>
+</ul>
+<div id="refer-anchor-4"></div>
+
+<ul>
+<li>[4] Python Software Foundation. History and License[EB/OL]. （2024-09-21）, <a href="https://docs.python.org/3/license.html">https://docs.python.org/3/license.html</a>.</li>
+</ul>
+<div id="refer-anchor-5"></div>
+
+<ul>
+<li>[5] Keating, J.N., Garwood, R.J. and Sansom,R.S. Phylogenetic congruence, conflict and con-silience between molecular and morphologicaldata[J]. BMC Ecol Evo 23, 30 （2023）.</li>
+</ul>
+<div id="refer-anchor-6"></div>
+
+<ul>
+<li>[6] Zuntini, A.R., Carruthers, T., Maurin, O.et al Phylogenomics and the rise of  the angiosperms[J]. Nature 629, 843–850 （2024）.</li>
+</ul>
+<div id="refer-anchor-7"></div>
+
+<ul>
+<li>[7] Upham NS, Esselstyn JA, Jetz W. Infer-ring the mammal tree: Species-level sets of phylogenies for questions in ecology, evolution, and conservation[J]. PLoS Biol. 2019 Dec4;17（12）:e3000494.6.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+        <tag>AITD</tag>
+        <tag>分子生物学</tag>
+        <tag>人工智能</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>上伊那牡丹，看完了</title>
     <url>/2026/06/27/botan/</url>
     <content><![CDATA[<p>《上伊那牡丹，酒醉身姿似百合花般》，今天上午看完了。</p>
@@ -546,24 +567,151 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
       </tags>
   </entry>
   <entry>
-    <title>天津行记</title>
-    <url>/2026/07/02/2260702/</url>
-    <content><![CDATA[<p>前两天去天津参加天津大学的强基面试，顺道在天津逛了逛。</p>
-<p>天津是个底蕴很深厚的城市。骑着共享单车在老的城建区里面穿行——那里的街道大多不宽，几乎每条都以地名命名，你甚至能听到一些早已废弃的名字，比如“察哈尔”、“热河”。它们组成横平竖直的网格，其间的小楼绝大多数都有百年以上的历史了——可能每隔半分钟就能找到一个近代名人的故居，好像是那一段错综的岁月，就这样安安静静地飘在夏天的树荫下一样。</p>
-<p><img src="/medias/shorts/2260702/1782927561724.jpg" alt="路过时随手拍的一座老房子。拍完之后走近一看发现好像是当时英国领事的官邸"></p>
-<p>天津的人，也和我想象中的一样。热情、善良、直来直去，说话还都贼逗，也无外乎网上的人都说天津人人都会相声。我觉得当地方言在这其中起到了不小的作用，比方说天津话中“什么”一词统统都说成“嘛”——还一定要读成四声的——那样的一个声音，无论是谁第一次听到的时候，都很难不被逗乐。</p>
-<p><img src="/medias/shorts/2260702/1782927561671.jpg" alt="家人们网上说的是真的天津的路上真的有这样的警示牌（）"></p>
-<p>说到天津，不得不提到冯骥才先生的那本《俗世奇人》。小学时候第一次读起时，就被这本不算厚的小书深深吸引，那一个个有血有肉的市井小人物，至今仍深刻地影响着我。想起书中说的“泥人张、风筝魏、杨柳青年画”，等到了天津市博物馆，在展柜中看到了书中的“泥人张”（即张明山）亲手捏的泥人的时候，真的有一种强烈的恍惚感，就感觉那个从小就一直在身边的，虚无的影子，第一次有了实体。</p>
-<p>……但如今的天津这座城，看上去却和《俗世奇人》的天津有着本质的区别：在老街道的三层洋楼和一旁几十层楼高的大厦之间，我总能感到一种微妙的割裂感——好像前一秒还是民国年华，一转眼就变成了上世纪末那个发展的岁月，又一转身，就蓦地成为了二十一世纪的现代。街道上飘着一股海腥味，过往的人群形色各异——这当然是正常的——但人与人之间的偏差似乎太大了，擦肩而过的人，好像就不是从一个世界里出来的一样。</p>
-<p>但又仔细想了想，我觉得，倒不如说，这一点，反而正是天津之所以为天津的原因——它本就是靠着贸易而生，在那段动荡的岁月里又上长出了不知多少国家的租界。南来北往的行人，造就了集海内外为一体的文化。这种人与人之间的巨大的差异，本就是天津这个市井的性格——一座城市的性格，又怎会因短短不到一百年的时间而发生什么改变呢？</p>
-<p>要是这么说的话，天津似乎倒也还是《俗世奇人》里的那个天津卫——不过是一个俗世，但上面的各式奇人，他们鲜活地活着，组成了这个城市的根与魂。</p>
-<p>附记：去参加天大面试的那天下午，结束之后正好碰上下暴雨，我们跑到天大的食堂里面避雨，结果外面风太大把食堂的门帘给掀开了，雨水全都打进来了，避雨避了个寂寞。后来看雨稍微小了一点就撑着伞出去，但校园里的路全被积水淹成河了，几乎是寸步难行。最后是民工师傅看我们被困就骑着三轮车把我们一趟一趟驮出去了。师傅人特别好，谢谢师傅！</p>
+    <title>最新 | 关于我的高中三年</title>
+    <url>/2026/06/11/graduate/</url>
+    <content><![CDATA[<blockquote>
+<p>写在前面：这篇文章的写作没有经过任何提前的构思，完全是想到什么写什么，所以可能写得有点乱，各位见谅</p>
+</blockquote>
+<p>高考结束后的第二天开毕业典礼，开完之后同学们在教室里又待了一段时间才陆陆续续地告别。我基本上是全班走得最晚的一个了（绝不是为了多玩一会电教），即便是离开校门之后，也没有任何关于“毕业了”的实感。总感觉好像高中刚入学那天就在不久之前一样，但又感觉几天前的高考就像是十几年前的往事。</p>
+<p>后来想了想，可能是高中三年太不重视记录了。高一那年学着其他人像模像样整了个日记本，写了没两个月，那个本子就不知道跑到哪里去了。这些年倒是笔没停过，但写的都是小说一类的，对于那些真真切切发生在身边的事情，反而忘得差不多了。总感觉不擅长记录的人，就很容易被时间困住，因为对时间的坐标没什么把握，对日子的流逝也就没有什么明确的感觉。</p>
+<p>那就试着写写吧，趁着有些记忆还没有被彻底忘掉。</p>
+<h2><span id="关于最开始">关于最开始</span></h2><p>我所在的这个班属于是一种特殊招生，初三下学期就提前招到高中来的那种。当时这东西很新潮，特别是在像我们这边的这种内地小城市——我们班是我们学校第二年招这类学生——后来这种2.5+3.5的模式没搞多少年，教育局就不乐意了，遂作罢。</p>
+<p>（其实当时考虑报这种提前招生班主要是初三上学期，2022年冬天，是知周所众的一个学期的网课，当时文化课成绩掉的很厉害，不来这种班的话大概率中考就直接爆炸了）</p>
+<p>我们市的市区头部高中的水平排名大概是 <code>第一&gt;&gt;第二&gt;第三&gt;&gt;其他</code> 的这种，前三所学校开了这种提前招生班。第一名的学校我显然考不上所以不考虑，第二名的学校我去报名了然后他们嫌文化课成绩太低于是初审没通过，第三名的学校是我们市每年CSP初赛的考点，我上初中的时候CSP-J拿了个省二就想着来这边搞信竞，然后就来到了这里，也算是比较巧合。</p>
 ]]></content>
       <categories>
-        <category>日记</category>
+        <category>随笔</category>
       </categories>
       <tags>
-        <tag>日记</tag>
+        <tag>随笔</tag>
+        <tag>毕业</tag>
+        <tag>2026</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>置顶 | 关于我自己</title>
+    <url>/2021/07/10/about-me/</url>
+    <content><![CDATA[<p>本页面最后一次更新于2026-06-26</p>
+<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
+<p>如你所见，这个名字很奇怪。</p>
+<p>原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
+<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
+<p>我本人是一个普通的准大一学生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，去年参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。现在高三毕业了，高考考得还不错，正在准备大学生活中。</p>
+<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
+<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
+<p>能力、码力、笔力有限，我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
+<p>以上。请多关照。</p>
+<p align="right">distjr_</p>
+
+<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
+<p>Bilibili: <a href="https://space.bilibili.com/1159124697">bilibili</a></p>
+<p>GitHub: <a href="https://github.com/ruufly">github</a></p>
+<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
+<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
+<p>Luogu: <a href="https://www.luogu.com.cn/user/363964">luogu</a></p>
+<p>Zhihu: <a href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
+<p>X: <a href="https://x.com/distjr_">X</a></p>
+]]></content>
+      <categories>
+        <category>关于</category>
+      </categories>
+      <tags>
+        <tag>关于</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一场提前告知的自杀</title>
+    <url>/2023/05/11/planned-jisatsu/</url>
+    <content><![CDATA[<p>十几平米的出租房里，堆满了杂物，只有女子现在正躺着的这张床上，略显得干净一点。夏天的六月，又是阴天，房间里没有空调，只有一台电扇正摇着头，吹着风，但无济于事。早上七点的闹钟还没有响起，女子早已受不了这湿热的环境而惊醒。</p>
+<p>“无聊透顶。”，女子发了句牢骚。这过于简单而普通的早晨，确实有些无聊。女子打开手机，看了看公司群里的消息。又一个她曾经的同事成了她的上司。</p>
+<p>女子并没有过多表示什么，她像往常一样走到镜子前。镜子里，仍是一个普通的、二十来岁的女性。披肩散发，发梢被风扇稍稍吹起。</p>
+<p>“……真是无聊透顶。”</p>
+<p>女子打开房门，走出去，锁好房门，准备往公司去，正好撞见了隔壁家的那个小孩。</p>
+<p>“哟！这不是隔壁那个死妮子嘛！”，那小孩用尖锐的声音笑道，声音穿过看不见尽头的走廊，形成了无数的回声。</p>
+<p>“……”</p>
+<p>“死妮子，你要是不想走的话，就先把道给老子让开！”，小孩的声音，更尖锐刺耳了。</p>
+<p>“你知道吗？”</p>
+<p>“老子懒得知道！”</p>
+<p>“你知道吗，我准备在今天晚上自杀。”</p>
+<p>“自杀？嗬！求之不得啊！最好给老子早点死，别让老子再看到你一眼！”，那尖锐的声音说罢，就头也不回地走了。</p>
+<p>女子坐上电梯，下了楼，出了公寓门右转，到了一下小商店门口。商店的老板娘坐在柜台里，正在给一个客人找钱，后面还有十几个人在排队。女子进了小商店，拿了一个面包，一小盒牛奶，也排在了对后面。</p>
+<p>女子的身后，没有人再排上来，那位五十多岁的老板娘，见到终于可以休息一会儿了，便放慢了速度。等到前面的客人都已离开，她把手中的面包和牛奶放在柜台上，平静地对老板娘说——</p>
+<p>“你知道吗？我准备在今天晚上自杀。”</p>
+<p>“啊？”，老板娘突然停下了正计算着价格的手，“是，怎么了？”</p>
+<p>“我准备在今天晚上自杀。”</p>
+<p>“别开玩笑好吗？孩子。”</p>
+<p>“没开玩笑。”</p>
+<p>老板娘愣了几秒钟，眼神变得有些疑虑。</p>
+<p>这时，后面又有一个人排上了队，老板娘又忙碌了起来，把她付的钱找清后，就接着应付下一个人了。女子头也不回地出了商店，赶向电车站。但女子没有看到的是，老板娘在忙碌之中，向她逐渐消失地方向，忧心忡忡地看了一眼。</p>
+<p>终于，在浑浑噩噩之中，女子赶上了电车，车上拥挤的人群与浑浊的空气，反而让女子更清醒了一点。</p>
+<p>她的身后，站着一位拄着拐杖的老人；右侧是一个学生，正一手握着扶手，一手拿着一本小说，津津有味地看着；正前方，一个女子正双手紧牵着她的两个孩子；而左边，是一个男性的职员，和她一样，穿着西装，打着领带。</p>
+<p>女子冲着左边的职员说了一句：“你知道吗？我准备在今天晚上自杀。”</p>
+<p>“……哦”</p>
+<p>“……”</p>
+<p>“然后呢？”，男职员问了一句。</p>
+<p>“……”</p>
+<p>“……”</p>
+<p>“咔擦”一声，电车停了下来，数不清的人，挤上挤下。她在人群的缝隙中穿行着，终于下了电车。</p>
+<p>上楼的电梯很快，还没来得及反应过来，人就已经到了十七八层。女子下了电梯，进了公司。</p>
+<p>“早上好！”</p>
+<p>“早上好，尊敬的科长先生。”，女子机械地弯下腰，冲着那位她曾经的同事，现在的上司，道了声早，坐到了自己的工位上。</p>
+<p>“早！今天也要加油啊！”，在女子旁边的工位上，她的同事伸了个懒腰说。</p>
+<p>“……”，她没有回答，“你知道吗？我准备在今天晚上自杀。”</p>
+<p>“哈？今天是愚人节吗？还是说，你说的是什么冷笑话？”</p>
+<p>“不是笑话。”</p>
+<p>“那我就当作是笑话啦！”，她的同事笑着，把注意力转移回了电脑上，要处理的文件前。</p>
+<p>“……”</p>
+<p>一天的时间，自然也是很快的，转眼间，虽是阴天，但西方的天空已肉眼可见的发红，再转眼间，钟表的时针指向了“9”，该下班了。</p>
+<p>女子离开了公司，找了家旧衣服店，买了件大衣，又找了个步行街，在灯红酒绿的街头，漫无目的地转了几十分钟，最后随便找了个街边公园，坐在了一个长椅的一头。</p>
+<p>长椅的另一头，一对情侣正坐在一起，不知在干什么。女子转过身去，对情侣说：“你们知道吗？我准备在今天晚上自杀。”</p>
+<p>“啊？”，长椅对面，两人同时疑惑道。</p>
+<p>接下来，情侣两人，小声地说了几句话，不知是不是故意让女子听到的，但女子确实听到了——</p>
+<p>“那个人是咋回事？是个疯子吗？”</p>
+<p>“鬼知道，咱还是走吧，要么她疯了，要么她真准备自杀。都挺晦气的，咱别在这儿待了。”</p>
+<p>说罢，他们就离开了，只留下女子一人。</p>
+<p>女子从口袋中，掏出从黑市里头买来的药。那个被她用过无数次的针管，再次注射进了她的胳膊上，不过这次，针管里的不是毒品，而是毒药。</p>
+<p>……</p>
+<p>苍蝇，是最能感知死亡的生物。这只，也不例外。</p>
+<p>这只苍蝇，在公园间飞行着，嗅到了死亡的气息。</p>
+<p>它扇动翅膀，向死亡气息的源头，靠近着。忽然，一束手电筒的灯光，打断了它。</p>
+<p>……</p>
+<p>经过了几个小时的寻找，小卖部的老板娘，终于带着一群人，找到了女子。</p>
+<p>手电筒灯光，照到了女子的身上。女子惨白的皮肤，证明她已经死亡了一段时间了。</p>
+<p>这时，一只苍蝇，飞进了灯光的照射范围。</p>
+<p>老板娘不会知道，也永远不会知道，这只苍蝇在想些什么。</p>
+<p>但是，她能看到，这只苍蝇，落到了女子的额头上。</p>
+<p align="right">2023.5.11</p>
+]]></content>
+      <categories>
+        <category>文集</category>
+      </categories>
+      <tags>
+        <tag>小说</tag>
+        <tag>短篇</tag>
+        <tag>2023</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>KeepOpen：一款保持移动硬盘开启状态的小工具</title>
+    <url>/2026/06/11/keepopen/</url>
+    <content><![CDATA[<p><img src="/medias/keepopen.png_"></p>
+<h1><span id="keepopen">KeepOpen</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/KeepOpen">Github 仓库</a> | <a href="https://github.com/ruufly/KeepOpen/blob/main/LICENSE">开源许可证</a> | <a href="https://github.com/ruufly/KeepOpen/releases">发行版下载</a></p>
+<blockquote>
+<p>一款保持移动硬盘开启状态的小工具</p>
+</blockquote>
+<h2><span id="作者">作者</span></h2><p>以下列出了参与本项目的作者。</p>
+<ul>
+<li><a href="https://github.com/ruufly">@distjr_/@ruufly!</a></li>
+</ul>
+<h2><span id="使用说明">使用说明</span></h2><p>本工具打开后，自动最小化至系统托盘。通过系统托盘可进入设置页面</p>
+<p>设置页面上方可勾选需要保持开启状态的盘符，中间可设置盘符开启状态的刷新时间、是否开机自启动、是否以管理员模式启动等。其中，如需对系统盘使用KeepOpen，建议打开“以管理员模式启动”选项。下方可清理软件运行中的缓存、日志文件等。</p>
+<h2><span id="注意事项">注意事项</span></h2><p>本工具通过修改注册表以实现开机自启动，在一些系统中，卸载后可能无法及时清理注册表残余，请使用<code>Geek Uninstaller</code>等工具卸载，或在卸载后手动清理<code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\</code>中的残余。</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>KeepOpen</tag>
       </tags>
   </entry>
   <entry>
@@ -750,34 +898,154 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
       </tags>
   </entry>
   <entry>
-    <title>置顶 | 关于我自己</title>
-    <url>/2021/07/10/about-me/</url>
-    <content><![CDATA[<p>本页面最后一次更新于2026-06-26</p>
-<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
-<p>如你所见，这个名字很奇怪。</p>
-<p>原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
-<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
-<p>我本人是一个普通的准大一学生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，去年参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。现在高三毕业了，高考考得还不错，正在准备大学生活中。</p>
-<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
-<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
-<p>能力、码力、笔力有限，我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
-<p>以上。请多关照。</p>
-<p align="right">distjr_</p>
+    <title>一款基于Python的随机学生点名器</title>
+    <url>/2025/12/16/random-student/</url>
+    <content><![CDATA[<p>本文是本人编写的一款随机学生点名器的README文件，您可以点击<a href="https://github.com/ruufly/Random-Student/releases/latest">此处（github源）</a>或<a href="https://gitee.com/distjr/random-student/releases/latest">此处（gitee源）</a>以下载该点名器的安装包。</p>
+<h1><span id="random-student">Random Student</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/Random-Student/">Github 仓库</a> | <a href="https://github.com/ruufly/Random-Student/blob/main/LICENSE">开源许可证</a></p>
+<blockquote>
+<p>一款基于 python 的随机学生点名器。</p>
+</blockquote>
+<h2><span id="作者">作者</span></h2><p>以下列出了参与本项目的作者。</p>
+<ul>
+<li><a href="https://github.com/ruufly">@distjr_/@ruufly!</a></li>
+<li><a href="https://github.com/dytdirt">@dytdirt</a></li>
+<li>@hz</li>
+</ul>
+<h2><span id="使用说明">使用说明</span></h2><p>本软件打开后，界面上共有 随机学生、连抽、设置 三个选项。</p>
+<ul>
+<li>选择 随机学生 选项后，会随机抽取一名学生并将姓名显示出来；</li>
+<li>选择 连抽 选项后，会弹出连抽窗口，依次显示所有被抽中的学生；</li>
+<li>选择 设置 选项后，进入设置窗口。</li>
+</ul>
+<h3><span id="设置">设置</span></h3><p>进入设置窗口后，共有以下选项：</p>
+<ul>
+<li>管理学生名单：经过密码验证，可修改学生名单或将名单导出；</li>
+<li>点名次数统计：可统计本次软件使用过程中的点名情况、报错情况，还可通过 高通量检验 功能，测试随机逻辑优劣性；</li>
+<li>设置连抽次数：设置连抽中一次抽取学生数量（需要注意，如果设置的连抽次数大于学生总数，在某些随机逻辑下可能会出现无法预测的错误）；</li>
+<li>随机逻辑：设置随机抽取使用的算法；</li>
+<li>版本更新：检测新版本并安装；</li>
+<li>软件许可证：查看软件的开源许可证（Apache 2.0）；</li>
+<li>开放源代码：查看软件源代码（github/gitee）</li>
+<li>关于作者：查看作者个人主页</li>
+<li>个性化设置：设置软件的配色方案；</li>
+<li>语言设置：设置软件显示语言；</li>
+<li>更新包下载源：设置版本更新时下载更新包的源（github更新发布更早，gitee在国内下载速度更快）；</li>
+<li>修改密码：修改管理学生名单的密码；</li>
+<li>重置配置：重置用户的所有配置（设置、插件、学生名单等）以解决一些可能由配置问题导致的程序异常；</li>
+<li>批量导入名单：批量导入学生名单时，请将学生名单以 <code>UTF-8</code> 编码的纯文本格式存储，每行一个学生姓名，行尾不要有空格，随后在此处打开。</li>
+</ul>
+<h3><span id="cnu系统">CNU系统</span></h3><p>本软件中，每个学生都有其分类，所有学生共分为 Censored(C), Normal(N), Uped(U) 三类</p>
+<ul>
+<li>Censored 类的学生被抽取到的概率会降低（在某些随机逻辑下概率为0），请将缺席学生置于此类；</li>
+<li>Normal 类的学生被抽到的概率正常，请将大多数学生置于此类；</li>
+<li>Uped 类的学生被抽取到的概率会大幅升高，可视情况将某些学生置于此类。</li>
+</ul>
+<h3><span id="插件系统">插件系统</span></h3><p>本软件包含插件系统，用户可自行编写插件以给本软件添加新功能。</p>
+<p>每个插件包含本体与接口两部分，本体推荐存储在 <code>.\plugin\</code> 中，接口需在 <code>.\api.yml</code> 中声明。</p>
+<h4><span id="插件的编写">插件的编写</span></h4><h5><span id="随机逻辑插件">随机逻辑插件</span></h5><p>在 <code>.\api.yml</code> 的 <code>logics</code> 中添加如下内容：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">logics</span><span class="token punctuation">:</span>
+  <span class="token punctuation">...</span>
+  <span class="token key atrule">&lt;name&gt;</span><span class="token punctuation">:</span>
+    <span class="token key atrule">description</span><span class="token punctuation">:</span>
+      <span class="token key atrule">zh-SI</span><span class="token punctuation">:</span> &lt;description(zh<span class="token punctuation">-</span>SI)<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">zh-TR</span><span class="token punctuation">:</span> &lt;description(zh<span class="token punctuation">-</span>TR)<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">en</span><span class="token punctuation">:</span> &lt;description(en)<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">&lt;Language&gt;</span><span class="token punctuation">:</span> &lt;description(&lt;Language<span class="token punctuation">&gt;</span>)<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> "function" <span class="token punctuation">|</span> "file"
+    <span class="token key atrule">index</span><span class="token punctuation">:</span> &lt;index<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">file</span><span class="token punctuation">:</span> &lt;path<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">show</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
+    <span class="token key atrule">refresh</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
+    <span class="token key atrule">refreshIndex</span><span class="token punctuation">:</span> &lt;index<span class="token punctuation">&gt;</span>
+  <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
-<p>Bilibili: <a href="https://space.bilibili.com/1159124697">bilibili</a></p>
-<p>GitHub: <a href="https://github.com/ruufly">github</a></p>
-<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
-<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
-<p>Luogu: <a href="https://www.luogu.com.cn/user/363964">luogu</a></p>
-<p>Zhihu: <a href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
-<p>X: <a href="https://x.com/distjr_">X</a></p>
+<p>各配置项的解释如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">description</td>
+<td align="left">该逻辑的描述（请保证该项与其他插件的该项不同，用户选择随机逻辑时只能看到该项）<br>其下列有不同语言，请至少填写 <code>zh-SI</code> 的内容，这是软件找不到对应语言时的默认语言。</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">有 <code>function</code> 和 <code>file</code> 两项，编写的插件该项均为 <code>file</code> 。</td>
+</tr>
+<tr>
+<td align="left">index</td>
+<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+</tr>
+<tr>
+<td align="left">file</td>
+<td align="left"><code>file</code> 型插件特有参数，请填写插件本体的路径（相对于软件根目录）</td>
+</tr>
+<tr>
+<td align="left">show</td>
+<td align="left">是否在设置栏显示该插件。</td>
+</tr>
+<tr>
+<td align="left">refresh</td>
+<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+</tr>
+<tr>
+<td align="left">refreshIndex</td>
+<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+</tr>
+</tbody></table>
+<p>当用户开始随机抽取学生时，系统会将学生名单转存至 <code>.\temp\student.tmp</code> ，将学生抽取历史转存至 <code>.\temp\history.tmp</code></p>
+<p>如果用户使用连抽，系统会将连抽次数转存至 <code>.\temp\cdraw.tmp</code></p>
+<p>以上数据均使用 <code>pickle.dump</code> 存储</p>
+<p>如果用户使用高通量检验功能，则系统会创建空文件 <code>.\temp\test.tmp</code></p>
+<p>其中，学生名单文件格式如下：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> &lt;version&gt;<span class="token punctuation">,</span>
+    <span class="token property">"students"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"name"</span><span class="token operator">:</span> &lt;type&gt;(<span class="token string">"N|C|U"</span>)<span class="token punctuation">,</span>
+        ...
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>学生抽取历史文件格式如下：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">"name"</span><span class="token operator">:</span> &lt;name&gt;<span class="token punctuation">,</span>
+        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"N|C|U"</span><span class="token punctuation">,</span>
+        <span class="token property">"cdraw"</span><span class="token operator">:</span> <span class="token boolean">true</span> | <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    ...
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="高通量检验">高通量检验</span></h3><p>在 设置-点名次数统计-高通量检验 中。</p>
+<p>通过生成大量学生，再进行大量抽取试验以检验随机逻辑的优劣性。</p>
+<p>您可以通过修改 <code>C_checkA.ini</code> 以配置高通量检验。</p>
+<p>该文件的配置格式如下：</p>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">checkA_file</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">try_time</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;try_time&gt;</span>
+<span class="token key attr-name">C_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;C_size&gt;</span>
+<span class="token key attr-name">N_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;N_size&gt;</span>
+<span class="token key attr-name">U_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;U_size&gt;</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">checkA_function</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">try_time</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;try_time&gt;</span>
+<span class="token key attr-name">C_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;C_size&gt;</span>
+<span class="token key attr-name">N_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;N_size&gt;</span>
+<span class="token key attr-name">U_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;U_size&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中， <code>checkA_file</code> 为检验 <code>file</code> 逻辑的配置，<code>checkA_function</code> 为检验 <code>function</code> 逻辑的配置， <code>try_time</code> 为随机抽取次数， <code>C|N|U_size</code> 分别为检验中生成的各类学生人数。</p>
+<h3><span id="链接文件">链接文件</span></h3><p>在 设置-管理学生名单-导出 中，将学生数据导出为 Random Student connect file 后即保存为链接文件。</p>
+<p>在正常安装本软件的前提下，直接打开链接文件，即可将链接文件中的数据作为学生名单的来源以随机抽取。</p>
+<h2><span id="版本变更记录">版本变更记录</span></h2><p>参见 <a href="https://github.com/ruufly/Random-Student/blob/main/CHANGELOG.md">CHANGELOG.md</a></p>
 ]]></content>
       <categories>
-        <category>关于</category>
+        <category>项目</category>
       </categories>
       <tags>
-        <tag>关于</tag>
+        <tag>随机学生</tag>
+        <tag>Random Student</tag>
       </tags>
   </entry>
   <entry>
@@ -979,190 +1247,62 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
       </tags>
   </entry>
   <entry>
-    <title>一场提前告知的自杀</title>
-    <url>/2023/05/11/planned-jisatsu/</url>
-    <content><![CDATA[<p>十几平米的出租房里，堆满了杂物，只有女子现在正躺着的这张床上，略显得干净一点。夏天的六月，又是阴天，房间里没有空调，只有一台电扇正摇着头，吹着风，但无济于事。早上七点的闹钟还没有响起，女子早已受不了这湿热的环境而惊醒。</p>
-<p>“无聊透顶。”，女子发了句牢骚。这过于简单而普通的早晨，确实有些无聊。女子打开手机，看了看公司群里的消息。又一个她曾经的同事成了她的上司。</p>
-<p>女子并没有过多表示什么，她像往常一样走到镜子前。镜子里，仍是一个普通的、二十来岁的女性。披肩散发，发梢被风扇稍稍吹起。</p>
-<p>“……真是无聊透顶。”</p>
-<p>女子打开房门，走出去，锁好房门，准备往公司去，正好撞见了隔壁家的那个小孩。</p>
-<p>“哟！这不是隔壁那个死妮子嘛！”，那小孩用尖锐的声音笑道，声音穿过看不见尽头的走廊，形成了无数的回声。</p>
-<p>“……”</p>
-<p>“死妮子，你要是不想走的话，就先把道给老子让开！”，小孩的声音，更尖锐刺耳了。</p>
-<p>“你知道吗？”</p>
-<p>“老子懒得知道！”</p>
-<p>“你知道吗，我准备在今天晚上自杀。”</p>
-<p>“自杀？嗬！求之不得啊！最好给老子早点死，别让老子再看到你一眼！”，那尖锐的声音说罢，就头也不回地走了。</p>
-<p>女子坐上电梯，下了楼，出了公寓门右转，到了一下小商店门口。商店的老板娘坐在柜台里，正在给一个客人找钱，后面还有十几个人在排队。女子进了小商店，拿了一个面包，一小盒牛奶，也排在了对后面。</p>
-<p>女子的身后，没有人再排上来，那位五十多岁的老板娘，见到终于可以休息一会儿了，便放慢了速度。等到前面的客人都已离开，她把手中的面包和牛奶放在柜台上，平静地对老板娘说——</p>
-<p>“你知道吗？我准备在今天晚上自杀。”</p>
-<p>“啊？”，老板娘突然停下了正计算着价格的手，“是，怎么了？”</p>
-<p>“我准备在今天晚上自杀。”</p>
-<p>“别开玩笑好吗？孩子。”</p>
-<p>“没开玩笑。”</p>
-<p>老板娘愣了几秒钟，眼神变得有些疑虑。</p>
-<p>这时，后面又有一个人排上了队，老板娘又忙碌了起来，把她付的钱找清后，就接着应付下一个人了。女子头也不回地出了商店，赶向电车站。但女子没有看到的是，老板娘在忙碌之中，向她逐渐消失地方向，忧心忡忡地看了一眼。</p>
-<p>终于，在浑浑噩噩之中，女子赶上了电车，车上拥挤的人群与浑浊的空气，反而让女子更清醒了一点。</p>
-<p>她的身后，站着一位拄着拐杖的老人；右侧是一个学生，正一手握着扶手，一手拿着一本小说，津津有味地看着；正前方，一个女子正双手紧牵着她的两个孩子；而左边，是一个男性的职员，和她一样，穿着西装，打着领带。</p>
-<p>女子冲着左边的职员说了一句：“你知道吗？我准备在今天晚上自杀。”</p>
-<p>“……哦”</p>
-<p>“……”</p>
-<p>“然后呢？”，男职员问了一句。</p>
-<p>“……”</p>
-<p>“……”</p>
-<p>“咔擦”一声，电车停了下来，数不清的人，挤上挤下。她在人群的缝隙中穿行着，终于下了电车。</p>
-<p>上楼的电梯很快，还没来得及反应过来，人就已经到了十七八层。女子下了电梯，进了公司。</p>
-<p>“早上好！”</p>
-<p>“早上好，尊敬的科长先生。”，女子机械地弯下腰，冲着那位她曾经的同事，现在的上司，道了声早，坐到了自己的工位上。</p>
-<p>“早！今天也要加油啊！”，在女子旁边的工位上，她的同事伸了个懒腰说。</p>
-<p>“……”，她没有回答，“你知道吗？我准备在今天晚上自杀。”</p>
-<p>“哈？今天是愚人节吗？还是说，你说的是什么冷笑话？”</p>
-<p>“不是笑话。”</p>
-<p>“那我就当作是笑话啦！”，她的同事笑着，把注意力转移回了电脑上，要处理的文件前。</p>
-<p>“……”</p>
-<p>一天的时间，自然也是很快的，转眼间，虽是阴天，但西方的天空已肉眼可见的发红，再转眼间，钟表的时针指向了“9”，该下班了。</p>
-<p>女子离开了公司，找了家旧衣服店，买了件大衣，又找了个步行街，在灯红酒绿的街头，漫无目的地转了几十分钟，最后随便找了个街边公园，坐在了一个长椅的一头。</p>
-<p>长椅的另一头，一对情侣正坐在一起，不知在干什么。女子转过身去，对情侣说：“你们知道吗？我准备在今天晚上自杀。”</p>
-<p>“啊？”，长椅对面，两人同时疑惑道。</p>
-<p>接下来，情侣两人，小声地说了几句话，不知是不是故意让女子听到的，但女子确实听到了——</p>
-<p>“那个人是咋回事？是个疯子吗？”</p>
-<p>“鬼知道，咱还是走吧，要么她疯了，要么她真准备自杀。都挺晦气的，咱别在这儿待了。”</p>
-<p>说罢，他们就离开了，只留下女子一人。</p>
-<p>女子从口袋中，掏出从黑市里头买来的药。那个被她用过无数次的针管，再次注射进了她的胳膊上，不过这次，针管里的不是毒品，而是毒药。</p>
-<p>……</p>
-<p>苍蝇，是最能感知死亡的生物。这只，也不例外。</p>
-<p>这只苍蝇，在公园间飞行着，嗅到了死亡的气息。</p>
-<p>它扇动翅膀，向死亡气息的源头，靠近着。忽然，一束手电筒的灯光，打断了它。</p>
-<p>……</p>
-<p>经过了几个小时的寻找，小卖部的老板娘，终于带着一群人，找到了女子。</p>
-<p>手电筒灯光，照到了女子的身上。女子惨白的皮肤，证明她已经死亡了一段时间了。</p>
-<p>这时，一只苍蝇，飞进了灯光的照射范围。</p>
-<p>老板娘不会知道，也永远不会知道，这只苍蝇在想些什么。</p>
-<p>但是，她能看到，这只苍蝇，落到了女子的额头上。</p>
-<p align="right">2023.5.11</p>
+    <title>帖子测试</title>
+    <url>/2026/06/27/short-test/</url>
+    <content><![CDATA[<p>把文章分为了“博文”和“帖子”两部分，这是帖子的测试</p>
+<h2><span id="test">test</span></h2><p><strong>test</strong></p>
+<p>$test$</p>
 ]]></content>
       <categories>
-        <category>文集</category>
+        <category>test</category>
       </categories>
       <tags>
-        <tag>小说</tag>
-        <tag>短篇</tag>
-        <tag>2023</tag>
+        <tag>test</tag>
       </tags>
   </entry>
   <entry>
-    <title>土地</title>
-    <url>/2025/01/08/land/</url>
-    <content><![CDATA[<p>黄土，一马平川、一望无际的黄土，在天与地间铺展开来。</p>
-<p>望不到边的地块，被一两条两旁种着高大的杨树的公路所分隔开，成了一片片单独的土地，不过并不零散。十月初旬，黄土之下，数不清的小麦种子，正沉睡着。</p>
-<p>土地间的公路并不算宽，左右能容下两辆车而已，那杨树倒是毫不犹豫地向上生长着。风吹过，灰绿色的叶片如波光，还伴着像是海浪的声音——于是，那公路也学着杨树，毫不犹豫地向正前方延伸着，不知要通往哪里——只是在两条公路相交叉的时候，孕育出了一个村落。</p>
-<p>每个村落都不算大，也不算小。四四方方的街道，四四方方的院落，同样的一层或两层的平房，一面面进门，还有门额上镶嵌的“家和万事兴”几个字——这是好的村落。也是四四方方的街道，四四方方的院落，两层楼的砖墙，石棉瓦顶，便住下了几十个家庭——这是一般的村落。</p>
-<p>四四方方的村落外，延伸的公路间，一片片的黄土旁，他正坐在水泥的马路牙上，看着这土地。正午的太阳，在这夏天与冬天的交界处，仍有些猛烈，虽然经过了灰色阴霾的阻挡，仍在他的脖颈上晒出了几滴汗水，缓缓流入黄土。</p>
-<p>五十多岁的他，在这片土地上，活了半辈子。背朝着灰白的天，面对着一粒粒黄土，几十年的时间，也算是养起了一个家。他的大儿子几年前从县里的技校毕业后，去了南方的城里，在厂里或工地上给人家打工，忍受着各种人发自心底的鄙夷，没日没夜地打拼，后来娶了个在电子厂里认识的女工——那个他只见过一面的儿媳妇——他那个当年拼死拼活保住的小儿子，正在县里的高中上学，明年也该要高考了——他不知道将来要让儿子去哪里读大学，但只要能把他送出这片土地，他这些年也就不算白忙活。</p>
-<p>辽远的天空中，飘来了一阵鸟啼。他随之起身，缓了缓蓦地发黑的双眼，然后沿着公路旁排水的沟渠，向着不远处的一个村落行进着。途中路过的小河——应该说，只是一条水泥筑成的水沟——里的水，泛着黑色与绿色，还有白色的泡沫不时迸出刺鼻的气味。但他的脚步丝毫没有改变，依旧那样走着，说不清快还是慢地走着。</p>
-<p>永远都望不到尽头的大地，能突出地表而存在的，除了村里的平房，村旁的工厂与路旁的杨树外，倒是还有麦田中间耸立着的一些一人高的土堆。前面立着一块黑色的石碑，有些还植了一两棵柏树——那便是一个家庭，永远的安眠之地了。从黄土中出生，在黄土上长大，伴着黄土一生，最后将身躯归还给黄土，仿佛从没有存在过，又好像永远存在着——他向前走着，一边数着四周能看到的，土堆的数量，直到回到村落。</p>
-<p>不多不少，和此前无数次一样。</p>
-<p>他依旧保持着原来的步伐进入村子，中间停下，和村口坐着的老太太寒暄几句，聊的无非是过几天要下雨了，地里剩下的玉米要赶紧收才行了；隔壁村老赵家的女儿嫁人了，那闺女倒是不太乐意；村东头的老钱在家里上吊了，他儿子联系不上，没人料理丧事了。再有就是谁家的肥卖的好，谁家的药效果好……不过是些平常的小事。几句闲聊过后，互相打声招呼，继续向前走着。拐了一两个弯，来到了他家的院子前——实际上只是一块水泥铺就的平地。往前推十几天，这里倒是铺满了金黄色的玉米，但现在就显得格外空旷，什么都没有，如果不是那个房子兀自立在那里的话——这房子便是他家了。一层楼，不算大，砖砌的墙，已然破损的石棉瓦上方，架着装上没两年的，蓝色的不锈钢屋顶。</p>
-<p>院里正趴着的狗抬起头看了他一眼，叫了一两声，又趴下了；他也转身看了一眼狗，又转身进了屋子——进门后，正对着的墙上挂着张几近褪色的毛主席像，下面是个挂历。挂历旁的桌子上，摆着张他爹的相片，前面是前几天才放上去的一个梨子和两个白面馍。他喘着气，随便拉了个凳子坐下。伴随着淡淡的荆芥的气味，妻子的声音从后面传来——</p>
-<p>“回来了？”</p>
-<p>“嗯，回来了。”</p>
-<p>“下午去县里，看看咱娃？”，妻子问着，一边将一碗捞面条递到他的手中。</p>
-<p>“嗯。”，他点点头，拔出插在面条里的筷子，搅和了一下，吃了起来，“顺道买点肥。”</p>
-<p>“咱娃咋样？现在。”</p>
-<p>“俺要是知道了还去看他？”</p>
-<p>随后是一段不知多久的沉默，他和妻子都在那里吃着各自碗里的面条，伴着同样沉默无声的，屋外的村落。</p>
-<p>……大半碗的捞面条，很快见了底，他用筷子仔细地将碗里剩的一切东西送入口中，随后走出小屋，把碗筷搁到屋门外的水管前。拿出一支烟，点燃，站在门口抽了起来，眼睛望着远方，某个不确定的点。</p>
-<p>就在他的正前方，离这个村落不到一里路，一座混凝土厂正在那里。在它的一旁，离这个村落更近的地方，一座发电厂正在那里，那烟囱，那凉水塔，那煤仓，每一个对这里来说，都是天一般高的存在。</p>
-<p>在他小的时候，它们应该都还不在这里，直到他如同他的二儿子现在这样大时，它们才拔地而起，宛若这平原间矗立着的，一座座永远翻不过的高山。</p>
-<p>那烟囱顶端飘出的烟尘，与那凉水塔上涌出的水汽，逐渐上升，混在一起，成了不会下雨的，灰色的云。它并没有激烈地在天空中翻滚，它只是静静地浮在那里，似乎只是在宣告“它们在那里”这样一个事实，这样一个无可动摇的事实。</p>
-<p>他家院子的门前，几个孩子欢笑着走过，趴着的狗又叫了一两声——他们这些孩子，是这个村落里，唯一能有一点笑声的人了。他们穿着红色或蓝色的衣服，手里拿着关公刀，金箍棒，玩具卡车，还有假面超人的变身器——都是大半年前，过年的时候家里人送的。不过是些很容易坏掉的塑料制品，但也是他们最珍视的东西了。他们拿着这些玩具跑过院门前，于是笑声逐渐远去，奔跑到了又不知道是哪家的门口。</p>
-<p>手里的烟，仿佛已经要把滤嘴也点燃了，他随意将烟头扔向远处，转身向屋内的妻子打声招呼，随后走到小屋后，把那辆蓝色的电动三轮车推出，骑上，离开了院子。</p>
-<p>他要到县城里去。</p>
-<p>一路上看到的，也不过是平常的东西。高大的杨树依旧立着，已经种上小麦的田，还有少数几片尚未割完玉米，或是还没处理完秸秆的田，交错排列着。村子里倒是能多见到一些人，除去最年幼的孩子，就是中年人和老者。年轻人们都到城里去了，有的过年或许会回来，有的就再也不回来了。</p>
-<p>三轮车继续向前开过田野，走过一段略有不平的土路，穿过一群恰好路过的羊，绕过那堆放着半人多高的废铜烂铁的空地，又沿着水沟边拐上一条小路，向前驶过一会，来到了较宽一点的，铺着沥青的公路上——来来往往的车很多，大多是装着煤、铁、铜的大货车，一辆接着一辆从看不清的远处驶来，发出震耳的轰鸣，行过，卷起一片灰尘，再向着远方驶去，有一些则很快将会拐进那座天高的发电厂里。一人高的轮胎，来来回回碾压，让这沥青公路比田间的土路还崎岖一些，其间还镶嵌着莫名放在那里的减速带和这么多年来打上的一块又一块补丁。他又使劲拧了拧车把，想快点赶到县城里去。迎面而来的风不算冷，将他的外套向后吹起。太阳则隐隐约约，不过是前方空中的一个光斑。</p>
-<p>……这县城，他是经常来的，并且这里是他为数不多能见到的，会发生变化的地方——时不时能看见一两栋楼建起，一两座房倒下。不像村子里，十年前如何，现在还是如何。</p>
-<p>狭窄的柏油路两侧，并不宽阔的人行道上，行人不少——穿着紫红色衣服的老妇人，推着婴儿车，哼着曲子；头戴安全帽的，刚从工地上下来的男子，站在路边，用手套擦着那黢黑的脸上留下的汗；马路牙下，那些村子里来的人们，老人开着三轮，中年人开着卡车，后面都放着些水果、蔬菜，停在路边，高声吆喝着，车顶上的喇叭里，循环播放着差不多的语句——“来吧来吧！便宜卖！一块五！一块五一斤！又脆又甜！都来吃吧！都来买吧！”……比村子里吵闹不少，但人的构成，和村子里是一样的，没有年轻人。所以那同样的灰色的天空下，熙熙攘攘的街道，却只有一种静止、一种宣判、一种只能看到尽头的力量。</p>
-<p>他熟练地驾驶着三轮车，在宽阔的路与狭窄的路组成的网中，左右穿行着。县城里的司机，开车大多横冲直撞的，不过他并不怕，他太熟悉这里了。</p>
-<p>没过十几分钟，蓝色的三轮车就来到了他儿子的高中门口，孩子们似乎还没下课，他怕保安撵他走，就把车停在了马路对面，步行穿过马路，在一侧的栏杆旁驻足，点燃了一根烟。</p>
-<p>当他把还有一丝火星的烟头踩在脚下的时候，校园里传来一阵他有点陌生的音乐。随后，他儿子的身影隐约出现在了远方，正向这边跑步靠近着。</p>
-<p>“来了。”</p>
-<p>“来了！”，他语调向上扬着，“这几天咋样？”</p>
-<p>“还算中吧……”，他儿子的语调则往下沉着，“恁今儿咋过来了？”</p>
-<p>“你之前要买嘞什么练习册，我给你找到了。”，他一边把几本书交给了栏杆那边的儿子。</p>
-<p>“恁不用专门跑过来的……”</p>
-<p>“这不顺便到县里买点儿肥嘛。”</p>
-<p>“返青之前还用肥？”</p>
-<p>“家里总得备着些，这会儿还便宜。”，他见那个烟头已经熄灭，就把脚放到一旁，“你学得咋样？”</p>
-<p>“就那样吧，一本考不上，二本差不多。”</p>
-<p>“能考出去不能？”</p>
-<p>“能。”</p>
-<p>“那就中，”，他笑着，“你想去哪儿上学？”</p>
-<p>“哪都中吧……不知道，俺。”</p>
-<p>“冇事儿，去哪儿都妥……你下次回家啥时候？”</p>
-<p>“这个月底吧。”</p>
-<p>“月底？你搉我嘞？”</p>
-<p>“不是，都上高三了，可不一个月休息一天嘛。”</p>
-<p>“唉……那中，那中……”，他还想再问些什么，但校园里又传来了一阵和上次不太一样的音乐。</p>
-<p>“爹，俺先回去了，上课了！走了哈！”，儿子向校园深处跑了起来，头都不回，只是朝背后挥了挥手，留下了呆滞在原地的他。</p>
-<p>“你可好好学啊！我回头再来看你！”，虽然明知不可能听到，他还是举手挥舞，向儿子呼喊着。透过云层的阳光，穿过他的指隙，在地上留下模糊的影子，就像路旁种的黑槐，随风在枝头摇摆着，映着地上那几乎看不见的斑驳。</p>
-<p>他的家里没钱，没办法去做生意，让奔忙的面包车代替一家人离开这里。想要站着走出这片土地，就只能在这学校里，起早摸黑地学着，他明白，他的儿子当然也明白。纵使不知道到底为什么，也只能在最黑的夜晚，安静地坐在灯下，在最冷的冬日，让寒风刺破肺的每一个角落，站成无比整齐的队伍，高喊着自己也听不懂的所谓誓词，数着天上的飞鸟与地上的落叶，度过不知多少个冬夏，让时光融化、浓缩，结成一张离开这里的车票，或许确实是为了什么的。</p>
-<p>但如果真的能逃离这里，又能怎样呢？从小就生长在黄土里，血肉的每一个缝隙间都浸着土腥味。每个人都是这样，这气味或许终其一生都无法洗涤干净。那灵魂深处的东西，又会变成什么？或者说，又会被他人定义成什么？没有人可能知道。</p>
-<p>于是他们都爱这里，也都恨这里。</p>
-<p>……他终于又骑上了三轮车，载着几袋化肥。伴着或近或远的一座座工厂升起的烟，向着远离城镇的方向，缓缓行驶着。在太阳落山时，回到了那座院子的平地上。</p>
-<p>已从镇子上回来的妻子，此时恰做好了饭菜——饭是稀饭，菜不算多，味道也很寡淡，算是平常的晚饭。他坐到院门口的板凳上，吃着菜，拿着去年过年大儿子才给他买的手机。那双布满了老茧与裂纹的手，经过了一年多的时间，也算是基本学会了怎么使用这么一个玩意儿。</p>
-<p>他一条一条地浏览着网上的信息。看到有人在指责田间地头的农民们，他便叹息一声，自责着没有给孩子们更好的环境，悲伤于自己生在了这黄土之上；看到有人说明年小麦的收购价能涨到一块五一斤，他就欣喜于二儿子上大学的钱肯定能攒够了；看到有人讲今年冬天会比往年暖和很多，他“哎呀”一声站起来，回屋跟妻子商量怎么办，妻子只好苦口婆心地劝说，网上说的那些都是假的，冬天怎么样咱还不清楚吗？明年小麦肯定出不了问题！……又把他劝回了板凳上。</p>
-<p>天边的繁星，在他小时候还是清晰可见的，现在却什么都没有了，只有灰黑色的云。</p>
-<p>远处的工厂，那座天高的工厂，闪烁着光芒，在黑夜。那光比白天太阳的光还要明亮很多，明亮到让人无法直视。</p>
-<p>他不清楚煤是怎么运进厂里的，是怎么堆到仓库里的，不清楚机组里的水是怎么沸腾的，是怎么从凉水塔顶落下的。但他能看到的，是数不清的钢铁搭成的建筑，是复杂到他一辈子都无法理解的管道与线路，是厂区里的白色大灯和塔顶的红色航标灯，是烟囱中日夜不息飘出的黑云……</p>
-<p>他吃完饭菜，把碗刷净放好，穿上件外套，离开院子，到村子里转了一圈。</p>
-<p>村口的老太太们告诉他，上吊的老钱，他的儿子找到了，但不愿意回来，那边工时正忙，回来的话怕是才找到的活计又要化为泡影。没什么人指责那儿子，大家都是可惜并羡慕那父亲。年老体衰，疾病缠身，走得也算痛快。没钱治病，活着也是白遭罪。他儿子回不来，村里人能帮忙把丧事应付好，只是家里的老盆，不知道交给谁来摔了。一边又在叹息着自己的未来，会不会也是这样……工厂发出的光芒似乎又亮了些，那是厂房的缝隙间，缓缓升起的月光。</p>
-<p>他缓步回到家中，和妻子聊了几句，随后躺上床，熄了灯。</p>
-<p>乡下的夜晚，是无比宁静的，至少理应如此。不过远处的工厂与道路上的声音，始终都不算很小。窗外很远的地方，五彩的光闪烁着，他知道，是那群孩子们来了。</p>
-<p>那群孩子，年龄和他的二儿子差不多，或许更大，或许更小。他们没有那么幸运，也没有那么不幸。当他儿子在灯下埋头读书的时候，他们则在村或镇的街口。聚在了一起。攀比着身上刚纹的文身，或是摩托车上刚装上的灯带。领头的孩子率先出发，一群飘着各色灯光的摩托车便在公路上，肆意地前行着。他们欢呼着，从车座上起身，穿行于大货车组成的车流中。那流光溢彩，是黑与白的夜间，为数不多有颜色的东西。</p>
-<p>五彩斑斓的，两人大小的摩托，从散发着白色光芒的，如同巨人般的工厂前，缓缓走过，背后则是漆黑的夜幕。</p>
-<p>这是他们不同于他人的唯一，也是他们相同于他人的唯一。</p>
-<p>月亮依旧向上升着，已经到了杨树的树梢处，反衬着枝头挂着的，没有鸟的鸟巢。</p>
-<p>他已然安静地躺在床上，看着漆黑一片的屋顶，以及漆黑一片的屋外。</p>
-<p>这时，一阵清脆的响声微微闪过耳畔，一丝烧焦的气味飘进鼻孔，一缕白烟从窗外涌入。</p>
-<p>他依然躺在床上，没有理会，因为他知道这白烟是什么——隔壁的老李估计在烧自家地里的秸秆了——他家的玉米，收得晚一些，昨天才全部收完——他还记得当时几个人帮着忙，花了多大的功夫才从收割机主人的牙缝里一分钱一分钱地把价格压到了老李能接受的范围——剩下的秸秆，白天烧的话，是一定会被找上门来的，就只能趁着夜色，抓紧整完，不能错过了小麦播种的时候——这些他都知道，于是他就那样，一动不动地看着白烟，缓缓游动着，将爪子伸向每一个角落——烟似乎越来越浓了。</p>
-<p>越来越多的白烟，从土地的缝隙中钻出，肆意弥漫着，化成了巨大的云，仿佛要把整个世界吞没。</p>
-<p>工厂的烟囱穿过了白烟，少年们骑着的摩托车穿过了白烟，孩子们手中的玩具飞机穿过了白烟，儿子在灯下做题的笔尖穿过了白烟，他骑的电动三轮车穿过了白烟。</p>
-<p>但工厂里的工人留了下来，欢呼着的少年留了下来，拿着塑料关公刀的孩子留了下来，默默苦读的学生留了下来，坐在田垄上的农民留了下来。</p>
-<p>数不清的人们，踏着这包含着颗粒的黄土，望着永远也望不见的天空，行走在白色的烟雾中。没人知道他们要去哪里，他们自己也不知道自己要去哪里，或者说，能去哪里。</p>
-<p>在这一片白烟中，</p>
-<p>伸手，便已不见五指。</p>
-<p align="right">2025.01.08</p>
-]]></content>
-      <categories>
-        <category>文集</category>
-      </categories>
-      <tags>
-        <tag>小说</tag>
-        <tag>短篇</tag>
-        <tag>2025</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>KeepOpen：一款保持移动硬盘开启状态的小工具</title>
-    <url>/2026/06/11/keepopen/</url>
-    <content><![CDATA[<p><img src="/medias/keepopen.png_"></p>
-<h1><span id="keepopen">KeepOpen</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/KeepOpen">Github 仓库</a> | <a href="https://github.com/ruufly/KeepOpen/blob/main/LICENSE">开源许可证</a> | <a href="https://github.com/ruufly/KeepOpen/releases">发行版下载</a></p>
+    <title>test</title>
+    <url>/2021/07/11/test/</url>
+    <content><![CDATA[<h1><span id="test">test</span></h1><h2><span id="test">test</span></h2><p>$\LaTeX$</p>
+<p>test</p>
+<p><strong>test</strong></p>
+<p><del>test</del></p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">test</td>
+<td align="center">test</td>
+</tr>
+</tbody></table>
 <blockquote>
-<p>一款保持移动硬盘开启状态的小工具</p>
+<p>test</p>
+<blockquote>
+<p>test</p>
 </blockquote>
-<h2><span id="作者">作者</span></h2><p>以下列出了参与本项目的作者。</p>
-<ul>
-<li><a href="https://github.com/ruufly">@distjr_/@ruufly!</a></li>
-</ul>
-<h2><span id="使用说明">使用说明</span></h2><p>本工具打开后，自动最小化至系统托盘。通过系统托盘可进入设置页面</p>
-<p>设置页面上方可勾选需要保持开启状态的盘符，中间可设置盘符开启状态的刷新时间、是否开机自启动、是否以管理员模式启动等。其中，如需对系统盘使用KeepOpen，建议打开“以管理员模式启动”选项。下方可清理软件运行中的缓存、日志文件等。</p>
-<h2><span id="注意事项">注意事项</span></h2><p>本工具通过修改注册表以实现开机自启动，在一些系统中，卸载后可能无法及时清理注册表残余，请使用<code>Geek Uninstaller</code>等工具卸载，或在卸载后手动清理<code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\</code>中的残余。</p>
-]]></content>
+</blockquote>
+<p><em>test</em></p>
+<p>$$<br>\textcolor{red}{test}<br>$$</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<table>
+    <tbody><tr>
+        <td>Test</td>
+    </tr>
+</tbody></table>
+
+
+<p><span class="spoiler" tabindex="0" title="你知道的太多了">这里是黑幕内容</span></p>
+<!-- <span class="heimu" title="你知道的太多了">这里是黑幕内容</span> -->]]></content>
       <categories>
-        <category>项目</category>
+        <category>test</category>
       </categories>
       <tags>
-        <tag>KeepOpen</tag>
+        <tag>test</tag>
       </tags>
   </entry>
   <entry>
@@ -1339,337 +1479,6 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
       <tags>
         <tag>诗歌</tag>
         <tag>2021</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>帖子测试</title>
-    <url>/2026/06/27/short-test/</url>
-    <content><![CDATA[<p>把文章分为了“博文”和“帖子”两部分，这是帖子的测试</p>
-<h2><span id="test">test</span></h2><p><strong>test</strong></p>
-<p>$test$</p>
-]]></content>
-      <categories>
-        <category>test</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2021/07/11/test/</url>
-    <content><![CDATA[<h1><span id="test">test</span></h1><h2><span id="test">test</span></h2><p>$\LaTeX$</p>
-<p>test</p>
-<p><strong>test</strong></p>
-<p><del>test</del></p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">test</td>
-<td align="center">test</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>test</p>
-<blockquote>
-<p>test</p>
-</blockquote>
-</blockquote>
-<p><em>test</em></p>
-<p>$$<br>\textcolor{red}{test}<br>$$</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<table>
-    <tbody><tr>
-        <td>Test</td>
-    </tr>
-</tbody></table>
-
-
-<p><span class="spoiler" tabindex="0" title="你知道的太多了">这里是黑幕内容</span></p>
-<!-- <span class="heimu" title="你知道的太多了">这里是黑幕内容</span> -->]]></content>
-      <categories>
-        <category>test</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一款基于Python的随机学生点名器</title>
-    <url>/2025/12/16/random-student/</url>
-    <content><![CDATA[<p>本文是本人编写的一款随机学生点名器的README文件，您可以点击<a href="https://github.com/ruufly/Random-Student/releases/latest">此处（github源）</a>或<a href="https://gitee.com/distjr/random-student/releases/latest">此处（gitee源）</a>以下载该点名器的安装包。</p>
-<h1><span id="random-student">Random Student</span></h1><p><a href="https://ruufly.github.io/">个人网站</a> | <a href="https://github.com/ruufly/Random-Student/">Github 仓库</a> | <a href="https://github.com/ruufly/Random-Student/blob/main/LICENSE">开源许可证</a></p>
-<blockquote>
-<p>一款基于 python 的随机学生点名器。</p>
-</blockquote>
-<h2><span id="作者">作者</span></h2><p>以下列出了参与本项目的作者。</p>
-<ul>
-<li><a href="https://github.com/ruufly">@distjr_/@ruufly!</a></li>
-<li><a href="https://github.com/dytdirt">@dytdirt</a></li>
-<li>@hz</li>
-</ul>
-<h2><span id="使用说明">使用说明</span></h2><p>本软件打开后，界面上共有 随机学生、连抽、设置 三个选项。</p>
-<ul>
-<li>选择 随机学生 选项后，会随机抽取一名学生并将姓名显示出来；</li>
-<li>选择 连抽 选项后，会弹出连抽窗口，依次显示所有被抽中的学生；</li>
-<li>选择 设置 选项后，进入设置窗口。</li>
-</ul>
-<h3><span id="设置">设置</span></h3><p>进入设置窗口后，共有以下选项：</p>
-<ul>
-<li>管理学生名单：经过密码验证，可修改学生名单或将名单导出；</li>
-<li>点名次数统计：可统计本次软件使用过程中的点名情况、报错情况，还可通过 高通量检验 功能，测试随机逻辑优劣性；</li>
-<li>设置连抽次数：设置连抽中一次抽取学生数量（需要注意，如果设置的连抽次数大于学生总数，在某些随机逻辑下可能会出现无法预测的错误）；</li>
-<li>随机逻辑：设置随机抽取使用的算法；</li>
-<li>版本更新：检测新版本并安装；</li>
-<li>软件许可证：查看软件的开源许可证（Apache 2.0）；</li>
-<li>开放源代码：查看软件源代码（github/gitee）</li>
-<li>关于作者：查看作者个人主页</li>
-<li>个性化设置：设置软件的配色方案；</li>
-<li>语言设置：设置软件显示语言；</li>
-<li>更新包下载源：设置版本更新时下载更新包的源（github更新发布更早，gitee在国内下载速度更快）；</li>
-<li>修改密码：修改管理学生名单的密码；</li>
-<li>重置配置：重置用户的所有配置（设置、插件、学生名单等）以解决一些可能由配置问题导致的程序异常；</li>
-<li>批量导入名单：批量导入学生名单时，请将学生名单以 <code>UTF-8</code> 编码的纯文本格式存储，每行一个学生姓名，行尾不要有空格，随后在此处打开。</li>
-</ul>
-<h3><span id="cnu系统">CNU系统</span></h3><p>本软件中，每个学生都有其分类，所有学生共分为 Censored(C), Normal(N), Uped(U) 三类</p>
-<ul>
-<li>Censored 类的学生被抽取到的概率会降低（在某些随机逻辑下概率为0），请将缺席学生置于此类；</li>
-<li>Normal 类的学生被抽到的概率正常，请将大多数学生置于此类；</li>
-<li>Uped 类的学生被抽取到的概率会大幅升高，可视情况将某些学生置于此类。</li>
-</ul>
-<h3><span id="插件系统">插件系统</span></h3><p>本软件包含插件系统，用户可自行编写插件以给本软件添加新功能。</p>
-<p>每个插件包含本体与接口两部分，本体推荐存储在 <code>.\plugin\</code> 中，接口需在 <code>.\api.yml</code> 中声明。</p>
-<h4><span id="插件的编写">插件的编写</span></h4><h5><span id="随机逻辑插件">随机逻辑插件</span></h5><p>在 <code>.\api.yml</code> 的 <code>logics</code> 中添加如下内容：</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">logics</span><span class="token punctuation">:</span>
-  <span class="token punctuation">...</span>
-  <span class="token key atrule">&lt;name&gt;</span><span class="token punctuation">:</span>
-    <span class="token key atrule">description</span><span class="token punctuation">:</span>
-      <span class="token key atrule">zh-SI</span><span class="token punctuation">:</span> &lt;description(zh<span class="token punctuation">-</span>SI)<span class="token punctuation">&gt;</span>
-      <span class="token key atrule">zh-TR</span><span class="token punctuation">:</span> &lt;description(zh<span class="token punctuation">-</span>TR)<span class="token punctuation">&gt;</span>
-      <span class="token key atrule">en</span><span class="token punctuation">:</span> &lt;description(en)<span class="token punctuation">&gt;</span>
-      <span class="token key atrule">&lt;Language&gt;</span><span class="token punctuation">:</span> &lt;description(&lt;Language<span class="token punctuation">&gt;</span>)<span class="token punctuation">&gt;</span>
-    <span class="token key atrule">type</span><span class="token punctuation">:</span> "function" <span class="token punctuation">|</span> "file"
-    <span class="token key atrule">index</span><span class="token punctuation">:</span> &lt;index<span class="token punctuation">&gt;</span>
-    <span class="token key atrule">file</span><span class="token punctuation">:</span> &lt;path<span class="token punctuation">&gt;</span>
-    <span class="token key atrule">show</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
-    <span class="token key atrule">refresh</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
-    <span class="token key atrule">refreshIndex</span><span class="token punctuation">:</span> &lt;index<span class="token punctuation">&gt;</span>
-  <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>各配置项的解释如下：</p>
-<table>
-<thead>
-<tr>
-<th align="left">选项</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">description</td>
-<td align="left">该逻辑的描述（请保证该项与其他插件的该项不同，用户选择随机逻辑时只能看到该项）<br>其下列有不同语言，请至少填写 <code>zh-SI</code> 的内容，这是软件找不到对应语言时的默认语言。</td>
-</tr>
-<tr>
-<td align="left">type</td>
-<td align="left">有 <code>function</code> 和 <code>file</code> 两项，编写的插件该项均为 <code>file</code> 。</td>
-</tr>
-<tr>
-<td align="left">index</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
-</tr>
-<tr>
-<td align="left">file</td>
-<td align="left"><code>file</code> 型插件特有参数，请填写插件本体的路径（相对于软件根目录）</td>
-</tr>
-<tr>
-<td align="left">show</td>
-<td align="left">是否在设置栏显示该插件。</td>
-</tr>
-<tr>
-<td align="left">refresh</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
-</tr>
-<tr>
-<td align="left">refreshIndex</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
-</tr>
-</tbody></table>
-<p>当用户开始随机抽取学生时，系统会将学生名单转存至 <code>.\temp\student.tmp</code> ，将学生抽取历史转存至 <code>.\temp\history.tmp</code></p>
-<p>如果用户使用连抽，系统会将连抽次数转存至 <code>.\temp\cdraw.tmp</code></p>
-<p>以上数据均使用 <code>pickle.dump</code> 存储</p>
-<p>如果用户使用高通量检验功能，则系统会创建空文件 <code>.\temp\test.tmp</code></p>
-<p>其中，学生名单文件格式如下：</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
-    <span class="token property">"version"</span><span class="token operator">:</span> &lt;version&gt;<span class="token punctuation">,</span>
-    <span class="token property">"students"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">"name"</span><span class="token operator">:</span> &lt;type&gt;(<span class="token string">"N|C|U"</span>)<span class="token punctuation">,</span>
-        ...
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>学生抽取历史文件格式如下：</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-        <span class="token property">"name"</span><span class="token operator">:</span> &lt;name&gt;<span class="token punctuation">,</span>
-        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"N|C|U"</span><span class="token punctuation">,</span>
-        <span class="token property">"cdraw"</span><span class="token operator">:</span> <span class="token boolean">true</span> | <span class="token boolean">false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    ...
-<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3><span id="高通量检验">高通量检验</span></h3><p>在 设置-点名次数统计-高通量检验 中。</p>
-<p>通过生成大量学生，再进行大量抽取试验以检验随机逻辑的优劣性。</p>
-<p>您可以通过修改 <code>C_checkA.ini</code> 以配置高通量检验。</p>
-<p>该文件的配置格式如下：</p>
-<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">checkA_file</span><span class="token punctuation">]</span></span>
-<span class="token key attr-name">try_time</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;try_time&gt;</span>
-<span class="token key attr-name">C_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;C_size&gt;</span>
-<span class="token key attr-name">N_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;N_size&gt;</span>
-<span class="token key attr-name">U_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;U_size&gt;</span>
-
-<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">checkA_function</span><span class="token punctuation">]</span></span>
-<span class="token key attr-name">try_time</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;try_time&gt;</span>
-<span class="token key attr-name">C_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;C_size&gt;</span>
-<span class="token key attr-name">N_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;N_size&gt;</span>
-<span class="token key attr-name">U_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;U_size&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>其中， <code>checkA_file</code> 为检验 <code>file</code> 逻辑的配置，<code>checkA_function</code> 为检验 <code>function</code> 逻辑的配置， <code>try_time</code> 为随机抽取次数， <code>C|N|U_size</code> 分别为检验中生成的各类学生人数。</p>
-<h3><span id="链接文件">链接文件</span></h3><p>在 设置-管理学生名单-导出 中，将学生数据导出为 Random Student connect file 后即保存为链接文件。</p>
-<p>在正常安装本软件的前提下，直接打开链接文件，即可将链接文件中的数据作为学生名单的来源以随机抽取。</p>
-<h2><span id="版本变更记录">版本变更记录</span></h2><p>参见 <a href="https://github.com/ruufly/Random-Student/blob/main/CHANGELOG.md">CHANGELOG.md</a></p>
-]]></content>
-      <categories>
-        <category>项目</category>
-      </categories>
-      <tags>
-        <tag>随机学生</tag>
-        <tag>Random Student</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>原野</title>
-    <url>/2024/11/03/wide-field/</url>
-    <content><![CDATA[<p>绯红色的夕阳，被挤在两座天一般高的大厦之间的缝隙里，散发着充满噪声和烟尘的光，落下。转眼便被挤满了车流的高架桥挡住，于是天空中只剩下了深茜色，这深茜色中依然夹杂着噪声和电流。</p>
-<p>高架桥下，最黑暗与最明亮的屋内，少女正坐在那里，望着外面的车流。但她不能出去，她只能锁好所有的通道，不然这车流便会从通道外涌入，流进她的胸膛，让她窒息而死。她的哥哥——那是她唯一的亲人，如果“亲人”这个概念还存在的话——就是这样离她而去的。她不清楚哥哥去了哪里，但她在教堂里听到了管风琴声。或许哥哥的躯体，随着那棺材，融进了管风琴声中？她不知道。不过管风琴声中也带着些噪声和闪光。</p>
-<p>少女伴着夕阳入睡，进入梦境之中。她的大脑缓缓融化，从七窍之中流出，平铺在大地上，随着风四散，从屋子的缝隙中挤出，汇入了车流——不过这时，车流已经变成了电流——之中，飘向了世界的各个角落。</p>
-<p>地球的深夜一端，被不知有多深的电流所淹没。</p>
-<p>电流的大海里，什么都有，它开放、自由，它允许所有人的大脑经过其中。它有被海底的霓虹灯照亮的厅堂，也有深处那钢铁丛林的底端，不见天日的角落。</p>
-<p>少女就占据了这样一个角落。这角落相比于大海显得异常小，但也很大了。在这个角落中，充斥着阳光和能让人自由呼吸的大气。山地、丘陵与平坦的草甸，次第在大地上铺开，牛羊在草丛间自由地奔跑着，树林里时不时传来一声鸟鸣……少女的大脑随电流行进至此，便重新搭建起了血肉和身躯，引得远方的峰峦间刮起一阵阵气流与水流，将电流阻挡在了这个角落之外。少女赤身裸体——当然也并不需要衣服——行走在草甸上。草丛轻轻划过她的小腿，微风吹拂她雪白色的长发。她似乎要做什么，但又似乎什么都不想做。她只是如此行走在天地间，如此便罢了。</p>
-<p>但她好像确实是想要做些什么的，于是太阳随她的意愿落了，月亮随她的意愿起了，星星随她的意愿而闪烁着光芒，风随她的意愿而停下了脚步。</p>
-<p>她想要，毁灭外面的世界。</p>
-<p>她讨厌天高的大厦，讨厌高架桥下的车流，讨厌那小屋，亦讨厌这被电流淹没的黑夜，无穷深的大海，还有海中的霓虹灯，发出那象征着极乐与死亡的，白色且是黑色的光芒。</p>
-<p>她望着眼前那由钢铁组成的骨架，想着等到这机器真正建成，会是怎样一个雄伟壮观的存在。不过，现在她不能想这个，她要等这机器真正建好了才行。</p>
-<p>一副钢铁的骨架与躯壳，昂首立在平原上，反射着点点星光。</p>
-<p>这星光里没有噪声，没有烟尘，没有电流，只有河汉千里。</p>
-<p>她爬到骨架的顶端，坐到最上面的钢梁上，手里拿着几块从屋里带来的钢材。她将它们扔下，片刻后，钢材被自动装在了骨架上，她正坐着的钢梁向上挪动了几分。她没有坐稳，也不想坐稳，就摔了下去，摔到地上，四溅的血肉渗入土壤，在其中开出了一朵蓝色小花，组成了其背后的花海的一部分，而大脑则再次融化，离开这世界，游过电流，来到小屋内，重新组成了正躺着的躯体，还有覆盖其上的衣物。</p>
-<p>天亮了。</p>
-<p>少女起身，推门离开了小屋，在那陌生的，充满了污泥的空间中走了一阵子，随后侧身过了另一扇门，进入了公寓楼的回廊中。</p>
-<p>无穷无尽长的回廊，地面没有坡度，却能让黑色的阴影缓缓流过其间，汇成小溪，在组成河流，奔腾而下，成为高架桥下，正在形成的车流的一部分——现在车流尚未没过人的胸膛，所以少女还可以自由地在小屋外活动。</p>
-<p>不过，她讨厌车流，所以她不得不加快速度，离开这回廊。</p>
-<p>回廊的尽头，永远看不见的地方，钟声如同往常一样，不停歇地响着，伴随着出现的，是回廊两侧那些带着些噪音和气体的怒吼，充斥着亮光与电流的酒精，还有能涌入少女的脑海，让钟声得以暂停的烟草……还有很多，不过少女显然并不关心这些。她从车流的深处拿出发动机的火花塞，用火花塞烧掉电锯的锯齿，随后用这把电锯将远方的大厦与自己的身体同时切成两半，又用同样从车流深处拿出的曲轴将自己的身体重新拼好，她于是来到了大厦之中，一座散发着噪声的工厂。</p>
-<p>工厂里面，自然是流水线，并且是数不清有多少的流水线。和少女一起来到这里的，还有和她年纪相仿的人们——这是她一天之中，为数不多的能见到人的地方——不过，更多的不是人，在来到这里的人中，夹杂着为数尚多的纯粹的机器，还有更多的介于两者之间的物体——人的头下立着机械的身躯，或是肉体的皮肤中装着铁或铝的器官，还有身子被带着锈迹的金属覆盖，只有半边脸露出表面……都是这样的不足称为“人”，也无法称为机器的物体们。</p>
-<p>她不是很想理会这些物体，但是转眼间，一个头被铁块代替，胳膊上嵌满了齿轮的物体从背后搂住了她的肩，看起来很亲昵的样子，铜绿色的，微张的嘴里，似乎在说些什么。发出的气流，撩动着少女的黑色短发。</p>
-<p>不过少女并没有听懂，她所听到的，只是一串充斥着电流声与机械故障声的噪音罢了。但少女并不以此为怪——又或许是唯独不以它为怪——她假装饶有兴味地听着，时不时还笑上两三声。最后，她轻挥手，和那个物体告别。</p>
-<p>更远的远方，哀乐声响起。伴随着哀乐，高架桥下最终充满了车流。而工厂里的物体们，排队上了流水线——并不作为流水线旁的工人，而作为传送带上的产品——少女躺在了传送带上，随着马达开始旋转，她闭上了眼睛。</p>
-<p>传送带旁，数不清的机器正在运转着，这是传送带上的产品们，最后的归宿。</p>
-<p>在这两座足以让太阳屈居其中的大厦里，每台机器都是如此的昼夜不息——清晨时刻随着高架桥下的车流来到大厦，在大厦中为了制造新的机器而奋斗一天，傍晚时随着车流回到公寓的长廊，最后在夜里徜徉于电流的大海。它们从被制造到被销毁都受着严格的控制。摄入着被管控着的能量，接收着被管控着的信息，在欺骗中度过完整的生命周期，产生有限多的后代，最后被欺骗着死亡，身上的零件被回收利用，成为了新的机器。</p>
-<p>而在这座工厂里，它们的职责，就在于让传送带上的物体，最终成为一台台性能优良、便于使用的机器。它们或怀着热忱，或只是假此度日，但只要流水线不停下来，它们的工作就不会停息。</p>
-<p>……行星围绕着恒星的运动，除非意外，是不会停止的。所以太阳高悬在空中的时间并不算很长，很快，泛着红与黄的光出现在了西方的天空。大厦的隙间，大家离开流水线，向大厦外走去。人流匆匆，倒像是填埋场里次第落下的垃圾。少女也在其间，她远望着对面大厦的楼顶，天台上的栏杆。远处的公寓楼中的钟声隐隐约约地传来，或许这钟声其实来自那天台栏杆上挂着的，某一个风铃？少女并不知道。</p>
-<p>远处，深茜色的天空已然转为黛色，车流行将成为电流。少女需要在此之前回到高架桥下的小屋里。她于是从不知有多高的大厦高处一跃而下，身躯化为青云，四肢变作羽翼，乘着飘飖的晚风，行向不知何处的前程。</p>
-<p>最终，当天边还剩下一丝或许算得上是亮光的时候，少女赶回了小屋里。在这高架桥下，她拿着刚从大厦上拆下来的铁块，安然入睡。</p>
-<p>融化的大脑，流出身躯，流向大海，行向那角落，她不愿在别处多留，因为那看似深而平静的电流的海中，不知到底都有什么——有刻骨铭心的苦痛，有最疯狂但麻木的狂喜，有怡然自得的平静，亦有惊涛骇浪的风波——人与人的大脑，几近相同，于是在这片只有大脑的海洋中，无人认识对方。大家都在以自己的方式狂欢着、享受着，似乎这常不见天日的汪洋，其实是稍纵即逝的春宵。大脑们互相夸耀着或是攻击着，没有人在意对方，毕竟被赞誉成那人间的英灵，或是被贬低到刀山火海的深渊，哪个不是某一种形式的乐趣！</p>
-<p>少女的大脑无视它们，快步游向了那片角落，将那霓虹灯照亮的地方当作了最恐怖的黑夜。</p>
-<p>少许的时间后，阳光下的草甸中，赤身裸体的少女再次出现，月与星辰于是再度随她的意愿而挂上了天空。</p>
-<p>少女望着远处的骨架，手里拿着那铁块，汗水少见地滴落——这是这台机器的，最后一块零件了。只要这块零件被装好，她明日就能借这台机器的力量，毁灭外面的世界了。</p>
-<p>少女心里，有一丝自嘲。明明是讨厌外面的机器才要毁灭它们，到了现在，她反而不得不造了这样一台机器来帮助她。可能天命如此吧！</p>
-<p>少女同往常一样爬上了最顶端的钢架，将铁块抛下，随后坠下骨架。大脑融化而流去血肉化作花海中的小花。</p>
-<p>那片花海，绵延不绝，已有上千株绽放的生命，默默注视着天空。</p>
-<p>日出。少女醒来，起身，离开小屋，离开公寓，并未用那车流，而是步行前往了大厦。</p>
-<p>沿途之中，未见一丝额外的颜色。步道上只有少数老人和机器，快步或慢步走着。少女来到大厦下，没有前往工厂，而是直接来到了大厦的顶楼，天台的栏杆前。</p>
-<p>那里果然挂着风铃，不过发出的显然不是钟声，且这声音中没有任何噪音抑或是电流、烟雾。</p>
-<p>远方似乎有管风琴声，少女好久没有听过了，于是她盘腿坐下，双手合十，闭上眼睛，静静地欣赏着这不带噪声与闪光的音乐。</p>
-<p>她在等待，夜晚的降临。</p>
-<p>但还未等到一曲终了，日光便已西垂。少女睁开眼，站起。</p>
-<p>这由无数人的血肉建起的大厦，它高耸入云，以致从其间看，太阳也成了夹在两座大厦间的附庸品。然而，只要稍稍从上方看去，太阳果然还是只属于那遥远的大海，海上的瀛洲。正如现在这样，它已薄西山，下降的速度，肉眼可见。</p>
-<p>深茜色的噪声，绛紫色的烟尘，漆黑一片的夜色，无月，无星。</p>
-<p>终于，最后一点亮光消失，高架桥底的车流彻底变成了电流的大海。少女脱下足履，将其置于一旁，翻过了栏杆。她用手拿起挂在一旁的风铃，用唇轻吻，随后扭头看了一眼夜色，轻轻迈开脚步，飞翔那大海。</p>
-<p>半空中，狂风与气流互相交错盘旋着，褪去她头发的颜色，吹走她身外的衣服，让她的身体只能随风而行。</p>
-<p>不过，她并不为此而恐惧。</p>
-<p>大海深处的角落里，那台机器听到了她跳下时，风铃发出的声音，于是它冲破所在世界的外壳，游出不见天日的大海，探出水面，在少女坠入大海的前一刻，接住了她。</p>
-<p>少女赤身坐在机器最顶端的钢梁上，同之前的无穷多次一样，不过这次是在外面的世界。</p>
-<p>直指云端的，巨大的机器，伸出一只机械臂向前挥舞，随着接连的巨响，一侧的大厦缓缓倒下。</p>
-<p>少女紧紧抓着身下晃动的钢梁，脸上露出了奇怪的笑容。这笑容如同地下室里拿着针筒的流浪汉一样癫狂，又如同弥留之际回望自己过去一生的老者一样平静，如同告别时举手长劳劳的恋人一样凄凉，又如同看着孩子第一次学会喊“母亲”时的妇人一样欣喜。</p>
-<p>那巨大的机器，转而伸出另一个机械臂，踏平了曾挤满车流的高架桥，随后将公寓楼拦腰斩断。人、机器、以及更多介于两者之间的存在，它们面露最惊恐的神情，用最绝望的声音，尖叫着。但少女并不愿搭理它们，她那奇怪的笑声响彻天际。她将手中的利刃毫不犹豫地砍向面前的一切事物。血液或电流或二者的混合物向四处飞溅，却不留下一点痕迹，不发出一丝声音，就好像它们从来没有存在过一样——虽然本就近乎如此罢了。</p>
-<p>没过多久，公寓楼前就再也听不到尖叫的声音，于是这巨大的机器起身，来到了最后树立着的建筑物，那第二座大厦面前。少女控制着机器，举起了机械臂。</p>
-<p>然而下一刻，她迟疑了。</p>
-<p>她看到了，离她不远的大厦的外墙上，两个钢梁之间，一朵淡蓝色的小花，正随风摇摆着自己的身躯。</p>
-<p>少女愣在了原地，这是她第一次在外面的世界里看到自然的造物。她不清楚为什么这小花会出现在这里，但她还是操纵着机械臂，从缝隙中取出小花，准备将其安放在一旁，安全的地方……</p>
-<p>远方发出的，隆隆的巨响，逐渐向这边靠近着，转眼就已来到了少女的背后——</p>
-<p>那是不久之前，刚刚被少女摧毁的，第一座大厦。</p>
-<p>两座大厦都太高了，高到纵使将其的地基彻底毁灭，其顶端仍需要一段时间才能坠至地面。</p>
-<p>而正在那迟疑的刹那，那大厦的顶端，那栏杆上挂着风铃的天台，落了下来。不偏不倚地倒向了少女所在的，巨大的机器。</p>
-<p>那挂着风铃地铁质栏杆，砸中了少女所坐的钢梁，将钢梁截成了两段；风铃从栏杆上脱落，乘风飞向了机械臂上，斩断了那蓝色小花的花茎，随后发出了阵阵的铃声。</p>
-<p>少女从钢架上坠落，她的下方硬质的大地，所以她闭上了眼睛，在半空中，睡着了。她的大脑融化，从七窍中流出，随风滴入了一旁的，电流的海洋中，而那副躯壳，则笔直地落向大地，血肉四溅。</p>
-<p>几秒钟后，那风铃，上面挂着残存地半个蓝色小花，落到了那摊血肉之中。</p>
-<p>这何尝不是那片花海的一部分呢？</p>
-<p>……少女的大脑，在电流的大海间穿行着，不过此时，大海里一片死寂，全不见他人的大脑，或是闪亮的霓虹灯。</p>
-<p>大脑来到了那片角落中——这里，宜人依旧，全无外面的半点痕迹。和此前唯一的区别，便是那具巨大的机器不见了。于是少女代替了那机器——她的大脑，变成了一具巨大的身躯，和此前机器的骨架一样雄伟，不过依然赤身裸体。</p>
-<p>她抬起手，透过远方的峰峦，望着外面的世界。</p>
-<p>……</p>
-<p>她看到，外面的世界，同样依旧。</p>
-<p>大厦依旧矗立在那里，高架桥上依旧充斥着车流，公寓楼里依旧敲着钟声。</p>
-<p>大家发现了她落在那里的躯壳，于是将其带入了大厦。几天之后，一副拥有着人的躯干和铅制的四肢的身体，便崭新出世，成为了在流水线中劳作着的一部分。</p>
-<p>这个世界中的少女，放下了手臂，轻声笑了笑。随后，行至花海，躺下，闭上了双眼。</p>
-<p>她死了。</p>
-<p>远方的峰峦间，气流和水流缓缓停下，它们无力再阻止电流。于是，电流涌入了这个世界。</p>
-<p>这片大海，因此，如同失去了梁柱的穹顶，轰然倒塌。</p>
-<p>电流，混着两个世界的残骸，组成了一片混沌。</p>
-<p>这篇混沌中，没有哪怕一丝的光。</p>
-<p>少女那副巨大的身躯，平静地躺在这一片混沌中。她的头颅变成了大洋上的孤岛，五官变成了孤岛丛林中的洞穴与湖泊，项颈变成了连接大陆与孤岛的陆峡，肩胛变成了重岩峻崖的岸边，乳房变成了高耸入云的雪峰，双臂变成了绵延百里的山脉，手掌变成了一马平川的草原，躯干变成了苍茫的高原，双腿变成了错落有致的丘陵，股间变成了流出洞穴的暗河，足尖变成了被风浪冲刷的海岬……但宇宙依旧混沌，世界孤寂如常，无比黑暗，不见光明。</p>
-<p>不知过了多久，第一批人类，出现了，他们穿着兽皮，沿着暗河，从洞穴中走出，他们在丘陵中的丛林里安营扎寨，用树木或者竹子建起房屋。他们猎取猎物，或采摘果子以饱腹。一日过后，他们用听不懂的语言唱起了祭祀的歌曲。在黑暗的宇宙之中，一切都是平等的。</p>
-<p>又不知过了多久，这些人类从路边野草中，驯化出了能稳定提供食物的种子。他们开垦了大量的农田，养活了越来越多的人口。但争斗也由此而来。有些人占据了土地和耕牛，于是其他人屈服在了这些人的膝下，成为了听命于主人的奴隶，人心中的混沌逐渐产生，就像这依旧混沌的宇宙。</p>
-<p>又有许久的时间过去了，人们离开丘陵，行过风雪肆虐的高原，来到了雪峰之前。他们在雪峰中找到了铁矿，拿这源源不断地铁铸成了剑与犁。用剑改变人与人的社会，用犁改变人脚下的土地。于是，领主们将自己的土地层层分封，原本需要奉献出全部身体与生命地奴隶，变成了需要饱受刑与税盘剥地农民。宇宙依然昏沉，没有一丝光和亮，一片黑暗。</p>
-<p>依旧是过了很久，人们继续前行，跨过陆峡，来到了孤岛上。此时的人们，意识到了自己不该如此。于是，思想开始解放，艺术开始复兴，人们推翻了那最高的领主，为新时代欢呼着，虽然眼前只有一片漆黑。</p>
-<p>人们向天地提问，试图一窥宇宙的真谛；人们向孤岛地洞穴深处行进，在里面找到了铁、铝、硅和锡；人们不断探索着工业与技术的边缘，工业成了主宰世界的力量。无数的机器被制造出来，它们没有思考与意识，听命于人类。人类用它们建起了天高的大厦、盘旋交错的高架桥与曲折纵横的公寓楼。钢铁的洪流中，没有人还保留着自己来到这人世时的信仰与愿望。数不清的机器堆积如山，那是人类最大的功绩，也是人类最大的罪过。</p>
-<p>机器，以混沌为体，以规整为用。这个由机器构成的世界，是最整洁的世界，也是最凌乱的世界。在这一片充斥着枪炮、病菌与钢铁的，混沌与黑暗中，神出现了。祂运行在那天边的海面上方，注视着这世界。</p>
-<p>神说，要有光，便有了光。</p>
-<p>神看光是好的。</p>
-<p align="right">2024.11.3</p>
-]]></content>
-      <categories>
-        <category>文集</category>
-      </categories>
-      <tags>
-        <tag>小说</tag>
-        <tag>短篇</tag>
-        <tag>2024</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>最新 | 关于我的高中三年</title>
-    <url>/2026/06/11/graduate/</url>
-    <content><![CDATA[<blockquote>
-<p>写在前面：这篇文章的写作没有经过任何提前的构思，完全是想到什么写什么，所以可能写得有点乱，各位见谅</p>
-</blockquote>
-<p>高考结束后的第二天开毕业典礼，开完之后同学们在教室里又待了一段时间才陆陆续续地告别。我基本上是全班走得最晚的一个了（绝不是为了多玩一会电教），即便是离开校门之后，也没有任何关于“毕业了”的实感。总感觉好像高中刚入学那天就在不久之前一样，但又感觉几天前的高考就像是十几年前的往事。</p>
-<p>后来想了想，可能是高中三年太不重视记录了。高一那年学着其他人像模像样整了个日记本，写了没两个月，那个本子就不知道跑到哪里去了。这些年倒是笔没停过，但写的都是小说一类的，对于那些真真切切发生在身边的事情，反而忘得差不多了。总感觉不擅长记录的人，就很容易被时间困住，因为对时间的坐标没什么把握，对日子的流逝也就没有什么明确的感觉。</p>
-<p>那就试着写写吧，趁着有些记忆还没有被彻底忘掉。</p>
-<h2><span id="关于最开始">关于最开始</span></h2><p>我所在的这个班属于是一种特殊招生，初三下学期就提前招到高中来的那种。当时这东西很新潮，特别是在像我们这边的这种内地小城市——我们班是我们学校第二年招这类学生——后来这种2.5+3.5的模式没搞多少年，教育局就不乐意了，遂作罢。</p>
-<p>（其实当时考虑报这种提前招生班主要是初三上学期，2022年冬天，是知周所众的一个学期的网课，当时文化课成绩掉的很厉害，不来这种班的话大概率中考就直接爆炸了）</p>
-<p>我们市的市区头部高中的水平排名大概是 <code>第一&gt;&gt;第二&gt;第三&gt;&gt;其他</code> 的这种，前三所学校开了这种提前招生班。第一名的学校我显然考不上所以不考虑，第二名的学校我去报名了然后他们嫌文化课成绩太低于是初审没通过，第三名的学校是我们市每年CSP初赛的考点，我上初中的时候CSP-J拿了个省二就想着来这边搞信竞，然后就来到了这里，也算是比较巧合。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>毕业</tag>
-        <tag>2026</tag>
       </tags>
   </entry>
   <entry>
@@ -2039,6 +1848,197 @@ ll d<span class="token punctuation">[</span>MAXN<span class="token punctuation">
         <tag>小说</tag>
         <tag>2026</tag>
         <tag>中篇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>土地</title>
+    <url>/2025/01/08/land/</url>
+    <content><![CDATA[<p>黄土，一马平川、一望无际的黄土，在天与地间铺展开来。</p>
+<p>望不到边的地块，被一两条两旁种着高大的杨树的公路所分隔开，成了一片片单独的土地，不过并不零散。十月初旬，黄土之下，数不清的小麦种子，正沉睡着。</p>
+<p>土地间的公路并不算宽，左右能容下两辆车而已，那杨树倒是毫不犹豫地向上生长着。风吹过，灰绿色的叶片如波光，还伴着像是海浪的声音——于是，那公路也学着杨树，毫不犹豫地向正前方延伸着，不知要通往哪里——只是在两条公路相交叉的时候，孕育出了一个村落。</p>
+<p>每个村落都不算大，也不算小。四四方方的街道，四四方方的院落，同样的一层或两层的平房，一面面进门，还有门额上镶嵌的“家和万事兴”几个字——这是好的村落。也是四四方方的街道，四四方方的院落，两层楼的砖墙，石棉瓦顶，便住下了几十个家庭——这是一般的村落。</p>
+<p>四四方方的村落外，延伸的公路间，一片片的黄土旁，他正坐在水泥的马路牙上，看着这土地。正午的太阳，在这夏天与冬天的交界处，仍有些猛烈，虽然经过了灰色阴霾的阻挡，仍在他的脖颈上晒出了几滴汗水，缓缓流入黄土。</p>
+<p>五十多岁的他，在这片土地上，活了半辈子。背朝着灰白的天，面对着一粒粒黄土，几十年的时间，也算是养起了一个家。他的大儿子几年前从县里的技校毕业后，去了南方的城里，在厂里或工地上给人家打工，忍受着各种人发自心底的鄙夷，没日没夜地打拼，后来娶了个在电子厂里认识的女工——那个他只见过一面的儿媳妇——他那个当年拼死拼活保住的小儿子，正在县里的高中上学，明年也该要高考了——他不知道将来要让儿子去哪里读大学，但只要能把他送出这片土地，他这些年也就不算白忙活。</p>
+<p>辽远的天空中，飘来了一阵鸟啼。他随之起身，缓了缓蓦地发黑的双眼，然后沿着公路旁排水的沟渠，向着不远处的一个村落行进着。途中路过的小河——应该说，只是一条水泥筑成的水沟——里的水，泛着黑色与绿色，还有白色的泡沫不时迸出刺鼻的气味。但他的脚步丝毫没有改变，依旧那样走着，说不清快还是慢地走着。</p>
+<p>永远都望不到尽头的大地，能突出地表而存在的，除了村里的平房，村旁的工厂与路旁的杨树外，倒是还有麦田中间耸立着的一些一人高的土堆。前面立着一块黑色的石碑，有些还植了一两棵柏树——那便是一个家庭，永远的安眠之地了。从黄土中出生，在黄土上长大，伴着黄土一生，最后将身躯归还给黄土，仿佛从没有存在过，又好像永远存在着——他向前走着，一边数着四周能看到的，土堆的数量，直到回到村落。</p>
+<p>不多不少，和此前无数次一样。</p>
+<p>他依旧保持着原来的步伐进入村子，中间停下，和村口坐着的老太太寒暄几句，聊的无非是过几天要下雨了，地里剩下的玉米要赶紧收才行了；隔壁村老赵家的女儿嫁人了，那闺女倒是不太乐意；村东头的老钱在家里上吊了，他儿子联系不上，没人料理丧事了。再有就是谁家的肥卖的好，谁家的药效果好……不过是些平常的小事。几句闲聊过后，互相打声招呼，继续向前走着。拐了一两个弯，来到了他家的院子前——实际上只是一块水泥铺就的平地。往前推十几天，这里倒是铺满了金黄色的玉米，但现在就显得格外空旷，什么都没有，如果不是那个房子兀自立在那里的话——这房子便是他家了。一层楼，不算大，砖砌的墙，已然破损的石棉瓦上方，架着装上没两年的，蓝色的不锈钢屋顶。</p>
+<p>院里正趴着的狗抬起头看了他一眼，叫了一两声，又趴下了；他也转身看了一眼狗，又转身进了屋子——进门后，正对着的墙上挂着张几近褪色的毛主席像，下面是个挂历。挂历旁的桌子上，摆着张他爹的相片，前面是前几天才放上去的一个梨子和两个白面馍。他喘着气，随便拉了个凳子坐下。伴随着淡淡的荆芥的气味，妻子的声音从后面传来——</p>
+<p>“回来了？”</p>
+<p>“嗯，回来了。”</p>
+<p>“下午去县里，看看咱娃？”，妻子问着，一边将一碗捞面条递到他的手中。</p>
+<p>“嗯。”，他点点头，拔出插在面条里的筷子，搅和了一下，吃了起来，“顺道买点肥。”</p>
+<p>“咱娃咋样？现在。”</p>
+<p>“俺要是知道了还去看他？”</p>
+<p>随后是一段不知多久的沉默，他和妻子都在那里吃着各自碗里的面条，伴着同样沉默无声的，屋外的村落。</p>
+<p>……大半碗的捞面条，很快见了底，他用筷子仔细地将碗里剩的一切东西送入口中，随后走出小屋，把碗筷搁到屋门外的水管前。拿出一支烟，点燃，站在门口抽了起来，眼睛望着远方，某个不确定的点。</p>
+<p>就在他的正前方，离这个村落不到一里路，一座混凝土厂正在那里。在它的一旁，离这个村落更近的地方，一座发电厂正在那里，那烟囱，那凉水塔，那煤仓，每一个对这里来说，都是天一般高的存在。</p>
+<p>在他小的时候，它们应该都还不在这里，直到他如同他的二儿子现在这样大时，它们才拔地而起，宛若这平原间矗立着的，一座座永远翻不过的高山。</p>
+<p>那烟囱顶端飘出的烟尘，与那凉水塔上涌出的水汽，逐渐上升，混在一起，成了不会下雨的，灰色的云。它并没有激烈地在天空中翻滚，它只是静静地浮在那里，似乎只是在宣告“它们在那里”这样一个事实，这样一个无可动摇的事实。</p>
+<p>他家院子的门前，几个孩子欢笑着走过，趴着的狗又叫了一两声——他们这些孩子，是这个村落里，唯一能有一点笑声的人了。他们穿着红色或蓝色的衣服，手里拿着关公刀，金箍棒，玩具卡车，还有假面超人的变身器——都是大半年前，过年的时候家里人送的。不过是些很容易坏掉的塑料制品，但也是他们最珍视的东西了。他们拿着这些玩具跑过院门前，于是笑声逐渐远去，奔跑到了又不知道是哪家的门口。</p>
+<p>手里的烟，仿佛已经要把滤嘴也点燃了，他随意将烟头扔向远处，转身向屋内的妻子打声招呼，随后走到小屋后，把那辆蓝色的电动三轮车推出，骑上，离开了院子。</p>
+<p>他要到县城里去。</p>
+<p>一路上看到的，也不过是平常的东西。高大的杨树依旧立着，已经种上小麦的田，还有少数几片尚未割完玉米，或是还没处理完秸秆的田，交错排列着。村子里倒是能多见到一些人，除去最年幼的孩子，就是中年人和老者。年轻人们都到城里去了，有的过年或许会回来，有的就再也不回来了。</p>
+<p>三轮车继续向前开过田野，走过一段略有不平的土路，穿过一群恰好路过的羊，绕过那堆放着半人多高的废铜烂铁的空地，又沿着水沟边拐上一条小路，向前驶过一会，来到了较宽一点的，铺着沥青的公路上——来来往往的车很多，大多是装着煤、铁、铜的大货车，一辆接着一辆从看不清的远处驶来，发出震耳的轰鸣，行过，卷起一片灰尘，再向着远方驶去，有一些则很快将会拐进那座天高的发电厂里。一人高的轮胎，来来回回碾压，让这沥青公路比田间的土路还崎岖一些，其间还镶嵌着莫名放在那里的减速带和这么多年来打上的一块又一块补丁。他又使劲拧了拧车把，想快点赶到县城里去。迎面而来的风不算冷，将他的外套向后吹起。太阳则隐隐约约，不过是前方空中的一个光斑。</p>
+<p>……这县城，他是经常来的，并且这里是他为数不多能见到的，会发生变化的地方——时不时能看见一两栋楼建起，一两座房倒下。不像村子里，十年前如何，现在还是如何。</p>
+<p>狭窄的柏油路两侧，并不宽阔的人行道上，行人不少——穿着紫红色衣服的老妇人，推着婴儿车，哼着曲子；头戴安全帽的，刚从工地上下来的男子，站在路边，用手套擦着那黢黑的脸上留下的汗；马路牙下，那些村子里来的人们，老人开着三轮，中年人开着卡车，后面都放着些水果、蔬菜，停在路边，高声吆喝着，车顶上的喇叭里，循环播放着差不多的语句——“来吧来吧！便宜卖！一块五！一块五一斤！又脆又甜！都来吃吧！都来买吧！”……比村子里吵闹不少，但人的构成，和村子里是一样的，没有年轻人。所以那同样的灰色的天空下，熙熙攘攘的街道，却只有一种静止、一种宣判、一种只能看到尽头的力量。</p>
+<p>他熟练地驾驶着三轮车，在宽阔的路与狭窄的路组成的网中，左右穿行着。县城里的司机，开车大多横冲直撞的，不过他并不怕，他太熟悉这里了。</p>
+<p>没过十几分钟，蓝色的三轮车就来到了他儿子的高中门口，孩子们似乎还没下课，他怕保安撵他走，就把车停在了马路对面，步行穿过马路，在一侧的栏杆旁驻足，点燃了一根烟。</p>
+<p>当他把还有一丝火星的烟头踩在脚下的时候，校园里传来一阵他有点陌生的音乐。随后，他儿子的身影隐约出现在了远方，正向这边跑步靠近着。</p>
+<p>“来了。”</p>
+<p>“来了！”，他语调向上扬着，“这几天咋样？”</p>
+<p>“还算中吧……”，他儿子的语调则往下沉着，“恁今儿咋过来了？”</p>
+<p>“你之前要买嘞什么练习册，我给你找到了。”，他一边把几本书交给了栏杆那边的儿子。</p>
+<p>“恁不用专门跑过来的……”</p>
+<p>“这不顺便到县里买点儿肥嘛。”</p>
+<p>“返青之前还用肥？”</p>
+<p>“家里总得备着些，这会儿还便宜。”，他见那个烟头已经熄灭，就把脚放到一旁，“你学得咋样？”</p>
+<p>“就那样吧，一本考不上，二本差不多。”</p>
+<p>“能考出去不能？”</p>
+<p>“能。”</p>
+<p>“那就中，”，他笑着，“你想去哪儿上学？”</p>
+<p>“哪都中吧……不知道，俺。”</p>
+<p>“冇事儿，去哪儿都妥……你下次回家啥时候？”</p>
+<p>“这个月底吧。”</p>
+<p>“月底？你搉我嘞？”</p>
+<p>“不是，都上高三了，可不一个月休息一天嘛。”</p>
+<p>“唉……那中，那中……”，他还想再问些什么，但校园里又传来了一阵和上次不太一样的音乐。</p>
+<p>“爹，俺先回去了，上课了！走了哈！”，儿子向校园深处跑了起来，头都不回，只是朝背后挥了挥手，留下了呆滞在原地的他。</p>
+<p>“你可好好学啊！我回头再来看你！”，虽然明知不可能听到，他还是举手挥舞，向儿子呼喊着。透过云层的阳光，穿过他的指隙，在地上留下模糊的影子，就像路旁种的黑槐，随风在枝头摇摆着，映着地上那几乎看不见的斑驳。</p>
+<p>他的家里没钱，没办法去做生意，让奔忙的面包车代替一家人离开这里。想要站着走出这片土地，就只能在这学校里，起早摸黑地学着，他明白，他的儿子当然也明白。纵使不知道到底为什么，也只能在最黑的夜晚，安静地坐在灯下，在最冷的冬日，让寒风刺破肺的每一个角落，站成无比整齐的队伍，高喊着自己也听不懂的所谓誓词，数着天上的飞鸟与地上的落叶，度过不知多少个冬夏，让时光融化、浓缩，结成一张离开这里的车票，或许确实是为了什么的。</p>
+<p>但如果真的能逃离这里，又能怎样呢？从小就生长在黄土里，血肉的每一个缝隙间都浸着土腥味。每个人都是这样，这气味或许终其一生都无法洗涤干净。那灵魂深处的东西，又会变成什么？或者说，又会被他人定义成什么？没有人可能知道。</p>
+<p>于是他们都爱这里，也都恨这里。</p>
+<p>……他终于又骑上了三轮车，载着几袋化肥。伴着或近或远的一座座工厂升起的烟，向着远离城镇的方向，缓缓行驶着。在太阳落山时，回到了那座院子的平地上。</p>
+<p>已从镇子上回来的妻子，此时恰做好了饭菜——饭是稀饭，菜不算多，味道也很寡淡，算是平常的晚饭。他坐到院门口的板凳上，吃着菜，拿着去年过年大儿子才给他买的手机。那双布满了老茧与裂纹的手，经过了一年多的时间，也算是基本学会了怎么使用这么一个玩意儿。</p>
+<p>他一条一条地浏览着网上的信息。看到有人在指责田间地头的农民们，他便叹息一声，自责着没有给孩子们更好的环境，悲伤于自己生在了这黄土之上；看到有人说明年小麦的收购价能涨到一块五一斤，他就欣喜于二儿子上大学的钱肯定能攒够了；看到有人讲今年冬天会比往年暖和很多，他“哎呀”一声站起来，回屋跟妻子商量怎么办，妻子只好苦口婆心地劝说，网上说的那些都是假的，冬天怎么样咱还不清楚吗？明年小麦肯定出不了问题！……又把他劝回了板凳上。</p>
+<p>天边的繁星，在他小时候还是清晰可见的，现在却什么都没有了，只有灰黑色的云。</p>
+<p>远处的工厂，那座天高的工厂，闪烁着光芒，在黑夜。那光比白天太阳的光还要明亮很多，明亮到让人无法直视。</p>
+<p>他不清楚煤是怎么运进厂里的，是怎么堆到仓库里的，不清楚机组里的水是怎么沸腾的，是怎么从凉水塔顶落下的。但他能看到的，是数不清的钢铁搭成的建筑，是复杂到他一辈子都无法理解的管道与线路，是厂区里的白色大灯和塔顶的红色航标灯，是烟囱中日夜不息飘出的黑云……</p>
+<p>他吃完饭菜，把碗刷净放好，穿上件外套，离开院子，到村子里转了一圈。</p>
+<p>村口的老太太们告诉他，上吊的老钱，他的儿子找到了，但不愿意回来，那边工时正忙，回来的话怕是才找到的活计又要化为泡影。没什么人指责那儿子，大家都是可惜并羡慕那父亲。年老体衰，疾病缠身，走得也算痛快。没钱治病，活着也是白遭罪。他儿子回不来，村里人能帮忙把丧事应付好，只是家里的老盆，不知道交给谁来摔了。一边又在叹息着自己的未来，会不会也是这样……工厂发出的光芒似乎又亮了些，那是厂房的缝隙间，缓缓升起的月光。</p>
+<p>他缓步回到家中，和妻子聊了几句，随后躺上床，熄了灯。</p>
+<p>乡下的夜晚，是无比宁静的，至少理应如此。不过远处的工厂与道路上的声音，始终都不算很小。窗外很远的地方，五彩的光闪烁着，他知道，是那群孩子们来了。</p>
+<p>那群孩子，年龄和他的二儿子差不多，或许更大，或许更小。他们没有那么幸运，也没有那么不幸。当他儿子在灯下埋头读书的时候，他们则在村或镇的街口。聚在了一起。攀比着身上刚纹的文身，或是摩托车上刚装上的灯带。领头的孩子率先出发，一群飘着各色灯光的摩托车便在公路上，肆意地前行着。他们欢呼着，从车座上起身，穿行于大货车组成的车流中。那流光溢彩，是黑与白的夜间，为数不多有颜色的东西。</p>
+<p>五彩斑斓的，两人大小的摩托，从散发着白色光芒的，如同巨人般的工厂前，缓缓走过，背后则是漆黑的夜幕。</p>
+<p>这是他们不同于他人的唯一，也是他们相同于他人的唯一。</p>
+<p>月亮依旧向上升着，已经到了杨树的树梢处，反衬着枝头挂着的，没有鸟的鸟巢。</p>
+<p>他已然安静地躺在床上，看着漆黑一片的屋顶，以及漆黑一片的屋外。</p>
+<p>这时，一阵清脆的响声微微闪过耳畔，一丝烧焦的气味飘进鼻孔，一缕白烟从窗外涌入。</p>
+<p>他依然躺在床上，没有理会，因为他知道这白烟是什么——隔壁的老李估计在烧自家地里的秸秆了——他家的玉米，收得晚一些，昨天才全部收完——他还记得当时几个人帮着忙，花了多大的功夫才从收割机主人的牙缝里一分钱一分钱地把价格压到了老李能接受的范围——剩下的秸秆，白天烧的话，是一定会被找上门来的，就只能趁着夜色，抓紧整完，不能错过了小麦播种的时候——这些他都知道，于是他就那样，一动不动地看着白烟，缓缓游动着，将爪子伸向每一个角落——烟似乎越来越浓了。</p>
+<p>越来越多的白烟，从土地的缝隙中钻出，肆意弥漫着，化成了巨大的云，仿佛要把整个世界吞没。</p>
+<p>工厂的烟囱穿过了白烟，少年们骑着的摩托车穿过了白烟，孩子们手中的玩具飞机穿过了白烟，儿子在灯下做题的笔尖穿过了白烟，他骑的电动三轮车穿过了白烟。</p>
+<p>但工厂里的工人留了下来，欢呼着的少年留了下来，拿着塑料关公刀的孩子留了下来，默默苦读的学生留了下来，坐在田垄上的农民留了下来。</p>
+<p>数不清的人们，踏着这包含着颗粒的黄土，望着永远也望不见的天空，行走在白色的烟雾中。没人知道他们要去哪里，他们自己也不知道自己要去哪里，或者说，能去哪里。</p>
+<p>在这一片白烟中，</p>
+<p>伸手，便已不见五指。</p>
+<p align="right">2025.01.08</p>
+]]></content>
+      <categories>
+        <category>文集</category>
+      </categories>
+      <tags>
+        <tag>小说</tag>
+        <tag>短篇</tag>
+        <tag>2025</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>原野</title>
+    <url>/2024/11/03/wide-field/</url>
+    <content><![CDATA[<p>绯红色的夕阳，被挤在两座天一般高的大厦之间的缝隙里，散发着充满噪声和烟尘的光，落下。转眼便被挤满了车流的高架桥挡住，于是天空中只剩下了深茜色，这深茜色中依然夹杂着噪声和电流。</p>
+<p>高架桥下，最黑暗与最明亮的屋内，少女正坐在那里，望着外面的车流。但她不能出去，她只能锁好所有的通道，不然这车流便会从通道外涌入，流进她的胸膛，让她窒息而死。她的哥哥——那是她唯一的亲人，如果“亲人”这个概念还存在的话——就是这样离她而去的。她不清楚哥哥去了哪里，但她在教堂里听到了管风琴声。或许哥哥的躯体，随着那棺材，融进了管风琴声中？她不知道。不过管风琴声中也带着些噪声和闪光。</p>
+<p>少女伴着夕阳入睡，进入梦境之中。她的大脑缓缓融化，从七窍之中流出，平铺在大地上，随着风四散，从屋子的缝隙中挤出，汇入了车流——不过这时，车流已经变成了电流——之中，飘向了世界的各个角落。</p>
+<p>地球的深夜一端，被不知有多深的电流所淹没。</p>
+<p>电流的大海里，什么都有，它开放、自由，它允许所有人的大脑经过其中。它有被海底的霓虹灯照亮的厅堂，也有深处那钢铁丛林的底端，不见天日的角落。</p>
+<p>少女就占据了这样一个角落。这角落相比于大海显得异常小，但也很大了。在这个角落中，充斥着阳光和能让人自由呼吸的大气。山地、丘陵与平坦的草甸，次第在大地上铺开，牛羊在草丛间自由地奔跑着，树林里时不时传来一声鸟鸣……少女的大脑随电流行进至此，便重新搭建起了血肉和身躯，引得远方的峰峦间刮起一阵阵气流与水流，将电流阻挡在了这个角落之外。少女赤身裸体——当然也并不需要衣服——行走在草甸上。草丛轻轻划过她的小腿，微风吹拂她雪白色的长发。她似乎要做什么，但又似乎什么都不想做。她只是如此行走在天地间，如此便罢了。</p>
+<p>但她好像确实是想要做些什么的，于是太阳随她的意愿落了，月亮随她的意愿起了，星星随她的意愿而闪烁着光芒，风随她的意愿而停下了脚步。</p>
+<p>她想要，毁灭外面的世界。</p>
+<p>她讨厌天高的大厦，讨厌高架桥下的车流，讨厌那小屋，亦讨厌这被电流淹没的黑夜，无穷深的大海，还有海中的霓虹灯，发出那象征着极乐与死亡的，白色且是黑色的光芒。</p>
+<p>她望着眼前那由钢铁组成的骨架，想着等到这机器真正建成，会是怎样一个雄伟壮观的存在。不过，现在她不能想这个，她要等这机器真正建好了才行。</p>
+<p>一副钢铁的骨架与躯壳，昂首立在平原上，反射着点点星光。</p>
+<p>这星光里没有噪声，没有烟尘，没有电流，只有河汉千里。</p>
+<p>她爬到骨架的顶端，坐到最上面的钢梁上，手里拿着几块从屋里带来的钢材。她将它们扔下，片刻后，钢材被自动装在了骨架上，她正坐着的钢梁向上挪动了几分。她没有坐稳，也不想坐稳，就摔了下去，摔到地上，四溅的血肉渗入土壤，在其中开出了一朵蓝色小花，组成了其背后的花海的一部分，而大脑则再次融化，离开这世界，游过电流，来到小屋内，重新组成了正躺着的躯体，还有覆盖其上的衣物。</p>
+<p>天亮了。</p>
+<p>少女起身，推门离开了小屋，在那陌生的，充满了污泥的空间中走了一阵子，随后侧身过了另一扇门，进入了公寓楼的回廊中。</p>
+<p>无穷无尽长的回廊，地面没有坡度，却能让黑色的阴影缓缓流过其间，汇成小溪，在组成河流，奔腾而下，成为高架桥下，正在形成的车流的一部分——现在车流尚未没过人的胸膛，所以少女还可以自由地在小屋外活动。</p>
+<p>不过，她讨厌车流，所以她不得不加快速度，离开这回廊。</p>
+<p>回廊的尽头，永远看不见的地方，钟声如同往常一样，不停歇地响着，伴随着出现的，是回廊两侧那些带着些噪音和气体的怒吼，充斥着亮光与电流的酒精，还有能涌入少女的脑海，让钟声得以暂停的烟草……还有很多，不过少女显然并不关心这些。她从车流的深处拿出发动机的火花塞，用火花塞烧掉电锯的锯齿，随后用这把电锯将远方的大厦与自己的身体同时切成两半，又用同样从车流深处拿出的曲轴将自己的身体重新拼好，她于是来到了大厦之中，一座散发着噪声的工厂。</p>
+<p>工厂里面，自然是流水线，并且是数不清有多少的流水线。和少女一起来到这里的，还有和她年纪相仿的人们——这是她一天之中，为数不多的能见到人的地方——不过，更多的不是人，在来到这里的人中，夹杂着为数尚多的纯粹的机器，还有更多的介于两者之间的物体——人的头下立着机械的身躯，或是肉体的皮肤中装着铁或铝的器官，还有身子被带着锈迹的金属覆盖，只有半边脸露出表面……都是这样的不足称为“人”，也无法称为机器的物体们。</p>
+<p>她不是很想理会这些物体，但是转眼间，一个头被铁块代替，胳膊上嵌满了齿轮的物体从背后搂住了她的肩，看起来很亲昵的样子，铜绿色的，微张的嘴里，似乎在说些什么。发出的气流，撩动着少女的黑色短发。</p>
+<p>不过少女并没有听懂，她所听到的，只是一串充斥着电流声与机械故障声的噪音罢了。但少女并不以此为怪——又或许是唯独不以它为怪——她假装饶有兴味地听着，时不时还笑上两三声。最后，她轻挥手，和那个物体告别。</p>
+<p>更远的远方，哀乐声响起。伴随着哀乐，高架桥下最终充满了车流。而工厂里的物体们，排队上了流水线——并不作为流水线旁的工人，而作为传送带上的产品——少女躺在了传送带上，随着马达开始旋转，她闭上了眼睛。</p>
+<p>传送带旁，数不清的机器正在运转着，这是传送带上的产品们，最后的归宿。</p>
+<p>在这两座足以让太阳屈居其中的大厦里，每台机器都是如此的昼夜不息——清晨时刻随着高架桥下的车流来到大厦，在大厦中为了制造新的机器而奋斗一天，傍晚时随着车流回到公寓的长廊，最后在夜里徜徉于电流的大海。它们从被制造到被销毁都受着严格的控制。摄入着被管控着的能量，接收着被管控着的信息，在欺骗中度过完整的生命周期，产生有限多的后代，最后被欺骗着死亡，身上的零件被回收利用，成为了新的机器。</p>
+<p>而在这座工厂里，它们的职责，就在于让传送带上的物体，最终成为一台台性能优良、便于使用的机器。它们或怀着热忱，或只是假此度日，但只要流水线不停下来，它们的工作就不会停息。</p>
+<p>……行星围绕着恒星的运动，除非意外，是不会停止的。所以太阳高悬在空中的时间并不算很长，很快，泛着红与黄的光出现在了西方的天空。大厦的隙间，大家离开流水线，向大厦外走去。人流匆匆，倒像是填埋场里次第落下的垃圾。少女也在其间，她远望着对面大厦的楼顶，天台上的栏杆。远处的公寓楼中的钟声隐隐约约地传来，或许这钟声其实来自那天台栏杆上挂着的，某一个风铃？少女并不知道。</p>
+<p>远处，深茜色的天空已然转为黛色，车流行将成为电流。少女需要在此之前回到高架桥下的小屋里。她于是从不知有多高的大厦高处一跃而下，身躯化为青云，四肢变作羽翼，乘着飘飖的晚风，行向不知何处的前程。</p>
+<p>最终，当天边还剩下一丝或许算得上是亮光的时候，少女赶回了小屋里。在这高架桥下，她拿着刚从大厦上拆下来的铁块，安然入睡。</p>
+<p>融化的大脑，流出身躯，流向大海，行向那角落，她不愿在别处多留，因为那看似深而平静的电流的海中，不知到底都有什么——有刻骨铭心的苦痛，有最疯狂但麻木的狂喜，有怡然自得的平静，亦有惊涛骇浪的风波——人与人的大脑，几近相同，于是在这片只有大脑的海洋中，无人认识对方。大家都在以自己的方式狂欢着、享受着，似乎这常不见天日的汪洋，其实是稍纵即逝的春宵。大脑们互相夸耀着或是攻击着，没有人在意对方，毕竟被赞誉成那人间的英灵，或是被贬低到刀山火海的深渊，哪个不是某一种形式的乐趣！</p>
+<p>少女的大脑无视它们，快步游向了那片角落，将那霓虹灯照亮的地方当作了最恐怖的黑夜。</p>
+<p>少许的时间后，阳光下的草甸中，赤身裸体的少女再次出现，月与星辰于是再度随她的意愿而挂上了天空。</p>
+<p>少女望着远处的骨架，手里拿着那铁块，汗水少见地滴落——这是这台机器的，最后一块零件了。只要这块零件被装好，她明日就能借这台机器的力量，毁灭外面的世界了。</p>
+<p>少女心里，有一丝自嘲。明明是讨厌外面的机器才要毁灭它们，到了现在，她反而不得不造了这样一台机器来帮助她。可能天命如此吧！</p>
+<p>少女同往常一样爬上了最顶端的钢架，将铁块抛下，随后坠下骨架。大脑融化而流去血肉化作花海中的小花。</p>
+<p>那片花海，绵延不绝，已有上千株绽放的生命，默默注视着天空。</p>
+<p>日出。少女醒来，起身，离开小屋，离开公寓，并未用那车流，而是步行前往了大厦。</p>
+<p>沿途之中，未见一丝额外的颜色。步道上只有少数老人和机器，快步或慢步走着。少女来到大厦下，没有前往工厂，而是直接来到了大厦的顶楼，天台的栏杆前。</p>
+<p>那里果然挂着风铃，不过发出的显然不是钟声，且这声音中没有任何噪音抑或是电流、烟雾。</p>
+<p>远方似乎有管风琴声，少女好久没有听过了，于是她盘腿坐下，双手合十，闭上眼睛，静静地欣赏着这不带噪声与闪光的音乐。</p>
+<p>她在等待，夜晚的降临。</p>
+<p>但还未等到一曲终了，日光便已西垂。少女睁开眼，站起。</p>
+<p>这由无数人的血肉建起的大厦，它高耸入云，以致从其间看，太阳也成了夹在两座大厦间的附庸品。然而，只要稍稍从上方看去，太阳果然还是只属于那遥远的大海，海上的瀛洲。正如现在这样，它已薄西山，下降的速度，肉眼可见。</p>
+<p>深茜色的噪声，绛紫色的烟尘，漆黑一片的夜色，无月，无星。</p>
+<p>终于，最后一点亮光消失，高架桥底的车流彻底变成了电流的大海。少女脱下足履，将其置于一旁，翻过了栏杆。她用手拿起挂在一旁的风铃，用唇轻吻，随后扭头看了一眼夜色，轻轻迈开脚步，飞翔那大海。</p>
+<p>半空中，狂风与气流互相交错盘旋着，褪去她头发的颜色，吹走她身外的衣服，让她的身体只能随风而行。</p>
+<p>不过，她并不为此而恐惧。</p>
+<p>大海深处的角落里，那台机器听到了她跳下时，风铃发出的声音，于是它冲破所在世界的外壳，游出不见天日的大海，探出水面，在少女坠入大海的前一刻，接住了她。</p>
+<p>少女赤身坐在机器最顶端的钢梁上，同之前的无穷多次一样，不过这次是在外面的世界。</p>
+<p>直指云端的，巨大的机器，伸出一只机械臂向前挥舞，随着接连的巨响，一侧的大厦缓缓倒下。</p>
+<p>少女紧紧抓着身下晃动的钢梁，脸上露出了奇怪的笑容。这笑容如同地下室里拿着针筒的流浪汉一样癫狂，又如同弥留之际回望自己过去一生的老者一样平静，如同告别时举手长劳劳的恋人一样凄凉，又如同看着孩子第一次学会喊“母亲”时的妇人一样欣喜。</p>
+<p>那巨大的机器，转而伸出另一个机械臂，踏平了曾挤满车流的高架桥，随后将公寓楼拦腰斩断。人、机器、以及更多介于两者之间的存在，它们面露最惊恐的神情，用最绝望的声音，尖叫着。但少女并不愿搭理它们，她那奇怪的笑声响彻天际。她将手中的利刃毫不犹豫地砍向面前的一切事物。血液或电流或二者的混合物向四处飞溅，却不留下一点痕迹，不发出一丝声音，就好像它们从来没有存在过一样——虽然本就近乎如此罢了。</p>
+<p>没过多久，公寓楼前就再也听不到尖叫的声音，于是这巨大的机器起身，来到了最后树立着的建筑物，那第二座大厦面前。少女控制着机器，举起了机械臂。</p>
+<p>然而下一刻，她迟疑了。</p>
+<p>她看到了，离她不远的大厦的外墙上，两个钢梁之间，一朵淡蓝色的小花，正随风摇摆着自己的身躯。</p>
+<p>少女愣在了原地，这是她第一次在外面的世界里看到自然的造物。她不清楚为什么这小花会出现在这里，但她还是操纵着机械臂，从缝隙中取出小花，准备将其安放在一旁，安全的地方……</p>
+<p>远方发出的，隆隆的巨响，逐渐向这边靠近着，转眼就已来到了少女的背后——</p>
+<p>那是不久之前，刚刚被少女摧毁的，第一座大厦。</p>
+<p>两座大厦都太高了，高到纵使将其的地基彻底毁灭，其顶端仍需要一段时间才能坠至地面。</p>
+<p>而正在那迟疑的刹那，那大厦的顶端，那栏杆上挂着风铃的天台，落了下来。不偏不倚地倒向了少女所在的，巨大的机器。</p>
+<p>那挂着风铃地铁质栏杆，砸中了少女所坐的钢梁，将钢梁截成了两段；风铃从栏杆上脱落，乘风飞向了机械臂上，斩断了那蓝色小花的花茎，随后发出了阵阵的铃声。</p>
+<p>少女从钢架上坠落，她的下方硬质的大地，所以她闭上了眼睛，在半空中，睡着了。她的大脑融化，从七窍中流出，随风滴入了一旁的，电流的海洋中，而那副躯壳，则笔直地落向大地，血肉四溅。</p>
+<p>几秒钟后，那风铃，上面挂着残存地半个蓝色小花，落到了那摊血肉之中。</p>
+<p>这何尝不是那片花海的一部分呢？</p>
+<p>……少女的大脑，在电流的大海间穿行着，不过此时，大海里一片死寂，全不见他人的大脑，或是闪亮的霓虹灯。</p>
+<p>大脑来到了那片角落中——这里，宜人依旧，全无外面的半点痕迹。和此前唯一的区别，便是那具巨大的机器不见了。于是少女代替了那机器——她的大脑，变成了一具巨大的身躯，和此前机器的骨架一样雄伟，不过依然赤身裸体。</p>
+<p>她抬起手，透过远方的峰峦，望着外面的世界。</p>
+<p>……</p>
+<p>她看到，外面的世界，同样依旧。</p>
+<p>大厦依旧矗立在那里，高架桥上依旧充斥着车流，公寓楼里依旧敲着钟声。</p>
+<p>大家发现了她落在那里的躯壳，于是将其带入了大厦。几天之后，一副拥有着人的躯干和铅制的四肢的身体，便崭新出世，成为了在流水线中劳作着的一部分。</p>
+<p>这个世界中的少女，放下了手臂，轻声笑了笑。随后，行至花海，躺下，闭上了双眼。</p>
+<p>她死了。</p>
+<p>远方的峰峦间，气流和水流缓缓停下，它们无力再阻止电流。于是，电流涌入了这个世界。</p>
+<p>这片大海，因此，如同失去了梁柱的穹顶，轰然倒塌。</p>
+<p>电流，混着两个世界的残骸，组成了一片混沌。</p>
+<p>这篇混沌中，没有哪怕一丝的光。</p>
+<p>少女那副巨大的身躯，平静地躺在这一片混沌中。她的头颅变成了大洋上的孤岛，五官变成了孤岛丛林中的洞穴与湖泊，项颈变成了连接大陆与孤岛的陆峡，肩胛变成了重岩峻崖的岸边，乳房变成了高耸入云的雪峰，双臂变成了绵延百里的山脉，手掌变成了一马平川的草原，躯干变成了苍茫的高原，双腿变成了错落有致的丘陵，股间变成了流出洞穴的暗河，足尖变成了被风浪冲刷的海岬……但宇宙依旧混沌，世界孤寂如常，无比黑暗，不见光明。</p>
+<p>不知过了多久，第一批人类，出现了，他们穿着兽皮，沿着暗河，从洞穴中走出，他们在丘陵中的丛林里安营扎寨，用树木或者竹子建起房屋。他们猎取猎物，或采摘果子以饱腹。一日过后，他们用听不懂的语言唱起了祭祀的歌曲。在黑暗的宇宙之中，一切都是平等的。</p>
+<p>又不知过了多久，这些人类从路边野草中，驯化出了能稳定提供食物的种子。他们开垦了大量的农田，养活了越来越多的人口。但争斗也由此而来。有些人占据了土地和耕牛，于是其他人屈服在了这些人的膝下，成为了听命于主人的奴隶，人心中的混沌逐渐产生，就像这依旧混沌的宇宙。</p>
+<p>又有许久的时间过去了，人们离开丘陵，行过风雪肆虐的高原，来到了雪峰之前。他们在雪峰中找到了铁矿，拿这源源不断地铁铸成了剑与犁。用剑改变人与人的社会，用犁改变人脚下的土地。于是，领主们将自己的土地层层分封，原本需要奉献出全部身体与生命地奴隶，变成了需要饱受刑与税盘剥地农民。宇宙依然昏沉，没有一丝光和亮，一片黑暗。</p>
+<p>依旧是过了很久，人们继续前行，跨过陆峡，来到了孤岛上。此时的人们，意识到了自己不该如此。于是，思想开始解放，艺术开始复兴，人们推翻了那最高的领主，为新时代欢呼着，虽然眼前只有一片漆黑。</p>
+<p>人们向天地提问，试图一窥宇宙的真谛；人们向孤岛地洞穴深处行进，在里面找到了铁、铝、硅和锡；人们不断探索着工业与技术的边缘，工业成了主宰世界的力量。无数的机器被制造出来，它们没有思考与意识，听命于人类。人类用它们建起了天高的大厦、盘旋交错的高架桥与曲折纵横的公寓楼。钢铁的洪流中，没有人还保留着自己来到这人世时的信仰与愿望。数不清的机器堆积如山，那是人类最大的功绩，也是人类最大的罪过。</p>
+<p>机器，以混沌为体，以规整为用。这个由机器构成的世界，是最整洁的世界，也是最凌乱的世界。在这一片充斥着枪炮、病菌与钢铁的，混沌与黑暗中，神出现了。祂运行在那天边的海面上方，注视着这世界。</p>
+<p>神说，要有光，便有了光。</p>
+<p>神看光是好的。</p>
+<p align="right">2024.11.3</p>
+]]></content>
+      <categories>
+        <category>文集</category>
+      </categories>
+      <tags>
+        <tag>小说</tag>
+        <tag>短篇</tag>
+        <tag>2024</tag>
       </tags>
   </entry>
 </search>
