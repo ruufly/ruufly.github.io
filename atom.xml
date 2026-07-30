@@ -6,7 +6,7 @@
   <link href="https://blog.distjr.top/atom.xml" rel="self"/>
   
   <link href="https://blog.distjr.top/"/>
-  <updated>2026-07-05T05:31:27.682Z</updated>
+  <updated>2026-07-30T09:38:43.707Z</updated>
   <id>https://blog.distjr.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>欸嘿</title>
+    <link href="https://blog.distjr.top/2026/07/19/2260719/"/>
+    <id>https://blog.distjr.top/2026/07/19/2260719/</id>
+    <published>2026-07-19T09:00:00.000Z</published>
+    <updated>2026-07-30T09:38:43.707Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;如图&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="日记" scheme="https://blog.distjr.top/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+    <category term="日记" scheme="https://blog.distjr.top/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>最新 | 画中少女</title>
@@ -197,8 +223,8 @@
       
         
         
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/medias/keepopen.png_&quot;&gt;&lt;/p&gt;
-&lt;h1&gt;&lt;span id=&quot;keepopen&quot;&gt;KeepOpen&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://ruufly.github.io/&quot;&gt;个人网站&lt;/a&gt; | &lt;a</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/medias/keepopen.png_&quot; alt&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;span id=&quot;keepopen&quot;&gt;KeepOpen&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://ruufly.github.io/&quot;&gt;个人网站&lt;/a&gt; |</summary>
         
       
     
@@ -561,31 +587,6 @@
     <category term="短篇" scheme="https://blog.distjr.top/tags/%E7%9F%AD%E7%AF%87/"/>
     
     <category term="2023" scheme="https://blog.distjr.top/tags/2023/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="https://blog.distjr.top/2021/07/11/test/"/>
-    <id>https://blog.distjr.top/2021/07/11/test/</id>
-    <published>2021-07-10T16:00:00.000Z</published>
-    <updated>2026-06-28T06:10:46.370Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;test&quot;&gt;test&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="test" scheme="https://blog.distjr.top/categories/test/"/>
-    
-    
-    <category term="test" scheme="https://blog.distjr.top/tags/test/"/>
     
   </entry>
   
