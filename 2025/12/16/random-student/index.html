@@ -37,9 +37,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="distjr_的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="distjr_的博客" type="application/atom+xml">
 </head>
 
 
@@ -607,44 +607,47 @@
     <span class="token key atrule">refresh</span><span class="token punctuation">:</span> true <span class="token punctuation">|</span> false
     <span class="token key atrule">refreshIndex</span><span class="token punctuation">:</span> &lt;index<span class="token punctuation">&gt;</span>
   <span class="token punctuation">...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>各配置项的解释如下：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">选项</th>
-<th align="left">描述</th>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">description</td>
-<td align="left">该逻辑的描述（请保证该项与其他插件的该项不同，用户选择随机逻辑时只能看到该项）<br>其下列有不同语言，请至少填写 <code>zh-SI</code> 的内容，这是软件找不到对应语言时的默认语言。</td>
+<tbody>
+<tr>
+<td style="text-align:left">description</td>
+<td style="text-align:left">该逻辑的描述（请保证该项与其他插件的该项不同，用户选择随机逻辑时只能看到该项）<br>其下列有不同语言，请至少填写 <code>zh-SI</code> 的内容，这是软件找不到对应语言时的默认语言。</td>
 </tr>
 <tr>
-<td align="left">type</td>
-<td align="left">有 <code>function</code> 和 <code>file</code> 两项，编写的插件该项均为 <code>file</code> 。</td>
+<td style="text-align:left">type</td>
+<td style="text-align:left">有 <code>function</code> 和 <code>file</code> 两项，编写的插件该项均为 <code>file</code> 。</td>
 </tr>
 <tr>
-<td align="left">index</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+<td style="text-align:left">index</td>
+<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
 <tr>
-<td align="left">file</td>
-<td align="left"><code>file</code> 型插件特有参数，请填写插件本体的路径（相对于软件根目录）</td>
+<td style="text-align:left">file</td>
+<td style="text-align:left"><code>file</code> 型插件特有参数，请填写插件本体的路径（相对于软件根目录）</td>
 </tr>
 <tr>
-<td align="left">show</td>
-<td align="left">是否在设置栏显示该插件。</td>
+<td style="text-align:left">show</td>
+<td style="text-align:left">是否在设置栏显示该插件。</td>
 </tr>
 <tr>
-<td align="left">refresh</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+<td style="text-align:left">refresh</td>
+<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
 <tr>
-<td align="left">refreshIndex</td>
-<td align="left"><code>function</code> 型插件特有参数，可留空。</td>
+<td style="text-align:left">refreshIndex</td>
+<td style="text-align:left"><code>function</code> 型插件特有参数，可留空。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>当用户开始随机抽取学生时，系统会将学生名单转存至 <code>.\temp\student.tmp</code> ，将学生抽取历史转存至 <code>.\temp\history.tmp</code></p>
 <p>如果用户使用连抽，系统会将连抽次数转存至 <code>.\temp\cdraw.tmp</code></p>
 <p>以上数据均使用 <code>pickle.dump</code> 存储</p>
@@ -657,7 +660,6 @@
         ...
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>学生抽取历史文件格式如下：</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
@@ -667,7 +669,6 @@
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     ...
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h3><span id="高通量检验">高通量检验</span></h3><p>在 设置-点名次数统计-高通量检验 中。</p>
 <p>通过生成大量学生，再进行大量抽取试验以检验随机逻辑的优劣性。</p>
 <p>您可以通过修改 <code>C_checkA.ini</code> 以配置高通量检验。</p>
@@ -683,7 +684,6 @@
 <span class="token key attr-name">C_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;C_size&gt;</span>
 <span class="token key attr-name">N_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;N_size&gt;</span>
 <span class="token key attr-name">U_size</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;U_size&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>其中， <code>checkA_file</code> 为检验 <code>file</code> 逻辑的配置，<code>checkA_function</code> 为检验 <code>function</code> 逻辑的配置， <code>try_time</code> 为随机抽取次数， <code>C|N|U_size</code> 分别为检验中生成的各类学生人数。</p>
 <h3><span id="链接文件">链接文件</span></h3><p>在 设置-管理学生名单-导出 中，将学生数据导出为 Random Student connect file 后即保存为链接文件。</p>
 <p>在正常安装本软件的前提下，直接打开链接文件，即可将链接文件中的数据作为学生名单的来源以随机抽取。</p>
@@ -920,7 +920,13 @@
     
 
     
-        <style>
+
+    
+
+    
+
+    
+    <style>
     .valine-card {
         margin: 1.5rem auto;
     }
@@ -929,265 +935,82 @@
         padding: 20px 20px 5px 20px;
     }
 
-    #vcomments textarea {
-        box-sizing: border-box;
+    /* 修改waline样式 */
+    /* 修改评论框外观 */
+    .wl-panel {
+        border-radius: 4px !important;
+    }
+
+    :root {
+        --waline-bgcolor-light: transparent !important;
+    }
+
+    .wl-btn {
+        border-radius: 0.3em !important;
+    }
+
+    /* 添加miku的gif为输入区域背景 */
+    #wl-edit {
         background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: right bottom !important;
     }
 
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
+
+    /* 修改评论区内容背景 */
+    .wl-card .wl-content {
+        background: #f5f5f5;
+        padding: 16px !important;
+        margin: 12px 0 8px !important;
+        border-radius: 3px;
     }
 
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
+    .wl-card {
+        border-bottom: none !important;
+        padding-bottom: 0px !important;
     }
 
-    #vcomments a {
-        padding: 0 2px;
-        color: #4cbf30;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
+    .wl-cards .wl-item {
+        padding: .5em .5em 0px !important;
     }
 </style>
 
-<div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
-</div>
+<script src="https://unpkg.com/mathjax@v3/es5/tex-svg.js"></script>
+<script src="https://unpkg.com/prismjs@v1" data-manual></script>
+<script src="https://unpkg.com/prismjs@v1/plugins/autoloader/prism-autoloader.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/prismjs@v1/themes/prism-tomorrow.min.css" />
 
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: 'oWapd3zTIzI5DVeWePgTdFj8-gzGzoHsz',
-        appKey: 'UNBcds0WeXgcVIFYNuhskTCY',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'wavatar',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: '在此评论...',
-        enableQQ: true,
-        requiredFields: ['nick','mail']
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+<div class="card valine-card" data-aos="fade-up">
+    <div id="waline" class="card-content"></div>
+</div>
+<script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+    init({
+        el: '#waline',
+        serverURL: 'https://comment.distjr.top',
+        emoji: ['//unpkg.com/@waline/emojis@1.4.0/weibo', '//unpkg.com/@waline/emojis@1.4.0/bmoji', '//unpkg.com/@waline/emojis@1.4.0/bilibili', '//cdn.jsdelivr.net/gh/pysio2007/emoji@v1.4/Chibi', '//cdn.jsdelivr.net/gh/DakoWang/bilibili_emoji@v1.0.1/output/5390_Mygo%E8%A1%A8%E6%83%85%E5%8C%85', '//cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Arcaea', '//cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Snow-Miku/', '//cdn.jsdelivr.net/gh/GamerNoTitle/ValineCDN@master/Heybox/'],
+        texRenderer: (blockMode, tex) =>
+            window.MathJax.startup.adaptor.outerHTML(
+                window.MathJax.tex2svg(tex, {
+                    display: blockMode,
+                }),
+            ),
+        highlighter: (code, lang) => {
+            if (!window.Prism.languages[lang]) {
+                window.Prism.plugins.autoloader.loadLanguages(lang);
+            }
+
+            return window.Prism.highlight(
+                code,
+                window.Prism.languages[lang] || window.Prism.languages.text,
+                lang,
+            );
+        },
     });
 </script>
-
-    
-
-    
-
     
 
     
@@ -1230,7 +1053,7 @@
             + '来源: distjr_的博客<br />'
             + '文章作者: distjr_<br />'
             + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+            + '本文章著作权归作者所有，转载请注明出处！';
 
         selection.selectAllChildren(newdiv);
         window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
@@ -1380,7 +1203,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">55.1k</span>&nbsp;字
+                class="white-color">57.7k</span>&nbsp;字
             
             
             
@@ -1467,7 +1290,7 @@
 
 
 
-    <a href="https://twitter.com/distjr" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/distjr" data-position="top" data-delay="50">
+    <a href="https://twitter.com/distjr_" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com/distjr_" data-position="top" data-delay="50">
         <i class="fab fa-twitter"></i>
     </a>
 
