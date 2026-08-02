@@ -401,31 +401,6 @@
       </tags>
   </entry>
   <entry>
-    <title>最新 | 关于我的高中三年</title>
-    <url>/2026/07/30/e/graduate/</url>
-    <content><![CDATA[<blockquote>
-<p>写在前面：这篇文章的写作没有经过任何提前的构思，完全是想到什么写什么，所以可能写得有点乱，各位见谅</p>
-</blockquote>
-<p>高考结束后的第二天开毕业典礼，开完之后同学们在教室里又待了一段时间才陆陆续续地告别。我基本上是全班走得最晚的一个了（绝不是为了多玩一会电教），即便是离开校门之后，也没有任何关于“毕业了”的实感。总感觉好像高中刚入学那天就在不久之前一样，但又感觉几天前的高考就像是十几年前的往事。</p>
-<p>后来想了想，可能是高中三年太不重视记录了。高一那年学着其他人像模像样整了个日记本，写了没两个月，那个本子就不知道跑到哪里去了。这些年倒是笔没停过，但写的都是小说一类的，对于那些真真切切发生在身边的事情，反而忘得差不多了。总感觉不擅长记录的人，就很容易被困住，因为对时间的坐标没什么把握，对日子的流逝也就没有什么明确的感觉。</p>
-<p>那就试着写写吧，趁着有些记忆还没有被彻底忘掉。</p>
-<h2><span id="关于最开始">关于最开始</span></h2><p>我所在的这个班属于是一种特殊招生，初三下学期就提前招到高中来的那种。当时这东西很新潮，特别是在像我们这边的这种内地小城市——我们班是我们学校第二年招这类学生——后来这种2.5+3.5的模式没搞多少年，教育局就不乐意了，遂作罢。</p>
-<p>当时考虑报这种提前招生班主要是初三上学期，2022年冬天，是知周所众的一个学期的网课，当时文化课成绩掉的很厉害，如果不来这种班，去卷中考的话大概率就直接爆炸了（笑）。我们市的市区头部高中的水平排名大概是 <code>第一&gt;&gt;第二&gt;第三&gt;&gt;其他</code> 的这种，前三所学校开了这种提前招生班。第一名的学校我显然考不上所以不考虑，第二名的学校我去报名了然后他们嫌文化课成绩太低于是初审没通过（后来听说他们的宿舍住宿条件比较糟糕遂庆幸于当初没过去），第三名的学校是我们市每年CSP初赛的考点，搞信竞算是全市最强的，我上初中的时候CSP-J拿了个省二就想着要不高中当竞赛生吧，于是就来到了这里，也算是比较巧合。</p>
-<p>当时去参加他们的选拔考试，具体考的是什么已经忘了，好像数学考了个数学归纳法物理考了个胡克定律来着，都是那种现学现考的题目类型，做得感觉一般。主要是初三上学期摆烂得太彻底了，到了那一会感觉整个人都浑浑噩噩的，不知道怎么回事就开始考试了，然后又不知道怎么回事就考完了，最后反正马马虎虎是过了，于是开开心心地和本应到来的中考复习说再见，跑去学高中课程去了。</p>
-<p>说实话，我个人感觉这确实是一个比较有戏剧性的开场，至少大多数高中生考上高中的经历，应该都不会这么莫名其妙的。</p>
-<p>题外话：我们考上之后，下半学期就在高中上了，我记得应该是正月初七开的学。开学之前还跑到广州我大姨那边玩了几天，<span class="spoiler">沿海地区的海鲜真的好便宜啊（注意点偏移）</span>。</p>
-<h2><span id="高一之前的一小段日子">高一之前的一小段日子</span></h2><p>那几个月</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>2026</tag>
-        <tag>随笔</tag>
-        <tag>毕业</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>欸嘿</title>
     <url>/2026/07/19/2260719/</url>
     <content><![CDATA[<p>如图</p>
@@ -489,20 +464,6 @@
       <tags>
         <tag>番评</tag>
         <tag>上伊那牡丹</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>帖子测试</title>
-    <url>/2026/06/27/short-test/</url>
-    <content><![CDATA[<p>把文章分为了“博文”和“帖子”两部分，这是帖子的测试</p>
-<h2><span id="test">test</span></h2><p><strong>test</strong></p>
-<p>$test$</p>
-]]></content>
-      <categories>
-        <category>test</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
       </tags>
   </entry>
   <entry>
@@ -2070,51 +2031,6 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
         <tag>小说</tag>
         <tag>短篇</tag>
         <tag>2023</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2021/07/11/test/</url>
-    <content><![CDATA[<h1><span id="test">test</span></h1><h2><span id="test">test</span></h2><p>$\LaTeX$</p>
-<p>test</p>
-<p><strong>test</strong></p>
-<p><del>test</del></p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">test</td>
-<td align="center">test</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>test</p>
-<blockquote>
-<p>test</p>
-</blockquote>
-</blockquote>
-<p><em>test</em></p>
-<p>$$<br>\textcolor{red}{test}<br>$$</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<table>
-    <tbody><tr>
-        <td>Test</td>
-    </tr>
-</tbody></table>
-
-
-<p><span class="spoiler" tabindex="0" title="你知道的太多了">这里是黑幕内容</span></p>
-<!-- <span class="heimu" title="你知道的太多了">这里是黑幕内容</span> -->]]></content>
-      <categories>
-        <category>test</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
       </tags>
   </entry>
 </search>
