@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/live2d-widget/demo/demo.html</loc>
+    <loc>https://blog.distjr.top/live2d-widget/demo/login.html</loc>
     
     <lastmod>2024-02-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/live2d-widget/demo/login.html</loc>
+    <loc>https://blog.distjr.top/live2d-widget/demo/demo.html</loc>
     
     <lastmod>2024-02-26</lastmod>
     
@@ -424,20 +424,6 @@
   </url>
   
   <url>
-    <loc>https://blog.distjr.top/tags/%E4%B8%AD%E7%AF%87/</loc>
-    <lastmod>2026-08-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.distjr.top/tags/2026/</loc>
-    <lastmod>2026-08-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.distjr.top/tags/%E9%9A%8F%E6%9C%BA%E5%AD%A6%E7%94%9F/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>daily</changefreq>
@@ -446,6 +432,20 @@
   
   <url>
     <loc>https://blog.distjr.top/tags/Random-Student/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.top/tags/%E4%B8%AD%E7%AF%87/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.distjr.top/tags/2026/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
