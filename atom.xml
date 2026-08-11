@@ -6,7 +6,7 @@
   <link href="https://blog.distjr.top/atom.xml" rel="self"/>
   
   <link href="https://blog.distjr.top/"/>
-  <updated>2026-07-30T09:38:43.707Z</updated>
+  <updated>2026-08-11T14:43:08.377Z</updated>
   <id>https://blog.distjr.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最新 | Galgame Maker 运行时引擎 README</title>
+    <link href="https://blog.distjr.top/2026/08/11/galgame-maker-framework/"/>
+    <id>https://blog.distjr.top/2026/08/11/galgame-maker-framework/</id>
+    <published>2026-08-11T14:30:00.000Z</published>
+    <updated>2026-08-11T14:43:08.377Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文是本人编写的 &lt;code&gt;Galgame Maker&lt;/code&gt; 的引擎框架的README文件，您可以点击&lt;a href=&quot;https://github.com/ruufly/galgame-maker-framework/&quot;&gt;此处&lt;/a&gt;查看该框架，或是点击&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="项目" scheme="https://blog.distjr.top/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="Galgame Maker" scheme="https://blog.distjr.top/tags/Galgame-Maker/"/>
+    
+    <category term="Galgame Maker Framework" scheme="https://blog.distjr.top/tags/Galgame-Maker-Framework/"/>
+    
+  </entry>
   
   <entry>
     <title>欸嘿</title>
@@ -43,11 +70,11 @@
   </entry>
   
   <entry>
-    <title>最新 | 画中少女</title>
+    <title>画中少女</title>
     <link href="https://blog.distjr.top/2026/07/05/the-girl-in-the-painting/"/>
     <id>https://blog.distjr.top/2026/07/05/the-girl-in-the-painting/</id>
     <published>2026-07-05T05:00:00.000Z</published>
-    <updated>2026-08-04T03:56:12.714Z</updated>
+    <updated>2026-08-11T14:42:15.674Z</updated>
     
     
       
@@ -560,34 +587,6 @@
     <category term="短篇" scheme="https://blog.distjr.top/tags/%E7%9F%AD%E7%AF%87/"/>
     
     <category term="2023" scheme="https://blog.distjr.top/tags/2023/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>置顶 | 关于我自己</title>
-    <link href="https://blog.distjr.top/2021/07/10/about-me/"/>
-    <id>https://blog.distjr.top/2021/07/10/about-me/</id>
-    <published>2021-07-09T16:00:00.000Z</published>
-    <updated>2026-07-31T09:15:16.410Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本页面最后一次更新于2026-07-31&lt;/p&gt;
-&lt;p&gt;大家好，我是distjr_，各位可以叫我dist或者distance。&lt;/p&gt;
-&lt;p&gt;如你所见，这个名字很奇怪。&lt;/p&gt;
-&lt;p&gt;原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法</summary>
-        
-      
-    
-    
-    
-    <category term="关于" scheme="https://blog.distjr.top/categories/%E5%85%B3%E4%BA%8E/"/>
-    
-    
-    <category term="关于" scheme="https://blog.distjr.top/tags/%E5%85%B3%E4%BA%8E/"/>
     
   </entry>
   

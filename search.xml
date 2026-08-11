@@ -1,7 +1,1465 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>最新 | 画中少女</title>
+    <title>最新 | Galgame Maker 运行时引擎 README</title>
+    <url>/2026/08/11/galgame-maker-framework/</url>
+    <content><![CDATA[<p>本文是本人编写的 <code>Galgame Maker</code> 的引擎框架的README文件，您可以点击<a href="https://github.com/ruufly/galgame-maker-framework/">此处</a>查看该框架，或是点击<a href="https://github.com/ruufly/Galgame-Maker">此处</a>查看母项目。</p>
+<h1><span id="galgame-maker-运行时引擎-framework">Galgame Maker 运行时引擎 (framework)</span></h1><p>基于 <strong>Python 3.10 + pygame</strong> 的视觉小说引擎, 用于运行 <code>.gal</code> 脚本,兼容 Galgame-Maker 编辑器的语法风格, 并预留完整插件 API。</p>
+<hr>
+<h2><span id="1-项目概览">1. 项目概览</span></h2><pre class="line-numbers language-none"><code class="language-none">framework/
+├── api/                      插件 API
+│   ├── __init__.py           导出 GameEngine / Plugin / command / event_listener...
+│   ├── events.py             事件总线 (on/emit/off)
+│   ├── commands.py           指令注册表 (按命名空间分组: main/builtin/&lt;插件名&gt;)
+│   └── plugin.py             插件管理器 (发现/装载/实例化/卸载/模块级注册追踪)
+├── engine/                   引擎核心
+│   ├── core.py               GameEngine 主循环 / 输入处理 / 动作分发 / 音频 API
+│   ├── parser.py             .gal DSL 解析器
+│   ├── loader.py             import 递归展开合并 (循环导入检测)
+│   ├── runtime.py            脚本执行器 (变量/分支/跳转/调用栈/存档/角色/场景/
+│   │                         菜单/声音/命名空间/using/plugin/python:: 指令)
+│   ├── display.py            渲染层 (精灵/背景/文本框/确认框/选择列表/槽位界面/
+│   │                         过渡/立绘效果/文字模式/截图/缩略图钩子/
+│   │                         背景与立绘动态渲染钩子 (视频/Live2D))
+│   ├── audio.py              BGM 淡入淡出状态机 / 音效 / 语音独立通道 / 全局静音
+│   ├── save.py               存档/读档 (JSON 槽位 + 元数据 API + 编解码钩子)
+│   ├── rich.py               富文本解析渲染 + LaTeX 公式 (MathRenderer)
+│   ├── ui.py                 UI 绘制原语 (面板/文字/换行/九宫格 nine_slice)
+│   ├── error.py              错误处理 (日志 + 弹窗 + 剪贴板复制)
+│   ├── styles.py             内置 5 套 UI 主题样式
+│   └── transitions.py        背景过渡效果 (7 种 + 插件可注册)
+├── plugins/                  插件目录 (自动装载)
+│   ├── fx.py                 屏幕特效 (shake/flash/blackflash/tint/strobe/pulse)
+│   ├── notice.py             通知: BGM + 场景切换 (合并 bgm/scene 通知)
+│   ├── transitions_plus.py   扩展背景过渡 (wipe/iris/curtain/sweep/fade_white/
+│   │                         checker/stripes)
+│   ├── custom_actions.py     动作 (explode/quake/freeze/blackout) + do_action
+│   │                         指令 + 立绘效果 (wobble/sway/zoom_bounce/
+│   │                         fade_rotate/float/squash) + 文字模式
+│   │                         (wave/bounce/speedup/rainbow/shiver)
+│   ├── debug_mode.py         调试模式 (快捷键切换, 开启显示 FPS 等)
+│   ├── slot_thumbnails.py    存档画面快照 (槽位缩略图)
+│   ├── gallery.py            鉴赏: 标题菜单按钮 + CG/BGM/角色/场景鉴赏
+│   │                            (结局解锁, 配置在 gallery.gal)
+│   └── auto_skip.py          自动模式 (自动推进, 非正式界面自动暂停)
+│                               + 跳过剧情 (直达下一个选择支/结局)
+└── tests/
+    └── smoke.py              冒烟测试 (dummy 驱动, 无窗口可跑, 779 项断言)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>项目根: <code>gamelauncher.py</code> 独立启动器 (命令行传参 / 拖拽 <code>.gal</code> 文件)。</p>
+<hr>
+<h2><span id="2-快速开始">2. 快速开始</span></h2><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 运行内置演示 (test/engine_demo/)</span>
+py <span class="token operator">-</span>3<span class="token punctuation">.</span>10 gamelauncher<span class="token punctuation">.</span>py
+
+<span class="token comment"># 运行自己的脚本 (也支持把 .gal 文件拖到 gamelauncher.py 上)</span>
+py <span class="token operator">-</span>3<span class="token punctuation">.</span>10 gamelauncher<span class="token punctuation">.</span>py path/to/your<span class="token punctuation">.</span><span class="token function">gal</span>
+
+<span class="token comment"># 命令行参数 (启动器支持)</span>
+<span class="token comment">#   --width/--height/--fullscreen 等窗口参数</span>
+<span class="token comment">#   --plugin-dir &lt;目录&gt;           指定插件目录</span>
+
+<span class="token comment"># 运行冒烟测试</span>
+py <span class="token operator">-</span>3<span class="token punctuation">.</span>10 framework/tests/smoke<span class="token punctuation">.</span>py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>引擎最小用法:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> framework<span class="token punctuation">.</span>api <span class="token keyword">import</span> GameEngine
+
+engine <span class="token operator">=</span> GameEngine<span class="token punctuation">(</span><span class="token number">1280</span><span class="token punctuation">,</span> <span class="token number">720</span><span class="token punctuation">,</span> <span class="token string">"My Game"</span><span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">"script.gal"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>操作: 左键/空格 推进, 方向键/WASD 在菜单中移动活动选项, Enter/空格 确认, ESC 打开系统菜单。</p>
+<hr>
+<h2><span id="3-脚本拆分-import">3. 脚本拆分 (import)</span></h2><p><code>.gal</code> 支持按功能拆分多个文件, 顶层用 <code>import</code> 合并:</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">import "ui.gal"          # 界面样式定义
+import "cast.gal"        # 角色与场景定义
+import "audio.gal"       # 声音注册
+import "story.gal"       # 剧情流程 (game_start 开场 + 分支标签)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>合并规则:</p>
+<ul>
+<li>被导入文件的标签全部并入 (重复标签报错), 子文件的 <code>start</code> 标签忽略</li>
+<li>顶层声明 (window/style/char/scene/plugins/selection_style/sound/using)按 import 位置顺序并入, 运行时静态注册</li>
+<li>相对路径 (相对 import 语句所在文件), 支持链式 import, 循环导入报错</li>
+</ul>
+<p>demo (<code>test/engine_demo/</code>) 拆分: <code>demo.gal</code> (主流程) + <code>ui.gal</code> (样式/菜单)+ <code>cast.gal</code> (角色/场景) + <code>audio.gal</code> (声音) + <code>story.gal</code> (剧情)。窗口配置 / 插件配置的预解析 (启动器) 同样递归展开 import。</p>
+<hr>
+<h2><span id="4-dsl-语法全参考">4. DSL 语法全参考</span></h2><p>脚本为 UTF-8 文本, <code>#</code> 开头为注释, 缩进 (空格) 表示块结构。</p>
+<h3><span id="41-表达式">4.1 表达式</span></h3><p>支持 <code>+ - * /</code>、比较 <code>== != &lt; &gt; &lt;= &gt;=</code>、逻辑 <code>and or not</code>。<br>变量引用可写 <code>$var</code> 或裸 <code>var</code> (命名空间: <code>$main::x</code> / <code>$plugin::cnt</code>),<br>字符串用引号。求值环境无内置函数, 表达式内不允许函数调用 (安全限制)。</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">set love = 0
+set love = love + 1
+if love &gt; 0 and name == "xx":
+    ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="42-标签与流程控制">4.2 标签与流程控制</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">start:                    # 脚本入口 (必为 start)
+label_a:                  # 普通标签
+
+jump label_a              # 跳转
+call sub_routine          # 调用 (可 return)
+return
+if cond: ... elif ...: ... else: ... endif
+
+choice:                   # 选择支 (也支持行内参数, 见 4.9)
+    "选项一" -&gt; label_a
+    "选项二" -&gt; label_b<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="43-背景与场景">4.3 背景与场景</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">scene school                       # 场景定义 (可放顶层, 静态注册)
+    name: "学校"
+    type: normal                    # normal (默认) / cg
+    default: "materials/image/bg.png"
+    morning: "materials/image/bg.png"     # 背景名: 路径
+
+bg school                          # 切到场景默认背景 (触发 scene_change)
+bg school morning                  # 场景内切换背景
+bg "materials/bg.png"              # 直接指定路径
+bg school with fade                # 过渡: fade/dissolve/blinds/slide/
+                                   #       circle/pixelate/zoom + 插件自定义<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>场景分类</strong>: <code>type: cg</code> 的 CG 场景显示逻辑与 normal 完全一致,但每次用 <code>bg</code> 展示 (含背景名) 都会记入<strong>全局 CG 收集</strong>(<code>save/global.json</code>, 跨存档), 供鉴赏插件分门别类展示(见 4.15 鉴赏系统)。</p>
+<h3><span id="44-立绘与角色">4.4 立绘与角色</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">char producer
+    name: "制作人"                   # 显示名 (台词名字框用)
+    default: "materials/char/producer1.png"
+    normal: "materials/char/producer1.png"    # 立绘名: 路径
+    happy: "materials/char/producer2.png"
+    voice_volume: 0.6                # 该角色语音音量 0-1 (可选, 默认 1.0)
+    desc: "引擎的制作者，温和而执着。"   # 描述性信息 (角色鉴赏用, 可选)
+    cv: "演示配音"                    # 声优 / 生日 / 身高 / 年龄 等均可
+
+show producer normal                # 显示角色立绘 (默认居中)
+show producer happy                 # 切换立绘 (保持中心点原位替换)
+show producer normal with slide_right   # 登场效果
+hide producer                       # 隐藏 (withdraw 同义)
+hide producer with slide_left       # 退场效果 (动画播完自动隐藏)
+clear                               # 清除全部立绘
+move producer to left 1             # 位移: 瞬间或缓动动画 (时长+缓动)
+move producer to 400,300 2 ease in_out
+rotate producer 90 1                # 旋转 (逆时针为正, 带时长=动画)
+flip producer                       # 水平翻转 (再次调用恢复)
+flip producer vertical              # 垂直翻转<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>描述性信息</strong>: <code>desc/description/bio/intro/cv/birthday/height/age</code>等键不进入立绘表, 存于 <code>characters[&lt;id&gt;]["meta"]</code>, 供角色鉴赏等使用。</p>
+<h3><span id="45-对话与语音">4.5 对话与语音</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">text "无角色旁白"
+nar "旁白别名"                      # text 的别名
+say 主角 "角色对话, 支持 $变量 插值"
+say producer "角色 id -&gt; 显示名"
+say producer "台词" voice voice_demo    # 语音: say/nar 结束立即停止
+say 旁白 "也按旁白处理"              # 兼容写法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="46-富文本与-latex">4.6 富文本与 LaTeX</span></h3><p>行内标记 (对话/旁白/标题文字/按钮文字通用):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">say a "普通 {c=#ff6600}彩色文字{/c}"
+say a "加粗 {b}粗体{/b} 与 {u}下划线{/u} 和 {i}斜体{/i}"
+say a "大字号 {s=34}放大{/s}"
+say a "公式: {m}\frac{1}{2}{/m} 行内显示"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>富文本标记: <code>{c=颜色}</code> <code>{b}</code> <code>{u}</code> <code>{i}</code> <code>{s=字号}</code> <code>{m}公式{/m}</code>(颜色支持 <code>#RRGGBB</code> / <code>R,G,B</code> / 命名色)</li>
+<li><strong>公式语法</strong>: <code>{m}LaTeX 源码{/m}</code> 或 <code>{math}...{/math}</code> (成对闭合)。公式源码允许嵌套大括号 (<code>\frac{1}{2}</code> 的参数), 解析器按大括号配对扫描, 不做标记解析, 原样交给 MathRenderer 渲染。</li>
+<li><strong>与逐字模式兼容</strong>: 公式在打字机效果中<strong>整体一次性出现</strong> (逻辑字符计 1), 不会被逐字符截断成残缺源码; reveal 推进/完成判定基于”逻辑长度” (普通文字逐字 + 公式整体计 1), 见 <code>rich.logic_len()</code>。</li>
+</ul>
+<h3><span id="47-文字显示模式-typing">4.7 文字显示模式 (typing)</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">typing typewriter     # 默认: 打字机逐字符
+typing instant        # 整段直接出现
+typing terminal       # 终端: 逐字输入 + 行尾闪烁光标 (光标按富文本布局
+                      #       精确定位在已输入文本末尾)
+typing lines          # 逐行显示 + 节奏停顿
+typing wave           # 插件自定义模式 (custom_actions 插件示例)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>插件 API: <code>display.register_text_mode(name, {"reset": fn(display), "update": fn(display, dt)})</code>。</p>
+<h3><span id="48-声音系统">4.8 声音系统</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal"># 声音注册 (建议独立 audio.gal)
+sound sfx_click
+    type: sfx_ui                # music / sfx_ui / sfx_story / voice
+    file: "materials/audio/sfx_click.wav"
+    volume: 0.6
+
+# 音乐: 播放 / 切换 / 循环 / 暂停 / 恢复 / 音量 / 停止
+music bgm_piano41               # 播放 (注册名或直接路径, 默认循环)
+music bgm_piano39 fade 1.0      # 切换/淡入 (fade 秒; 切换自动旧曲淡出新曲淡入)
+music bgm_piano39 loop 0        # loop 1=循环(播完自动重播) / 0=单次
+pause music fade 0.8            # 暂停 (淡出后暂停)
+resume music fade 0.8           # 恢复 (淡入)
+volume music 0.3                # 临时音量 (music/sfx)
+stop music                      # 停止 (淡出)
+
+# 全局静音
+stop all                        # BGM 淡出停止 + 音效/语音全停
+pause all                       # BGM 淡出暂停 + 音效/语音全停
+
+# 音效与语音
+sfx sfx_boom                    # 剧情音效
+say producer "..." voice voice_demo   # 台词语音 (可省略)
+
+# 语音音量分层 (四层相乘, 每层默认 1.0 不衰减):
+#   全局 sfx 音量 × 全局 voice 音量 × 声音块 volume × 角色 voice_volume
+volume voice 0.5                # 全局语音音量
+volume voice producer 0.3       # 指定角色的语音音量 (改 char voice_volume)
+# 角色语音音量也可在 char 块里预设: voice_volume: 0.6
+
+# 自动行为
+#   ending 指令 / 标题"开始游戏" 动作: 自动 stop music (淡出, 非全局静音)
+#   存档保存 BGM 注册名 (非路径), 读档按名称恢复<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>fade 淡入淡出</strong>: 所有 <code>fade</code>/<code>stop</code>/<code>pause</code> 的时长值支持变量/表达式 (如 <code>stop music fade $f</code>)。默认时长由 window 配置<code>music_fade: 1.0</code> 控制; 指令显式 <code>fade N</code> 覆盖 (0=无淡变)。淡入淡出为每帧音量线性渐变 (引擎 update 驱动), 暂停菜单时渐变不中断。</p>
+<p><strong>UI 交互音效</strong> (三层配置):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal"># window 全局默认 (按钮确认时播放)
+window
+    ui_click_sound: "sfx_click"
+    music_fade: 1.0
+
+# menu 块级 (该菜单活动项变化/确认时)
+menu system
+    ...按键...
+    ui_hover_sound: "sfx_hover"
+    ui_click_sound: "sfx_click"
+
+# choice 行内参数
+choice ui_click sfx_a ui_hover sfx_b
+    "A" -&gt; a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>点击音只在<strong>明确确认操作</strong>时播放 (菜单/选择支/确认框确认/槽位选中);<br>文本推进与取消返回不响。语音在台词推进时<strong>先停语音再播 UI 音效</strong>(避免抢语音通道)。</p>
+<h3><span id="49-菜单与键盘导航">4.9 菜单与键盘导航</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal"># 命名菜单 (标题画面 / ESC 系统菜单统一架构)
+menu title                       # title 块用 menu: title 引用
+    start_button
+        text: "开始游戏"
+        image: "默认.png, 焦点.png"
+        width: 262
+        height: 98
+        stretch: false           # 不拉伸 (原尺寸居中)
+        text_visible: false      # 图自带文字时不渲染文案
+        action: start game_start # 动作: 类型 [参数]
+    ui_hover_sound: "sfx_hover"  # 菜单级 UI 音效 (见 4.8)
+    ui_click_sound: "sfx_click"
+
+menu system                      # ESC 菜单: 定义即覆盖内置五项
+    continue_button ...          # 按键属性同 title (action: continue/save/...)
+
+# 按键属性: text / image(默认,焦点) / image_disabled(禁用图) /
+#           image_active(激活图, 自动模式等切换用) / width / height /
+#           stretch / text_visible / action (无名参数按类型映射:
+#           start-&gt;label, slot_menu-&gt;mode, save/load-&gt;slot;
+#           自定义动作默认 label)
+
+# 选择支行内参数 (见 4.2) 也支持 ui_click/ui_hover 配置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>键盘导航</strong> (开始/ESC/选择支菜单通用):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">window
+    key_up: "up, w"              # 上移 (可配多键, 逗号分隔)
+    key_down: "down, s"          # 下移
+    key_confirm: "return, space" # 确认活动选项<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>键名: 方向键/功能键 (up/down/left/right/return/space/esc/tab/…) +单个字母/数字 (“a”/“1”)</li>
+<li>活动选项 (active_index) 由<strong>键盘移动或鼠标悬停</strong>激活; 初始无活动项 (-1),不高亮, 无活动项时 Enter/空格不触发确认</li>
+<li>键盘移动循环切换; 鼠标点击同步活动索引 (键盘/鼠标状态一致)</li>
+<li>ESC 菜单 (paused) 下鼠标悬停同步依然工作 (见 <code>sync_mouse_active</code>)</li>
+</ul>
+<h3><span id="491-系统菜单两种模式-popup-弹窗-bar-常驻菜单栏">4.9.1 系统菜单两种模式: popup 弹窗 / bar 常驻菜单栏</span></h3><p>开发者可在 window 块选择系统菜单形态 (也可用 <code>window config</code> 运行时切换):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">window
+    menu_mode: "popup"        # popup=ESC 弹窗 (默认) / bar=常驻按钮条
+    menu_bar_pos: "bottom"    # bar 模式位置: bottom=对话框下方 / top=窗口上方<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>popup (默认)</strong>: 游戏时按 ESC 打开系统菜单 (选择列表覆盖层, 暂停游戏)</li>
+<li><strong>bar</strong>: 对话框下方或窗口上方常驻一排按钮 (存档/读档/返回标题/退出),<strong>游戏过程中随时点击</strong>; ESC 不再弹窗 (仅用于关闭槽位界面等覆盖层)。bar 按钮复用 <code>menu system</code> 块的按钮定义 (自动过滤无意义的<code>continue</code>), 未定义时用默认四项。标题画面始终使用自己的按钮, bar 隐藏。</li>
+</ul>
+<p><strong>bar 样式</strong> (独立 <code>menu_bar</code> 块, <code>menu_bar default</code> 重置):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">menu_bar
+    bg: "#1a1a2e"              # 条背景 (含 alpha: "#1a1a2ee0" 或 R,G,B,A)
+    border: "#5a5a7a"
+    align: center              # 按钮水平对齐: left / center / right
+    gap: 12                    # 按钮间距
+    padding: 18                # 按钮左右内边距 (决定按钮宽度)
+    height: 56                 # 条高度
+    btn_h: 38                  # 按钮高度
+    y_offset: 0                # 位置微调 (bottom 向上 / top 向下)
+    button_bg: "#2a2a44" / button_bg_hover: "#e94560"
+    button_border: "#44446a" / button_border_hover: "#ffd282"
+    button_radius: 8
+    text_color: "#eaeaea" / text_color_hover: "#ffffff"
+    text_size: 22
+    # --- UI 图片键 (可配; 有图优先于纯色, 支持 {lang} 变体) ---
+    bg_image: "bar.png"                    # 条背景图 (九宫格铺满整条)
+    button_image: "btn.png"                # 按钮默认图
+    button_image_hover: "btn_focus.png"    # 按钮悬停图
+    button_image_active: "btn_active.png"  # 按钮激活图 (cfg.active 时)
+    button_image_disabled: "btn_off.png"   # 按钮禁用图 (cfg.enabled=False 时)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>bar 模式下对话框自动上移让位 (bottom); 打开槽位界面/确认框等覆盖层时菜单栏被 dim 盖住, 关闭覆盖层后恢复。</p>
+<h3><span id="410-界面样式">4.10 界面样式</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">use style modern        # 内置: modern / classic / dark / light / cyber
+use style default       # 恢复默认
+
+style my_theme          # 自定义样式块 (同名可重载内置)
+    textbox_bg: "#1a1a2e"
+    textbox_alpha: 210
+    textbox_border: "#e94560"
+    textbox_border_width: 3
+    textbox_radius: 12
+    text_color: "#eaeaea"
+    text_size: 28
+    speaker_color: "#ffd282"
+    speaker_bg: "#1e3a5f"
+    arrow_color: "#e94560"
+    textbox_image: "..."          # 文本框背景图 (9-slice)
+    speaker_image: "..."
+    choice_image: "..." / choice_image_hover: "..."
+    choice_text_size: 26 / choice_text_color / choice_text_color_hover
+    choice_bg / choice_bg_hover / choice_border / choice_border_hover
+
+selection_style          # 选择列表全局样式 (标题/ESC 菜单按钮)
+    width_ratio: 0.32 / width: 400 / height: 56 / gap: 14
+    anchor_x: center / anchor_y: center
+    button_bg / button_bg_hover / button_border / button_border_hover
+    button_radius / text_size / dim_alpha
+    button_image / button_image_hover / button_stretch / button_text
+    text_color / text_color_hover / dialog_image
+selection_style default  # 重置
+
+ui                       # UI 主题素材 (九宫格切片, 相对路径)
+    textbox: "materials/.../对话_adv对话框_llf.png"
+    title_buttons: "默认.png, 焦点.png; 默认2.png, 焦点2.png"
+    #   逗号 = 默认图,焦点图; 分号 = 多组按按钮索引取图
+    #   单个路径 = 无状态图
+    #   支持: textbox/choice_button/title_buttons/menu_button/
+    #         confirm_panel/confirm_button/slot_frame/slot_panel
+    #   style 图片键优先级更高, 值为 none 禁用主题图<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="411-标题画面">4.11 标题画面</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">title
+    image: "materials/title.png"   # 可选: 标题图片
+    caption: "Galgame Maker"       # 标题文字 (支持富文本)
+    title_x: center / title_y: 210
+    start: game_start              # "开始游戏" -&gt; 跳转标签 (必填)
+    start_text: "开始游戏"
+    load: 0 / load_text: "读取存档"   # 可选: 读档槽位按钮
+    quit: true / quit_text: "退出游戏"
+    button_x: center / button_y: 420
+    menu: title                    # 引用命名菜单 (menu title) 替代内置按钮<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="412-窗口配置-window-块">4.12 窗口配置 (window 块)</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">window
+    title: "我的游戏"
+    width: 1280
+    height: 720
+    icon: "materials/image/icon.png"
+    fps: 60
+    fullscreen: false              # 全屏启动
+    resizable: true                # 允许拖拽窗口边缘 (内容等比缩放)
+    confirm_quit: true             # 对话框统一配置 (退出/读档/返回标题):
+    confirm_quit_text: "确定要退出游戏吗？"
+    confirm_quit_yes: "退出" / confirm_quit_no: "继续游戏"
+    confirm_load: true / confirm_load_text / confirm_load_yes / confirm_load_no
+    confirm_title: true / confirm_title_text / confirm_title_yes / confirm_title_no
+    key_up: "up, w"                # 键盘导航 (见 4.9)
+    key_down: "down, s"
+    key_confirm: "return, space"
+    key_left: "left, a"            # 确认框: 左移活动项
+    key_right: "right, d"          # 确认框: 右移活动项
+    ui_click_sound: "sfx_click"    # 全局 UI 点击音
+    music_fade: 1.0                # BGM 淡入淡出默认时长 (秒)
+    menu_continue: "继续游戏"      # ESC 菜单文案 (可自定义)
+    menu_save: "存档" / menu_load: "读取存档" / menu_title: "返回标题"
+    menu_quit: "退出游戏"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="4121-运行时窗口配置-window-config-与等比缩放">4.12.1 运行时窗口配置 (window config) 与等比缩放</span></h3><p><code>window config</code> 命令可在<strong>程序运行过程中</strong>即时修改窗口配置(标题/大小/图标/全屏/可缩放/帧率), 无需重启:</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">window config
+    title: "新的标题"              # 窗口名
+    width: 1600                    # 窗口大小 (像素)
+    height: 900
+    icon: "materials/image/x.png"  # 图标 (相对脚本目录)
+    fullscreen: true               # 全屏开关
+    resizable: false               # 是否允许拖拽缩放
+    fps: 60
+
+fullscreen true                    # 独立全屏指令 (true/false)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>等比缩放 (letterbox)</strong>: 引擎以<strong>固定逻辑分辨率</strong> (初始 width/height) 绘制,窗口可自由调整大小 (拖拽边缘 / window config / 全屏), 画面整体等比拉伸,保持比例不变; 宽高比不一致时上下/左右留黑边。鼠标坐标自动映射回逻辑坐标,命中检测/悬停在任何窗口尺寸下都准确。</p>
+<p>相关 API (插件/游戏代码):</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>set_window_title<span class="token punctuation">(</span>title<span class="token punctuation">)</span>       <span class="token comment"># 改窗口名</span>
+engine<span class="token punctuation">.</span>set_window_size<span class="token punctuation">(</span>w<span class="token punctuation">,</span> h<span class="token punctuation">)</span>         <span class="token comment"># 改窗口大小 (内容等比缩放)</span>
+engine<span class="token punctuation">.</span>set_fullscreen<span class="token punctuation">(</span><span class="token boolean">True</span><span class="token operator">/</span><span class="token boolean">False</span><span class="token punctuation">)</span>    <span class="token comment"># 全屏切换</span>
+engine<span class="token punctuation">.</span>apply_window_config<span class="token punctuation">(</span>cfg<span class="token punctuation">)</span>      <span class="token comment"># 批量应用 window 配置 dict</span>
+engine<span class="token punctuation">.</span>to_logical<span class="token punctuation">(</span>pos<span class="token punctuation">)</span>               <span class="token comment"># 窗口坐标 -&gt; 逻辑坐标</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="413-插件装载配置">4.13 插件装载配置</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">plugins
+    only: "fx, notice"    # 只装载列出的
+    # 或
+    except: "debug_mode"          # 排除列出的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="414-存档结束转场">4.14 存档/结束/转场</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">save                        # 存档到槽位 0 (save/slot0.json)
+load                        # 读档
+fade / fadeout              # 黑幕淡入/淡出
+ending                      # 结束画面 (同时淡出停止 BGM) 后回标题
+ending 真结局                # 带结局名: 显示 "— 结局：真结局 —",
+                            # 并记入全局进度 (save/global.json, 跨存档)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>全局进度</strong> (<code>save/global.json</code>, 跨存档):</p>
+<ul>
+<li><code>endings</code> — 已达成结局名列表 (<code>ending &lt;名&gt;</code> 触发, 事件 <code>ending_recorded</code>)</li>
+<li><code>cgs</code> — 已解锁 CG: <code>{场景id: [背景名列表]}</code> (CG 场景 <code>bg</code> 展示触发,事件 <code>cg_unlocked</code>)</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>get_endings<span class="token punctuation">(</span><span class="token punctuation">)</span>                 <span class="token comment"># -&gt; [结局名]</span>
+engine<span class="token punctuation">.</span>record_ending<span class="token punctuation">(</span>name<span class="token punctuation">)</span>           <span class="token comment"># 记录结局 (ending 指令内部调用)</span>
+engine<span class="token punctuation">.</span>get_unlocked_cgs<span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment"># -&gt; {场景id: [背景名]}</span>
+engine<span class="token punctuation">.</span>record_cg<span class="token punctuation">(</span>scene_id<span class="token punctuation">,</span> pose<span class="token punctuation">)</span>     <span class="token comment"># 记录 CG (bg 指令内部调用)</span>
+engine<span class="token punctuation">.</span>cg_unlocked<span class="token punctuation">(</span>scene_id<span class="token punctuation">,</span> pose<span class="token punctuation">)</span>   <span class="token comment"># -&gt; bool</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="415-鉴赏系统-gallery-插件">4.15 鉴赏系统 (gallery 插件)</span></h3><p>标题画面的「鉴赏」按钮可解锁 <strong>CG / BGM / 角色 / 场景</strong> 四类鉴赏。配置在独立 <code>.gal</code> 文件 (如 <code>gallery.gal</code>, 被主脚本 import);<code>gallery</code> 块由 gallery 插件解析 (引擎将未处理的属性块通过<code>script_block</code> 事件广播给插件, 未装载插件时安全忽略):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">gallery
+    unlock_ending: "真结局"          # 达成此结局解锁鉴赏按钮 (空=不锁)
+    button_text: "鉴赏"              # 标题菜单按钮文本
+    title: "鉴赏"                    # 鉴赏界面标题
+    categories: "cg, bgm, character, scene"   # 可用分类
+    locked_hint: "达成「真结局」后解锁鉴赏"
+    # --- 界面样式 (可选) ---
+    bg: "materials/.../bg.png"       # 界面背景图 (cover 铺满)
+    cat_image: "默认.png, 焦点.png"  # 分类按钮图 (默认, 焦点)
+    back_image: "默认.png, 焦点.png" # 返回按钮图
+    cat_text: false                  # 图自带文字时关闭分类文案
+    cg_frame: "默认.png, 焦点.png"   # CG 插画框 (九宫格)
+    cg_placeholder: "占位.png"       # 未解锁 CG 占位图 (默认灰色框+问号)
+
+scene cg_school                     # CG 场景定义 (type: cg)
+    type: cg
+    name: "学园CG"
+    default: "materials/cg/a.png"
+    morning: "materials/cg/b.png"   # 每张背景 = 一张可收集 CG<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>解锁</strong>: 达成 <code>unlock_ending</code> 指定的结局 (用 <code>ending &lt;名&gt;</code> 指令) 后,标题菜单的「鉴赏」按钮从禁用态变为可用; 未解锁时按钮呈禁用态</li>
+<li><strong>按钮样式</strong>: 在 <code>ui.gal</code> 的 <code>menu title</code> 中定义(子块名任意, <code>action: gallery_open</code>, 样式照常配置);未在脚本中定义时插件自动追加默认样式按钮</li>
+<li><strong>禁用图</strong>: 按钮支持 <code>image_disabled</code> 键 (禁用态专用图片, 系统菜单通用;未配置时禁用态为纯色暗化)</li>
+<li><strong>数据来源</strong>: CG 来自 <code>type: cg</code> 场景的已解锁背景; BGM 来自<code>sound</code> 注册表 <code>type: music</code>; 角色来自 <code>char</code> (含 desc 等描述);场景来自 <code>scene</code> 定义 (CG 场景只出现在 CG 鉴赏, 场景鉴赏仅展示normal 场景)</li>
+<li><strong>CG 鉴赏</strong>: 同一 CG 场景的多个形态<strong>合并为一个条目</strong> (缩略图 +形态进度 x/y); 点击放大后<strong>点击图片轮播切换形态</strong>, 播完最后一个形态后再点击退出 (ESC 随时退出); 未解锁的 CG 显示<strong>灰色占位框</strong>(问号 + “未解锁”), 点击无效</li>
+<li><strong>界面</strong>: 分类按钮行 + 内容网格 (BGM 点击后先在页面显示”正在切换”提示再实际切换试听), ESC/返回 关闭回标题</li>
+<li><strong>标题 BGM</strong>: <code>start:</code> 块可用 <code>music</code> 配置标题背景音乐, 回标题/退出鉴赏时自动恢复播放 (engine 记录 <code>runtime.title_bgm</code>)</li>
+</ul>
+<h3><span id="416-设置系统">4.16 设置系统</span></h3><p>设置界面可在<strong>标题菜单 / ESC 菜单 / bar 常驻栏</strong>中打开(action: <code>settings_open</code>), 配置在独立 <code>setting.gal</code> (被主脚本 import):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">settings
+    title: "设置"                # 界面标题
+    columns: 2                   # 条目列数
+    bg: "panel.png"              # 面板背景图 (九宫格, 可选)
+    # --- UI 图片键 (可配; 有图优先于纯色, 支持 {lang} 变体) ---
+    item_image: "item.png"              # 条目背景图
+    item_image_hover: "item_focus.png"  # 条目悬停图
+    tab_image: "tab.png"                # 分栏 (tab) 图
+    tab_image_hover: "tab_focus.png"    # 分栏激活/悬停图
+    back_image: "back.png"              # 返回按钮图
+    slider_track_image: "slider.png"    # 滑条轨道图
+    setting bgm_volume           # setting &lt;key&gt; 子块 (引用/覆盖内置项)
+        label: "音乐音量"
+        section: "音量"          # 分栏 (tab); 可自定义归并
+    setting voice:producer       # 角色语音音量 (动态项: voice:&lt;角色id&gt;,
+        label: "制作人语音"       #  默认自动归并到"语音"栏)
+        section: "语音"
+    setting player_name
+        label: "主角名字"
+        type: cycle              # 类型覆盖
+        options: "阿明, 小明"
+    setting key_up
+        label: "上移键"          # keybind 类型: 点击后按任意键绑定
+        section: "按键"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>分栏</strong>: 设置界面顶部为分栏 (tab) 行, 点击切换显示对应条目;<code>section</code> 属性自定义归类 (未指定时按内置默认: 音量/语音/显示/游戏/按键,<code>voice:&lt;角色id&gt;</code> 自动归入”语音”栏); 插件注册项可指定任意分栏。</p>
+<p><strong>内置设置项</strong> (key / 类型):</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>bgm_volume</code> / <code>sfx_volume</code> / <code>voice_volume</code></td>
+<td>slider</td>
+<td>音乐/音效/全局语音音量</td>
+</tr>
+<tr>
+<td><code>voice:&lt;角色id&gt;</code></td>
+<td>slider</td>
+<td>指定角色的语音音量 (动态)</td>
+</tr>
+<tr>
+<td><code>text_speed</code></td>
+<td>slider</td>
+<td>文字速度 (字符/秒)</td>
+</tr>
+<tr>
+<td><code>resolution</code></td>
+<td>cycle</td>
+<td>分辨率 (全屏时按当前分辨率全屏, 关全屏后窗口按此尺寸)</td>
+</tr>
+<tr>
+<td><code>fullscreen</code> / <code>resizable</code></td>
+<td>checkbox</td>
+<td>全屏 / 窗口可缩放</td>
+</tr>
+<tr>
+<td><code>player_name</code></td>
+<td>cycle</td>
+<td>主角名字 ($player_name 变量)</td>
+</tr>
+<tr>
+<td><code>key_up</code> / <code>key_down</code> / <code>key_confirm</code></td>
+<td>keybind</td>
+<td>键盘导航键位</td>
+</tr>
+</tbody></table>
+<p><strong>自定义设置项</strong> (<code>setting &lt;key&gt;</code> 子块, <code>var</code> 绑定引擎变量自动生成存取):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">setting my_slider           # 开发者自定义项: 名称/标签/绑定变量/类型
+    label: "自定滑条"
+    type: slider            # slider / checkbox / cycle / input / keybind / button
+    var: my_val             # 绑定引擎变量 ($my_val), 自动读写
+    min: 0 / max: 100 / step: 5   # slider 范围与步长 (可配)
+setting my_input
+    label: "自定输入"
+    type: input             # 文本输入 (pygame 文本输入, Enter 确认)
+    var: my_name
+    default: "未设置"
+setting my_choice
+    label: "自定选择"
+    type: cycle
+    var: my_color
+    options: "红, 绿, 蓝"    # cycle 选项<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>主角名字提供两种方式 (开发者二选一): <code>type: cycle</code> (给定名字循环选择)或 <code>type: input</code> (文本框输入, 两者都可绑定 <code>var: player_name</code>)。</p>
+<p><strong>插件 API</strong> (自定义设置项):</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>settings<span class="token punctuation">.</span>register<span class="token punctuation">(</span>
+    <span class="token string">"my_setting"</span><span class="token punctuation">,</span>            <span class="token comment"># 唯一 key</span>
+    label<span class="token operator">=</span><span class="token string">"插件开关"</span><span class="token punctuation">,</span>
+    kind<span class="token operator">=</span><span class="token string">"checkbox"</span><span class="token punctuation">,</span>         <span class="token comment"># slider / checkbox / cycle / input / keybind / button</span>
+    getter<span class="token operator">=</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> 取值<span class="token punctuation">,</span>      <span class="token comment"># 读取 (与 setter 二选一; 或直接用 var)</span>
+    setter<span class="token operator">=</span><span class="token keyword">lambda</span> v<span class="token punctuation">:</span> 应用<span class="token punctuation">,</span>    <span class="token comment"># 写入 (自动保存到 save/settings.json)</span>
+    var<span class="token operator">=</span><span class="token string">"my_var"</span><span class="token punctuation">,</span>            <span class="token comment"># 绑定引擎变量, 自动生成存取 (忽略 getter/setter)</span>
+    default<span class="token operator">=</span><span class="token string">"默认值"</span><span class="token punctuation">,</span>         <span class="token comment"># var 绑定时未设置过的默认值</span>
+    <span class="token builtin">min</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> step<span class="token operator">=</span><span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token comment"># slider 用 (可配范围与步长)</span>
+    options<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>      <span class="token comment"># cycle 用</span>
+    section<span class="token operator">=</span><span class="token string">"分栏"</span><span class="token punctuation">,</span>           <span class="token comment"># 自定义分栏</span>
+    on_click<span class="token operator">=</span><span class="token keyword">lambda</span> engine<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token comment"># button 用</span>
+<span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>settings<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">"my_setting"</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">)</span>   <span class="token comment"># 程序化读写 (持久化)</span>
+engine<span class="token punctuation">.</span>settings<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"my_setting"</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>设置值保存在 <code>save/settings.json</code> (跨存档, 重启恢复, <strong>可手动编辑</strong>)</li>
+<li><strong>read_settings</strong>: 脚本开头 (start 标签首行) 调用, 从 <code>save/settings.json</code>读取设置并赋值到对应引擎变量 (setting.gal 中 <code>default</code> 为缺省值,文件里读不到的项用默认值补齐); 随后按变量重新应用 window 配置(window 块声明支持 <code>$变量</code>, 如 <code>width: "$res_w"</code> —— 由设置项<code>resolution</code> 写入 <code>res_w</code>/<code>res_h</code> 变量, 全屏/窗口尺寸随之联动)</li>
+<li>内置音量项 (<code>bgm_volume</code>/<code>sfx_volume</code>/<code>voice_volume</code> 等) 值存引擎变量,<strong>语音等运行时行为全局读这些变量</strong>; 插件可用<code>engine.get_var("bgm_volume")</code> / <code>engine.settings.get("bgm_volume")</code> 读取</li>
+<li>插件注册的项自动出现在界面末尾; <code>setting.gal</code> 可引用调整 label/顺序,或直接在此定义自定义项 (var 绑定)</li>
+<li>点击滑条轨道/用左右方向键调节; checkbox 点击切换; cycle 左右点击切换;input 点击后直接键入文本 (Enter 确认, ESC 取消); keybind 点击后按任意键绑定; 界面内 ESC 关闭并保存</li>
+</ul>
+<h3><span id="417-询问对话框-confirm">4.17 询问对话框 (confirm)</span></h3><p>退出/读档/回标题等确认框统一由同一组件管理 (<code>display.show_confirm</code> +<code>engine.ask_confirm</code>)。开发者可在游戏中任意位置弹类似对话框,<strong>阻塞等待玩家选择并把结果存入变量</strong>:</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">confirm "继续吗？" -&gt; choice          # 结果: "yes" / "no"
+if choice == "yes":
+    ...继续剧情...
+else:
+    ...取消...
+endif
+
+confirm "再来一次？" yes "好的" no "算了" -&gt; again   # 自定义按钮文本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>键盘控制</strong> (确认框通用): 初始<strong>无活动项</strong>; <strong>左右键</strong>在确认/取消间循环移动活动项 (可配 <code>key_left</code>/<code>key_right</code>, 默认方向键);<strong>鼠标悬停优先</strong>激活; Enter/空格/点击确认活动项 (无活动项时忽略);ESC 不干预确认框。</p>
+<p><strong>叠加退出确认</strong>: 若当前已有其他确认框 (如设置/鉴赏中), 点关闭窗口会<strong>再叠加一层退出确认</strong> —— 确认才退出, 取消则恢复原来的确认框。</p>
+<p>相关 API:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>ask_confirm<span class="token punctuation">(</span>text<span class="token punctuation">,</span> yes_text<span class="token punctuation">,</span> no_text<span class="token punctuation">,</span> on_yes<span class="token punctuation">,</span> on_no<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+<span class="token comment"># on_no: 点"否"时回调 (confirm DSL 用; 退出/读档确认不传则"否"无动作)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3><span id="418-快捷键系统-keybinds">4.18 快捷键系统 (keybinds)</span></h3><p>所有键盘事件统一由 <code>engine.keybinds</code> (<code>KeyBindManager</code>) 管理。每个命令含 <strong>主键 (primary) + 副键 (alt) 两个槽位</strong> (各绑一个键,可留空); 设置界面中同一命令的主/副键显示在同一行, 不同命令不同行。</p>
+<ul>
+<li>核心键位 (上下左右共 <strong>8 个移动槽位</strong> + 确认 + ESC):<code>key_up</code>(上移, 主 up 副 w) / <code>key_down</code>(下移, down/s) /<code>key_left</code>(左移, left/a) / <code>key_right</code>(右移, right/d) /<code>key_confirm</code>(确认, return/space) / <code>key_escape</code>(菜单键, esc)</li>
+<li>自动生成设置项 (“按键”分栏), <code>setting.gal</code> 可直接引用调整(如 <code>setting key_up</code> 调 label/section; 主副在同一项内, 一行显示)</li>
+</ul>
+<p><strong>插件注册</strong> (自动生成设置项, 如 debug_mode 插件):</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>keybinds<span class="token punctuation">.</span>register<span class="token punctuation">(</span>
+    <span class="token string">"debug_toggle"</span><span class="token punctuation">,</span>           <span class="token comment"># 唯一名 (同时是设置项 key)</span>
+    <span class="token string">"调试模式"</span><span class="token punctuation">,</span>                <span class="token comment"># 设置界面显示名</span>
+    callback<span class="token operator">=</span><span class="token keyword">lambda</span> key<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token comment"># 触发回调 (返回 False = 不消费该按键)</span>
+    primary<span class="token operator">=</span><span class="token string">"f3"</span><span class="token punctuation">,</span>              <span class="token comment"># 主/副键 (键名串或 pygame 键常量, 可留空)</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>录入</strong>: 设置界面点击条目左半=主键槽, 右半=副键槽; 按任意键直接绑定, Backspace 清空, ESC 取消; 空槽显示槽位名 (“主”/“副”)</li>
+<li><strong>冲突</strong>: 绑定被其他命令占用时自动让位 (移除冲突键) 并弹出提示</li>
+<li>值持久化在 <code>save/settings.json</code>; 查询/设置:<code>keybinds.get_key(name, "primary")</code> / <code>set_key(name, "primary", K)</code></li>
+</ul>
+<p><strong>调试模式插件</strong> (<code>debug_mode</code>): 注册 <code>debug_toggle</code> 快捷键(默认 F3, 设置界面可调整/留空), 切换调试模式; <strong>开启时才显示</strong>右上角 FPS / 窗口分辨率 / 当前标签等调试信息。</p>
+<h3><span id="419-多语言系统-i18n">4.19 多语言系统 (i18n)</span></h3><p>三层语言, 各层在其目录下配置 JSON 语言文件 (文件名 = 语言码):</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>位置</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>框架</td>
+<td><code>framework/lang/&lt;code&gt;.json</code></td>
+<td>日志/提示/内置 UI 文案 (确认框默认、菜单文案、设置项 label 等), 引擎构造时自动加载</td>
+</tr>
+<tr>
+<td>插件</td>
+<td><code>plugins/lang/&lt;code&gt;.json</code></td>
+<td>插件文案 (key 建议带插件前缀, 如 <code>gallery.button</code>), 插件装载时自动加载</td>
+</tr>
+<tr>
+<td>游戏</td>
+<td>项目目录 <code>lang/&lt;code&gt;.json</code></td>
+<td><strong>游戏文本</strong> (检测到目录即启用), 可选</td>
+</tr>
+</tbody></table>
+<p><strong>游戏文本</strong> (对开发者友好: 文本存额外文件, DSL 不臃肿): 台词/选项/标题中用 <code>{@key}</code> 占位符引用, 如:</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">say producer "{@welcome}"        # 文本取自 lang/&lt;语言&gt;.json 的 welcome
+nar "{@love_high}"               # key 文本内的 $var 支持再插值
+choice:
+    "{@choice_like}" -&gt; like_it<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>主文件 language 块</strong> (声明项目支持的语言, 主文件如 demo.gal 顶部):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">language
+    default: en            # 默认语言: 当前语言缺翻译时回退到它
+    en: "English"          # 语言码 -&gt; 设置中显示的名字
+    zh-CN: "简体中文"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>游戏语言文件只从列出的语言中加载 (<code>lang/&lt;语言码&gt;.json</code>), 脚本中任何语言文本资源均在其中查找</p>
+</li>
+<li><p>设置页”语言”项显示的是<strong>语言名字</strong> (如 English / 简体中文), 切换后立即全界面生效</p>
+</li>
+<li><p>未翻译的 key 回退默认语言, 再回退原文 (便于开发调试); <code>{@key}</code>占位符的查找顺序: <strong>游戏表 → 核心表 → 原文</strong> —— 脚本可直接引用框架文案, 如 <code>confirm_quit_text: "{@dialog.quit.text}"</code> 复用确认框默认文案</p>
+</li>
+<li><p>切换语言后<strong>所有显示中的界面即时生效</strong>: 新文本、标题/系统菜单按钮(脚本文本可用 {@key})、bar 常驻栏、<strong>对话框/确认框 (含按钮)<strong>、</strong>设置界面 (title/label/section/选项值)<strong>、</strong>角色与场景显示名</strong>、{lang} UI 图片</p>
+</li>
+<li><p>语言写入 <code>$lang</code> / <code>$language</code> 变量 (脚本可引用)</p>
+</li>
+<li><p>可在设置页面的”语言”项切换 (也可脚本/插件调用 <code>engine.i18n.set_lang</code>)</p>
+</li>
+</ul>
+<p><strong>对话框 / 菜单文案</strong> (window 块): 确认框/ESC 菜单文案支持 <code>{@key}</code>,<strong>显示时按当前语言解析</strong> —— 语言切换即时刷新, 脚本可覆写为任意语言(见 demo.gal window 块):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">window
+    confirm_quit: true
+    confirm_quit_text: "{@dialog.quit.text}"   # 或直接写任意语言的文本
+    menu_continue: "{@menu.continue}"          # ESC 菜单文案同理<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>设置界面多语言</strong> (setting.gal): <code>title / label / section / options</code>均支持 <code>{@key}</code> 占位符 (切换语言即时生效); 内置设置项自带 <code>label_key</code>(核心语言表 <code>settings.*</code>), <code>setting.gal</code> 的 label 仅为覆盖/兜底。<strong>分栏 (tab) 显示名</strong> 按 <code>settings.section.&lt;值&gt;</code> 翻译, 未配置的自定义分栏原样显示:</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">settings
+    title: "{@settings.title}"
+    columns: 2
+    setting my_slider
+        label: "{@settings.my_slider}"
+        type: slider
+        var: my_val
+        section: "游戏"          # 内置分栏值: 音量/语音/显示/游戏/按键/通用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>角色与场景显示名</strong>: <code>char</code>/<code>scene</code> 块的 <code>name</code> (及 <code>desc</code>/<code>cv</code> 等描述) 支持 <code>{@key}</code> —— 注册时存占位符原文, <strong>显示时解析</strong> (名字框/鉴赏/场景通知均按当前语言):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">char producer
+    name: "{@char.producer.name}"
+    desc: "{@char.producer.desc}"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>结局名约定</strong>: 结局名按<strong>原文记录</strong> (跨存档/解锁比较用), <strong>显示时解析</strong> —— 脚本与 gallery 配置写同一个占位符即可, 任何语言下解锁判断一致:</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">ending {@ending.true_end}            # story.gal
+gallery
+    unlock_ending: "{@ending.true_end}"   # gallery.gal<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>内置默认文案</strong> (未覆写时): 确认框默认按钮 <code>confirm.yes/no</code>、”开始游戏” <code>menu.start</code>、结束画面 <code>ending.name/ending.thanks</code> 等均走核心语言表, 无 language 块的项目也会按当前语言显示。</p>
+<p><strong>UI 图片语言变体</strong>: 图片路径含 <code>{lang}</code> 占位符时按当前语言替换(如 <code>materials/title_{lang}.png</code> → <code>materials/title_en.png</code>), 切换语言自动重载。</p>
+<p><strong>渲染字体</strong>: <code>window</code> 块 <code>font:</code> 配置 — 相对脚本目录的字体文件(<code>font: "fonts/Ubuntu-R.ttf"</code>) 或系统字体 (<code>font: "sys:MicrosoftYaHei"</code>); 运行时 <code>engine.apply_font(font)</code> 立即生效。</p>
+<p><strong>日志多语言</strong>: <code>log.i / log.w / log.e(key, **fmt)</code> 按语言表翻译日志文案 (如 <code>log.i("log.script_loaded", path=...)</code>); <strong>框架全部日志(引擎/解析/插件/启动器) 均已键化</strong>, 核心语言表含 <code>log.*</code> key,开发者可在语言文件中自行扩展。</p>
+<p><strong>API</strong>:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>i18n<span class="token punctuation">.</span>set_lang<span class="token punctuation">(</span><span class="token string">"en"</span><span class="token punctuation">)</span>              <span class="token comment"># 切换语言</span>
+engine<span class="token punctuation">.</span>i18n<span class="token punctuation">.</span>t<span class="token punctuation">(</span><span class="token string">"menu.quit"</span><span class="token punctuation">)</span>              <span class="token comment"># 取文本 (回退默认/原文)</span>
+engine<span class="token punctuation">.</span>i18n<span class="token punctuation">.</span>t<span class="token punctuation">(</span><span class="token string">"gallery.button"</span><span class="token punctuation">,</span> ns<span class="token operator">=</span><span class="token string">"plugin"</span><span class="token punctuation">)</span>   <span class="token comment"># 插件/游戏层: ns="plugin"/"game"</span>
+engine<span class="token punctuation">.</span>i18n<span class="token punctuation">.</span>resolve<span class="token punctuation">(</span><span class="token string">"hi {@name}"</span><span class="token punctuation">)</span>       <span class="token comment"># 替换 {@key} 占位符 (游戏→核心→原文)</span>
+engine<span class="token punctuation">.</span>i18n<span class="token punctuation">.</span>langs<span class="token punctuation">(</span><span class="token punctuation">)</span>                     <span class="token comment"># 可用语言列表</span>
+
+<span class="token comment"># 快捷键显示名走 i18n (插件 API, 自动生成设置项时生效)</span>
+engine<span class="token punctuation">.</span>keybinds<span class="token punctuation">.</span>register<span class="token punctuation">(</span><span class="token string">"my_toggle"</span><span class="token punctuation">,</span> <span class="token string">"调试模式"</span><span class="token punctuation">,</span> callback<span class="token punctuation">,</span>
+                         primary<span class="token operator">=</span><span class="token string">"f3"</span><span class="token punctuation">,</span> label_key<span class="token operator">=</span><span class="token string">"debug_mode.toggle"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>语言文件格式 (JSON): <code>{"key": "文本"}</code> (单语言) 或<code>{"en": {...}, "zh-CN": {...}}</code> (多语言合并)。核心文案 key 见<code>framework/lang/zh-CN.json</code>。</p>
+<h3><span id="420-嵌入-python-代码-python">4.20 嵌入 Python 代码 (python::)</span></h3><p><code>python::</code> 双冒号块把<strong>块内行原样捕获</strong> (含空行、<code>#</code> 注释与缩进),不按 DSL 解析, 交给引擎在受限命名空间中执行:</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">start:
+    python::
+        import random
+        engine.set_var("luck", random.randint(1, 100))   # 写引擎变量
+        runtime.vars["note"] = "来自 python 块"
+    text "你的幸运值: $luck ($note)"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>命名空间提供 <code>engine</code> / <code>runtime</code> / <code>display</code> / <code>audio</code> / <code>save</code> /<code>i18n</code> / <code>ui</code> / <code>pygame</code> / <code>os</code> / <code>math</code> 等常用对象; 代码拥有<strong>完整解释器权限</strong> (如同插件, 仅在可信脚本中使用)</li>
+<li>异常记录日志 (<code>log.runtime.python_exec_failed</code>) 不中断游戏</li>
+<li>语法约定: <code>python::</code> 用<strong>双冒号</strong>以免与普通标签 (<code>python:</code>) 冲突;块内缩进需大于块自身缩进, 缩进回退即块结束</li>
+<li>插件也可注册自己的指令处理 raw 块 (parser 生成<code>Statement(op="python", kwargs={"code": 原文})</code>)</li>
+</ul>
+<hr>
+<h2><span id="5-命名空间系统">5. 命名空间系统</span></h2><p>三个域:</p>
+<table>
+<thead>
+<tr>
+<th>域</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>builtin::</code></td>
+<td>引擎内置指令/变量 (<code>builtin::set</code>、<code>builtin::text</code>)</td>
+</tr>
+<tr>
+<td><code>main::</code></td>
+<td>项目文件定义的变量 (<code>set love = 1</code> 归此域)</td>
+</tr>
+<tr>
+<td><code>&lt;插件名&gt;::</code></td>
+<td>插件注册的指令/变量 (<code>shake::shake</code>、<code>custom_actions::do_action</code>)</td>
+</tr>
+</tbody></table>
+<p><strong>无命名空间解析顺序</strong>:</p>
+<ul>
+<li><strong>变量</strong>: <code>main::</code> → <code>builtin::</code> (引擎预置 <code>builtin_vars</code>) → 找不到返回默认 (插值空串) / 表达式求值报错</li>
+<li><strong>指令</strong>: <code>builtin::</code> → <code>main::</code> → <strong>已 using 的插件命名空间</strong> →找不到时报错并<strong>提示所在命名空间</strong> (“指令 shake 位于 shake::shake,需 using 或用完整命名空间调用”)</li>
+</ul>
+<p><strong>using 导入</strong> (类似 C++):</p>
+<pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">using shake                 # 之后 shake 可省略前缀
+using shake custom_actions  # 一次导入多个<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>没有 using 时, 插件指令裸名调用被拒绝并提示 —— 杜绝名称冲突。顶层 using 在 <code>load_script</code> 时<strong>静态生效</strong> (不依赖执行流程)。</p>
+<p><strong>变量细节</strong>:</p>
+<ul>
+<li><code>set love = 1</code> 与 <code>set main::love = 1</code> 等价 (main 域键规范化)</li>
+<li><code>set plugin::cnt = 3</code> 存为带前缀键 <code>plugin::cnt</code></li>
+<li><code>$main::love</code> / <code>$love</code> / <code>$plugin::cnt</code> 均可用于插值/表达式/条件</li>
+</ul>
+<p><strong>指令注册表</strong> (<code>engine.commands</code>):</p>
+<ul>
+<li><code>register(name, fn, ns="main")</code> / <code>register_builtin(name, fn)</code></li>
+<li><code>has(name, ns=None)</code> / <code>get(name, ns=None)</code> / <code>find(name)</code> (定位提示)</li>
+<li><code>call(name, stmt, ns=None)</code> / <code>unregister(name, ns)</code></li>
+<li><code>names(ns=None)</code></li>
+</ul>
+<hr>
+<h2><span id="6-声音系统详解">6. 声音系统详解</span></h2><h3><span id="61-三类声音">6.1 三类声音</span></h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>管理</th>
+<th>播放</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>音乐 music</td>
+<td>mixer.music 流式 + fade 状态机</td>
+<td><code>music &lt;名/路径&gt;</code></td>
+</tr>
+<tr>
+<td>音效 sfx_ui / sfx_story</td>
+<td>Sound 实例</td>
+<td>UI 自动 / <code>sfx &lt;名&gt;</code></td>
+</tr>
+<tr>
+<td>语音 voice</td>
+<td><strong>独立通道</strong> (Channel 0)</td>
+<td><code>say/nar ... voice &lt;名&gt;</code></td>
+</tr>
+</tbody></table>
+<h3><span id="62-bgm-淡入淡出状态机-audioupdate">6.2 BGM 淡入淡出状态机 (<code>audio.update</code>)</span></h3><ul>
+<li><code>play_music(path, loop, fade, name)</code> — 切换时旧曲淡出 (音量渐降) →完成后新曲淡入 (0 音量渐升); loop=True 循环 / False 单次</li>
+<li><code>stop_music(fade)</code> / <code>pause_music(fade)</code> / <code>resume_music(fade)</code></li>
+<li><code>set_bgm_volume(v)</code> / <code>set_sfx_volume(v)</code></li>
+<li><code>stop_all(fade)</code> / <code>pause_all(fade)</code> — 全局 (BGM 淡出 + 音效/语音停)</li>
+<li><code>play_voice(path)</code> / <code>stop_voice()</code> / <code>voice_playing()</code></li>
+<li><code>current_bgm</code> (路径) / <code>current_bgm_name</code> (注册名, 存档/显示用)</li>
+<li>事件: <code>music_play</code> (name/loop/fade/path) / <code>music_pause</code> /<code>music_resume</code> / <code>music_stop</code> / <code>voice_play</code> / <code>voice_stop</code> /<code>sound_all_pause</code> / <code>sound_all_stop</code> / <code>sound_register</code></li>
+</ul>
+<h3><span id="63-语音生命周期">6.3 语音生命周期</span></h3><ul>
+<li>台词带 <code>voice</code> 时显示即播; <strong>该句推进时立即停止</strong> (先停语音再播UI 音效, 避免通道竞争); 回标题/读档也停语音</li>
+<li>语音独立通道, 不干扰音效</li>
+</ul>
+<h3><span id="64-存档与-bgm">6.4 存档与 BGM</span></h3><ul>
+<li>存档保存 <code>current_bgm_name</code> (注册名, 非绝对路径); 读档用<code>engine.play_music</code> (名称/路径都兼容) 恢复</li>
+<li><code>ending</code> 指令与标题”开始游戏”动作自动 <code>stop_music</code> (淡出)</li>
+</ul>
+<hr>
+<h2><span id="7-存档系统">7. 存档系统</span></h2><ul>
+<li>槽位: 6 个 (save/slot0-5.json), 由 ESC 菜单或标题”读取存档”打开</li>
+<li>存档内容: 变量 / 剧情位置 (标签+语句索引) / 调用栈 / 阻塞状态 /背景 (场景 id + 背景名) / 立绘 (id/立绘名/透明度/旋转/翻转/中心点) /BGM 注册名 / 当前样式名 / 文本与选择支状态</li>
+<li>对象以<strong>脚本 id</strong> 存储 (不存图片路径) —— 重命名图片不破坏旧存档</li>
+<li>读档精确恢复; <code>sleep</code> 阻塞中读档不恢复剩余等待时间</li>
+<li>元数据 API (快照插件用):<code>save.set_meta(slot, key, value)</code> / <code>get_meta(slot, key, default)</code> /<code>meta_path(slot, rel)</code> (相对路径 → 存档目录绝对路径) /<code>list_slots(count)</code> (含 time/label/preview/<strong>screenshot</strong>/empty)</li>
+</ul>
+<p><strong>存档画面快照</strong> (插件 <code>slot_thumbnails.py</code>):</p>
+<ul>
+<li>引擎每帧维护 <code>_last_game_frame</code> (无覆盖层时的纯游戏画面,槽位面板/菜单/确认框/选择支/错误弹窗都算覆盖层)</li>
+<li>存档事件 → <code>engine.get_last_game_frame()</code> 截图 → 缩小 150×84 →存存档目录 (相对路径 <code>thumb_slotN.png</code>) → 元数据写 <code>screenshot</code>相对名 (不存绝对路径)</li>
+<li>槽位界面通过 <code>display.register_slot_thumbnail_provider(fn)</code> 绘制,缩略图高度自动适配槽位 (保持比例), 文字区自适应字号+单行截断,宽度不足时省略时间</li>
+</ul>
+<hr>
+<h2><span id="8-渲染系统">8. 渲染系统</span></h2><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>背景</td>
+<td><code>scene</code> + <code>bg &lt;场景&gt; &lt;背景名&gt; [with 过渡]</code>; cover/fit/center/stretch</td>
+</tr>
+<tr>
+<td>立绘</td>
+<td><code>char</code> + <code>show/hide/move/rotate/flip</code>; 登场/退场 9 种效果</td>
+</tr>
+<tr>
+<td>文本框</td>
+<td><code>style</code> 配置 (背景图/颜色/字号); 富文本 + LaTeX</td>
+</tr>
+<tr>
+<td>选择支</td>
+<td><code>choice:</code> 分支; 按钮样式/图片/字号/宽度可配</td>
+</tr>
+<tr>
+<td>文字显示</td>
+<td>typewriter / instant / terminal (光标) / lines / 插件</td>
+</tr>
+<tr>
+<td>过渡</td>
+<td>fade/dissolve/blinds/slide/circle/pixelate/zoom + 插件</td>
+</tr>
+<tr>
+<td>错误弹窗</td>
+<td>温和提示 + 剪贴板复制 + 日志追加</td>
+</tr>
+<tr>
+<td>UI 主题</td>
+<td><code>ui</code> 块九宫格切片 (默认/焦点双态)</td>
+</tr>
+</tbody></table>
+<h3><span id="81-截图与槽位界面-api">8.1 截图与槽位界面 API</span></h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>display<span class="token punctuation">.</span>capture<span class="token punctuation">(</span><span class="token punctuation">)</span>                              <span class="token comment"># 当前画面 Surface 副本</span>
+engine<span class="token punctuation">.</span>get_last_game_frame<span class="token punctuation">(</span><span class="token punctuation">)</span>                          <span class="token comment"># 最近纯游戏画面帧</span>
+engine<span class="token punctuation">.</span>display<span class="token punctuation">.</span>register_slot_thumbnail_provider<span class="token punctuation">(</span>fn<span class="token punctuation">)</span>   <span class="token comment"># 槽位缩略图绘制钩子</span>
+<span class="token comment"># fn(slot_index, slot_info) -&gt; Surface | None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h2><span id="9-插件体系">9. 插件体系</span></h2><p>插件是 <code>framework/plugins/</code> 下的 <code>.py</code> 文件 (下划线开头忽略),引擎启动自动发现。<strong>命名空间 = 插件文件名</strong>。</p>
+<h3><span id="91-插件清单">9.1 插件清单</span></h3><table>
+<thead>
+<tr>
+<th>插件</th>
+<th>提供</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fx</td>
+<td>屏幕特效: <code>shake</code>/<code>flash</code>/<code>blackflash</code>/<code>tint</code>/<code>strobe</code>/<code>pulse</code></td>
+</tr>
+<tr>
+<td>notice</td>
+<td>通知: BGM 播放/暂停/恢复/停止 (右上) + 场景切换 (左上), 合并自 bgm/scene_notice</td>
+</tr>
+<tr>
+<td>transitions_plus</td>
+<td>扩展背景过渡: <code>wipe</code>/<code>iris</code>/<code>curtain</code>/<code>sweep</code>/<code>fade_white</code>/<code>checker</code>/<code>stripes</code></td>
+</tr>
+<tr>
+<td>custom_actions</td>
+<td>动作 (<code>explode</code>/<code>quake</code>/<code>freeze</code>/<code>blackout</code>) + <code>do_action</code> 指令 + 立绘效果 (<code>wobble</code>/<code>sway</code>/<code>zoom_bounce</code>/<code>fade_rotate</code>/<code>float</code>/<code>squash</code>) + 文字模式 (<code>wave</code>/<code>bounce</code>/<code>speedup</code>/<code>rainbow</code>/<code>shiver</code>)</td>
+</tr>
+<tr>
+<td>debug_mode</td>
+<td>调试模式 (快捷键切换, 开启显示 FPS)</td>
+</tr>
+<tr>
+<td>slot_thumbnails</td>
+<td>存档画面快照 + 槽位缩略图</td>
+</tr>
+<tr>
+<td>auto_skip</td>
+<td>系统菜单 (ESC/bar) 加「自动模式」「跳过剧情」按钮</td>
+</tr>
+</tbody></table>
+<p><strong>auto_skip 用法</strong>: 插件自动向系统菜单追加两个按钮 (popup 弹窗与bar 常驻栏共用, 未定义 menu system 时先补内置五项); 按钮样式在ui.gal 的 <code>menu system</code> 中配置 (action: auto_toggle / skip_once,支持 image/image_focus/image_active/image_disabled 等):</p>
+<ul>
+<li><strong>自动模式</strong>: 文本显示完毕后自动推进下一句 (间隔 <code>AUTO_DELAY</code>,默认 1.2s); 选择支/标题自动暂停; <strong>在标题/鉴赏/菜单等非正式界面自动关闭, 回到正式游戏界面自动恢复</strong> (按用户意图); 开启时按钮切换 <code>image_active</code> 激活图; 点击后退出 ESC 菜单; 右上角 [自动]</li>
+<li><strong>跳过剧情</strong>: 直达下一个<strong>选择支/标题/结局</strong>之前 (跳过文本/等待/移动动画阻塞; 背景/立绘等场景指令正常执行到位); 点击后退出 ESC菜单; 再次点击可取消; 右上角 [跳过]</li>
+<li>跳过由引擎 <code>runtime.skip_mode</code> 支持 (<code>advance()</code> 快进, 语音静音);插件不装载时系统菜单不含这两个按钮, 不影响核心</li>
+</ul>
+<h3><span id="92-两种写法">9.2 两种写法</span></h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 1. 装饰器写法 (推荐)</span>
+<span class="token keyword">from</span> framework<span class="token punctuation">.</span>api <span class="token keyword">import</span> command<span class="token punctuation">,</span> event_listener
+
+<span class="token decorator annotation punctuation">@command</span><span class="token punctuation">(</span><span class="token string">"mycmd"</span><span class="token punctuation">)</span>                       <span class="token comment"># 自定义 DSL 指令 (注册到 &lt;插件名&gt;::)</span>
+<span class="token keyword">def</span> <span class="token function">mycmd</span><span class="token punctuation">(</span>engine<span class="token punctuation">,</span> stmt<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    engine<span class="token punctuation">.</span>show_notice<span class="token punctuation">(</span><span class="token string">"指令被调用!"</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">None</span>                          <span class="token comment"># 返回 "block" 可阻塞等外部事件</span>
+
+<span class="token decorator annotation punctuation">@event_listener</span><span class="token punctuation">(</span><span class="token string">"bg_change"</span><span class="token punctuation">)</span>            <span class="token comment"># 订阅事件 (engine 参数自动注入)</span>
+<span class="token keyword">def</span> <span class="token function">on_bg</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> engine<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"背景切换到"</span><span class="token punctuation">,</span> path<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 2. 类写法 (生命周期管理)</span>
+<span class="token keyword">from</span> framework<span class="token punctuation">.</span>api <span class="token keyword">import</span> Plugin
+
+<span class="token keyword">class</span> <span class="token class-name">MyPlugin</span><span class="token punctuation">(</span>Plugin<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">"my_plugin"</span>
+    version <span class="token operator">=</span> <span class="token string">"1.0"</span>
+
+    <span class="token keyword">def</span> <span class="token function">on_load</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>                   <span class="token comment"># 装载时 (可用 self.engine)</span>
+        <span class="token decorator annotation punctuation">@self<span class="token punctuation">.</span>listen</span><span class="token punctuation">(</span><span class="token string">"draw_overlay"</span><span class="token punctuation">)</span>     <span class="token comment"># 每帧渲染钩子</span>
+        <span class="token keyword">def</span> <span class="token function">overlay</span><span class="token punctuation">(</span>surface<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+        <span class="token decorator annotation punctuation">@self<span class="token punctuation">.</span>add_command</span><span class="token punctuation">(</span><span class="token string">"greet"</span><span class="token punctuation">)</span>       <span class="token comment"># 指令 (命名空间 = 插件名)</span>
+        <span class="token keyword">def</span> <span class="token function">greet</span><span class="token punctuation">(</span>engine<span class="token punctuation">,</span> stmt<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            engine<span class="token punctuation">.</span>say<span class="token punctuation">(</span><span class="token string">"插件"</span><span class="token punctuation">,</span> <span class="token string">"你好"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">on_unload</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>                 <span class="token comment"># 卸载时清理 (如注销 provider)</span>
+        <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="93-事件一览">9.3 事件一览</span></h3><table>
+<thead>
+<tr>
+<th>事件</th>
+<th>载荷</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>engine_start / engine_quit</td>
+<td>engine</td>
+</tr>
+<tr>
+<td>script_load / script_start / script_end</td>
+<td>path / name</td>
+</tr>
+<tr>
+<td>script_block (静态扫描属性块)</td>
+<td>op, stmt (插件自定义块, 如 gallery)</td>
+</tr>
+<tr>
+<td>label_enter</td>
+<td>label</td>
+</tr>
+<tr>
+<td>statement</td>
+<td>stmt, label</td>
+</tr>
+<tr>
+<td>text_show / text_advance / text_complete</td>
+<td>text, speaker</td>
+</tr>
+<tr>
+<td>choice_show / choice_made</td>
+<td>choices / index, label, text</td>
+</tr>
+<tr>
+<td>choice_prepare (显示前)</td>
+<td>options (可变列表, 插件可原地改写/注入选项)</td>
+</tr>
+<tr>
+<td>bg_change</td>
+<td>path, effect</td>
+</tr>
+<tr>
+<td>scene_change</td>
+<td>id, name, background, pose</td>
+</tr>
+<tr>
+<td>sprite_show / sprite_hide</td>
+<td>id, path</td>
+</tr>
+<tr>
+<td>sprite_effect_complete</td>
+<td>id, direction</td>
+</tr>
+<tr>
+<td>var_set</td>
+<td>name, value</td>
+</tr>
+<tr>
+<td>using</td>
+<td>namespaces</td>
+</tr>
+<tr>
+<td>sound_register</td>
+<td>name, type</td>
+</tr>
+<tr>
+<td>music_play / music_pause / music_resume / music_stop</td>
+<td>name, path, loop, fade</td>
+</tr>
+<tr>
+<td>voice_play / voice_stop</td>
+<td>path</td>
+</tr>
+<tr>
+<td>save / load</td>
+<td>slot, path</td>
+</tr>
+<tr>
+<td>confirm_show / confirm_choice</td>
+<td>text / index</td>
+</tr>
+<tr>
+<td>action</td>
+<td>type, params, source</td>
+</tr>
+<tr>
+<td>draw_overlay (每帧)</td>
+<td>surface</td>
+</tr>
+<tr>
+<td>error / error_dismiss</td>
+<td>exc / level</td>
+</tr>
+</tbody></table>
+<h3><span id="94-引擎公共-api">9.4 引擎公共 API</span></h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>display      <span class="token comment"># 渲染: set_bg/show_sprite/hide_sprite/show_text/show_choices...</span>
+engine<span class="token punctuation">.</span>audio        <span class="token comment"># BGM 状态机 / play_sound / play_voice / stop_voice</span>
+engine<span class="token punctuation">.</span>save         <span class="token comment"># save(slot,data)/load(slot)/set_meta/get_meta/meta_path</span>
+engine<span class="token punctuation">.</span>runtime      <span class="token comment"># vars / evaluate / jump / _interp / sounds / using_ns...</span>
+engine<span class="token punctuation">.</span>events       <span class="token comment"># 事件总线 (on/emit/off)</span>
+engine<span class="token punctuation">.</span>commands     <span class="token comment"># 指令注册表 (register/has/get/call/find/unregister)</span>
+engine<span class="token punctuation">.</span>plugins      <span class="token comment"># 插件管理器 (discover/load_module_from_path/unload_module)</span>
+engine<span class="token punctuation">.</span>ui           <span class="token comment"># UI 绘制原语</span>
+engine<span class="token punctuation">.</span>say<span class="token punctuation">(</span>speaker<span class="token punctuation">,</span> text<span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>set_var<span class="token punctuation">(</span>name<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">/</span> engine<span class="token punctuation">.</span>get_var<span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>show_notice<span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>save_game<span class="token punctuation">(</span>slot<span class="token punctuation">)</span> <span class="token operator">/</span> engine<span class="token punctuation">.</span>load_game<span class="token punctuation">(</span>slot<span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>resolve_path<span class="token punctuation">(</span>rel<span class="token punctuation">)</span>   <span class="token comment"># 相对脚本目录解析资源路径</span>
+
+<span class="token comment"># 音频 API (名称可为注册名或路径)</span>
+engine<span class="token punctuation">.</span>play_music<span class="token punctuation">(</span>name_or_path<span class="token punctuation">,</span> loop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> fade<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>stop_music<span class="token punctuation">(</span>fade<span class="token punctuation">)</span> <span class="token operator">/</span> engine<span class="token punctuation">.</span>pause_music<span class="token punctuation">(</span>fade<span class="token punctuation">)</span> <span class="token operator">/</span> engine<span class="token punctuation">.</span>resume_music<span class="token punctuation">(</span>fade<span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>play_sfx<span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">/</span> engine<span class="token punctuation">.</span>play_voice<span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">/</span> engine<span class="token punctuation">.</span>stop_voice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>set_music_volume<span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token operator">/</span> engine<span class="token punctuation">.</span>set_sfx_volume<span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>stop_all_sounds<span class="token punctuation">(</span>fade<span class="token punctuation">)</span> <span class="token operator">/</span> engine<span class="token punctuation">.</span>pause_all_sounds<span class="token punctuation">(</span>fade<span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>get_last_game_frame<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 错误处理</span>
+engine<span class="token punctuation">.</span>handle_error<span class="token punctuation">(</span>exc<span class="token punctuation">,</span> level<span class="token operator">=</span><span class="token string">"error"</span><span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>copy_to_clipboard<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3><span id="95-注册接口汇总">9.5 注册接口汇总</span></h3><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>engine.events.on/emit/off</code></td>
+<td>事件总线</td>
+</tr>
+<tr>
+<td><code>engine.commands.register</code> / <code>@command</code></td>
+<td>自定义 DSL 指令</td>
+</tr>
+<tr>
+<td><code>engine.register_action(name, fn)</code></td>
+<td>选择列表按钮动作</td>
+</tr>
+<tr>
+<td><code>display.register_transition(name, cls)</code></td>
+<td>背景过渡效果</td>
+</tr>
+<tr>
+<td><code>display.register_sprite_effect(name, fn, dur)</code></td>
+<td>立绘登场/退场动画</td>
+</tr>
+<tr>
+<td><code>display.register_bg_renderer(fn)</code></td>
+<td>动态背景渲染器 (视频帧/程序背景; fn(display)-&gt;Surface|None)</td>
+</tr>
+<tr>
+<td><code>display.register_sprite_renderer(sid, fn)</code></td>
+<td>立绘动态渲染器 (Live2D; fn(display, sprite)-&gt;Surface|None, sid=None 全局兜底)</td>
+</tr>
+<tr>
+<td><code>display.register_text_mode(name, spec)</code></td>
+<td>文字显示模式</td>
+</tr>
+<tr>
+<td><code>display.register_slot_thumbnail_provider(fn)</code></td>
+<td>槽位缩略图</td>
+</tr>
+<tr>
+<td><code>engine.register_file_codec(scope, decode, encode)</code></td>
+<td>文件编解码钩子 (加密存档/资源/语言/脚本/插件文件; scope=save/resource/lang/script/plugin, fn(bytes)-&gt;bytes, None=原样)</td>
+</tr>
+<tr>
+<td><code>engine.register_frame_hook(fn)</code></td>
+<td>每帧钩子 (主循环无条件调用 fn(dt), 暂停时也执行; Steam 回调/网络轮询/心跳用, 异常隔离)</td>
+</tr>
+<tr>
+<td><code>engine.register_text_char_hook(fn)</code></td>
+<td>文本输出钩子 (打字音效/字幕高亮; fn(display, start_idx, count) 按逻辑字符增量触发)</td>
+</tr>
+<tr>
+<td><code>engine.snapshot_state()</code> / <code>engine.restore_state(data)</code></td>
+<td>状态快照/恢复 (内存, 与存档同构; 撤销/回滚/分支探索用, 静默不落盘)</td>
+</tr>
+<tr>
+<td><code>engine.register_action</code> + <code>do_action</code> 指令</td>
+<td>脚本触发动作</td>
+</tr>
+<tr>
+<td><code>engine.register_menu_button(mid, text, action, cfg)</code></td>
+<td>插件向命名菜单添加按钮 (cfg 支持 enabled/image_disabled/image_active 等)</td>
+</tr>
+<tr>
+<td><code>engine.set_menu_button_state(mid, key, enabled)</code></td>
+<td>按钮启用/禁用 (禁用态暗色/禁用图)</td>
+</tr>
+<tr>
+<td><code>engine.set_menu_button_cfg(mid, key, cfg)</code></td>
+<td>更新按钮 cfg (动态切换图/文本, 显示中同步刷新)</td>
+</tr>
+</tbody></table>
+<p><strong>文件编解码钩子</strong> (插件加密存档/资源/语言/脚本/插件文件):</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>register_file_codec<span class="token punctuation">(</span>
+    <span class="token string">"save"</span><span class="token punctuation">,</span>                          <span class="token comment"># scope: save / resource / lang / script / plugin</span>
+    decode<span class="token operator">=</span>my_decrypt<span class="token punctuation">,</span>               <span class="token comment"># fn(bytes)-&gt;bytes 读取时解码 (None=原样)</span>
+    encode<span class="token operator">=</span>my_encrypt<span class="token punctuation">,</span>               <span class="token comment"># fn(bytes)-&gt;bytes 写入时编码 (None=原样)</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><strong>scope 覆盖</strong>: <code>save</code> (存档/settings/global JSON) · <code>resource</code> (图片/音频/字体, pygame 以 file-like 加载解密结果) · <code>lang</code> (语言文件) ·<code>script</code> (.gal 脚本, 引擎构造时绑定到解析器) · <code>plugin</code> (插件源码,解密后经 importlib 加载, 临时文件自动清理)</li>
+<li>未注册的 scope 读写<strong>完全原样</strong>; 解码/编码异常记录日志并回退原数据</li>
+<li>加密强度说明: 客户端密钥必然随包分发, 用于防明文/轻度防篡改;防逆向建议把核心算法/密钥逻辑编译为 <code>pyd</code> 再配合本钩子</li>
+<li>密钥可运行时从服务器获取: 插件在 <code>on_load</code> (早于一切资源加载)拉取并缓存, 注册的闭包直接使用 —— 无需再动内核</li>
+</ul>
+<h3><span id="96-动作系统">9.6 动作系统</span></h3><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>start</code></td>
+<td>label</td>
+<td>启动游戏 (跳转标签)</td>
+</tr>
+<tr>
+<td><code>quit</code></td>
+<td></td>
+<td>关闭游戏 (走退出确认)</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td></td>
+<td>回到标题画面</td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td></td>
+<td>关闭菜单继续游戏</td>
+</tr>
+<tr>
+<td><code>slot_menu</code></td>
+<td>mode=save/load</td>
+<td>打开存档/读档页面</td>
+</tr>
+<tr>
+<td><code>save</code> / <code>load</code></td>
+<td>slot</td>
+<td>直接存档/读档</td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td></td>
+<td>关闭当前选择列表</td>
+</tr>
+</tbody></table>
+<p>自定义动作: <code>engine.register_action("explode", fn)</code> 其中<code>fn(engine, params, source)</code>, 返回 True 执行后关闭选择列表。</p>
+<h3><span id="97-运行时插件管理-dsl-语句">9.7 运行时插件管理 (DSL 语句)</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">plugin load custom_actions   # 装载 (自动加入 using)
+plugin unload shake          # 卸载 (清类实例 on_unload + 指令/事件/订阅)
+plugin list                  # 列出已加载插件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>PluginManager</code> 记录 <code>directory</code> (discover 时), 运行时装载按插件名找<code>&lt;目录&gt;/&lt;名&gt;.py</code>; <code>unload_module</code> 先卸载该模块的 Plugin 类实例再清模块级注册。</p>
+<hr>
+<h2><span id="10-ui-绘制原语-engineui">10. UI 绘制原语 (<code>engine.ui</code>)</span></h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pygame <span class="token keyword">import</span> Rect
+
+engine<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>panel<span class="token punctuation">(</span>surface<span class="token punctuation">,</span> Rect<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                bg_color<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                border_color<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">,</span> border_width<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> radius<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>text<span class="token punctuation">(</span>surface<span class="token punctuation">,</span> font<span class="token punctuation">,</span> <span class="token string">"文字"</span><span class="token punctuation">,</span> center<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>wrap_text<span class="token punctuation">(</span>font<span class="token punctuation">,</span> <span class="token string">"长文本"</span><span class="token punctuation">,</span> max_width<span class="token operator">=</span><span class="token number">180</span><span class="token punctuation">)</span>     <span class="token comment"># -&gt; [行]</span>
+engine<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>multiline_text<span class="token punctuation">(</span>surface<span class="token punctuation">,</span> font<span class="token punctuation">,</span> <span class="token string">"多行"</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span>
+                         max_width<span class="token operator">=</span><span class="token number">180</span><span class="token punctuation">,</span> max_lines<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
+engine<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>dim_overlay<span class="token punctuation">(</span>surface<span class="token punctuation">,</span> alpha<span class="token operator">=</span><span class="token number">150</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>插件在 <code>draw_overlay</code> 事件里可直接叠加 HUD / 调试信息。</p>
+<hr>
+<h2><span id="11-错误处理">11. 错误处理</span></h2><ul>
+<li><strong>主循环隔离</strong>: 每帧 update/draw/事件处理包在 try/except 中</li>
+<li><strong>全局兜底</strong>: <code>sys.excepthook</code> 捕获主线程未捕获异常</li>
+<li><strong>温和弹窗</strong>: 错误面板 (摘要 + 日志路径), 三按钮: 继续/复制/退出</li>
+<li><strong>日志文件</strong>: 所有日志 (INFO/WARN/ERROR) 同时输出 console 与<code>&lt;项目目录&gt;/logs/engine.log</code>; 错误详情另写 <code>logs/errors.log</code></li>
+</ul>
+<p><strong>错误分级</strong>: <code>warn</code> 仅记录 + <strong>游戏界面顶部小提示</strong> (提醒检查日志,节流 2 秒, 不阻塞); <code>error</code> 记录 + 弹窗 (跳转到不存在标签/表达式求值失败/脚本插件异常)。</p>
+<hr>
+<h2><span id="12-测试-779-项断言">12. 测试 (779 项断言)</span></h2><p><code>framework/tests/smoke.py</code>, dummy 视频/音频驱动, 无窗口可跑:</p>
+<pre class="line-numbers language-none"><code class="language-none">py -3.10 framework/tests/smoke.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>覆盖: 解析器 / 运行时逻辑 (变量/分支/跳转/调用栈/表达式) / 交互推进 / 样式表 / selection / 存档 (含 BGM 名称/快照元数据) / 过渡 / 角色 / 场景 / 对话框 / 菜单 / 动作 / 立绘效果 / 文字模式 / 插件装载配置 / import 拆分 / 键盘导航 / 命名空间 / 音频 (fade 状态机/全局静音/UI 音效) / 存档快照 / 运行时插件管理 / LaTeX 逐字兼容 / 语音生命周期 / 分角色语音音量 / 窗口配置与等比缩放 (to_logical/present letterbox/window config 指令) / 常驻菜单栏 (bar 模式: 构建/命中/点击/ESC 语义/样式/自定义项) / 错误弹窗。</p>
+<hr>
+<h2><span id="13-dsl-指令速查表">13. DSL 指令速查表</span></h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对话</td>
+<td><code>say &lt;角色&gt; "文本" [voice 名]</code> / <code>nar "文本"</code> / <code>text "文本"</code></td>
+<td>台词/旁白, 支持富文本与 $变量</td>
+</tr>
+<tr>
+<td>背景</td>
+<td><code>bg &lt;场景&gt; [背景名] [with 效果]</code></td>
+<td>场景背景或直接路径</td>
+</tr>
+<tr>
+<td>场景</td>
+<td><code>scene &lt;id&gt;</code> 块</td>
+<td>场景定义 (name/default/背景名)</td>
+</tr>
+<tr>
+<td>角色</td>
+<td><code>char &lt;id&gt;</code> 块</td>
+<td>角色定义 (name/立绘名:路径)</td>
+</tr>
+<tr>
+<td>立绘</td>
+<td><code>show &lt;角色&gt; [立绘名] [with 效果]</code> / <code>hide &lt;角色&gt; [with 效果]</code></td>
+<td>显示/隐藏</td>
+</tr>
+<tr>
+<td>变换</td>
+<td><code>move/rotate/flip &lt;角色&gt; ...</code></td>
+<td>位移/旋转/翻转</td>
+</tr>
+<tr>
+<td>清除</td>
+<td><code>clear</code></td>
+<td>清除全部立绘</td>
+</tr>
+<tr>
+<td>样式</td>
+<td><code>use style &lt;名&gt;</code> / <code>style &lt;名&gt;</code> 块 / <code>selection_style</code> 块</td>
+<td>主题切换/定义</td>
+</tr>
+<tr>
+<td>UI 素材</td>
+<td><code>ui</code> 块</td>
+<td>九宫格主题切片</td>
+</tr>
+<tr>
+<td>菜单</td>
+<td><code>menu &lt;id&gt;</code> 块</td>
+<td>命名菜单定义 (按钮支持 image_disabled 禁用图)</td>
+</tr>
+<tr>
+<td>菜单栏</td>
+<td><code>menu_bar</code> 块</td>
+<td>常驻菜单栏样式 (bar 模式)</td>
+</tr>
+<tr>
+<td>标题</td>
+<td><code>title</code> 块</td>
+<td>标题画面 (menu: 引用; button_columns 多列)</td>
+</tr>
+<tr>
+<td>选择支</td>
+<td><code>choice [ui_click X] [ui_hover Y]</code> 块</td>
+<td>分支选择</td>
+</tr>
+<tr>
+<td>询问</td>
+<td><code>confirm &lt;文本&gt; [yes X] [no Y] [-&gt; 变量]</code></td>
+<td>确认框, 结果 yes/no 存变量</td>
+</tr>
+<tr>
+<td>变量</td>
+<td><code>set &lt;名&gt; = &lt;表达式&gt;</code></td>
+<td>赋值 (main::/插件:: 前缀)</td>
+</tr>
+<tr>
+<td>条件</td>
+<td><code>if/elif/else/endif</code></td>
+<td>分支</td>
+</tr>
+<tr>
+<td>跳转</td>
+<td><code>jump &lt;标签&gt;</code> / <code>call &lt;标签&gt;</code> / <code>return</code></td>
+<td>流程控制</td>
+</tr>
+<tr>
+<td>等待</td>
+<td><code>sleep &lt;秒&gt;</code></td>
+<td>阻塞等待</td>
+</tr>
+<tr>
+<td>文字模式</td>
+<td><code>typing &lt;模式&gt;</code></td>
+<td>typewriter/instant/terminal/lines/插件</td>
+</tr>
+<tr>
+<td>声音</td>
+<td><code>sound &lt;名&gt;</code> 块</td>
+<td>声音注册</td>
+</tr>
+<tr>
+<td>音乐</td>
+<td><code>music &lt;名/路径&gt; [loop 0/1] [fade 秒]</code></td>
+<td>播放/切换</td>
+</tr>
+<tr>
+<td>暂停</td>
+<td><code>pause music [fade 秒]</code> / <code>pause all</code></td>
+<td>暂停音乐/全局</td>
+</tr>
+<tr>
+<td>恢复</td>
+<td><code>resume music [fade 秒]</code></td>
+<td>恢复</td>
+</tr>
+<tr>
+<td>音量</td>
+<td><code>volume music &lt;0-1&gt;</code> / <code>volume sfx &lt;0-1&gt;</code> / <code>volume voice [角色] &lt;0-1&gt;</code></td>
+<td>临时音量 (voice 可全局或按角色)</td>
+</tr>
+<tr>
+<td>停止</td>
+<td><code>stop music [fade 秒]</code> / <code>stop all</code></td>
+<td>停止音乐/全局</td>
+</tr>
+<tr>
+<td>音效</td>
+<td><code>sfx &lt;声音名&gt;</code></td>
+<td>剧情音效</td>
+</tr>
+<tr>
+<td>窗口</td>
+<td><code>window config</code> 块</td>
+<td>运行时改 标题/尺寸/图标/全屏/可缩放/fps (即时生效)</td>
+</tr>
+<tr>
+<td>全屏</td>
+<td><code>fullscreen true/false</code></td>
+<td>切换全屏 (内容等比缩放)</td>
+</tr>
+<tr>
+<td>命名空间</td>
+<td><code>using &lt;命名空间...&gt;</code></td>
+<td>导入插件命名空间</td>
+</tr>
+<tr>
+<td>插件</td>
+<td><code>plugin load/unload/list &lt;名&gt;</code></td>
+<td>运行时插件管理</td>
+</tr>
+<tr>
+<td>存档</td>
+<td><code>save</code> / <code>load</code></td>
+<td>槽位 0 存档/读档</td>
+</tr>
+<tr>
+<td>转场</td>
+<td><code>fade</code> / <code>fadeout</code></td>
+<td>黑幕淡入/淡出</td>
+</tr>
+<tr>
+<td>结束</td>
+<td><code>ending [结局名]</code></td>
+<td>结束画面 + 结局记录 (全局进度)</td>
+</tr>
+<tr>
+<td>鉴赏</td>
+<td><code>gallery</code> 块 / <code>scene type: cg</code></td>
+<td>鉴赏配置 / CG 场景 (展示即收集)</td>
+</tr>
+<tr>
+<td>设置</td>
+<td><code>settings</code> 块 + <code>setting &lt;key&gt;</code> 子块</td>
+<td>设置界面配置 (布局 + 条目)</td>
+</tr>
+<tr>
+<td>结束</td>
+<td><code>ending [结局名]</code></td>
+<td>结束画面 + 结局记录 (全局进度) 回标题</td>
+</tr>
+</tbody></table>
+<hr>
+<h2><span id="14-打包发行-pyinstaller">14. 打包发行 (PyInstaller)</span></h2><pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 1. 安装 PyInstaller (Python 3.10)</span>
+py <span class="token operator">-</span>3<span class="token punctuation">.</span>10 <span class="token operator">-</span>m pip install pyinstaller
+
+<span class="token comment"># 2. 打包 (onedir 模式, 全部产物输出到 test/release, 不污染项目根)</span>
+py <span class="token operator">-</span>3<span class="token punctuation">.</span>10 <span class="token operator">-</span>m PyInstaller <span class="token operator">--</span>noconfirm <span class="token operator">--</span>onedir <span class="token operator">--</span>name GalgameMaker ^
+  <span class="token operator">--</span>distpath test/release <span class="token operator">--</span>workpath test/release/build ^
+  <span class="token operator">--</span>specpath test/release ^
+  <span class="token operator">--</span><span class="token function">add-data</span> <span class="token string">"C:\&lt;项目绝对路径&gt;\framework\plugins;framework\plugins"</span> ^
+  gamelauncher<span class="token punctuation">.</span>py
+
+<span class="token comment"># 3. 复制 demo 数据与字体到发行目录 (exe 同目录):</span>
+<span class="token comment">#    test/engine_demo -&gt; test/release/GalgameMaker/test/engine_demo</span>
+<span class="token comment">#    (排除 save/__pycache__; 素材/脚本随发行版分发)</span>
+<span class="token comment">#    fonts            -&gt; test/release/GalgameMaker/test/engine_demo/fonts</span>
+
+<span class="token comment"># 4. 双击 test/release/GalgameMaker/GalgameMaker.exe 运行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>说明:</p>
+<ul>
+<li><code>gamelauncher.py</code> 已支持 frozen 环境: 打包后项目根基于 <strong>exe 所在目录</strong>(<code>sys.executable</code>), demo/字体等外部数据与 exe 同放即可</li>
+<li>插件目录打包进 exe (<code>--add-data</code>), 运行时自动装载; demo 数据与字体为外部文件, 便于直接替换素材/脚本/存档</li>
+<li>也可拖拽任意 <code>.gal</code> 文件到 exe 上运行 (启动器传参)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>Galgame Maker</tag>
+        <tag>Galgame Maker Framework</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>置顶 | 关于我自己</title>
+    <url>/2021/07/10/about-me/</url>
+    <content><![CDATA[<p>本页面最后一次更新于2026-07-31</p>
+<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
+<p>如你所见，这个名字很奇怪。</p>
+<p>原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
+<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
+<p>我本人是一个普通的准大一学生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，去年参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。现在高三毕业了，高考考得还算不错，走强基计划去了天津大学，正在准备大学生活中。</p>
+<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
+<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
+<p>能力、码力、笔力有限，我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
+<p>以上。请多关照。</p>
+<p align="right">distjr_</p>
+
+<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
+<p>Bilibili: <a href="https://space.bilibili.com/1159124697">bilibili</a></p>
+<p>GitHub: <a href="https://github.com/ruufly">github</a></p>
+<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
+<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
+<p>Luogu: <a href="https://www.luogu.com.cn/user/363964">luogu</a></p>
+<p>Zhihu: <a href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
+<p>X: <a href="https://x.com/distjr_">X</a></p>
+]]></content>
+      <categories>
+        <category>关于</category>
+      </categories>
+      <tags>
+        <tag>关于</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>欸嘿</title>
+    <url>/2026/07/19/2260719/</url>
+    <content><![CDATA[<p>如图</p>
+]]></content>
+      <categories>
+        <category>日记</category>
+      </categories>
+      <tags>
+        <tag>日记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>画中少女</title>
     <url>/2026/07/05/the-girl-in-the-painting/</url>
     <content><![CDATA[<h3><span id="1">1</span></h3><p>左撇子的年轻画家，在画布前放下了手中的画笔，他对这幅刚刚完成的作品很满意。他的右手挽着一位十几岁的少女，她正微笑着看着他，把半个身体依靠在他的肩上——这幅油画上画的，也正是这位少女——穿着洁白的衣裙，站在开满鲜花的山坡上，向画布外的某个远处微笑着，背后则是群山、河流与湛蓝色的天空。</p>
 <p>画家将画板从画架上取下，牵着少女的手走上阁楼，将画板置于窗户正对着的墙边。他让少女依偎在他身侧，二人从那扇半开着的小窗看着外面的风景。</p>
@@ -367,49 +1825,6 @@
         <tag>小说</tag>
         <tag>中篇</tag>
         <tag>2026</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>置顶 | 关于我自己</title>
-    <url>/2021/07/10/about-me/</url>
-    <content><![CDATA[<p>本页面最后一次更新于2026-07-31</p>
-<p>大家好，我是distjr_，各位可以叫我dist或者distance。</p>
-<p>如你所见，这个名字很奇怪。</p>
-<p>原本的名字要更正常一点，但后来注册B站账号的时候，发现那个名字已经被占用了，于是使用随机法（笑）得到了这个新名字，并把它用到了我的绝大多数账号上。</p>
-<p>这个博客是在2021年建站的，具体的历程可以参考“日志”一栏。实际上当初只是莫名其妙地听说了用hexo自建博客这样一个东西，就花了小半个暑假的时间把这个站搭好了。主题来来回回换了好几个，最后选定到了matery，这几年也自己对这个主题做了一些魔改，成了现在你所看到的样子。</p>
-<p>我本人是一个普通的准大一学生，家住河南洛阳（这是一个不错的城市，优点是生活节奏慢，缺点也是生活节奏慢，欢迎来这里玩），曾经是OIer，打了好几年，最后在2024年打完NOIP后退役了。然后又开始搞生物竞赛，进了省队，去年参加34th CNBO，拿了个假银（生竞国赛分成理论和实验两部分，没有进入实验环节的银牌俗称假银，因为它在升学之类的作用上不如进入实验的银牌），也光荣退役了。现在高三毕业了，高考考得还算不错，走强基计划去了天津大学，正在准备大学生活中。</p>
-<p>我个人对艺术方面，主要是音乐和文学，算是比较感兴趣的，正如你所见，我的博客上有很多平常写的文章，大家有空了欢迎来看看，放在这上面的文章也都算是个人认为写的不错的，如果能给予一些评价和建议就再荣幸不过了。</p>
-<p>此外，本人或许也是算是一个二次元的吧（大抵是的吧（逃）），这些年的动画和漫画也是看了不少，galgame也玩过一些，轻小说也读过几本。此外还算是半个术术人（笑），这段时间也在学编曲，准备当p主。</p>
-<p>能力、码力、笔力有限，我更新的会比较慢。但如果我写的东西能够让你开心，或者给你带来一些什么，那便是我此生最大的荣幸了。</p>
-<p>以上。请多关照。</p>
-<p align="right">distjr_</p>
-
-<p>附注：以下是我的个人账号，欢迎各位去踩（划掉）</p>
-<p>Bilibili: <a href="https://space.bilibili.com/1159124697">bilibili</a></p>
-<p>GitHub: <a href="https://github.com/ruufly">github</a></p>
-<p>QQ: <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=870239526">870239526</a></p>
-<p>E-mail: <a href="mailto:870239526@qq.com">e-mail</a></p>
-<p>Luogu: <a href="https://www.luogu.com.cn/user/363964">luogu</a></p>
-<p>Zhihu: <a href="https://www.zhihu.com/people/distjr-">zhihu</a></p>
-<p>X: <a href="https://x.com/distjr_">X</a></p>
-]]></content>
-      <categories>
-        <category>关于</category>
-      </categories>
-      <tags>
-        <tag>关于</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>欸嘿</title>
-    <url>/2026/07/19/2260719/</url>
-    <content><![CDATA[<p>如图</p>
-]]></content>
-      <categories>
-        <category>日记</category>
-      </categories>
-      <tags>
-        <tag>日记</tag>
       </tags>
   </entry>
   <entry>
