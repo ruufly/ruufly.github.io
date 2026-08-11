@@ -351,9 +351,10 @@ ui                       # UI 主题素材 (九宫格切片, 相对路径)
     key_right: "right, d"          # 确认框: 右移活动项
     ui_click_sound: "sfx_click"    # 全局 UI 点击音
     music_fade: 1.0                # BGM 淡入淡出默认时长 (秒)
+    save_slots: 6                  # 存档槽位数量 (默认 6, 可配置)
     menu_continue: "继续游戏"      # ESC 菜单文案 (可自定义)
     menu_save: "存档" / menu_load: "读取存档" / menu_title: "返回标题"
-    menu_quit: "退出游戏"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    menu_quit: "退出游戏"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3><span id="4121-运行时窗口配置-window-config-与等比缩放">4.12.1 运行时窗口配置 (window config) 与等比缩放</span></h3><p><code>window config</code> 命令可在<strong>程序运行过程中</strong>即时修改窗口配置(标题/大小/图标/全屏/可缩放/帧率), 无需重启:</p>
 <pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">window config
@@ -773,7 +774,7 @@ using shake custom_actions  # 一次导入多个<span aria-hidden="true" class="
 </ul>
 <hr>
 <h2><span id="7-存档系统">7. 存档系统</span></h2><ul>
-<li>槽位: 6 个 (save/slot0-5.json), 由 ESC 菜单或标题”读取存档”打开</li>
+<li>槽位: 默认 6 个 (save/slot0-5.json), <strong>数量可由 window 块 <code>save_slots</code> 配置</strong> (如 <code>save_slots: 12</code>); 由 ESC 菜单或标题”读取存档”打开</li>
 <li>存档内容: 变量 / 剧情位置 (标签+语句索引) / 调用栈 / 阻塞状态 /背景 (场景 id + 背景名) / 立绘 (id/立绘名/透明度/旋转/翻转/中心点) /BGM 注册名 / 当前样式名 / 文本与选择支状态</li>
 <li>对象以<strong>脚本 id</strong> 存储 (不存图片路径) —— 重命名图片不破坏旧存档</li>
 <li>读档精确恢复; <code>sleep</code> 阻塞中读档不恢复剩余等待时间</li>
