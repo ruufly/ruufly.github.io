@@ -504,21 +504,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-08-11
+                    2026-08-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.9k
+                    12.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    48 分
+                    49 分
                 </div>
                 
 
@@ -842,6 +842,7 @@ style my_theme          # 自定义样式块 (同名可重载内置)
     speaker_color: "#ffd282"
     speaker_bg: "#1e3a5f"
     arrow_color: "#e94560"
+    font: "ui"                    # 字体族 (register_font/font 指令注册; 缺省默认字体)
     textbox_image: "..."          # 文本框背景图 (9-slice)
     speaker_image: "..."
     choice_image: "..." / choice_image_hover: "..."
@@ -863,8 +864,9 @@ ui                       # UI 主题素材 (九宫格切片, 相对路径)
     #   逗号 = 默认图,焦点图; 分号 = 多组按按钮索引取图
     #   单个路径 = 无状态图
     #   支持: textbox/choice_button/title_buttons/menu_button/
-    #         confirm_panel/confirm_button/slot_frame/slot_panel
-    #   style 图片键优先级更高, 值为 none 禁用主题图<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    #         confirm_panel/confirm_button/slot_frame/slot_panel/
+    #         error_panel/error_button/notice_panel
+    #   style 图片键优先级更高, 值为 none 禁用主题图<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3><span id="411-标题画面">4.11 标题画面</span></h3><pre class="line-numbers language-gal" data-language="gal"><code class="language-gal">title
     image: "materials/title.png"   # 可选: 标题图片
@@ -1204,6 +1206,7 @@ gallery
 <p><strong>内置默认文案</strong> (未覆写时): 确认框默认按钮 <code>confirm.yes/no</code>、”开始游戏” <code>menu.start</code>、结束画面 <code>ending.name/ending.thanks</code> 等均走核心语言表, 无 language 块的项目也会按当前语言显示。</p>
 <p><strong>UI 图片语言变体</strong>: 图片路径含 <code>{lang}</code> 占位符时按当前语言替换(如 <code>materials/title_{lang}.png</code> → <code>materials/title_en.png</code>), 切换语言自动重载。</p>
 <p><strong>渲染字体</strong>: <code>window</code> 块 <code>font:</code> 配置 — 相对脚本目录的字体文件(<code>font: "fonts/Ubuntu-R.ttf"</code>) 或系统字体 (<code>font: "sys:MicrosoftYaHei"</code>); 运行时 <code>engine.apply_font(font)</code> 立即生效。</p>
+<p><strong>多字体</strong>: <code>font &lt;名&gt; &lt;spec&gt;</code> 指令或 <code>engine.register_font(name, spec)</code>注册命名字体 (spec = 文件路径 或 <code>sys:系统字体名</code>); <code>style</code> 块<code>font: &lt;名&gt;</code> 让该样式的文本/名字框/选择支/标题/富文本使用该字体(切换样式即换字体); 引擎 API <code>engine.get_font(size, family=&lt;名&gt;)</code>直接取用。</p>
 <p><strong>日志多语言</strong>: <code>log.i / log.w / log.e(key, **fmt)</code> 按语言表翻译日志文案 (如 <code>log.i("log.script_loaded", path=...)</code>); <strong>框架全部日志(引擎/解析/插件/启动器) 均已键化</strong>, 核心语言表含 <code>log.*</code> key,开发者可在语言文件中自行扩展。</p>
 <p><strong>API</strong>:</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">engine<span class="token punctuation">.</span>i18n<span class="token punctuation">.</span>set_lang<span class="token punctuation">(</span><span class="token string">"en"</span><span class="token punctuation">)</span>              <span class="token comment"># 切换语言</span>
@@ -1321,6 +1324,7 @@ using shake custom_actions  # 一次导入多个<span aria-hidden="true" class="
 <hr>
 <h2><span id="7-存档系统">7. 存档系统</span></h2><ul>
 <li>槽位: 默认 6 个 (save/slot0-5.json), <strong>数量可由 window 块 <code>save_slots</code> 配置</strong> (如 <code>save_slots: 12</code>); 由 ESC 菜单或标题”读取存档”打开</li>
+<li><strong>自动分页</strong>: 槽位数超过 6 时槽位界面自动分页 (底部 ◀ 页码 ▶ 翻页,命中与存档/读档按全局槽位索引)</li>
 <li>存档内容: 变量 / 剧情位置 (标签+语句索引) / 调用栈 / 阻塞状态 /背景 (场景 id + 背景名) / 立绘 (id/立绘名/透明度/旋转/翻转/中心点) /BGM 注册名 / 当前样式名 / 文本与选择支状态</li>
 <li>对象以<strong>脚本 id</strong> 存储 (不存图片路径) —— 重命名图片不破坏旧存档</li>
 <li>读档精确恢复; <code>sleep</code> 阻塞中读档不恢复剩余等待时间</li>
@@ -2478,7 +2482,7 @@ py <span class="token operator">-</span>3<span class="token punctuation">.</span
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68.5k</span>&nbsp;字
+                class="white-color">68.7k</span>&nbsp;字
             
             
             
